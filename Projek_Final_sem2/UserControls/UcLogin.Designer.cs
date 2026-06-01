@@ -1,14 +1,14 @@
-﻿namespace Projek_Final_sem2
+﻿namespace Projek_Final_sem2.UserControls
 {
-    partial class FmLogin
+    partial class UcLogin
     {
-        /// <summary>
-        ///  Required designer variable.
+        /// <summary> 
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
+        /// <summary> 
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -20,14 +20,15 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcLogin));
             PcxBoxLoginAdmin = new PictureBox();
             PanelLogin = new Panel();
             BtnLogin = new Button();
@@ -43,17 +44,18 @@
             // 
             // PcxBoxLoginAdmin
             // 
-            PcxBoxLoginAdmin.BackgroundImage = Properties.Resources.ChatGPT_Image_May_29__2026__12_52_55_PM;
+            PcxBoxLoginAdmin.BackgroundImage = (Image)resources.GetObject("PcxBoxLoginAdmin.BackgroundImage");
             PcxBoxLoginAdmin.BackgroundImageLayout = ImageLayout.Stretch;
-            PcxBoxLoginAdmin.Location = new Point(-1, -1);
+            PcxBoxLoginAdmin.Dock = DockStyle.Left;
+            PcxBoxLoginAdmin.Location = new Point(0, 0);
             PcxBoxLoginAdmin.Name = "PcxBoxLoginAdmin";
-            PcxBoxLoginAdmin.Size = new Size(457, 451);
-            PcxBoxLoginAdmin.TabIndex = 0;
+            PcxBoxLoginAdmin.Size = new Size(500, 560);
+            PcxBoxLoginAdmin.TabIndex = 1;
             PcxBoxLoginAdmin.TabStop = false;
             // 
             // PanelLogin
             // 
-            PanelLogin.BackColor = Color.WhiteSmoke;
+            PanelLogin.BackColor = Color.White;
             PanelLogin.Controls.Add(BtnLogin);
             PanelLogin.Controls.Add(ChxBoxPasswordAdmin);
             PanelLogin.Controls.Add(TbPassword);
@@ -61,11 +63,12 @@
             PanelLogin.Controls.Add(TbUsername);
             PanelLogin.Controls.Add(LbUsername);
             PanelLogin.Controls.Add(LoginAdmin);
+            PanelLogin.Dock = DockStyle.Fill;
             PanelLogin.ForeColor = Color.Black;
-            PanelLogin.Location = new Point(453, -1);
+            PanelLogin.Location = new Point(500, 0);
             PanelLogin.Name = "PanelLogin";
-            PanelLogin.Size = new Size(350, 451);
-            PanelLogin.TabIndex = 1;
+            PanelLogin.Size = new Size(350, 560);
+            PanelLogin.TabIndex = 2;
             // 
             // BtnLogin
             // 
@@ -89,7 +92,6 @@
             ChxBoxPasswordAdmin.TabIndex = 5;
             ChxBoxPasswordAdmin.Text = "Tampilkan Password";
             ChxBoxPasswordAdmin.UseVisualStyleBackColor = true;
-            ChxBoxPasswordAdmin.CheckedChanged += ChxBoxPasswordAdmin_CheckedChanged;
             // 
             // TbPassword
             // 
@@ -98,7 +100,6 @@
             TbPassword.Name = "TbPassword";
             TbPassword.Size = new Size(236, 31);
             TbPassword.TabIndex = 4;
-            TbPassword.TextChanged += TbPassword_TextChanged;
             // 
             // LbPassword
             // 
@@ -118,7 +119,6 @@
             TbUsername.Name = "TbUsername";
             TbUsername.Size = new Size(236, 31);
             TbUsername.TabIndex = 2;
-            TbUsername.TextChanged += TbUsername_TextChanged;
             // 
             // LbUsername
             // 
@@ -141,17 +141,14 @@
             LoginAdmin.TabIndex = 0;
             LoginAdmin.Text = "Login Admin";
             // 
-            // FmLogin
+            // UcLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(800, 450);
             Controls.Add(PanelLogin);
             Controls.Add(PcxBoxLoginAdmin);
-            Name = "FmLogin";
-            Text = "Sistem Jual Beli Alat Pertanian Dan Servis Alat Pertanian - Login";
+            Name = "UcLogin";
+            Size = new Size(850, 560);
             ((System.ComponentModel.ISupportInitialize)PcxBoxLoginAdmin).EndInit();
             PanelLogin.ResumeLayout(false);
             PanelLogin.PerformLayout();
@@ -162,12 +159,12 @@
 
         private PictureBox PcxBoxLoginAdmin;
         private Panel PanelLogin;
-        private Label LoginAdmin;
-        private TextBox TbUsername;
-        private Label LbUsername;
-        private Label LbPassword;
-        private TextBox TbPassword;
         private Button BtnLogin;
         private CheckBox ChxBoxPasswordAdmin;
+        private TextBox TbPassword;
+        private Label LbPassword;
+        private TextBox TbUsername;
+        private Label LbUsername;
+        private Label LoginAdmin;
     }
 }
