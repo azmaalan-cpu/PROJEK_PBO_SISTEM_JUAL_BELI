@@ -51,9 +51,6 @@
             LbTanggalAwal = new Label();
             LbFilterTanggal = new Label();
             LbJudulLaporanPenjualan = new Label();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
             PanelLaporanPenjualan.SuspendLayout();
             PanelTotalTransaksi.SuspendLayout();
             PanelPenjualan.SuspendLayout();
@@ -340,8 +337,6 @@
         private Label LbTotalTransaksi;
         private Panel PanelTotalPenjualan;
         private Label LbTotalPenjualan;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column4;
+        
     }
 }

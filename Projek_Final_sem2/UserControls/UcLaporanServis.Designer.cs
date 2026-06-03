@@ -310,11 +310,9 @@
         private Label LbDataServis;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
-        private Label LbDataServis;
     }
 }
