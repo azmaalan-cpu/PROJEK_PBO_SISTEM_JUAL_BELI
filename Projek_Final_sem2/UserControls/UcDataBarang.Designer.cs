@@ -33,16 +33,24 @@
             CbxKategori = new ComboBox();
             PanelDaftarBarang = new Panel();
             DgvDaftarBarang = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             LbDaftarBarang = new Label();
             BtnReset = new Button();
             BtnHapus = new Button();
             BtnEdit = new Button();
             BtnTambah = new Button();
+
             LbSupplier = new Label();
             TbStok = new TextBox();
             LbStok = new Label();
             TbHarga = new TextBox();
             LbHarga = new Label();
+            TbKategori = new TextBox();
             LbKategori = new Label();
             TbNamaAlat = new TextBox();
             LbNamaAlat = new Label();
@@ -73,6 +81,7 @@
             PaneDataBarang.Controls.Add(LbStok);
             PaneDataBarang.Controls.Add(TbHarga);
             PaneDataBarang.Controls.Add(LbHarga);
+            PaneDataBarang.Controls.Add(TbKategori);
             PaneDataBarang.Controls.Add(LbKategori);
             PaneDataBarang.Controls.Add(TbNamaAlat);
             PaneDataBarang.Controls.Add(LbNamaAlat);
@@ -119,6 +128,40 @@
             DgvDaftarBarang.Size = new Size(575, 152);
             DgvDaftarBarang.TabIndex = 1;
             DgvDaftarBarang.CellClick += DgvDaftarBarang_CellClick;
+            // 
+            Column1.HeaderText = "No";
+            Column1.MinimumWidth = 8;
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Nama Barang";
+            Column2.MinimumWidth = 8;
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Kategori";
+            Column3.MinimumWidth = 8;
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Harga";
+            Column4.MinimumWidth = 8;
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Stok";
+            Column5.MinimumWidth = 8;
+            Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Satuan";
+            Column6.MinimumWidth = 8;
+            Column6.Name = "Column6";
             // 
             // LbDaftarBarang
             // 
@@ -224,6 +267,14 @@
             LbHarga.TabIndex = 5;
             LbHarga.Text = "Harga";
             // 
+            // TbKategori
+            // 
+            TbKategori.BorderStyle = BorderStyle.FixedSingle;
+            TbKategori.Location = new Point(253, 90);
+            TbKategori.Name = "TbKategori";
+            TbKategori.Size = new Size(261, 31);
+            TbKategori.TabIndex = 4;
+            // 
             // LbKategori
             // 
             LbKategori.AutoSize = true;
@@ -325,6 +376,7 @@
         private Panel PaneDataBarang;
         private Label LbNamaAlat;
         private Label LbDataBarang;
+        private TextBox TbKategori;
         private Label LbKategori;
         private TextBox TbNamaAlat;
         private Label LbHarga;
@@ -338,6 +390,12 @@
         private Button BtnReset;
         private Panel PanelDaftarBarang;
         private DataGridView DgvDaftarBarang;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
         private Label LbDaftarBarang;
         private ComboBox CbxKategori;
         private ComboBox CbxSupplier;

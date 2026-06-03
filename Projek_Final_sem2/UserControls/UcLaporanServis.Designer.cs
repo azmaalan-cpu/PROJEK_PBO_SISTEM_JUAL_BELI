@@ -50,6 +50,7 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            LbDataServis = new Label();
             PanelFilterTanggal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvDataServis).BeginInit();
             PanelTotalTransaksi.SuspendLayout();
@@ -256,6 +257,16 @@
             Column6.MinimumWidth = 8;
             Column6.Name = "Column6";
             // 
+            // LbDataServis
+            // 
+            LbDataServis.AutoSize = true;
+            LbDataServis.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbDataServis.Location = new Point(47, 284);
+            LbDataServis.Name = "LbDataServis";
+            LbDataServis.Size = new Size(129, 26);
+            LbDataServis.TabIndex = 6;
+            LbDataServis.Text = "Data Servis";
+            // 
             // UcLaporanServis
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -299,8 +310,11 @@
         private Label LbDataServis;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
+        private Label LbDataServis;
     }
 }

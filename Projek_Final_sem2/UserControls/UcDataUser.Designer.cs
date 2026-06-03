@@ -44,7 +44,10 @@
             BtnHapus = new Button();
             BtnEdit = new Button();
             BtnTambah = new Button();
+            TbRole = new TextBox();
             LbRole = new Label();
+            textBox1 = new TextBox();
+            LbNamaLengkap = new Label();
             TbPassword = new TextBox();
             LbPassword = new Label();
             TbUsername = new TextBox();
@@ -75,7 +78,10 @@
             PanelDataUser.Controls.Add(BtnHapus);
             PanelDataUser.Controls.Add(BtnEdit);
             PanelDataUser.Controls.Add(BtnTambah);
+            PanelDataUser.Controls.Add(TbRole);
             PanelDataUser.Controls.Add(LbRole);
+            PanelDataUser.Controls.Add(textBox1);
+            PanelDataUser.Controls.Add(LbNamaLengkap);
             PanelDataUser.Controls.Add(TbPassword);
             PanelDataUser.Controls.Add(LbPassword);
             PanelDataUser.Controls.Add(TbUsername);
@@ -232,6 +238,23 @@
             LbRole.TabIndex = 7;
             LbRole.Text = "Role";
             // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(210, 143);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(271, 31);
+            textBox1.TabIndex = 6;
+            // 
+            // LbNamaLengkap
+            // 
+            LbNamaLengkap.AutoSize = true;
+            LbNamaLengkap.Location = new Point(0, 139);
+            LbNamaLengkap.Name = "LbNamaLengkap";
+            LbNamaLengkap.Size = new Size(131, 25);
+            LbNamaLengkap.TabIndex = 5;
+            LbNamaLengkap.Text = "Nama Lengkap";
+            // 
             // TbPassword
             // 
             TbPassword.BorderStyle = BorderStyle.FixedSingle;
@@ -288,7 +311,10 @@
         private Panel PanelDataUser;
         private TextBox TbUsername;
         private Label LbUsername;
+        private TextBox TbRole;
         private Label LbRole;
+        private TextBox textBox1;
+        private Label LbNamaLengkap;
         private TextBox TbPassword;
         private Label LbPassword;
         private Button BtnReset;

@@ -108,8 +108,8 @@ namespace Projek_Final_sem2.UserControls
                 MessageBox.Show("Data berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
                 selectedAlatId = 0;
-            }
         }
+    }
         private void BtnReset_Click(object sender, EventArgs e)
         {
             TbNamaAlat.Clear();

@@ -36,6 +36,10 @@
             LbTotalTransaksi = new Label();
             PanelPenjualan = new Panel();
             DgvDataPenjualan = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             LbDataPenjualan = new Label();
             PanelFilterTanggal = new Panel();
             BtnExport = new Button();
@@ -137,6 +141,30 @@
             DgvDataPenjualan.RowHeadersWidth = 62;
             DgvDataPenjualan.Size = new Size(659, 150);
             DgvDataPenjualan.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "No";
+            Column1.MinimumWidth = 8;
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Tanggal";
+            Column2.MinimumWidth = 8;
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Pelanggan";
+            Column3.MinimumWidth = 8;
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Total";
+            Column4.MinimumWidth = 8;
+            Column4.Name = "Column4";
             // 
             // LbDataPenjualan
             // 
@@ -303,6 +331,10 @@
         private Panel PanelPenjualan;
         private Label LbDataPenjualan;
         private DataGridView DgvDataPenjualan;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
         private Panel PanelTotalTransaksi;
         private Panel PanelTotal;
         private Label LbTotalTransaksi;
