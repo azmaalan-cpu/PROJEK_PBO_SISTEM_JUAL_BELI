@@ -36,9 +36,8 @@
             LbTotalTransaksi = new Label();
             PanelPenjualan = new Panel();
             DgvDataPenjualan = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             LbDataPenjualan = new Label();
             PanelFilterTanggal = new Panel();
@@ -51,6 +50,7 @@
             LbTanggalAwal = new Label();
             LbFilterTanggal = new Label();
             LbJudulLaporanPenjualan = new Label();
+            Column3 = new DataGridViewTextBoxColumn();
             PanelLaporanPenjualan.SuspendLayout();
             PanelTotalTransaksi.SuspendLayout();
             PanelPenjualan.SuspendLayout();
@@ -139,23 +139,17 @@
             DgvDataPenjualan.Size = new Size(659, 150);
             DgvDataPenjualan.TabIndex = 0;
             // 
-            // Column1
-            // 
-            Column1.HeaderText = "No";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "Column1";
-            // 
             // Column2
             // 
             Column2.HeaderText = "Tanggal";
             Column2.MinimumWidth = 8;
             Column2.Name = "Column2";
             // 
-            // Column3
+            // Column1
             // 
-            Column3.HeaderText = "Pelanggan";
-            Column3.MinimumWidth = 8;
-            Column3.Name = "Column3";
+            Column1.HeaderText = "No.Transaksi";
+            Column1.MinimumWidth = 8;
+            Column1.Name = "Column1";
             // 
             // Column4
             // 
@@ -276,23 +270,12 @@
             LbJudulLaporanPenjualan.TabIndex = 0;
             LbJudulLaporanPenjualan.Text = "Laporan Penjualan";
             // 
-            // Column2
+            // Column3
             // 
-            Column2.HeaderText = "Tanggal";
-            Column2.MinimumWidth = 8;
-            Column2.Name = "Column2";
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "No.Transaksi";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "Column1";
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Total";
-            Column4.MinimumWidth = 8;
-            Column4.Name = "Column4";
+            Column3.HeaderText = "Pelanggan";
+            Column3.MinimumWidth = 8;
+            Column3.Name = "Column3";
+            Column3.Width = 150;
             // 
             // UcLaporanPenjualan
             // 
@@ -301,6 +284,7 @@
             Controls.Add(PanelLaporanPenjualan);
             Name = "UcLaporanPenjualan";
             Size = new Size(865, 582);
+            Load += UcLaporanPenjualan_Load;
             PanelLaporanPenjualan.ResumeLayout(false);
             PanelLaporanPenjualan.PerformLayout();
             PanelTotalTransaksi.ResumeLayout(false);

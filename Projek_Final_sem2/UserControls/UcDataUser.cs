@@ -74,13 +74,13 @@ namespace Projek_Final_sem2.UserControls
                 TbIdUser.Text = DgvDaftarUser.Rows[e.RowIndex].Cells["id_user"].Value.ToString();
                 TbUsername.Text = DgvDaftarUser.Rows[e.RowIndex].Cells["username"].Value.ToString();
                 TbPassword.Text = DgvDaftarUser.Rows[e.RowIndex].Cells["password"].Value.ToString();
-                
+
             }
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if(selectedUserId == 0)
+            if (selectedUserId == 0)
             {
                 MessageBox.Show("Pilih data yang ingin diubah!");
                 return;
@@ -123,6 +123,11 @@ namespace Projek_Final_sem2.UserControls
             TbPassword.Clear();
             CbxRole.SelectedIndex = 0;
             selectedUserId = 0;
+        }
+
+        private void DgvDaftarUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
