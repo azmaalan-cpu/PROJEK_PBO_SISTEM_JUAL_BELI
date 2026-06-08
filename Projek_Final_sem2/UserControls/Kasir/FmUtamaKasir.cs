@@ -50,5 +50,5 @@ namespace Projek_Final_sem2.UserControls.Kasir
             //FormLogin Login = new FormLogin();
             //Login.Show();
         }
-    }
+    }       // update kasir yang terbaru 
 }
