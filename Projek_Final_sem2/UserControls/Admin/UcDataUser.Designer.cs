@@ -35,23 +35,21 @@
             CbxRole = new ComboBox();
             PanelDaftarUser = new Panel();
             DgvDaftarUser = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            username = new DataGridViewTextBoxColumn();
-            password = new DataGridViewTextBoxColumn();
-            nama_role = new DataGridViewTextBoxColumn();
             LbDaftarUser = new Label();
             BtnReset = new Button();
             BtnHapus = new Button();
             BtnEdit = new Button();
             BtnTambah = new Button();
-            TbRole = new TextBox();
             LbRole = new Label();
             textBox1 = new TextBox();
-            LbNamaLengkap = new Label();
             TbPassword = new TextBox();
             LbPassword = new Label();
             TbUsername = new TextBox();
             LbUsername = new Label();
+            id_user = new DataGridViewTextBoxColumn();
+            username = new DataGridViewTextBoxColumn();
+            password = new DataGridViewTextBoxColumn();
+            nama_role = new DataGridViewTextBoxColumn();
             PanelDataUser.SuspendLayout();
             PanelDaftarUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvDaftarUser).BeginInit();
@@ -78,10 +76,8 @@
             PanelDataUser.Controls.Add(BtnHapus);
             PanelDataUser.Controls.Add(BtnEdit);
             PanelDataUser.Controls.Add(BtnTambah);
-            PanelDataUser.Controls.Add(TbRole);
             PanelDataUser.Controls.Add(LbRole);
             PanelDataUser.Controls.Add(textBox1);
-            PanelDataUser.Controls.Add(LbNamaLengkap);
             PanelDataUser.Controls.Add(TbPassword);
             PanelDataUser.Controls.Add(LbPassword);
             PanelDataUser.Controls.Add(TbUsername);
@@ -133,7 +129,7 @@
             // 
             DgvDaftarUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvDaftarUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvDaftarUser.Columns.AddRange(new DataGridViewColumn[] { Column1, username, password, nama_role });
+            DgvDaftarUser.Columns.AddRange(new DataGridViewColumn[] { id_user, username, password, nama_role });
             DgvDaftarUser.Dock = DockStyle.Fill;
             DgvDaftarUser.Location = new Point(0, 0);
             DgvDaftarUser.Name = "DgvDaftarUser";
@@ -141,35 +137,7 @@
             DgvDaftarUser.Size = new Size(550, 155);
             DgvDaftarUser.TabIndex = 14;
             DgvDaftarUser.CellClick += DgvDaftarUser_CellClick;
-            
-            // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "id_user";
-            Column1.HeaderText = "ID User";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "id_user";
-            // 
-            // username
-            // 
-            username.DataPropertyName = "username";
-            username.HeaderText = "Username";
-            username.MinimumWidth = 8;
-            username.Name = "username";
-            // 
-            // password
-            // 
-            password.DataPropertyName = "password";
-            password.HeaderText = "Password";
-            password.MinimumWidth = 8;
-            password.Name = "password";
-            // 
-            // nama_role
-            // 
-            nama_role.DataPropertyName = "nama_role";
-            nama_role.HeaderText = "Role";
-            nama_role.MinimumWidth = 8;
-            nama_role.Name = "nama_role";
+            DgvDaftarUser.CellContentClick += DgvDaftarUser_CellContentClick;
             // 
             // LbDaftarUser
             // 
@@ -246,15 +214,6 @@
             textBox1.Size = new Size(271, 31);
             textBox1.TabIndex = 6;
             // 
-            // LbNamaLengkap
-            // 
-            LbNamaLengkap.AutoSize = true;
-            LbNamaLengkap.Location = new Point(0, 139);
-            LbNamaLengkap.Name = "LbNamaLengkap";
-            LbNamaLengkap.Size = new Size(131, 25);
-            LbNamaLengkap.TabIndex = 5;
-            LbNamaLengkap.Text = "Nama Lengkap";
-            // 
             // TbPassword
             // 
             TbPassword.BorderStyle = BorderStyle.FixedSingle;
@@ -289,6 +248,35 @@
             LbUsername.TabIndex = 1;
             LbUsername.Text = "Username";
             // 
+            // id_user
+            // 
+            id_user.DataPropertyName = "id_user";
+            id_user.HeaderText = "ID ";
+            id_user.MinimumWidth = 8;
+            id_user.Name = "id_user";
+            id_user.Visible = false;
+            // 
+            // username
+            // 
+            username.DataPropertyName = "username";
+            username.HeaderText = "Username";
+            username.MinimumWidth = 8;
+            username.Name = "username";
+            // 
+            // password
+            // 
+            password.DataPropertyName = "password";
+            password.HeaderText = "Password";
+            password.MinimumWidth = 8;
+            password.Name = "password";
+            // 
+            // nama_role
+            // 
+            nama_role.DataPropertyName = "nama_role";
+            nama_role.HeaderText = "Role";
+            nama_role.MinimumWidth = 8;
+            nama_role.Name = "nama_role";
+            // 
             // UcDataUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -311,10 +299,8 @@
         private Panel PanelDataUser;
         private TextBox TbUsername;
         private Label LbUsername;
-        private TextBox TbRole;
         private Label LbRole;
         private TextBox textBox1;
-        private Label LbNamaLengkap;
         private TextBox TbPassword;
         private Label LbPassword;
         private Button BtnReset;
@@ -326,11 +312,11 @@
         private Panel panel2;
         private DataGridView DgvDaftarUser;
         private ComboBox CbxRole;
-        private DataGridViewTextBoxColumn Column1;
+        private TextBox TbIdUser;
+        private Label LbIdUser;
+        private DataGridViewTextBoxColumn id_user;
         private DataGridViewTextBoxColumn username;
         private DataGridViewTextBoxColumn password;
         private DataGridViewTextBoxColumn nama_role;
-        private TextBox TbIdUser;
-        private Label LbIdUser;
     }
 }

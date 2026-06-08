@@ -14,5 +14,10 @@ namespace Projek_Final_sem2.UserControls
         {
             InitializeComponent();
         }
+
+        private void UcLaporanPenjualan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
