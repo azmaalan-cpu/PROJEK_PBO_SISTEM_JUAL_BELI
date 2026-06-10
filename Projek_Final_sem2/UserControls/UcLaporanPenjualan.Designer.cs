@@ -30,16 +30,10 @@
         {
             PanelLaporanPenjualan = new Panel();
             PanelTotalTransaksi = new Panel();
-            PanelTotalPenjualan = new Panel();
-            LbTotalPenjualan = new Label();
             PanelTotal = new Panel();
             LbTotalTransaksi = new Label();
-            PanelPenjualan = new Panel();
-            DgvDataPenjualan = new DataGridView();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            LbDataPenjualan = new Label();
+            PanelGrafikPenjualan = new Panel();
+            LbGrafikPenjualan = new Label();
             PanelFilterTanggal = new Panel();
             BtnExport = new Button();
             BtnCetak = new Button();
@@ -51,10 +45,10 @@
             LbFilterTanggal = new Label();
             LbJudulLaporanPenjualan = new Label();
             Column3 = new DataGridViewTextBoxColumn();
+            FmPlotPenjualan = new ScottPlot.WinForms.FormsPlot();
             PanelLaporanPenjualan.SuspendLayout();
             PanelTotalTransaksi.SuspendLayout();
-            PanelPenjualan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DgvDataPenjualan).BeginInit();
+            PanelGrafikPenjualan.SuspendLayout();
             PanelFilterTanggal.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,8 +56,8 @@
             // 
             PanelLaporanPenjualan.BackColor = Color.White;
             PanelLaporanPenjualan.Controls.Add(PanelTotalTransaksi);
-            PanelLaporanPenjualan.Controls.Add(PanelPenjualan);
-            PanelLaporanPenjualan.Controls.Add(LbDataPenjualan);
+            PanelLaporanPenjualan.Controls.Add(PanelGrafikPenjualan);
+            PanelLaporanPenjualan.Controls.Add(LbGrafikPenjualan);
             PanelLaporanPenjualan.Controls.Add(PanelFilterTanggal);
             PanelLaporanPenjualan.Controls.Add(LbJudulLaporanPenjualan);
             PanelLaporanPenjualan.Dock = DockStyle.Fill;
@@ -74,32 +68,12 @@
             // 
             // PanelTotalTransaksi
             // 
-            PanelTotalTransaksi.Controls.Add(PanelTotalPenjualan);
-            PanelTotalTransaksi.Controls.Add(LbTotalPenjualan);
             PanelTotalTransaksi.Controls.Add(PanelTotal);
             PanelTotalTransaksi.Controls.Add(LbTotalTransaksi);
             PanelTotalTransaksi.Location = new Point(27, 477);
             PanelTotalTransaksi.Name = "PanelTotalTransaksi";
-            PanelTotalTransaksi.Size = new Size(684, 93);
+            PanelTotalTransaksi.Size = new Size(281, 93);
             PanelTotalTransaksi.TabIndex = 4;
-            // 
-            // PanelTotalPenjualan
-            // 
-            PanelTotalPenjualan.BackColor = Color.LightGray;
-            PanelTotalPenjualan.Location = new Point(440, 17);
-            PanelTotalPenjualan.Name = "PanelTotalPenjualan";
-            PanelTotalPenjualan.Size = new Size(209, 58);
-            PanelTotalPenjualan.TabIndex = 2;
-            // 
-            // LbTotalPenjualan
-            // 
-            LbTotalPenjualan.AutoSize = true;
-            LbTotalPenjualan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbTotalPenjualan.Location = new Point(296, 26);
-            LbTotalPenjualan.Name = "LbTotalPenjualan";
-            LbTotalPenjualan.Size = new Size(142, 25);
-            LbTotalPenjualan.TabIndex = 2;
-            LbTotalPenjualan.Text = "Total Penjualan";
             // 
             // PanelTotal
             // 
@@ -119,53 +93,23 @@
             LbTotalTransaksi.TabIndex = 0;
             LbTotalTransaksi.Text = "Total Transaksi";
             // 
-            // PanelPenjualan
+            // PanelGrafikPenjualan
             // 
-            PanelPenjualan.Controls.Add(DgvDataPenjualan);
-            PanelPenjualan.Location = new Point(27, 307);
-            PanelPenjualan.Name = "PanelPenjualan";
-            PanelPenjualan.Size = new Size(659, 150);
-            PanelPenjualan.TabIndex = 3;
+            PanelGrafikPenjualan.Controls.Add(FmPlotPenjualan);
+            PanelGrafikPenjualan.Location = new Point(27, 307);
+            PanelGrafikPenjualan.Name = "PanelGrafikPenjualan";
+            PanelGrafikPenjualan.Size = new Size(659, 164);
+            PanelGrafikPenjualan.TabIndex = 3;
             // 
-            // DgvDataPenjualan
+            // LbGrafikPenjualan
             // 
-            DgvDataPenjualan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgvDataPenjualan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvDataPenjualan.Columns.AddRange(new DataGridViewColumn[] { Column2, Column1, Column4 });
-            DgvDataPenjualan.Dock = DockStyle.Fill;
-            DgvDataPenjualan.Location = new Point(0, 0);
-            DgvDataPenjualan.Name = "DgvDataPenjualan";
-            DgvDataPenjualan.RowHeadersWidth = 62;
-            DgvDataPenjualan.Size = new Size(659, 150);
-            DgvDataPenjualan.TabIndex = 0;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Tanggal";
-            Column2.MinimumWidth = 8;
-            Column2.Name = "Column2";
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "No.Transaksi";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "Column1";
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Total";
-            Column4.MinimumWidth = 8;
-            Column4.Name = "Column4";
-            // 
-            // LbDataPenjualan
-            // 
-            LbDataPenjualan.AutoSize = true;
-            LbDataPenjualan.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbDataPenjualan.Location = new Point(24, 278);
-            LbDataPenjualan.Name = "LbDataPenjualan";
-            LbDataPenjualan.Size = new Size(171, 26);
-            LbDataPenjualan.TabIndex = 2;
-            LbDataPenjualan.Text = "Data Penjualan";
+            LbGrafikPenjualan.AutoSize = true;
+            LbGrafikPenjualan.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbGrafikPenjualan.Location = new Point(24, 278);
+            LbGrafikPenjualan.Name = "LbGrafikPenjualan";
+            LbGrafikPenjualan.Size = new Size(190, 26);
+            LbGrafikPenjualan.TabIndex = 2;
+            LbGrafikPenjualan.Text = "Grafik Penjualan";
             // 
             // PanelFilterTanggal
             // 
@@ -277,6 +221,13 @@
             Column3.Name = "Column3";
             Column3.Width = 150;
             // 
+            // FmPlotPenjualan
+            // 
+            FmPlotPenjualan.Location = new Point(3, 3);
+            FmPlotPenjualan.Name = "FmPlotPenjualan";
+            FmPlotPenjualan.Size = new Size(653, 158);
+            FmPlotPenjualan.TabIndex = 0;
+            // 
             // UcLaporanPenjualan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -289,8 +240,7 @@
             PanelLaporanPenjualan.PerformLayout();
             PanelTotalTransaksi.ResumeLayout(false);
             PanelTotalTransaksi.PerformLayout();
-            PanelPenjualan.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)DgvDataPenjualan).EndInit();
+            PanelGrafikPenjualan.ResumeLayout(false);
             PanelFilterTanggal.ResumeLayout(false);
             PanelFilterTanggal.PerformLayout();
             ResumeLayout(false);
@@ -309,18 +259,12 @@
         private Button BtnTampilkan;
         private TextBox TbTanggalAkhir;
         private Label LbTanggalAkhir;
-        private Panel PanelPenjualan;
-        private Label LbDataPenjualan;
-        private DataGridView DgvDataPenjualan;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
+        private Panel PanelGrafikPenjualan;
+        private Label LbGrafikPenjualan;
         private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
         private Panel PanelTotalTransaksi;
         private Panel PanelTotal;
         private Label LbTotalTransaksi;
-        private Panel PanelTotalPenjualan;
-        private Label LbTotalPenjualan;
-        
+        private ScottPlot.WinForms.FormsPlot FmPlotPenjualan;
     }
 }

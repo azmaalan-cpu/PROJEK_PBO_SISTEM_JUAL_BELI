@@ -62,7 +62,7 @@
             PanelMenu.Location = new Point(0, 0);
             PanelMenu.Margin = new Padding(4);
             PanelMenu.Name = "PanelMenu";
-            PanelMenu.Size = new Size(233, 544);
+            PanelMenu.Size = new Size(233, 744);
             PanelMenu.TabIndex = 1;
             // 
             // BtnLogOut
@@ -215,7 +215,7 @@
             PanelContent.Dock = DockStyle.Fill;
             PanelContent.Location = new Point(233, 0);
             PanelContent.Name = "PanelContent";
-            PanelContent.Size = new Size(845, 544);
+            PanelContent.Size = new Size(1145, 744);
             PanelContent.TabIndex = 2;
             PanelContent.Paint += PanelContent_Paint;
             // 
@@ -223,7 +223,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1078, 544);
+            ClientSize = new Size(1378, 744);
             Controls.Add(PanelContent);
             Controls.Add(PanelMenu);
             Name = "FmUtama";
