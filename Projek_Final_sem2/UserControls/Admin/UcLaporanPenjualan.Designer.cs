@@ -68,8 +68,9 @@
             PanelLaporanPenjualan.Controls.Add(LbJudulLaporanPenjualan);
             PanelLaporanPenjualan.Dock = DockStyle.Fill;
             PanelLaporanPenjualan.Location = new Point(0, 0);
+            PanelLaporanPenjualan.Margin = new Padding(2, 2, 2, 2);
             PanelLaporanPenjualan.Name = "PanelLaporanPenjualan";
-            PanelLaporanPenjualan.Size = new Size(865, 582);
+            PanelLaporanPenjualan.Size = new Size(614, 363);
             PanelLaporanPenjualan.TabIndex = 0;
             // 
             // PanelTotalTransaksi
@@ -78,53 +79,59 @@
             PanelTotalTransaksi.Controls.Add(LbTotalPenjualan);
             PanelTotalTransaksi.Controls.Add(PanelTotal);
             PanelTotalTransaksi.Controls.Add(LbTotalTransaksi);
-            PanelTotalTransaksi.Location = new Point(27, 477);
+            PanelTotalTransaksi.Location = new Point(19, 286);
+            PanelTotalTransaksi.Margin = new Padding(2, 2, 2, 2);
             PanelTotalTransaksi.Name = "PanelTotalTransaksi";
-            PanelTotalTransaksi.Size = new Size(684, 93);
+            PanelTotalTransaksi.Size = new Size(479, 56);
             PanelTotalTransaksi.TabIndex = 4;
             // 
             // PanelTotalPenjualan
             // 
             PanelTotalPenjualan.BackColor = Color.LightGray;
-            PanelTotalPenjualan.Location = new Point(440, 17);
+            PanelTotalPenjualan.Location = new Point(308, 10);
+            PanelTotalPenjualan.Margin = new Padding(2, 2, 2, 2);
             PanelTotalPenjualan.Name = "PanelTotalPenjualan";
-            PanelTotalPenjualan.Size = new Size(209, 58);
+            PanelTotalPenjualan.Size = new Size(146, 35);
             PanelTotalPenjualan.TabIndex = 2;
             // 
             // LbTotalPenjualan
             // 
             LbTotalPenjualan.AutoSize = true;
             LbTotalPenjualan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbTotalPenjualan.Location = new Point(296, 26);
+            LbTotalPenjualan.Location = new Point(207, 16);
+            LbTotalPenjualan.Margin = new Padding(2, 0, 2, 0);
             LbTotalPenjualan.Name = "LbTotalPenjualan";
-            LbTotalPenjualan.Size = new Size(142, 25);
+            LbTotalPenjualan.Size = new Size(90, 15);
             LbTotalPenjualan.TabIndex = 2;
             LbTotalPenjualan.Text = "Total Penjualan";
             // 
             // PanelTotal
             // 
             PanelTotal.BackColor = Color.LightGray;
-            PanelTotal.Location = new Point(157, 17);
+            PanelTotal.Location = new Point(110, 10);
+            PanelTotal.Margin = new Padding(2, 2, 2, 2);
             PanelTotal.Name = "PanelTotal";
-            PanelTotal.Size = new Size(88, 58);
+            PanelTotal.Size = new Size(62, 35);
             PanelTotal.TabIndex = 1;
             // 
             // LbTotalTransaksi
             // 
             LbTotalTransaksi.AutoSize = true;
             LbTotalTransaksi.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbTotalTransaksi.Location = new Point(13, 26);
+            LbTotalTransaksi.Location = new Point(9, 16);
+            LbTotalTransaksi.Margin = new Padding(2, 0, 2, 0);
             LbTotalTransaksi.Name = "LbTotalTransaksi";
-            LbTotalTransaksi.Size = new Size(138, 25);
+            LbTotalTransaksi.Size = new Size(87, 15);
             LbTotalTransaksi.TabIndex = 0;
             LbTotalTransaksi.Text = "Total Transaksi";
             // 
             // PanelPenjualan
             // 
             PanelPenjualan.Controls.Add(DgvDataPenjualan);
-            PanelPenjualan.Location = new Point(27, 307);
+            PanelPenjualan.Location = new Point(19, 184);
+            PanelPenjualan.Margin = new Padding(2, 2, 2, 2);
             PanelPenjualan.Name = "PanelPenjualan";
-            PanelPenjualan.Size = new Size(659, 150);
+            PanelPenjualan.Size = new Size(461, 90);
             PanelPenjualan.TabIndex = 3;
             // 
             // DgvDataPenjualan
@@ -134,9 +141,10 @@
             DgvDataPenjualan.Columns.AddRange(new DataGridViewColumn[] { Column2, Column1, Column4 });
             DgvDataPenjualan.Dock = DockStyle.Fill;
             DgvDataPenjualan.Location = new Point(0, 0);
+            DgvDataPenjualan.Margin = new Padding(2, 2, 2, 2);
             DgvDataPenjualan.Name = "DgvDataPenjualan";
             DgvDataPenjualan.RowHeadersWidth = 62;
-            DgvDataPenjualan.Size = new Size(659, 150);
+            DgvDataPenjualan.Size = new Size(461, 90);
             DgvDataPenjualan.TabIndex = 0;
             // 
             // Column2
@@ -161,9 +169,10 @@
             // 
             LbDataPenjualan.AutoSize = true;
             LbDataPenjualan.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbDataPenjualan.Location = new Point(24, 278);
+            LbDataPenjualan.Location = new Point(17, 167);
+            LbDataPenjualan.Margin = new Padding(2, 0, 2, 0);
             LbDataPenjualan.Name = "LbDataPenjualan";
-            LbDataPenjualan.Size = new Size(171, 26);
+            LbDataPenjualan.Size = new Size(111, 19);
             LbDataPenjualan.TabIndex = 2;
             LbDataPenjualan.Text = "Data Penjualan";
             // 
@@ -178,18 +187,20 @@
             PanelFilterTanggal.Controls.Add(TbTanggalAwal);
             PanelFilterTanggal.Controls.Add(LbTanggalAwal);
             PanelFilterTanggal.Controls.Add(LbFilterTanggal);
-            PanelFilterTanggal.Location = new Point(27, 47);
+            PanelFilterTanggal.Location = new Point(19, 28);
+            PanelFilterTanggal.Margin = new Padding(2, 2, 2, 2);
             PanelFilterTanggal.Name = "PanelFilterTanggal";
-            PanelFilterTanggal.Size = new Size(671, 228);
+            PanelFilterTanggal.Size = new Size(470, 137);
             PanelFilterTanggal.TabIndex = 1;
             // 
             // BtnExport
             // 
             BtnExport.BackColor = Color.Red;
             BtnExport.ForeColor = Color.White;
-            BtnExport.Location = new Point(326, 165);
+            BtnExport.Location = new Point(228, 99);
+            BtnExport.Margin = new Padding(2, 2, 2, 2);
             BtnExport.Name = "BtnExport";
-            BtnExport.Size = new Size(112, 34);
+            BtnExport.Size = new Size(78, 20);
             BtnExport.TabIndex = 7;
             BtnExport.Text = "Export";
             BtnExport.UseVisualStyleBackColor = false;
@@ -198,9 +209,10 @@
             // 
             BtnCetak.BackColor = Color.DeepSkyBlue;
             BtnCetak.ForeColor = Color.White;
-            BtnCetak.Location = new Point(192, 165);
+            BtnCetak.Location = new Point(134, 99);
+            BtnCetak.Margin = new Padding(2, 2, 2, 2);
             BtnCetak.Name = "BtnCetak";
-            BtnCetak.Size = new Size(112, 34);
+            BtnCetak.Size = new Size(78, 20);
             BtnCetak.TabIndex = 6;
             BtnCetak.Text = "Cetak";
             BtnCetak.UseVisualStyleBackColor = false;
@@ -209,9 +221,10 @@
             // 
             BtnTampilkan.BackColor = Color.Green;
             BtnTampilkan.ForeColor = Color.White;
-            BtnTampilkan.Location = new Point(36, 165);
+            BtnTampilkan.Location = new Point(25, 99);
+            BtnTampilkan.Margin = new Padding(2, 2, 2, 2);
             BtnTampilkan.Name = "BtnTampilkan";
-            BtnTampilkan.Size = new Size(132, 34);
+            BtnTampilkan.Size = new Size(92, 20);
             BtnTampilkan.TabIndex = 5;
             BtnTampilkan.Text = "Tampilkan";
             BtnTampilkan.UseVisualStyleBackColor = false;
@@ -219,34 +232,38 @@
             // TbTanggalAkhir
             // 
             TbTanggalAkhir.BorderStyle = BorderStyle.FixedSingle;
-            TbTanggalAkhir.Location = new Point(248, 110);
+            TbTanggalAkhir.Location = new Point(174, 66);
+            TbTanggalAkhir.Margin = new Padding(2, 2, 2, 2);
             TbTanggalAkhir.Name = "TbTanggalAkhir";
-            TbTanggalAkhir.Size = new Size(253, 31);
+            TbTanggalAkhir.Size = new Size(178, 23);
             TbTanggalAkhir.TabIndex = 4;
             // 
             // LbTanggalAkhir
             // 
             LbTanggalAkhir.AutoSize = true;
-            LbTanggalAkhir.Location = new Point(29, 110);
+            LbTanggalAkhir.Location = new Point(20, 66);
+            LbTanggalAkhir.Margin = new Padding(2, 0, 2, 0);
             LbTanggalAkhir.Name = "LbTanggalAkhir";
-            LbTanggalAkhir.Size = new Size(119, 25);
+            LbTanggalAkhir.Size = new Size(80, 15);
             LbTanggalAkhir.TabIndex = 3;
             LbTanggalAkhir.Text = "Tanggal Akhir";
             // 
             // TbTanggalAwal
             // 
             TbTanggalAwal.BorderStyle = BorderStyle.FixedSingle;
-            TbTanggalAwal.Location = new Point(248, 53);
+            TbTanggalAwal.Location = new Point(174, 32);
+            TbTanggalAwal.Margin = new Padding(2, 2, 2, 2);
             TbTanggalAwal.Name = "TbTanggalAwal";
-            TbTanggalAwal.Size = new Size(253, 31);
+            TbTanggalAwal.Size = new Size(178, 23);
             TbTanggalAwal.TabIndex = 2;
             // 
             // LbTanggalAwal
             // 
             LbTanggalAwal.AutoSize = true;
-            LbTanggalAwal.Location = new Point(29, 59);
+            LbTanggalAwal.Location = new Point(20, 35);
+            LbTanggalAwal.Margin = new Padding(2, 0, 2, 0);
             LbTanggalAwal.Name = "LbTanggalAwal";
-            LbTanggalAwal.Size = new Size(116, 25);
+            LbTanggalAwal.Size = new Size(78, 15);
             LbTanggalAwal.TabIndex = 1;
             LbTanggalAwal.Text = "Tanggal Awal";
             // 
@@ -254,9 +271,10 @@
             // 
             LbFilterTanggal.AutoSize = true;
             LbFilterTanggal.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbFilterTanggal.Location = new Point(13, 10);
+            LbFilterTanggal.Location = new Point(9, 6);
+            LbFilterTanggal.Margin = new Padding(2, 0, 2, 0);
             LbFilterTanggal.Name = "LbFilterTanggal";
-            LbFilterTanggal.Size = new Size(127, 23);
+            LbFilterTanggal.Size = new Size(93, 17);
             LbFilterTanggal.TabIndex = 0;
             LbFilterTanggal.Text = "Filter Tanggal";
             // 
@@ -264,9 +282,10 @@
             // 
             LbJudulLaporanPenjualan.AutoSize = true;
             LbJudulLaporanPenjualan.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbJudulLaporanPenjualan.Location = new Point(27, 13);
+            LbJudulLaporanPenjualan.Location = new Point(19, 8);
+            LbJudulLaporanPenjualan.Margin = new Padding(2, 0, 2, 0);
             LbJudulLaporanPenjualan.Name = "LbJudulLaporanPenjualan";
-            LbJudulLaporanPenjualan.Size = new Size(211, 26);
+            LbJudulLaporanPenjualan.Size = new Size(134, 19);
             LbJudulLaporanPenjualan.TabIndex = 0;
             LbJudulLaporanPenjualan.Text = "Laporan Penjualan";
             // 
@@ -279,11 +298,12 @@
             // 
             // UcLaporanPenjualan
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(PanelLaporanPenjualan);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "UcLaporanPenjualan";
-            Size = new Size(865, 582);
+            Size = new Size(614, 363);
             Load += UcLaporanPenjualan_Load;
             PanelLaporanPenjualan.ResumeLayout(false);
             PanelLaporanPenjualan.PerformLayout();
