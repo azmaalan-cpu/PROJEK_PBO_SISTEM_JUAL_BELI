@@ -33,19 +33,19 @@
             PanelTotal = new Panel();
             LbTotalTransaksi = new Label();
             PanelGrafikPenjualan = new Panel();
+            FmPlotPenjualan = new ScottPlot.WinForms.FormsPlot();
             LbGrafikPenjualan = new Label();
             PanelFilterTanggal = new Panel();
             BtnExport = new Button();
             BtnCetak = new Button();
             BtnTampilkan = new Button();
-            TbTanggalAkhir = new TextBox();
             LbTanggalAkhir = new Label();
-            TbTanggalAwal = new TextBox();
             LbTanggalAwal = new Label();
             LbFilterTanggal = new Label();
             LbJudulLaporanPenjualan = new Label();
             Column3 = new DataGridViewTextBoxColumn();
-            FmPlotPenjualan = new ScottPlot.WinForms.FormsPlot();
+            DtmPickerTanggalAwal = new DateTimePicker();
+            DtmPickerTanggalAkhir = new DateTimePicker();
             PanelLaporanPenjualan.SuspendLayout();
             PanelTotalTransaksi.SuspendLayout();
             PanelGrafikPenjualan.SuspendLayout();
@@ -101,6 +101,13 @@
             PanelGrafikPenjualan.Size = new Size(659, 164);
             PanelGrafikPenjualan.TabIndex = 3;
             // 
+            // FmPlotPenjualan
+            // 
+            FmPlotPenjualan.Location = new Point(3, 3);
+            FmPlotPenjualan.Name = "FmPlotPenjualan";
+            FmPlotPenjualan.Size = new Size(653, 158);
+            FmPlotPenjualan.TabIndex = 0;
+            // 
             // LbGrafikPenjualan
             // 
             LbGrafikPenjualan.AutoSize = true;
@@ -114,12 +121,12 @@
             // PanelFilterTanggal
             // 
             PanelFilterTanggal.BackColor = Color.White;
+            PanelFilterTanggal.Controls.Add(DtmPickerTanggalAkhir);
+            PanelFilterTanggal.Controls.Add(DtmPickerTanggalAwal);
             PanelFilterTanggal.Controls.Add(BtnExport);
             PanelFilterTanggal.Controls.Add(BtnCetak);
             PanelFilterTanggal.Controls.Add(BtnTampilkan);
-            PanelFilterTanggal.Controls.Add(TbTanggalAkhir);
             PanelFilterTanggal.Controls.Add(LbTanggalAkhir);
-            PanelFilterTanggal.Controls.Add(TbTanggalAwal);
             PanelFilterTanggal.Controls.Add(LbTanggalAwal);
             PanelFilterTanggal.Controls.Add(LbFilterTanggal);
             PanelFilterTanggal.Location = new Point(27, 47);
@@ -160,14 +167,6 @@
             BtnTampilkan.Text = "Tampilkan";
             BtnTampilkan.UseVisualStyleBackColor = false;
             // 
-            // TbTanggalAkhir
-            // 
-            TbTanggalAkhir.BorderStyle = BorderStyle.FixedSingle;
-            TbTanggalAkhir.Location = new Point(248, 110);
-            TbTanggalAkhir.Name = "TbTanggalAkhir";
-            TbTanggalAkhir.Size = new Size(253, 31);
-            TbTanggalAkhir.TabIndex = 4;
-            // 
             // LbTanggalAkhir
             // 
             LbTanggalAkhir.AutoSize = true;
@@ -176,14 +175,6 @@
             LbTanggalAkhir.Size = new Size(119, 25);
             LbTanggalAkhir.TabIndex = 3;
             LbTanggalAkhir.Text = "Tanggal Akhir";
-            // 
-            // TbTanggalAwal
-            // 
-            TbTanggalAwal.BorderStyle = BorderStyle.FixedSingle;
-            TbTanggalAwal.Location = new Point(248, 53);
-            TbTanggalAwal.Name = "TbTanggalAwal";
-            TbTanggalAwal.Size = new Size(253, 31);
-            TbTanggalAwal.TabIndex = 2;
             // 
             // LbTanggalAwal
             // 
@@ -221,12 +212,19 @@
             Column3.Name = "Column3";
             Column3.Width = 150;
             // 
-            // FmPlotPenjualan
+            // DtmPickerTanggalAwal
             // 
-            FmPlotPenjualan.Location = new Point(3, 3);
-            FmPlotPenjualan.Name = "FmPlotPenjualan";
-            FmPlotPenjualan.Size = new Size(653, 158);
-            FmPlotPenjualan.TabIndex = 0;
+            DtmPickerTanggalAwal.Location = new Point(224, 59);
+            DtmPickerTanggalAwal.Name = "DtmPickerTanggalAwal";
+            DtmPickerTanggalAwal.Size = new Size(300, 31);
+            DtmPickerTanggalAwal.TabIndex = 8;
+            // 
+            // DtmPickerTanggalAkhir
+            // 
+            DtmPickerTanggalAkhir.Location = new Point(224, 104);
+            DtmPickerTanggalAkhir.Name = "DtmPickerTanggalAkhir";
+            DtmPickerTanggalAkhir.Size = new Size(300, 31);
+            DtmPickerTanggalAkhir.TabIndex = 9;
             // 
             // UcLaporanPenjualan
             // 
@@ -251,13 +249,11 @@
         private Panel PanelLaporanPenjualan;
         private Label LbJudulLaporanPenjualan;
         private Panel PanelFilterTanggal;
-        private TextBox TbTanggalAwal;
         private Label LbTanggalAwal;
         private Label LbFilterTanggal;
         private Button BtnExport;
         private Button BtnCetak;
         private Button BtnTampilkan;
-        private TextBox TbTanggalAkhir;
         private Label LbTanggalAkhir;
         private Panel PanelGrafikPenjualan;
         private Label LbGrafikPenjualan;
@@ -266,5 +262,7 @@
         private Panel PanelTotal;
         private Label LbTotalTransaksi;
         private ScottPlot.WinForms.FormsPlot FmPlotPenjualan;
+        private DateTimePicker DtmPickerTanggalAwal;
+        private DateTimePicker DtmPickerTanggalAkhir;
     }
 }
