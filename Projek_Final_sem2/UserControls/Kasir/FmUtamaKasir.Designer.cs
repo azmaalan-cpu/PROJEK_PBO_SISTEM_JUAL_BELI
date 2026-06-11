@@ -57,7 +57,7 @@
             PanelMenuUtamaKasir.Dock = DockStyle.Left;
             PanelMenuUtamaKasir.Location = new Point(0, 0);
             PanelMenuUtamaKasir.Name = "PanelMenuUtamaKasir";
-            PanelMenuUtamaKasir.Size = new Size(254, 450);
+            PanelMenuUtamaKasir.Size = new Size(254, 753);
             PanelMenuUtamaKasir.TabIndex = 0;
             // 
             // BtnLogout
@@ -168,14 +168,14 @@
             PanelContainer.Dock = DockStyle.Fill;
             PanelContainer.Location = new Point(254, 0);
             PanelContainer.Name = "PanelContainer";
-            PanelContainer.Size = new Size(546, 450);
+            PanelContainer.Size = new Size(1228, 753);
             PanelContainer.TabIndex = 1;
             // 
             // FmUtamaKasir
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1482, 753);
             Controls.Add(PanelContainer);
             Controls.Add(PanelMenuUtamaKasir);
             Name = "FmUtamaKasir";

@@ -44,11 +44,15 @@ namespace Projek_Final_sem2.UserControls
                             {
                                 FmUtamaAdmin admin = new FmUtamaAdmin();
                                 admin.Show();
+
+                                this.FindForm().Hide();
                             }
                             else if(role == "Kasir")
                             {
                                 FmUtamaKasir kasir = new FmUtamaKasir();
                                 kasir.Show();
+
+                                this.FindForm().Hide();
                             }
                             else if( role == "Teknisi")
                             {
