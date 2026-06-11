@@ -1,20 +1,8 @@
-using System;
-using Npgsql;
-using Projek_Final_sem2.Koneksi;
-
-namespace Projek_Final_sem2.Examples.OOPExample.DAO
+﻿namespace Projek_Final_sem2.Examples.OOPExample.DAO
 {
-    //Abstraction, Encapsulation
-    public abstract class BaseDAO
+    public abstract class BaseDAOBase
     {
-        protected readonly DatabaseHelper db;
 
-        protected BaseDAO()
-        {
-            db = new DatabaseHelper();
-        }
-
-        //Encapsulation
         protected object ExecuteScalar(string sql, Action<Npgsql.NpgsqlCommand> paramBinder = null)
         {
             using var conn = db.GetConnection();
@@ -25,13 +13,13 @@ namespace Projek_Final_sem2.Examples.OOPExample.DAO
         }
 
         //Encapsulation
-        protected void ExecuteNonQuery(string sql, Action<Npgsql.NpgsqlCommand> paramBinder = null)
+        protected object ExecuteScalar(string sql, Action<Npgsql.NpgsqlCommand> paramBinder = null)
         {
             using var conn = db.GetConnection();
             conn.Open();
             using var cmd = new Npgsql.NpgsqlCommand(sql, conn);
             paramBinder?.Invoke(cmd);
-            cmd.ExecuteNonQuery();
+            return cmd.ExecuteScalar();
         }
     }
 }
