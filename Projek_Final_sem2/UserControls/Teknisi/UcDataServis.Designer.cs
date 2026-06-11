@@ -30,17 +30,17 @@
         {
             components = new System.ComponentModel.Container();
             DgvDataServis = new DataGridView();
+            label1 = new Label();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            TextCariDataServis = new TextBox();
+            label2 = new Label();
+            BtnTambahDataServis = new Button();
             ColumnIdServis = new DataGridViewTextBoxColumn();
             ColumnTanggalServis = new DataGridViewTextBoxColumn();
             ColumnNamaAlat = new DataGridViewTextBoxColumn();
             ColumnKerusakan = new DataGridViewTextBoxColumn();
             ColumnBiayaServis = new DataGridViewTextBoxColumn();
             ColumnStatus = new DataGridViewTextBoxColumn();
-            label1 = new Label();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            TextCariDataServis = new TextBox();
-            label2 = new Label();
-            BtnTambahDataServis = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvDataServis).BeginInit();
             SuspendLayout();
             // 
@@ -53,39 +53,6 @@
             DgvDataServis.Name = "DgvDataServis";
             DgvDataServis.Size = new Size(610, 305);
             DgvDataServis.TabIndex = 0;
-            // 
-            // ColumnIdServis
-            // 
-            ColumnIdServis.HeaderText = "ID Servis";
-            ColumnIdServis.Name = "ColumnIdServis";
-            ColumnIdServis.Width = 70;
-            // 
-            // ColumnTanggalServis
-            // 
-            ColumnTanggalServis.HeaderText = "Tanggal";
-            ColumnTanggalServis.Name = "ColumnTanggalServis";
-            // 
-            // ColumnNamaAlat
-            // 
-            ColumnNamaAlat.HeaderText = "Nama Alat";
-            ColumnNamaAlat.Name = "ColumnNamaAlat";
-            ColumnNamaAlat.Width = 150;
-            // 
-            // ColumnKerusakan
-            // 
-            ColumnKerusakan.HeaderText = "Kerusakan";
-            ColumnKerusakan.Name = "ColumnKerusakan";
-            ColumnKerusakan.Width = 150;
-            // 
-            // ColumnBiayaServis
-            // 
-            ColumnBiayaServis.HeaderText = "Biaya Servis";
-            ColumnBiayaServis.Name = "ColumnBiayaServis";
-            // 
-            // ColumnStatus
-            // 
-            ColumnStatus.HeaderText = "Status";
-            ColumnStatus.Name = "ColumnStatus";
             // 
             // label1
             // 
@@ -135,6 +102,40 @@
             BtnTambahDataServis.UseVisualStyleBackColor = false;
             BtnTambahDataServis.Click += BtnTambahDataServis_Click;
             // 
+            // ColumnIdServis
+            // 
+            ColumnIdServis.HeaderText = "ID Servis";
+            ColumnIdServis.Name = "ColumnIdServis";
+            ColumnIdServis.Width = 70;
+            // 
+            // ColumnTanggalServis
+            // 
+            ColumnTanggalServis.HeaderText = "Tanggal";
+            ColumnTanggalServis.Name = "ColumnTanggalServis";
+            // 
+            // ColumnNamaAlat
+            // 
+            ColumnNamaAlat.HeaderText = "Nama Alat";
+            ColumnNamaAlat.Name = "ColumnNamaAlat";
+            ColumnNamaAlat.Width = 120;
+            // 
+            // ColumnKerusakan
+            // 
+            ColumnKerusakan.HeaderText = "Kerusakan";
+            ColumnKerusakan.Name = "ColumnKerusakan";
+            ColumnKerusakan.Width = 120;
+            // 
+            // ColumnBiayaServis
+            // 
+            ColumnBiayaServis.HeaderText = "Biaya Servis";
+            ColumnBiayaServis.Name = "ColumnBiayaServis";
+            // 
+            // ColumnStatus
+            // 
+            ColumnStatus.HeaderText = "Status";
+            ColumnStatus.Name = "ColumnStatus";
+            ColumnStatus.Width = 80;
+            // 
             // UcDataServis
             // 
             AutoScaleDimensions = new SizeF(6F, 14F);
@@ -155,16 +156,16 @@
         #endregion
 
         private DataGridView DgvDataServis;
+        private Label label1;
+        private ContextMenuStrip contextMenuStrip1;
+        private TextBox TextCariDataServis;
+        private Label label2;
+        private Button BtnTambahDataServis;
         private DataGridViewTextBoxColumn ColumnIdServis;
         private DataGridViewTextBoxColumn ColumnTanggalServis;
         private DataGridViewTextBoxColumn ColumnNamaAlat;
         private DataGridViewTextBoxColumn ColumnKerusakan;
         private DataGridViewTextBoxColumn ColumnBiayaServis;
         private DataGridViewTextBoxColumn ColumnStatus;
-        private Label label1;
-        private ContextMenuStrip contextMenuStrip1;
-        private TextBox TextCariDataServis;
-        private Label label2;
-        private Button BtnTambahDataServis;
     }
 }

@@ -6,12 +6,17 @@ using Projek_Final_sem2.Examples.OOPExample.DAO;
 
 namespace Projek_Final_sem2.Examples.OOPExample.Services
 {
+    // OOP Pillars: Encapsulation, Polymorphism
+    // - Encapsulation: Contains and hides the transaction processing logic behind a single method.
+    // - Polymorphism: Depends on ITransaksiDAO allowing different DAO implementations (e.g., for testing).
     public class TransaksiService : ITransaksiService
     {
         private readonly ITransaksiDAO _dao;
 
         public TransaksiService(ITransaksiDAO dao) => _dao = dao;
 
+        // OOP Pillars: Encapsulation
+        // - Encapsulation: ProcessTransaction orchestrates verification, persistence, and stock updates without exposing details.
         public int ProcessTransaction(int userId, IEnumerable<CartItem> items)
         {
             // encapsulate transaction logic here

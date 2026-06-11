@@ -4,6 +4,7 @@ using Projek_Final_sem2.Koneksi;
 
 namespace Projek_Final_sem2.Examples.OOPExample.DAO
 {
+    //Abstraction, Encapsulation
     public abstract class BaseDAO
     {
         protected readonly DatabaseHelper db;
@@ -13,6 +14,7 @@ namespace Projek_Final_sem2.Examples.OOPExample.DAO
             db = new DatabaseHelper();
         }
 
+        //Encapsulation
         protected object ExecuteScalar(string sql, Action<Npgsql.NpgsqlCommand> paramBinder = null)
         {
             using var conn = db.GetConnection();
@@ -22,6 +24,7 @@ namespace Projek_Final_sem2.Examples.OOPExample.DAO
             return cmd.ExecuteScalar();
         }
 
+        //Encapsulation
         protected void ExecuteNonQuery(string sql, Action<Npgsql.NpgsqlCommand> paramBinder = null)
         {
             using var conn = db.GetConnection();

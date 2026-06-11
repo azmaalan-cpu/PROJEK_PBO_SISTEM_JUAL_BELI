@@ -2,6 +2,7 @@ using System;
 
 namespace Projek_Final_sem2.Examples.OOPExample.DAO
 {
+    //Abstraction, Polymorphism
     public interface ITransaksiDAO
     {
         int InsertTransaksi(int idUser, decimal totalHarga);
