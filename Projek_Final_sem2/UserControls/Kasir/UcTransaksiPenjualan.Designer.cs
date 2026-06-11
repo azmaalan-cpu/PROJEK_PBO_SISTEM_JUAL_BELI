@@ -37,12 +37,12 @@
             gbKatalog = new GroupBox();
             FlpkatalogProduk = new FlowLayoutPanel();
             PanelBarang1 = new Panel();
+            BtnTambah1 = new Button();
+            LbHarga1 = new Label();
+            LbStok1 = new Label();
+            LbNamaBarang1 = new Label();
             LbID1 = new Label();
             PcxBarang1 = new PictureBox();
-            LbNamaBarang1 = new Label();
-            LbStok1 = new Label();
-            LbHarga1 = new Label();
-            BtnTambah1 = new Button();
             PanelBarang2 = new Panel();
             BtnTambah2 = new Button();
             LbHarga2 = new Label();
@@ -50,33 +50,40 @@
             LbNamaBarang2 = new Label();
             LbId2 = new Label();
             PcxBarang2 = new PictureBox();
-            panel1 = new Panel();
+            PanelBarang3 = new Panel();
             BtnTambah3 = new Button();
             LbHarga3 = new Label();
             LbStok3 = new Label();
             LbNamaBarang3 = new Label();
             LbId3 = new Label();
             PcxBarang3 = new PictureBox();
-            panel2 = new Panel();
+            PanelBarang4 = new Panel();
             BtnTambah4 = new Button();
             LbHarga4 = new Label();
-            LbStok = new Label();
+            LbStok4 = new Label();
             LbNamaBarang4 = new Label();
             LbId4 = new Label();
             PcxBarang4 = new PictureBox();
+            Panelbarang5 = new Panel();
+            BtnTambah5 = new Button();
+            LbHarga5 = new Label();
+            LbStok5 = new Label();
+            LbNamaBarang5 = new Label();
+            LblId5 = new Label();
+            pictureBox1 = new PictureBox();
             GbKeranjangBelanja = new GroupBox();
             DgvKeranjang = new DataGridView();
-            ColSubTotal = new DataGridViewTextBoxColumn();
-            ColQty = new DataGridViewTextBoxColumn();
-            ColHarga = new DataGridViewTextBoxColumn();
-            ColNamaBarang = new DataGridViewTextBoxColumn();
-            ColIDBarang = new DataGridViewTextBoxColumn();
-            ColNo = new DataGridViewTextBoxColumn();
             PanelTotalBayar = new Panel();
-            LbTotalBayar = new Label();
-            LblTotalBayar = new Label();
-            BtnSimpanTransaksiPenjualan = new Button();
+            BtnChekOutTransaksiPenjualan = new Button();
             BtnBersihTransaksi = new Button();
+            LblTotalBayar = new Label();
+            LbTotalBayar = new Label();
+            ColNo = new DataGridViewTextBoxColumn();
+            ColIDBarang = new DataGridViewTextBoxColumn();
+            ColNamaBarang = new DataGridViewTextBoxColumn();
+            ColHarga = new DataGridViewTextBoxColumn();
+            ColJumlah = new DataGridViewTextBoxColumn();
+            ColSubTotal = new DataGridViewTextBoxColumn();
             PanelCariIdTransaksiPenjualan.SuspendLayout();
             gbKatalog.SuspendLayout();
             FlpkatalogProduk.SuspendLayout();
@@ -84,10 +91,12 @@
             ((System.ComponentModel.ISupportInitialize)PcxBarang1).BeginInit();
             PanelBarang2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PcxBarang2).BeginInit();
-            panel1.SuspendLayout();
+            PanelBarang3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PcxBarang3).BeginInit();
-            panel2.SuspendLayout();
+            PanelBarang4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PcxBarang4).BeginInit();
+            Panelbarang5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             GbKeranjangBelanja.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvKeranjang).BeginInit();
             PanelTotalBayar.SuspendLayout();
@@ -156,7 +165,7 @@
             gbKatalog.Margin = new Padding(3, 4, 3, 4);
             gbKatalog.Name = "gbKatalog";
             gbKatalog.Padding = new Padding(3, 4, 3, 4);
-            gbKatalog.Size = new Size(1092, 285);
+            gbKatalog.Size = new Size(1198, 285);
             gbKatalog.TabIndex = 2;
             gbKatalog.TabStop = false;
             gbKatalog.Text = "Katalog Produk";
@@ -166,14 +175,16 @@
             FlpkatalogProduk.AutoScroll = true;
             FlpkatalogProduk.Controls.Add(PanelBarang1);
             FlpkatalogProduk.Controls.Add(PanelBarang2);
-            FlpkatalogProduk.Controls.Add(panel1);
-            FlpkatalogProduk.Controls.Add(panel2);
-            FlpkatalogProduk.Dock = DockStyle.Fill;
+            FlpkatalogProduk.Controls.Add(PanelBarang3);
+            FlpkatalogProduk.Controls.Add(PanelBarang4);
+            FlpkatalogProduk.Controls.Add(Panelbarang5);
+            FlpkatalogProduk.Dock = DockStyle.Right;
             FlpkatalogProduk.Location = new Point(3, 27);
             FlpkatalogProduk.Margin = new Padding(3, 4, 3, 4);
             FlpkatalogProduk.Name = "FlpkatalogProduk";
-            FlpkatalogProduk.Size = new Size(1086, 254);
+            FlpkatalogProduk.Size = new Size(1192, 254);
             FlpkatalogProduk.TabIndex = 0;
+            FlpkatalogProduk.WrapContents = false;
             // 
             // PanelBarang1
             // 
@@ -191,61 +202,6 @@
             PanelBarang1.Size = new Size(202, 250);
             PanelBarang1.TabIndex = 0;
             // 
-            // LbID1
-            // 
-            LbID1.AutoSize = true;
-            LbID1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbID1.ForeColor = SystemColors.ActiveCaptionText;
-            LbID1.Location = new Point(17, 111);
-            LbID1.Name = "LbID1";
-            LbID1.Size = new Size(95, 17);
-            LbID1.TabIndex = 1;
-            LbID1.Text = "ID : BRG001";
-            LbID1.Click += LbLID1_Click;
-            // 
-            // PcxBarang1
-            // 
-            PcxBarang1.BackgroundImage = (Image)resources.GetObject("PcxBarang1.BackgroundImage");
-            PcxBarang1.BackgroundImageLayout = ImageLayout.Zoom;
-            PcxBarang1.Location = new Point(34, 9);
-            PcxBarang1.Margin = new Padding(3, 4, 3, 4);
-            PcxBarang1.Name = "PcxBarang1";
-            PcxBarang1.Size = new Size(135, 89);
-            PcxBarang1.SizeMode = PictureBoxSizeMode.Zoom;
-            PcxBarang1.TabIndex = 0;
-            PcxBarang1.TabStop = false;
-            // 
-            // LbNamaBarang1
-            // 
-            LbNamaBarang1.AutoSize = true;
-            LbNamaBarang1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbNamaBarang1.Location = new Point(17, 135);
-            LbNamaBarang1.Name = "LbNamaBarang1";
-            LbNamaBarang1.Size = new Size(63, 17);
-            LbNamaBarang1.TabIndex = 1;
-            LbNamaBarang1.Text = "Cangkul";
-            // 
-            // LbStok1
-            // 
-            LbStok1.AutoSize = true;
-            LbStok1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbStok1.ForeColor = SystemColors.ActiveCaptionText;
-            LbStok1.Location = new Point(17, 160);
-            LbStok1.Name = "LbStok1";
-            LbStok1.Size = new Size(67, 17);
-            LbStok1.TabIndex = 2;
-            LbStok1.Text = "Stok : 15";
-            // 
-            // LbHarga1
-            // 
-            LbHarga1.AutoSize = true;
-            LbHarga1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbHarga1.Location = new Point(17, 185);
-            LbHarga1.Name = "LbHarga1";
-            LbHarga1.Size = new Size(75, 17);
-            LbHarga1.TabIndex = 3;
-            LbHarga1.Text = "Rp 75.000";
-            // 
             // BtnTambah1
             // 
             BtnTambah1.BackColor = Color.ForestGreen;
@@ -259,6 +215,62 @@
             BtnTambah1.TabIndex = 4;
             BtnTambah1.Text = "Tambah";
             BtnTambah1.UseVisualStyleBackColor = false;
+            BtnTambah1.Click += BtnTambah1_Click;
+            // 
+            // LbHarga1
+            // 
+            LbHarga1.AutoSize = true;
+            LbHarga1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbHarga1.Location = new Point(17, 185);
+            LbHarga1.Name = "LbHarga1";
+            LbHarga1.Size = new Size(75, 17);
+            LbHarga1.TabIndex = 3;
+            LbHarga1.Text = "Rp 75.000";
+            // 
+            // LbStok1
+            // 
+            LbStok1.AutoSize = true;
+            LbStok1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbStok1.ForeColor = SystemColors.ActiveCaptionText;
+            LbStok1.Location = new Point(17, 160);
+            LbStok1.Name = "LbStok1";
+            LbStok1.Size = new Size(67, 17);
+            LbStok1.TabIndex = 2;
+            LbStok1.Text = "Stok : 15";
+            // 
+            // LbNamaBarang1
+            // 
+            LbNamaBarang1.AutoSize = true;
+            LbNamaBarang1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbNamaBarang1.Location = new Point(17, 135);
+            LbNamaBarang1.Name = "LbNamaBarang1";
+            LbNamaBarang1.Size = new Size(63, 17);
+            LbNamaBarang1.TabIndex = 1;
+            LbNamaBarang1.Text = "Cangkul";
+            // 
+            // LbID1
+            // 
+            LbID1.AutoSize = true;
+            LbID1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbID1.ForeColor = SystemColors.ActiveCaptionText;
+            LbID1.Location = new Point(17, 111);
+            LbID1.Name = "LbID1";
+            LbID1.Size = new Size(46, 17);
+            LbID1.TabIndex = 1;
+            LbID1.Text = "ID : 1";
+            LbID1.Click += LbLID1_Click;
+            // 
+            // PcxBarang1
+            // 
+            PcxBarang1.BackgroundImage = (Image)resources.GetObject("PcxBarang1.BackgroundImage");
+            PcxBarang1.BackgroundImageLayout = ImageLayout.Zoom;
+            PcxBarang1.Location = new Point(34, 9);
+            PcxBarang1.Margin = new Padding(3, 4, 3, 4);
+            PcxBarang1.Name = "PcxBarang1";
+            PcxBarang1.Size = new Size(135, 89);
+            PcxBarang1.SizeMode = PictureBoxSizeMode.Zoom;
+            PcxBarang1.TabIndex = 0;
+            PcxBarang1.TabStop = false;
             // 
             // PanelBarang2
             // 
@@ -289,6 +301,7 @@
             BtnTambah2.TabIndex = 4;
             BtnTambah2.Text = "Tambah";
             BtnTambah2.UseVisualStyleBackColor = false;
+            BtnTambah2.Click += BtnTambah2_Click;
             // 
             // LbHarga2
             // 
@@ -328,9 +341,9 @@
             LbId2.ForeColor = SystemColors.ActiveCaptionText;
             LbId2.Location = new Point(17, 111);
             LbId2.Name = "LbId2";
-            LbId2.Size = new Size(95, 17);
+            LbId2.Size = new Size(46, 17);
             LbId2.TabIndex = 1;
-            LbId2.Text = "ID : BRG002";
+            LbId2.Text = "ID : 2";
             // 
             // PcxBarang2
             // 
@@ -344,21 +357,21 @@
             PcxBarang2.TabIndex = 0;
             PcxBarang2.TabStop = false;
             // 
-            // panel1
+            // PanelBarang3
             // 
-            panel1.BackColor = Color.WhiteSmoke;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(BtnTambah3);
-            panel1.Controls.Add(LbHarga3);
-            panel1.Controls.Add(LbStok3);
-            panel1.Controls.Add(LbNamaBarang3);
-            panel1.Controls.Add(LbId3);
-            panel1.Controls.Add(PcxBarang3);
-            panel1.Location = new Point(419, 4);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(202, 250);
-            panel1.TabIndex = 2;
+            PanelBarang3.BackColor = Color.WhiteSmoke;
+            PanelBarang3.BorderStyle = BorderStyle.FixedSingle;
+            PanelBarang3.Controls.Add(BtnTambah3);
+            PanelBarang3.Controls.Add(LbHarga3);
+            PanelBarang3.Controls.Add(LbStok3);
+            PanelBarang3.Controls.Add(LbNamaBarang3);
+            PanelBarang3.Controls.Add(LbId3);
+            PanelBarang3.Controls.Add(PcxBarang3);
+            PanelBarang3.Location = new Point(419, 4);
+            PanelBarang3.Margin = new Padding(3, 4, 3, 4);
+            PanelBarang3.Name = "PanelBarang3";
+            PanelBarang3.Size = new Size(202, 250);
+            PanelBarang3.TabIndex = 2;
             // 
             // BtnTambah3
             // 
@@ -373,6 +386,7 @@
             BtnTambah3.TabIndex = 4;
             BtnTambah3.Text = "Tambah";
             BtnTambah3.UseVisualStyleBackColor = false;
+            BtnTambah3.Click += BtnTambah3_Click;
             // 
             // LbHarga3
             // 
@@ -412,9 +426,9 @@
             LbId3.ForeColor = SystemColors.ActiveCaptionText;
             LbId3.Location = new Point(17, 111);
             LbId3.Name = "LbId3";
-            LbId3.Size = new Size(95, 17);
+            LbId3.Size = new Size(46, 17);
             LbId3.TabIndex = 1;
-            LbId3.Text = "ID : BRG003";
+            LbId3.Text = "ID : 3";
             // 
             // PcxBarang3
             // 
@@ -428,21 +442,21 @@
             PcxBarang3.TabIndex = 0;
             PcxBarang3.TabStop = false;
             // 
-            // panel2
+            // PanelBarang4
             // 
-            panel2.BackColor = Color.WhiteSmoke;
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(BtnTambah4);
-            panel2.Controls.Add(LbHarga4);
-            panel2.Controls.Add(LbStok);
-            panel2.Controls.Add(LbNamaBarang4);
-            panel2.Controls.Add(LbId4);
-            panel2.Controls.Add(PcxBarang4);
-            panel2.Location = new Point(627, 4);
-            panel2.Margin = new Padding(3, 4, 3, 4);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(202, 250);
-            panel2.TabIndex = 3;
+            PanelBarang4.BackColor = Color.WhiteSmoke;
+            PanelBarang4.BorderStyle = BorderStyle.FixedSingle;
+            PanelBarang4.Controls.Add(BtnTambah4);
+            PanelBarang4.Controls.Add(LbHarga4);
+            PanelBarang4.Controls.Add(LbStok4);
+            PanelBarang4.Controls.Add(LbNamaBarang4);
+            PanelBarang4.Controls.Add(LbId4);
+            PanelBarang4.Controls.Add(PcxBarang4);
+            PanelBarang4.Location = new Point(627, 4);
+            PanelBarang4.Margin = new Padding(3, 4, 3, 4);
+            PanelBarang4.Name = "PanelBarang4";
+            PanelBarang4.Size = new Size(202, 250);
+            PanelBarang4.TabIndex = 3;
             // 
             // BtnTambah4
             // 
@@ -457,6 +471,7 @@
             BtnTambah4.TabIndex = 4;
             BtnTambah4.Text = "Tambah";
             BtnTambah4.UseVisualStyleBackColor = false;
+            BtnTambah4.Click += BtnTambah4_Click;
             // 
             // LbHarga4
             // 
@@ -468,16 +483,16 @@
             LbHarga4.TabIndex = 3;
             LbHarga4.Text = "Rp 250.000";
             // 
-            // LbStok
+            // LbStok4
             // 
-            LbStok.AutoSize = true;
-            LbStok.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbStok.ForeColor = SystemColors.ActiveCaptionText;
-            LbStok.Location = new Point(17, 160);
-            LbStok.Name = "LbStok";
-            LbStok.Size = new Size(67, 17);
-            LbStok.TabIndex = 2;
-            LbStok.Text = "Stok : 20";
+            LbStok4.AutoSize = true;
+            LbStok4.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbStok4.ForeColor = SystemColors.ActiveCaptionText;
+            LbStok4.Location = new Point(17, 160);
+            LbStok4.Name = "LbStok4";
+            LbStok4.Size = new Size(67, 17);
+            LbStok4.TabIndex = 2;
+            LbStok4.Text = "Stok : 20";
             // 
             // LbNamaBarang4
             // 
@@ -496,9 +511,9 @@
             LbId4.ForeColor = SystemColors.ActiveCaptionText;
             LbId4.Location = new Point(17, 111);
             LbId4.Name = "LbId4";
-            LbId4.Size = new Size(95, 17);
+            LbId4.Size = new Size(46, 17);
             LbId4.TabIndex = 1;
-            LbId4.Text = "ID : BRG004";
+            LbId4.Text = "ID : 4";
             // 
             // PcxBarang4
             // 
@@ -511,6 +526,91 @@
             PcxBarang4.SizeMode = PictureBoxSizeMode.Zoom;
             PcxBarang4.TabIndex = 0;
             PcxBarang4.TabStop = false;
+            // 
+            // Panelbarang5
+            // 
+            Panelbarang5.BackColor = Color.WhiteSmoke;
+            Panelbarang5.BorderStyle = BorderStyle.FixedSingle;
+            Panelbarang5.Controls.Add(BtnTambah5);
+            Panelbarang5.Controls.Add(LbHarga5);
+            Panelbarang5.Controls.Add(LbStok5);
+            Panelbarang5.Controls.Add(LbNamaBarang5);
+            Panelbarang5.Controls.Add(LblId5);
+            Panelbarang5.Controls.Add(pictureBox1);
+            Panelbarang5.Location = new Point(835, 4);
+            Panelbarang5.Margin = new Padding(3, 4, 3, 4);
+            Panelbarang5.Name = "Panelbarang5";
+            Panelbarang5.Size = new Size(202, 250);
+            Panelbarang5.TabIndex = 4;
+            // 
+            // BtnTambah5
+            // 
+            BtnTambah5.BackColor = Color.ForestGreen;
+            BtnTambah5.FlatStyle = FlatStyle.Flat;
+            BtnTambah5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnTambah5.ForeColor = Color.White;
+            BtnTambah5.Location = new Point(45, 209);
+            BtnTambah5.Margin = new Padding(3, 4, 3, 4);
+            BtnTambah5.Name = "BtnTambah5";
+            BtnTambah5.Size = new Size(112, 31);
+            BtnTambah5.TabIndex = 4;
+            BtnTambah5.Text = "Tambah";
+            BtnTambah5.UseVisualStyleBackColor = false;
+            BtnTambah5.Click += BtnTambah5_Click;
+            // 
+            // LbHarga5
+            // 
+            LbHarga5.AutoSize = true;
+            LbHarga5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbHarga5.Location = new Point(17, 185);
+            LbHarga5.Name = "LbHarga5";
+            LbHarga5.Size = new Size(83, 17);
+            LbHarga5.TabIndex = 3;
+            LbHarga5.Text = "Rp 150.000";
+            // 
+            // LbStok5
+            // 
+            LbStok5.AutoSize = true;
+            LbStok5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbStok5.ForeColor = SystemColors.ActiveCaptionText;
+            LbStok5.Location = new Point(17, 160);
+            LbStok5.Name = "LbStok5";
+            LbStok5.Size = new Size(67, 17);
+            LbStok5.TabIndex = 2;
+            LbStok5.Text = "Stok : 18";
+            // 
+            // LbNamaBarang5
+            // 
+            LbNamaBarang5.AutoSize = true;
+            LbNamaBarang5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbNamaBarang5.Location = new Point(17, 135);
+            LbNamaBarang5.Name = "LbNamaBarang5";
+            LbNamaBarang5.Size = new Size(108, 17);
+            LbNamaBarang5.TabIndex = 1;
+            LbNamaBarang5.Text = "Pupuk Organik";
+            // 
+            // LblId5
+            // 
+            LblId5.AutoSize = true;
+            LblId5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblId5.ForeColor = SystemColors.ActiveCaptionText;
+            LblId5.Location = new Point(17, 111);
+            LblId5.Name = "LblId5";
+            LblId5.Size = new Size(46, 17);
+            LblId5.TabIndex = 1;
+            LblId5.Text = "ID : 5";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(34, 9);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(135, 89);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // GbKeranjangBelanja
             // 
@@ -528,7 +628,7 @@
             // 
             DgvKeranjang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvKeranjang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvKeranjang.Columns.AddRange(new DataGridViewColumn[] { ColNo, ColIDBarang, ColNamaBarang, ColHarga, ColQty, ColSubTotal });
+            DgvKeranjang.Columns.AddRange(new DataGridViewColumn[] { ColNo, ColIDBarang, ColNamaBarang, ColHarga, ColJumlah, ColSubTotal });
             DgvKeranjang.Location = new Point(10, 23);
             DgvKeranjang.Name = "DgvKeranjang";
             DgvKeranjang.ReadOnly = true;
@@ -536,53 +636,12 @@
             DgvKeranjang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgvKeranjang.Size = new Size(842, 148);
             DgvKeranjang.TabIndex = 0;
-            // 
-            // ColSubTotal
-            // 
-            ColSubTotal.HeaderText = "SubTotal";
-            ColSubTotal.MinimumWidth = 6;
-            ColSubTotal.Name = "ColSubTotal";
-            ColSubTotal.ReadOnly = true;
-            // 
-            // ColQty
-            // 
-            ColQty.HeaderText = "Qty";
-            ColQty.MinimumWidth = 6;
-            ColQty.Name = "ColQty";
-            ColQty.ReadOnly = true;
-            // 
-            // ColHarga
-            // 
-            ColHarga.HeaderText = "Harga";
-            ColHarga.MinimumWidth = 6;
-            ColHarga.Name = "ColHarga";
-            ColHarga.ReadOnly = true;
-            // 
-            // ColNamaBarang
-            // 
-            ColNamaBarang.HeaderText = "Nama Barang";
-            ColNamaBarang.MinimumWidth = 6;
-            ColNamaBarang.Name = "ColNamaBarang";
-            ColNamaBarang.ReadOnly = true;
-            // 
-            // ColIDBarang
-            // 
-            ColIDBarang.HeaderText = "ID Barang";
-            ColIDBarang.MinimumWidth = 6;
-            ColIDBarang.Name = "ColIDBarang";
-            ColIDBarang.ReadOnly = true;
-            // 
-            // ColNo
-            // 
-            ColNo.HeaderText = "No";
-            ColNo.MinimumWidth = 6;
-            ColNo.Name = "ColNo";
-            ColNo.ReadOnly = true;
+            DgvKeranjang.CellContentClick += DgvKeranjang_CellContentClick;
             // 
             // PanelTotalBayar
             // 
+            PanelTotalBayar.Controls.Add(BtnChekOutTransaksiPenjualan);
             PanelTotalBayar.Controls.Add(BtnBersihTransaksi);
-            PanelTotalBayar.Controls.Add(BtnSimpanTransaksiPenjualan);
             PanelTotalBayar.Controls.Add(LblTotalBayar);
             PanelTotalBayar.Controls.Add(LbTotalBayar);
             PanelTotalBayar.Location = new Point(30, 634);
@@ -590,36 +649,18 @@
             PanelTotalBayar.Size = new Size(945, 60);
             PanelTotalBayar.TabIndex = 4;
             // 
-            // LbTotalBayar
+            // BtnChekOutTransaksiPenjualan
             // 
-            LbTotalBayar.AutoSize = true;
-            LbTotalBayar.Location = new Point(29, 22);
-            LbTotalBayar.Name = "LbTotalBayar";
-            LbTotalBayar.Size = new Size(100, 20);
-            LbTotalBayar.TabIndex = 0;
-            LbTotalBayar.Text = "Total Bayar  :";
-            // 
-            // LblTotalBayar
-            // 
-            LblTotalBayar.AutoSize = true;
-            LblTotalBayar.ForeColor = Color.ForestGreen;
-            LblTotalBayar.Location = new Point(135, 23);
-            LblTotalBayar.Name = "LblTotalBayar";
-            LblTotalBayar.Size = new Size(41, 20);
-            LblTotalBayar.TabIndex = 1;
-            LblTotalBayar.Text = "Rp 0";
-            // 
-            // BtnSimpanTransaksiPenjualan
-            // 
-            BtnSimpanTransaksiPenjualan.BackColor = Color.ForestGreen;
-            BtnSimpanTransaksiPenjualan.FlatStyle = FlatStyle.Flat;
-            BtnSimpanTransaksiPenjualan.ForeColor = Color.White;
-            BtnSimpanTransaksiPenjualan.Location = new Point(561, 6);
-            BtnSimpanTransaksiPenjualan.Name = "BtnSimpanTransaksiPenjualan";
-            BtnSimpanTransaksiPenjualan.Size = new Size(180, 50);
-            BtnSimpanTransaksiPenjualan.TabIndex = 2;
-            BtnSimpanTransaksiPenjualan.Text = "Simpan";
-            BtnSimpanTransaksiPenjualan.UseVisualStyleBackColor = false;
+            BtnChekOutTransaksiPenjualan.BackColor = Color.ForestGreen;
+            BtnChekOutTransaksiPenjualan.FlatStyle = FlatStyle.Flat;
+            BtnChekOutTransaksiPenjualan.ForeColor = Color.White;
+            BtnChekOutTransaksiPenjualan.Location = new Point(549, 6);
+            BtnChekOutTransaksiPenjualan.Name = "BtnChekOutTransaksiPenjualan";
+            BtnChekOutTransaksiPenjualan.Size = new Size(180, 50);
+            BtnChekOutTransaksiPenjualan.TabIndex = 4;
+            BtnChekOutTransaksiPenjualan.Text = "Chek Out";
+            BtnChekOutTransaksiPenjualan.UseVisualStyleBackColor = false;
+            BtnChekOutTransaksiPenjualan.Click += BtnChekOutTransaksiPenjualan_Click;
             // 
             // BtnBersihTransaksi
             // 
@@ -633,6 +674,67 @@
             BtnBersihTransaksi.Text = "Bersih";
             BtnBersihTransaksi.UseVisualStyleBackColor = false;
             // 
+            // LblTotalBayar
+            // 
+            LblTotalBayar.AutoSize = true;
+            LblTotalBayar.ForeColor = Color.ForestGreen;
+            LblTotalBayar.Location = new Point(135, 23);
+            LblTotalBayar.Name = "LblTotalBayar";
+            LblTotalBayar.Size = new Size(41, 20);
+            LblTotalBayar.TabIndex = 1;
+            LblTotalBayar.Text = "Rp 0";
+            // 
+            // LbTotalBayar
+            // 
+            LbTotalBayar.AutoSize = true;
+            LbTotalBayar.Location = new Point(29, 22);
+            LbTotalBayar.Name = "LbTotalBayar";
+            LbTotalBayar.Size = new Size(100, 20);
+            LbTotalBayar.TabIndex = 0;
+            LbTotalBayar.Text = "Total Bayar  :";
+            // 
+            // ColNo
+            // 
+            ColNo.HeaderText = "No";
+            ColNo.MinimumWidth = 6;
+            ColNo.Name = "ColNo";
+            ColNo.ReadOnly = true;
+            // 
+            // ColIDBarang
+            // 
+            ColIDBarang.HeaderText = "ID Barang";
+            ColIDBarang.MinimumWidth = 6;
+            ColIDBarang.Name = "ColIDBarang";
+            ColIDBarang.ReadOnly = true;
+            // 
+            // ColNamaBarang
+            // 
+            ColNamaBarang.HeaderText = "Nama Barang";
+            ColNamaBarang.MinimumWidth = 6;
+            ColNamaBarang.Name = "ColNamaBarang";
+            ColNamaBarang.ReadOnly = true;
+            // 
+            // ColHarga
+            // 
+            ColHarga.HeaderText = "Harga";
+            ColHarga.MinimumWidth = 6;
+            ColHarga.Name = "ColHarga";
+            ColHarga.ReadOnly = true;
+            // 
+            // ColJumlah
+            // 
+            ColJumlah.HeaderText = "Jumlah";
+            ColJumlah.MinimumWidth = 6;
+            ColJumlah.Name = "ColJumlah";
+            ColJumlah.ReadOnly = true;
+            // 
+            // ColSubTotal
+            // 
+            ColSubTotal.HeaderText = "SubTotal";
+            ColSubTotal.MinimumWidth = 6;
+            ColSubTotal.Name = "ColSubTotal";
+            ColSubTotal.ReadOnly = true;
+            // 
             // UcTransaksiPenjualan
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -645,7 +747,7 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
             Name = "UcTransaksiPenjualan";
-            Size = new Size(1159, 697);
+            Size = new Size(1450, 697);
             Load += UcTransaksiPenjualan_Load;
             PanelCariIdTransaksiPenjualan.ResumeLayout(false);
             PanelCariIdTransaksiPenjualan.PerformLayout();
@@ -657,12 +759,15 @@
             PanelBarang2.ResumeLayout(false);
             PanelBarang2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PcxBarang2).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            PanelBarang3.ResumeLayout(false);
+            PanelBarang3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PcxBarang3).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            PanelBarang4.ResumeLayout(false);
+            PanelBarang4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PcxBarang4).EndInit();
+            Panelbarang5.ResumeLayout(false);
+            Panelbarang5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             GbKeranjangBelanja.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DgvKeranjang).EndInit();
             PanelTotalBayar.ResumeLayout(false);
@@ -694,32 +799,39 @@
         private Label LbNamaBarang2;
         private Label LbId2;
         private PictureBox PcxBarang2;
-        private Panel panel1;
+        private Panel PanelBarang3;
         private Button BtnTambah3;
         private Label LbHarga3;
         private Label LbStok3;
         private Label LbNamaBarang3;
         private Label LbId3;
         private PictureBox PcxBarang3;
-        private Panel panel2;
+        private Panel PanelBarang4;
         private Button BtnTambah4;
         private Label LbHarga4;
-        private Label LbStok;
+        private Label LbStok4;
         private Label LbNamaBarang4;
         private Label LbId4;
         private PictureBox PcxBarang4;
         private GroupBox GbKeranjangBelanja;
         private DataGridView DgvKeranjang;
-        private DataGridViewTextBoxColumn ColNo;
-        private DataGridViewTextBoxColumn ColIDBarang;
-        private DataGridViewTextBoxColumn ColNamaBarang;
-        private DataGridViewTextBoxColumn ColHarga;
-        private DataGridViewTextBoxColumn ColQty;
-        private DataGridViewTextBoxColumn ColSubTotal;
         private Panel PanelTotalBayar;
         private Label LbTotalBayar;
         private Label LblTotalBayar;
         private Button BtnBersihTransaksi;
-        private Button BtnSimpanTransaksiPenjualan;
+        private Panel Panelbarang5;
+        private Button BtnTambah5;
+        private Label LbHarga5;
+        private Label LbStok5;
+        private Label LbNamaBarang5;
+        private Label LblId5;
+        private PictureBox pictureBox1;
+        private Button BtnChekOutTransaksiPenjualan;
+        private DataGridViewTextBoxColumn ColNo;
+        private DataGridViewTextBoxColumn ColIDBarang;
+        private DataGridViewTextBoxColumn ColNamaBarang;
+        private DataGridViewTextBoxColumn ColHarga;
+        private DataGridViewTextBoxColumn ColJumlah;
+        private DataGridViewTextBoxColumn ColSubTotal;
     }
 }

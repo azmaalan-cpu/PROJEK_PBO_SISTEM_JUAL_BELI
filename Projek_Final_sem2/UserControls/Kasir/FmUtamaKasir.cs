@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Projek_Final_sem2.UserControls.Kasir;
 
+
 namespace Projek_Final_sem2.UserControls.Kasir
 {
     public partial class FmUtamaKasir : Form

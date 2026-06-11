@@ -11,8 +11,11 @@ using Projek_Final_sem2.Models;
 
 namespace Projek_Final_sem2.UserControls
 {
+    
     public partial class UcDataBarang : UserControl
     {
+
+        public string role;
         private SupplierDAO supplierDAO;
         private KategoriDAO kategoriDAO;
         private AlatDAO alatDAO;
@@ -20,6 +23,7 @@ namespace Projek_Final_sem2.UserControls
         public UcDataBarang()
         {
             InitializeComponent();
+            this.Load += UcDataBarang_Load;
             DgvDaftarBarang.AutoGenerateColumns = false;
             supplierDAO = new SupplierDAO();
             kategoriDAO = new KategoriDAO();
@@ -28,6 +32,17 @@ namespace Projek_Final_sem2.UserControls
             LoadKategori();
             LoadSupplier();
             LoadData();
+        }
+
+        private void UcDataBarang_Load(object sender, EventArgs e)
+        {
+            if(role == "kasir")
+            {
+                BtnTambah.Visible = false;
+                BtnEdit.Visible = false;
+                BtnHapus.Visible = false;
+                LoadData();
+            }
         }
 
         private void LoadKategori()
