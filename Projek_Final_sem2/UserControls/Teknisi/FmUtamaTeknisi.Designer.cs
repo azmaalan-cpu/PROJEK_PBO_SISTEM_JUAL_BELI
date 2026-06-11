@@ -30,15 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmUtamaTeknisi));
             panel1 = new Panel();
+            panel2 = new Panel();
+            BtnLogoutTeknisi = new Button();
+            BtnRiwayat = new Button();
+            BtnStatus = new Button();
+            BtnKerusakan = new Button();
             LbMenuUtamaTeknisi = new Label();
             LbTeknisi = new Label();
             PcxMenuTeknisi = new PictureBox();
             BtnDataServis = new Button();
             BtnDashboardTeknisi = new Button();
-            BtnKerusakan = new Button();
-            BtnStatus = new Button();
-            BtnRiwayat = new Button();
-            BtnLogoutTeknisi = new Button();
+            panelcontent = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PcxMenuTeknisi).BeginInit();
             SuspendLayout();
@@ -46,6 +48,8 @@
             // panel1
             // 
             panel1.BackColor = Color.ForestGreen;
+            panel1.Controls.Add(panelcontent);
+            panel1.Controls.Add(panel2);
             panel1.Controls.Add(BtnLogoutTeknisi);
             panel1.Controls.Add(BtnRiwayat);
             panel1.Controls.Add(BtnStatus);
@@ -60,6 +64,58 @@
             panel1.Size = new Size(200, 449);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // panel2
+            // 
+            panel2.Location = new Point(202, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(600, 446);
+            panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
+            // 
+            // BtnLogoutTeknisi
+            // 
+            BtnLogoutTeknisi.BackColor = Color.LimeGreen;
+            BtnLogoutTeknisi.Location = new Point(12, 405);
+            BtnLogoutTeknisi.Name = "BtnLogoutTeknisi";
+            BtnLogoutTeknisi.Size = new Size(171, 23);
+            BtnLogoutTeknisi.TabIndex = 10;
+            BtnLogoutTeknisi.Text = "Log Out";
+            BtnLogoutTeknisi.UseVisualStyleBackColor = false;
+            BtnLogoutTeknisi.Click += BtnLogoutTeknisi_Click;
+            // 
+            // BtnRiwayat
+            // 
+            BtnRiwayat.BackColor = Color.LimeGreen;
+            BtnRiwayat.Location = new Point(12, 225);
+            BtnRiwayat.Name = "BtnRiwayat";
+            BtnRiwayat.Size = new Size(171, 23);
+            BtnRiwayat.TabIndex = 11;
+            BtnRiwayat.Text = "Riwayat";
+            BtnRiwayat.UseVisualStyleBackColor = false;
+            BtnRiwayat.Click += BtnRiwayat_Click;
+            // 
+            // BtnStatus
+            // 
+            BtnStatus.BackColor = Color.LimeGreen;
+            BtnStatus.Location = new Point(12, 196);
+            BtnStatus.Name = "BtnStatus";
+            BtnStatus.Size = new Size(171, 23);
+            BtnStatus.TabIndex = 10;
+            BtnStatus.Text = "Status";
+            BtnStatus.UseVisualStyleBackColor = false;
+            BtnStatus.Click += BtnStatus_Click;
+            // 
+            // BtnKerusakan
+            // 
+            BtnKerusakan.BackColor = Color.LimeGreen;
+            BtnKerusakan.Location = new Point(12, 167);
+            BtnKerusakan.Name = "BtnKerusakan";
+            BtnKerusakan.Size = new Size(171, 23);
+            BtnKerusakan.TabIndex = 9;
+            BtnKerusakan.Text = "Kerusakan";
+            BtnKerusakan.UseVisualStyleBackColor = false;
+            BtnKerusakan.Click += BtnKerusakan_Click;
             // 
             // LbMenuUtamaTeknisi
             // 
@@ -109,6 +165,7 @@
             BtnDataServis.TabIndex = 1;
             BtnDataServis.Text = "Data Servis";
             BtnDataServis.UseVisualStyleBackColor = false;
+            BtnDataServis.Click += BtnDataServis_Click;
             // 
             // BtnDashboardTeknisi
             // 
@@ -121,45 +178,13 @@
             BtnDashboardTeknisi.UseVisualStyleBackColor = false;
             BtnDashboardTeknisi.Click += BtnDashboardTeknisi_Click;
             // 
-            // BtnKerusakan
+            // panelcontent
             // 
-            BtnKerusakan.BackColor = Color.LimeGreen;
-            BtnKerusakan.Location = new Point(12, 167);
-            BtnKerusakan.Name = "BtnKerusakan";
-            BtnKerusakan.Size = new Size(171, 23);
-            BtnKerusakan.TabIndex = 9;
-            BtnKerusakan.Text = "Kerusakan";
-            BtnKerusakan.UseVisualStyleBackColor = false;
-            // 
-            // BtnStatus
-            // 
-            BtnStatus.BackColor = Color.LimeGreen;
-            BtnStatus.Location = new Point(12, 196);
-            BtnStatus.Name = "BtnStatus";
-            BtnStatus.Size = new Size(171, 23);
-            BtnStatus.TabIndex = 10;
-            BtnStatus.Text = "Status";
-            BtnStatus.UseVisualStyleBackColor = false;
-            // 
-            // BtnRiwayat
-            // 
-            BtnRiwayat.BackColor = Color.LimeGreen;
-            BtnRiwayat.Location = new Point(12, 225);
-            BtnRiwayat.Name = "BtnRiwayat";
-            BtnRiwayat.Size = new Size(171, 23);
-            BtnRiwayat.TabIndex = 11;
-            BtnRiwayat.Text = "Riwayat";
-            BtnRiwayat.UseVisualStyleBackColor = false;
-            // 
-            // BtnLogoutTeknisi
-            // 
-            BtnLogoutTeknisi.BackColor = Color.LimeGreen;
-            BtnLogoutTeknisi.Location = new Point(12, 405);
-            BtnLogoutTeknisi.Name = "BtnLogoutTeknisi";
-            BtnLogoutTeknisi.Size = new Size(171, 23);
-            BtnLogoutTeknisi.TabIndex = 10;
-            BtnLogoutTeknisi.Text = "Log Out";
-            BtnLogoutTeknisi.UseVisualStyleBackColor = false;
+            panelcontent.Location = new Point(200, 1);
+            panelcontent.Name = "panelcontent";
+            panelcontent.Size = new Size(600, 449);
+            panelcontent.TabIndex = 1;
+            panelcontent.Paint += panelcontent_Paint;
             // 
             // FmUtamaTeknisi
             // 
@@ -169,10 +194,19 @@
             Controls.Add(panel1);
             Name = "FmUtamaTeknisi";
             Text = "Form1";
+            Load += FmUtamaTeknisi_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PcxMenuTeknisi).EndInit();
             ResumeLayout(false);
+        }
+        private void loadControl(UserControl uc)
+        {
+            panelcontent.Controls.Clear();
+
+            uc.Dock = DockStyle.Fill;
+
+            panelcontent.Controls.Add(uc);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -182,6 +216,7 @@
 
         private void BtnDashboardTeknisi_Click(object sender, EventArgs e)
         {
+            loadControl(new UcDasboardTeknisi());
             throw new NotImplementedException();
         }
 
@@ -200,6 +235,8 @@
             throw new NotImplementedException();
         }
 
+        
+
         #endregion
 
         private Panel panel1;
@@ -212,6 +249,8 @@
         private Button BtnStatus;
         private Button BtnLogoutTeknisi;
         private Button BtnRiwayat;
+        private Panel panel2;
+        private Panel panelcontent;
     }
 }
 

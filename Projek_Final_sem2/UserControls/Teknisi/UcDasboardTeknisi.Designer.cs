@@ -31,21 +31,32 @@
             LbSelamatDatangAdmin = new Label();
             LbJudulDashboardAdmin = new Label();
             PanelPenjualan = new Panel();
-            label1 = new Label();
-            LbPenjualan = new Label();
+            LbAngkaProsesServis = new Label();
+            LbProsesServis = new Label();
             PanelPendapatan = new Panel();
-            LbAngkaPendapatan = new Label();
-            LbPendapatan = new Label();
+            LbAngkaMenunggu = new Label();
+            LbMenungguServis = new Label();
             PanelServis = new Panel();
-            LbAngkaServis = new Label();
-            LbServis = new Label();
+            LbAngkaSelesai = new Label();
+            LbSelesai = new Label();
             PanelDataBarang = new Panel();
-            LbAngkaBarang = new Label();
-            LbDataBarang = new Label();
+            LbAngkaTotalServis = new Label();
+            LbTotalServis = new Label();
+            panel1 = new Panel();
+            DgvServisTerbaru = new DataGridView();
+            Column_no_servis = new DataGridViewTextBoxColumn();
+            Column_Id_servis = new DataGridViewTextBoxColumn();
+            Column_tanggal_servis = new DataGridViewTextBoxColumn();
+            Column_nama_alat = new DataGridViewTextBoxColumn();
+            Column_kerusakan_servis = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
+            Label_servis_serbaru = new Label();
             PanelPenjualan.SuspendLayout();
             PanelPendapatan.SuspendLayout();
             PanelServis.SuspendLayout();
             PanelDataBarang.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvServisTerbaru).BeginInit();
             SuspendLayout();
             // 
             // LbSelamatDatangAdmin
@@ -73,8 +84,8 @@
             // PanelPenjualan
             // 
             PanelPenjualan.BackColor = Color.GreenYellow;
-            PanelPenjualan.Controls.Add(label1);
-            PanelPenjualan.Controls.Add(LbPenjualan);
+            PanelPenjualan.Controls.Add(LbAngkaProsesServis);
+            PanelPenjualan.Controls.Add(LbProsesServis);
             PanelPenjualan.Location = new Point(141, 46);
             PanelPenjualan.Margin = new Padding(2);
             PanelPenjualan.Name = "PanelPenjualan";
@@ -82,70 +93,71 @@
             PanelPenjualan.TabIndex = 8;
             PanelPenjualan.Paint += PanelPenjualan_Paint;
             // 
-            // label1
+            // LbAngkaProsesServis
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(45, 39);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(19, 21);
-            label1.TabIndex = 3;
-            label1.Text = "0";
+            LbAngkaProsesServis.AutoSize = true;
+            LbAngkaProsesServis.Font = new Font("Segoe UI", 12F);
+            LbAngkaProsesServis.ForeColor = Color.White;
+            LbAngkaProsesServis.Location = new Point(47, 39);
+            LbAngkaProsesServis.Margin = new Padding(2, 0, 2, 0);
+            LbAngkaProsesServis.Name = "LbAngkaProsesServis";
+            LbAngkaProsesServis.Size = new Size(19, 21);
+            LbAngkaProsesServis.TabIndex = 3;
+            LbAngkaProsesServis.Text = "0";
             // 
-            // LbPenjualan
+            // LbProsesServis
             // 
-            LbPenjualan.AutoSize = true;
-            LbPenjualan.Font = new Font("Segoe UI", 12F);
-            LbPenjualan.ForeColor = Color.White;
-            LbPenjualan.Location = new Point(24, 18);
-            LbPenjualan.Margin = new Padding(2, 0, 2, 0);
-            LbPenjualan.Name = "LbPenjualan";
-            LbPenjualan.Size = new Size(77, 21);
-            LbPenjualan.TabIndex = 0;
-            LbPenjualan.Text = "Penjualan";
+            LbProsesServis.AutoSize = true;
+            LbProsesServis.Font = new Font("Segoe UI", 12F);
+            LbProsesServis.ForeColor = Color.White;
+            LbProsesServis.Location = new Point(30, 14);
+            LbProsesServis.Margin = new Padding(2, 0, 2, 0);
+            LbProsesServis.Name = "LbProsesServis";
+            LbProsesServis.Size = new Size(56, 21);
+            LbProsesServis.TabIndex = 0;
+            LbProsesServis.Text = "Proses";
+            LbProsesServis.Click += LbPenjualan_Click;
             // 
             // PanelPendapatan
             // 
             PanelPendapatan.BackColor = Color.Fuchsia;
-            PanelPendapatan.Controls.Add(LbAngkaPendapatan);
-            PanelPendapatan.Controls.Add(LbPendapatan);
-            PanelPendapatan.Location = new Point(408, 49);
+            PanelPendapatan.Controls.Add(LbAngkaMenunggu);
+            PanelPendapatan.Controls.Add(LbMenungguServis);
+            PanelPendapatan.Location = new Point(408, 46);
             PanelPendapatan.Margin = new Padding(2);
             PanelPendapatan.Name = "PanelPendapatan";
-            PanelPendapatan.Size = new Size(126, 75);
+            PanelPendapatan.Size = new Size(126, 78);
             PanelPendapatan.TabIndex = 9;
             // 
-            // LbAngkaPendapatan
+            // LbAngkaMenunggu
             // 
-            LbAngkaPendapatan.AutoSize = true;
-            LbAngkaPendapatan.Font = new Font("Segoe UI", 12F);
-            LbAngkaPendapatan.ForeColor = Color.White;
-            LbAngkaPendapatan.Location = new Point(56, 36);
-            LbAngkaPendapatan.Margin = new Padding(2, 0, 2, 0);
-            LbAngkaPendapatan.Name = "LbAngkaPendapatan";
-            LbAngkaPendapatan.Size = new Size(19, 21);
-            LbAngkaPendapatan.TabIndex = 4;
-            LbAngkaPendapatan.Text = "0";
+            LbAngkaMenunggu.AutoSize = true;
+            LbAngkaMenunggu.Font = new Font("Segoe UI", 12F);
+            LbAngkaMenunggu.ForeColor = Color.White;
+            LbAngkaMenunggu.Location = new Point(56, 39);
+            LbAngkaMenunggu.Margin = new Padding(2, 0, 2, 0);
+            LbAngkaMenunggu.Name = "LbAngkaMenunggu";
+            LbAngkaMenunggu.Size = new Size(19, 21);
+            LbAngkaMenunggu.TabIndex = 4;
+            LbAngkaMenunggu.Text = "0";
             // 
-            // LbPendapatan
+            // LbMenungguServis
             // 
-            LbPendapatan.AutoSize = true;
-            LbPendapatan.Font = new Font("Segoe UI", 12F);
-            LbPendapatan.ForeColor = Color.White;
-            LbPendapatan.Location = new Point(28, 15);
-            LbPendapatan.Margin = new Padding(2, 0, 2, 0);
-            LbPendapatan.Name = "LbPendapatan";
-            LbPendapatan.Size = new Size(91, 21);
-            LbPendapatan.TabIndex = 0;
-            LbPendapatan.Text = "Pendapatan";
+            LbMenungguServis.AutoSize = true;
+            LbMenungguServis.Font = new Font("Segoe UI", 12F);
+            LbMenungguServis.ForeColor = Color.White;
+            LbMenungguServis.Location = new Point(23, 14);
+            LbMenungguServis.Margin = new Padding(2, 0, 2, 0);
+            LbMenungguServis.Name = "LbMenungguServis";
+            LbMenungguServis.Size = new Size(86, 21);
+            LbMenungguServis.TabIndex = 0;
+            LbMenungguServis.Text = "Menunggu";
             // 
             // PanelServis
             // 
             PanelServis.BackColor = Color.Orange;
-            PanelServis.Controls.Add(LbAngkaServis);
-            PanelServis.Controls.Add(LbServis);
+            PanelServis.Controls.Add(LbAngkaSelesai);
+            PanelServis.Controls.Add(LbSelesai);
             PanelServis.Font = new Font("Segoe UI", 12F);
             PanelServis.Location = new Point(273, 46);
             PanelServis.Margin = new Padding(2);
@@ -153,35 +165,36 @@
             PanelServis.Size = new Size(122, 78);
             PanelServis.TabIndex = 7;
             // 
-            // LbAngkaServis
+            // LbAngkaSelesai
             // 
-            LbAngkaServis.AutoSize = true;
-            LbAngkaServis.Font = new Font("Segoe UI", 12F);
-            LbAngkaServis.ForeColor = Color.White;
-            LbAngkaServis.Location = new Point(50, 39);
-            LbAngkaServis.Margin = new Padding(2, 0, 2, 0);
-            LbAngkaServis.Name = "LbAngkaServis";
-            LbAngkaServis.Size = new Size(19, 21);
-            LbAngkaServis.TabIndex = 3;
-            LbAngkaServis.Text = "0";
+            LbAngkaSelesai.AutoSize = true;
+            LbAngkaSelesai.Font = new Font("Segoe UI", 12F);
+            LbAngkaSelesai.ForeColor = Color.White;
+            LbAngkaSelesai.Location = new Point(50, 39);
+            LbAngkaSelesai.Margin = new Padding(2, 0, 2, 0);
+            LbAngkaSelesai.Name = "LbAngkaSelesai";
+            LbAngkaSelesai.Size = new Size(19, 21);
+            LbAngkaSelesai.TabIndex = 3;
+            LbAngkaSelesai.Text = "0";
             // 
-            // LbServis
+            // LbSelesai
             // 
-            LbServis.AutoSize = true;
-            LbServis.Font = new Font("Segoe UI", 12F);
-            LbServis.ForeColor = Color.White;
-            LbServis.Location = new Point(35, 18);
-            LbServis.Margin = new Padding(2, 0, 2, 0);
-            LbServis.Name = "LbServis";
-            LbServis.Size = new Size(52, 21);
-            LbServis.TabIndex = 0;
-            LbServis.Text = "Servis";
+            LbSelesai.AutoSize = true;
+            LbSelesai.Font = new Font("Segoe UI", 12F);
+            LbSelesai.ForeColor = Color.White;
+            LbSelesai.Location = new Point(32, 14);
+            LbSelesai.Margin = new Padding(2, 0, 2, 0);
+            LbSelesai.Name = "LbSelesai";
+            LbSelesai.Size = new Size(58, 21);
+            LbSelesai.TabIndex = 0;
+            LbSelesai.Text = "Selesai";
+            LbSelesai.Click += LbServis_Click;
             // 
             // PanelDataBarang
             // 
             PanelDataBarang.BackColor = Color.DodgerBlue;
-            PanelDataBarang.Controls.Add(LbAngkaBarang);
-            PanelDataBarang.Controls.Add(LbDataBarang);
+            PanelDataBarang.Controls.Add(LbAngkaTotalServis);
+            PanelDataBarang.Controls.Add(LbTotalServis);
             PanelDataBarang.Font = new Font("Segoe UI", 12F);
             PanelDataBarang.Location = new Point(2, 46);
             PanelDataBarang.Margin = new Padding(2);
@@ -189,34 +202,101 @@
             PanelDataBarang.Size = new Size(122, 78);
             PanelDataBarang.TabIndex = 6;
             // 
-            // LbAngkaBarang
+            // LbAngkaTotalServis
             // 
-            LbAngkaBarang.AutoSize = true;
-            LbAngkaBarang.Font = new Font("Segoe UI", 12F);
-            LbAngkaBarang.ForeColor = Color.White;
-            LbAngkaBarang.Location = new Point(38, 39);
-            LbAngkaBarang.Margin = new Padding(2, 0, 2, 0);
-            LbAngkaBarang.Name = "LbAngkaBarang";
-            LbAngkaBarang.Size = new Size(19, 21);
-            LbAngkaBarang.TabIndex = 1;
-            LbAngkaBarang.Text = "0";
+            LbAngkaTotalServis.AutoSize = true;
+            LbAngkaTotalServis.Font = new Font("Segoe UI", 12F);
+            LbAngkaTotalServis.ForeColor = Color.White;
+            LbAngkaTotalServis.Location = new Point(45, 39);
+            LbAngkaTotalServis.Margin = new Padding(2, 0, 2, 0);
+            LbAngkaTotalServis.Name = "LbAngkaTotalServis";
+            LbAngkaTotalServis.Size = new Size(19, 21);
+            LbAngkaTotalServis.TabIndex = 1;
+            LbAngkaTotalServis.Text = "0";
             // 
-            // LbDataBarang
+            // LbTotalServis
             // 
-            LbDataBarang.AutoSize = true;
-            LbDataBarang.Font = new Font("Segoe UI", 12F);
-            LbDataBarang.ForeColor = Color.White;
-            LbDataBarang.Location = new Point(11, 18);
-            LbDataBarang.Margin = new Padding(2, 0, 2, 0);
-            LbDataBarang.Name = "LbDataBarang";
-            LbDataBarang.Size = new Size(95, 21);
-            LbDataBarang.TabIndex = 0;
-            LbDataBarang.Text = "Data Barang";
+            LbTotalServis.AutoSize = true;
+            LbTotalServis.Font = new Font("Segoe UI", 12F);
+            LbTotalServis.ForeColor = Color.White;
+            LbTotalServis.Location = new Point(12, 14);
+            LbTotalServis.Margin = new Padding(2, 0, 2, 0);
+            LbTotalServis.Name = "LbTotalServis";
+            LbTotalServis.Size = new Size(88, 21);
+            LbTotalServis.TabIndex = 0;
+            LbTotalServis.Text = "Total Servis";
+            LbTotalServis.Click += LbDataBarang_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(DgvServisTerbaru);
+            panel1.Location = new Point(3, 161);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(531, 177);
+            panel1.TabIndex = 10;
+            // 
+            // DgvServisTerbaru
+            // 
+            DgvServisTerbaru.AllowUserToOrderColumns = true;
+            DgvServisTerbaru.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvServisTerbaru.Columns.AddRange(new DataGridViewColumn[] { Column_no_servis, Column_Id_servis, Column_tanggal_servis, Column_nama_alat, Column_kerusakan_servis, Status });
+            DgvServisTerbaru.Location = new Point(3, 13);
+            DgvServisTerbaru.Name = "DgvServisTerbaru";
+            DgvServisTerbaru.Size = new Size(516, 150);
+            DgvServisTerbaru.TabIndex = 0;
+            DgvServisTerbaru.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // Column_no_servis
+            // 
+            Column_no_servis.HeaderText = "No.";
+            Column_no_servis.Name = "Column_no_servis";
+            Column_no_servis.Width = 30;
+            // 
+            // Column_Id_servis
+            // 
+            Column_Id_servis.HeaderText = "ID Servis";
+            Column_Id_servis.Name = "Column_Id_servis";
+            Column_Id_servis.Width = 50;
+            // 
+            // Column_tanggal_servis
+            // 
+            Column_tanggal_servis.HeaderText = "Tanggal";
+            Column_tanggal_servis.Name = "Column_tanggal_servis";
+            Column_tanggal_servis.Width = 70;
+            // 
+            // Column_nama_alat
+            // 
+            Column_nama_alat.HeaderText = "Nama Alat";
+            Column_nama_alat.Name = "Column_nama_alat";
+            Column_nama_alat.Width = 120;
+            // 
+            // Column_kerusakan_servis
+            // 
+            Column_kerusakan_servis.HeaderText = "Kerusakan";
+            Column_kerusakan_servis.Name = "Column_kerusakan_servis";
+            Column_kerusakan_servis.Width = 110;
+            // 
+            // Status
+            // 
+            Status.HeaderText = "Status";
+            Status.Name = "Status";
+            // 
+            // Label_servis_serbaru
+            // 
+            Label_servis_serbaru.AutoSize = true;
+            Label_servis_serbaru.Font = new Font("Yu Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Label_servis_serbaru.Location = new Point(7, 135);
+            Label_servis_serbaru.Name = "Label_servis_serbaru";
+            Label_servis_serbaru.Size = new Size(123, 21);
+            Label_servis_serbaru.TabIndex = 11;
+            Label_servis_serbaru.Text = "Servis Terbaru";
             // 
             // UcDasboardTeknisi
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(Label_servis_serbaru);
+            Controls.Add(panel1);
             Controls.Add(PanelPenjualan);
             Controls.Add(PanelPendapatan);
             Controls.Add(PanelServis);
@@ -224,7 +304,7 @@
             Controls.Add(LbSelamatDatangAdmin);
             Controls.Add(LbJudulDashboardAdmin);
             Name = "UcDasboardTeknisi";
-            Size = new Size(577, 350);
+            Size = new Size(544, 350);
             PanelPenjualan.ResumeLayout(false);
             PanelPenjualan.PerformLayout();
             PanelPendapatan.ResumeLayout(false);
@@ -233,6 +313,8 @@
             PanelServis.PerformLayout();
             PanelDataBarang.ResumeLayout(false);
             PanelDataBarang.PerformLayout();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DgvServisTerbaru).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -242,16 +324,25 @@
         private Label LbSelamatDatangAdmin;
         private Label LbJudulDashboardAdmin;
         private Panel PanelPenjualan;
-        private Label label1;
-        private Label LbPenjualan;
+        private Label LbAngkaProsesServis;
+        private Label LbProsesServis;
         private Panel PanelPendapatan;
-        private Label LbAngkaPendapatan;
-        private Label LbPendapatan;
+        private Label LbAngkaMenunggu;
+        private Label LbMenungguServis;
         private Panel PanelServis;
-        private Label LbAngkaServis;
-        private Label LbServis;
+        private Label LbAngkaSelesai;
+        private Label LbSelesai;
         private Panel PanelDataBarang;
-        private Label LbAngkaBarang;
-        private Label LbDataBarang;
+        private Label LbAngkaTotalServis;
+        private Label LbTotalServis;
+        private Panel panel1;
+        private DataGridView DgvServisTerbaru;
+        private DataGridViewTextBoxColumn Column_no_servis;
+        private DataGridViewTextBoxColumn Column_Id_servis;
+        private DataGridViewTextBoxColumn Column_tanggal_servis;
+        private DataGridViewTextBoxColumn Column_nama_alat;
+        private DataGridViewTextBoxColumn Column_kerusakan_servis;
+        private DataGridViewTextBoxColumn Status;
+        private Label Label_servis_serbaru;
     }
 }
