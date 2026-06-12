@@ -22,18 +22,21 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
             INSERT INTO transaksi
             (
                 id_user,
+                tanggal,
                 total_harga
                 
             )
             VALUES
             (
                 @id_user,
+                @tanggal,
                 @total_harga
             )
             RETURNING id_transaksi";
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@id_user", idUser);
+                    cmd.Parameters.AddWithValue("@tanggal", DateTime.Now);
                     cmd.Parameters.AddWithValue("@total_harga", totalHarga);
 
                     object result = cmd.ExecuteScalar();

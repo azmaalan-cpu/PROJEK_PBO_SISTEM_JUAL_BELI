@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Npgsql;
 using Projek_Final_sem2.Koneksi;
 using System.Linq.Expressions;
+using Projek_Final_sem2.DAO;
+
 
 namespace Projek_Final_sem2.UserControls.Kasir
 {
@@ -17,19 +19,20 @@ namespace Projek_Final_sem2.UserControls.Kasir
         private TransaksiDAO transaksiDAO;
         private DatabaseHelper db = new DatabaseHelper();
 
+
         public UcTransaksiPenjualan()
         {
             InitializeComponent();
-
             transaksiDAO = new TransaksiDAO();
+
 
         }
         private void LoadBarang()
         {
-            using (var conn = new NpgsqlConnection(db.GetConnection().ConnectionString)) 
+            using (var conn = new NpgsqlConnection(db.GetConnection().ConnectionString))
             {
-                
-       
+
+
             }
         }
 
@@ -50,6 +53,16 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 "Rp " + total.ToString("N0");
         }
 
+        private void LoadStokBarang()
+        {
+            LbStok1.Text = "Stok: " + transaksiDAO.CekStok(1);
+            LbStok2.Text = "Stok: " + transaksiDAO.CekStok(2);
+            LbStok3.Text = "Stok: " + transaksiDAO.CekStok(3);
+            LbStok4.Text = "Stok: " + transaksiDAO.CekStok(4);
+            LbStok5.Text = "Stok: " + transaksiDAO.CekStok(5);
+
+        }
+
         private void LbLID1_Click(object sender, EventArgs e)
         {
 
@@ -57,7 +70,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void UcTransaksiPenjualan_Load(object sender, EventArgs e)
         {
-            
+            LoadStokBarang();
         }
 
         private void BtnChekOutTransaksiPenjualan_Click(object sender, EventArgs e)
@@ -112,7 +125,8 @@ namespace Projek_Final_sem2.UserControls.Kasir
                         Convert.ToDecimal(
                             row.Cells["ColSubTotal"].Value);
 
-                    int stokSekarang = transaksiDAO.CekStok(idAlat);
+                    int stokSekarang =
+                        transaksiDAO.CekStok(idAlat);
 
                     if (stokSekarang < jumlah)
                     {
@@ -126,10 +140,14 @@ namespace Projek_Final_sem2.UserControls.Kasir
                         );
                         return;
                     }
-
                     transaksiDAO.InsertDetail(idTransaksi, idAlat, jumlah, subtotal);
                     transaksiDAO.KurangiStok(idAlat, jumlah);
+                    LoadStokBarang();
                 }
+                MessageBox.Show("Transaksi berhasil!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DgvKeranjang.Rows.Clear();
+                LblTotalBayar.Text = "Rp 0";
+                LoadStokBarang();
             }
 
             catch (Exception ex)
@@ -137,7 +155,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 MessageBox.Show("Eror: " + ex.Message);
                 return;
             }
-        } 
+        }
 
         private void DgvKeranjang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -146,88 +164,197 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void BtnTambah1_Click(object sender, EventArgs e)
         {
+            bool ditemukan = false;
+            foreach (DataGridViewRow row in DgvKeranjang.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 1)
+                {
+                    int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
+                    jumlah++;
+                    row.Cells["ColJumlah"].Value = jumlah;
+                    row.Cells["ColSubTotal"].Value = jumlah * 75000;
+                    ditemukan = true;
+                    break;
+                }
+            }
 
-            int no = DgvKeranjang.Rows.Count;
+            if (!ditemukan)
+            {
+                int no = DgvKeranjang.Rows.Count;
 
-            DgvKeranjang.Rows.Add
-            (
-                no + 1,
-                1,
-                "Cangkul",
-                75000,
-                1,
-                75000
-            );
+                DgvKeranjang.Rows.Add
+                (
+                    no + 1,
+                    1,
+                    "Cangkul",
+                    75000,
+                    1,
+                    75000
+                );
 
-            HitungTotal();
+                HitungTotal();
+            }
         }
 
         private void BtnTambah2_Click(object sender, EventArgs e)
         {
-            int no = DgvKeranjang.Rows.Count;
+            bool ditemukan = false;
+            foreach (DataGridViewRow row in DgvKeranjang.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 2)
+                {
+                    int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
+                    jumlah++;
+                    row.Cells["ColJumlah"].Value = jumlah;
+                    row.Cells["ColSubTotal"].Value = jumlah * 800000;
+                    ditemukan = true;
+                    break;
+                }
+            }
+            if (!ditemukan)
+            {
+                int no = DgvKeranjang.Rows.Count;
 
-            DgvKeranjang.Rows.Add
-            (
-                no + 1,
-                2,
-                "Pompa Air",
-                800000,
-                1,
-                800000
-            );
+                DgvKeranjang.Rows.Add
+                (
+                    no + 1,
+                    2,
+                    "Pompa Air",
+                    800000,
+                    1,
+                    800000
+                );
 
-            HitungTotal();
+                HitungTotal();
+            }
         }
 
         private void BtnTambah3_Click(object sender, EventArgs e)
         {
-            int no = DgvKeranjang.Rows.Count;
+            bool ditemukan = false;
+            foreach (DataGridViewRow row in DgvKeranjang.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 3)
+                {
+                    int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
+                    jumlah++;
+                    row.Cells["ColJumlah"].Value = jumlah;
+                    row.Cells["ColSubTotal"].Value = jumlah * 350000;
+                    ditemukan = true;
+                    break;
+                }
+            }
 
-            DgvKeranjang.Rows.Add
-            (
-                no + 1,
-                3,
-                "Mesin Semprot",
-                350000,
-                1,
-                350000
-            );
+            if (!ditemukan)
+            {
+                int no = DgvKeranjang.Rows.Count;
 
-            HitungTotal();
+                DgvKeranjang.Rows.Add
+                (
+                    no + 1,
+                    3,
+                    "Mesin Semprot",
+                    350000,
+                    1,
+                    350000
+                );
+
+                HitungTotal();
+            }
         }
 
         private void BtnTambah4_Click(object sender, EventArgs e)
         {
-            int no = DgvKeranjang.Rows.Count;
+            bool ditemukan = false;
+            foreach (DataGridViewRow row in DgvKeranjang.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 4)
+                {
+                    int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
+                    jumlah++;
+                    row.Cells["ColJumlah"].Value = jumlah;
+                    row.Cells["ColSubTotal"].Value = jumlah * 250000;
+                    ditemukan = true;
+                    break;
+                }
+            }
 
-            DgvKeranjang.Rows.Add
-            (
-                no + 1,
-                4,
-                "Selang Pompa Air",
-                250000,
-                1,
-                250000
-            );
+            if (!ditemukan)
+            {
+                int no = DgvKeranjang.Rows.Count;
 
-            HitungTotal();
+                DgvKeranjang.Rows.Add
+                (
+                    no + 1,
+                    4,
+                    "Selang Pompa Air",
+                    250000,
+                    1,
+                    250000
+                );
+
+                HitungTotal();
+            }
         }
 
         private void BtnTambah5_Click(object sender, EventArgs e)
         {
-            int no = DgvKeranjang.Rows.Count;
+            bool ditemukan = false;
+            foreach (DataGridViewRow row in DgvKeranjang.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 5)
+                {
+                    int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
+                    jumlah++;
+                    row.Cells["ColJumlah"].Value = jumlah;
+                    row.Cells["ColSubTotal"].Value = jumlah * 150000;
+                    ditemukan = true;
+                    break;
+                }
+            }
+            if (!ditemukan)
+            {
+                int no = DgvKeranjang.Rows.Count;
 
-            DgvKeranjang.Rows.Add
-            (
-                no + 1,
-                5,
-                "Pupuk Organik",
-                150000,
-                1,
-                150000
-            );
+                DgvKeranjang.Rows.Add
+                (
+                    no + 1,
+                    5,
+                    "Pupuk Organik",
+                    150000,
+                    1,
+                    150000
+                );
 
-            HitungTotal();
+                HitungTotal();
+            }
+        }
+
+        private void BtnBersihTransaksi_Click(object sender, EventArgs e)
+        {
+            if (DgvKeranjang.Rows.Count == 0)
+            {
+                MessageBox.Show("Keranjang sudah kosong!");
+                return;
+            }
+            DialogResult hasil = MessageBox.Show("Apakah Anda yakin ingin membersihkan keranjang?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (hasil == DialogResult.Yes)
+            {
+                DgvKeranjang.Rows.Clear();
+                LbTotalBayar.Text = "Rp 0";
+
+                MessageBox.Show("Keranjang berhasil dibersihkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

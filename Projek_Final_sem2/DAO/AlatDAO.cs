@@ -4,12 +4,28 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using Projek_Final_sem2.Models;
+using Npgsql;   
 
 namespace Projek_Final_sem2.DAO
 {
     public class AlatDAO
     {
         private DatabaseHelper db = new DatabaseHelper();
+
+        public void KurangiStok(int idAlat, int jumlah)
+        {
+            using (var connection = db.GetConnection())
+            {
+                connection.Open();
+                string sql = @"UPDATE alat_pertanian SET stok = stok - @jumlah WHERE id_alat = @id_alat";
+                using (var command = new Npgsql.NpgsqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@jumlah", jumlah);
+                    command.Parameters.AddWithValue("@id_alat", idAlat);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
         //READ ALAT
         public DataTable GetAll()

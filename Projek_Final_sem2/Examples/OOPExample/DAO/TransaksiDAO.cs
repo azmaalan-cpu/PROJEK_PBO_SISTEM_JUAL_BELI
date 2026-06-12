@@ -1,6 +1,7 @@
 using System;
 using Projek_Final_sem2.Examples.OOPExample.DAO;
 using Npgsql;
+using System.Data;
 
 namespace Projek_Final_sem2.Examples.OOPExample.DAO
 {
@@ -8,7 +9,7 @@ namespace Projek_Final_sem2.Examples.OOPExample.DAO
     {
         public int InsertTransaksi(int idUser, decimal totalHarga)
         {
-            string sql = @"INSERT INTO transaksi (id_user, total_harga) VALUES (@id_user, @total_harga) RETURNING id_transaksi";
+            string sql = @"INSERT INTO transaksi (tanggal,id_user, total_harga) VALUES ( CURRENT_DATE, @id_user, @total_harga) RETURNING id_transaksi";
             var result = ExecuteScalar(sql, cmd =>
             {
                 cmd.Parameters.AddWithValue("@id_user", idUser);
@@ -45,6 +46,30 @@ namespace Projek_Final_sem2.Examples.OOPExample.DAO
                 cmd.Parameters.AddWithValue("@jumlah", jumlah);
                 cmd.Parameters.AddWithValue("@id_alat", idAlat);
             });
+        }
+
+        public DataTable GetDataGrafikPenjualan(DateTime tanggalawal, DateTime tanggalakhir)
+        {
+            DataTable dt = new DataTable();
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+                string sql = @"SELECT t.tanggal, SUM(t.total_harga) AS total_penjualan
+                         FROM transaksi t
+                         WHERE t.tanggal BETWEEN @tanggalawal AND @tanggalakhir
+                         GROUP BY t.tanggal
+                         ORDER BY t.tanggal";
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tanggalawal", tanggalawal.Date);
+                    cmd.Parameters.AddWithValue("@tanggalakhir", tanggalakhir.Date);
+                    using (var adapter = new NpgsqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            return dt;
         }
     }
 }

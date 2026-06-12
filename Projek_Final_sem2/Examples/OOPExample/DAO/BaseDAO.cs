@@ -6,29 +6,33 @@ namespace Projek_Final_sem2.Examples.OOPExample.DAO
 {
     public abstract class BaseDAO
     {
-        protected readonly DatabaseHelper;
+        protected readonly DatabaseHelper db;
 
         protected BaseDAO()
         {
-            DatabaseHelper db = new DatabaseHelper();
+            db = new DatabaseHelper();
         }
 
-        protected object ExecuteScalar(string sql, Action<Npgsql.NpgsqlCommand> paramBinder = null)
+        protected object ExecuteScalar(string sql, Action<NpgsqlCommand> paramBinder = null)
         {
-            using var conn = db.GetConnection();
-            conn.Open();
-            using var cmd = new Npgsql.NpgsqlCommand(sql, conn);
-            paramBinder?.Invoke(cmd);
-            return cmd.ExecuteScalar();
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+                using var cmd = new NpgsqlCommand(sql, conn);
+                paramBinder?.Invoke(cmd);
+                return cmd.ExecuteScalar();
+            }
         }
 
-        protected void ExecuteNonQuery(string sql, Action<Npgsql.NpgsqlCommand> paramBinder = null)
+        protected void ExecuteNonQuery(string sql, Action<NpgsqlCommand> paramBinder = null)
         {
-            using var conn = db.GetConnection();
-            conn.Open();
-            using var cmd = new Npgsql.NpgsqlCommand(sql, conn);
-            paramBinder?.Invoke(cmd);
-            cmd.ExecuteNonQuery();
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+                using var cmd = new NpgsqlCommand(sql, conn);
+                paramBinder?.Invoke(cmd);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

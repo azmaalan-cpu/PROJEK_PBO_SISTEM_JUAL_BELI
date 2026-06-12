@@ -73,17 +73,17 @@
             pictureBox1 = new PictureBox();
             GbKeranjangBelanja = new GroupBox();
             DgvKeranjang = new DataGridView();
-            PanelTotalBayar = new Panel();
-            BtnChekOutTransaksiPenjualan = new Button();
-            BtnBersihTransaksi = new Button();
-            LblTotalBayar = new Label();
-            LbTotalBayar = new Label();
             ColNo = new DataGridViewTextBoxColumn();
             ColIDBarang = new DataGridViewTextBoxColumn();
             ColNamaBarang = new DataGridViewTextBoxColumn();
             ColHarga = new DataGridViewTextBoxColumn();
             ColJumlah = new DataGridViewTextBoxColumn();
             ColSubTotal = new DataGridViewTextBoxColumn();
+            PanelTotalBayar = new Panel();
+            BtnChekOutTransaksiPenjualan = new Button();
+            BtnBersihTransaksi = new Button();
+            LblTotalBayar = new Label();
+            LbTotalBayar = new Label();
             PanelCariIdTransaksiPenjualan.SuspendLayout();
             gbKatalog.SuspendLayout();
             FlpkatalogProduk.SuspendLayout();
@@ -109,9 +109,9 @@
             label1.ForeColor = Color.DarkGreen;
             label1.Location = new Point(28, 13);
             label1.Name = "label1";
-            label1.Size = new Size(181, 23);
+            label1.Size = new Size(132, 23);
             label1.TabIndex = 0;
-            label1.Text = "Transaksi Penjualan";
+            label1.Text = "Transaksi Alat";
             // 
             // PanelCariIdTransaksiPenjualan
             // 
@@ -638,61 +638,6 @@
             DgvKeranjang.TabIndex = 0;
             DgvKeranjang.CellContentClick += DgvKeranjang_CellContentClick;
             // 
-            // PanelTotalBayar
-            // 
-            PanelTotalBayar.Controls.Add(BtnChekOutTransaksiPenjualan);
-            PanelTotalBayar.Controls.Add(BtnBersihTransaksi);
-            PanelTotalBayar.Controls.Add(LblTotalBayar);
-            PanelTotalBayar.Controls.Add(LbTotalBayar);
-            PanelTotalBayar.Location = new Point(30, 634);
-            PanelTotalBayar.Name = "PanelTotalBayar";
-            PanelTotalBayar.Size = new Size(945, 60);
-            PanelTotalBayar.TabIndex = 4;
-            // 
-            // BtnChekOutTransaksiPenjualan
-            // 
-            BtnChekOutTransaksiPenjualan.BackColor = Color.ForestGreen;
-            BtnChekOutTransaksiPenjualan.FlatStyle = FlatStyle.Flat;
-            BtnChekOutTransaksiPenjualan.ForeColor = Color.White;
-            BtnChekOutTransaksiPenjualan.Location = new Point(549, 6);
-            BtnChekOutTransaksiPenjualan.Name = "BtnChekOutTransaksiPenjualan";
-            BtnChekOutTransaksiPenjualan.Size = new Size(180, 50);
-            BtnChekOutTransaksiPenjualan.TabIndex = 4;
-            BtnChekOutTransaksiPenjualan.Text = "Chek Out";
-            BtnChekOutTransaksiPenjualan.UseVisualStyleBackColor = false;
-            BtnChekOutTransaksiPenjualan.Click += BtnChekOutTransaksiPenjualan_Click;
-            // 
-            // BtnBersihTransaksi
-            // 
-            BtnBersihTransaksi.BackColor = Color.Red;
-            BtnBersihTransaksi.FlatStyle = FlatStyle.Flat;
-            BtnBersihTransaksi.ForeColor = Color.White;
-            BtnBersihTransaksi.Location = new Point(759, 6);
-            BtnBersihTransaksi.Name = "BtnBersihTransaksi";
-            BtnBersihTransaksi.Size = new Size(180, 50);
-            BtnBersihTransaksi.TabIndex = 3;
-            BtnBersihTransaksi.Text = "Bersih";
-            BtnBersihTransaksi.UseVisualStyleBackColor = false;
-            // 
-            // LblTotalBayar
-            // 
-            LblTotalBayar.AutoSize = true;
-            LblTotalBayar.ForeColor = Color.ForestGreen;
-            LblTotalBayar.Location = new Point(135, 23);
-            LblTotalBayar.Name = "LblTotalBayar";
-            LblTotalBayar.Size = new Size(41, 20);
-            LblTotalBayar.TabIndex = 1;
-            LblTotalBayar.Text = "Rp 0";
-            // 
-            // LbTotalBayar
-            // 
-            LbTotalBayar.AutoSize = true;
-            LbTotalBayar.Location = new Point(29, 22);
-            LbTotalBayar.Name = "LbTotalBayar";
-            LbTotalBayar.Size = new Size(100, 20);
-            LbTotalBayar.TabIndex = 0;
-            LbTotalBayar.Text = "Total Bayar  :";
-            // 
             // ColNo
             // 
             ColNo.HeaderText = "No";
@@ -734,6 +679,62 @@
             ColSubTotal.MinimumWidth = 6;
             ColSubTotal.Name = "ColSubTotal";
             ColSubTotal.ReadOnly = true;
+            // 
+            // PanelTotalBayar
+            // 
+            PanelTotalBayar.Controls.Add(BtnChekOutTransaksiPenjualan);
+            PanelTotalBayar.Controls.Add(BtnBersihTransaksi);
+            PanelTotalBayar.Controls.Add(LblTotalBayar);
+            PanelTotalBayar.Controls.Add(LbTotalBayar);
+            PanelTotalBayar.Location = new Point(30, 634);
+            PanelTotalBayar.Name = "PanelTotalBayar";
+            PanelTotalBayar.Size = new Size(945, 60);
+            PanelTotalBayar.TabIndex = 4;
+            // 
+            // BtnChekOutTransaksiPenjualan
+            // 
+            BtnChekOutTransaksiPenjualan.BackColor = Color.ForestGreen;
+            BtnChekOutTransaksiPenjualan.FlatStyle = FlatStyle.Flat;
+            BtnChekOutTransaksiPenjualan.ForeColor = Color.White;
+            BtnChekOutTransaksiPenjualan.Location = new Point(549, 6);
+            BtnChekOutTransaksiPenjualan.Name = "BtnChekOutTransaksiPenjualan";
+            BtnChekOutTransaksiPenjualan.Size = new Size(180, 50);
+            BtnChekOutTransaksiPenjualan.TabIndex = 4;
+            BtnChekOutTransaksiPenjualan.Text = "Chek Out";
+            BtnChekOutTransaksiPenjualan.UseVisualStyleBackColor = false;
+            BtnChekOutTransaksiPenjualan.Click += BtnChekOutTransaksiPenjualan_Click;
+            // 
+            // BtnBersihTransaksi
+            // 
+            BtnBersihTransaksi.BackColor = Color.Red;
+            BtnBersihTransaksi.FlatStyle = FlatStyle.Flat;
+            BtnBersihTransaksi.ForeColor = Color.White;
+            BtnBersihTransaksi.Location = new Point(759, 6);
+            BtnBersihTransaksi.Name = "BtnBersihTransaksi";
+            BtnBersihTransaksi.Size = new Size(180, 50);
+            BtnBersihTransaksi.TabIndex = 3;
+            BtnBersihTransaksi.Text = "Bersih";
+            BtnBersihTransaksi.UseVisualStyleBackColor = false;
+            BtnBersihTransaksi.Click += BtnBersihTransaksi_Click;
+            // 
+            // LblTotalBayar
+            // 
+            LblTotalBayar.AutoSize = true;
+            LblTotalBayar.ForeColor = Color.ForestGreen;
+            LblTotalBayar.Location = new Point(135, 23);
+            LblTotalBayar.Name = "LblTotalBayar";
+            LblTotalBayar.Size = new Size(41, 20);
+            LblTotalBayar.TabIndex = 1;
+            LblTotalBayar.Text = "Rp 0";
+            // 
+            // LbTotalBayar
+            // 
+            LbTotalBayar.AutoSize = true;
+            LbTotalBayar.Location = new Point(29, 22);
+            LbTotalBayar.Name = "LbTotalBayar";
+            LbTotalBayar.Size = new Size(100, 20);
+            LbTotalBayar.TabIndex = 0;
+            LbTotalBayar.Text = "Total Bayar  :";
             // 
             // UcTransaksiPenjualan
             // 
