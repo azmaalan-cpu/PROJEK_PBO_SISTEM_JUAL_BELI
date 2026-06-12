@@ -18,8 +18,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
         private void KembaliKeDataServis()
         {
-            FmUtamaTeknisi fm =
-                (FmUtamaTeknisi)this.FindForm();
+            FmUtamaTeknisi fm = (FmUtamaTeknisi)this.FindForm();
 
             fm.LoadUserControl(new UcDataServis());
         }
@@ -131,6 +130,11 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             {
                 e.Handled = true;
             }
+        }
+
+        private void UcTambahDataServis_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

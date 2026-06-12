@@ -57,7 +57,6 @@
             TbxNamaAlat.Name = "TbxNamaAlat";
             TbxNamaAlat.Size = new Size(266, 23);
             TbxNamaAlat.TabIndex = 1;
-            TbxNamaAlat.Text = "nama alat";
             // 
             // label1
             // 
@@ -76,7 +75,6 @@
             TbxKerusakan.Name = "TbxKerusakan";
             TbxKerusakan.Size = new Size(266, 23);
             TbxKerusakan.TabIndex = 3;
-            TbxKerusakan.Text = "Kerusakan";
             // 
             // LblKerusakan
             // 
@@ -95,8 +93,7 @@
             TbxBiayaServis.Name = "TbxBiayaServis";
             TbxBiayaServis.Size = new Size(266, 23);
             TbxBiayaServis.TabIndex = 5;
-            TbxBiayaServis.Text = "biaya servis";
-            TbxBiayaServis.KeyPress += this.TbxBiayaServis_KeyPress;
+            TbxBiayaServis.KeyPress += TbxBiayaServis_KeyPress;
             // 
             // LblBiayaServis
             // 
@@ -145,6 +142,7 @@
             Controls.Add(LblTambahDataServis);
             Name = "UcTambahDataServis";
             Size = new Size(418, 257);
+            Load += UcTambahDataServis_Load;
             ResumeLayout(false);
             PerformLayout();
         }

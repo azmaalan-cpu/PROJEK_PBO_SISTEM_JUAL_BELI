@@ -83,7 +83,7 @@
             // 
             // PanelPenjualan
             // 
-            PanelPenjualan.BackColor = Color.GreenYellow;
+            PanelPenjualan.BackColor = Color.DarkOliveGreen;
             PanelPenjualan.Controls.Add(LbAngkaProsesServis);
             PanelPenjualan.Controls.Add(LbProsesServis);
             PanelPenjualan.Location = new Point(141, 46);
