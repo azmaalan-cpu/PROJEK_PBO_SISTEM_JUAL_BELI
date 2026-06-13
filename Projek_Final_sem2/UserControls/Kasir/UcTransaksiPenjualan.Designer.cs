@@ -64,13 +64,6 @@
             LbNamaBarang4 = new Label();
             LbId4 = new Label();
             PcxBarang4 = new PictureBox();
-            Panelbarang5 = new Panel();
-            BtnTambah5 = new Button();
-            LbHarga5 = new Label();
-            LbStok5 = new Label();
-            LbNamaBarang5 = new Label();
-            LblId5 = new Label();
-            pictureBox1 = new PictureBox();
             GbKeranjangBelanja = new GroupBox();
             DgvKeranjang = new DataGridView();
             ColNo = new DataGridViewTextBoxColumn();
@@ -84,6 +77,13 @@
             BtnBersihTransaksi = new Button();
             LblTotalBayar = new Label();
             LbTotalBayar = new Label();
+            pictureBox1 = new PictureBox();
+            LblId5 = new Label();
+            LbNamaBarang5 = new Label();
+            LbStok5 = new Label();
+            LbHarga5 = new Label();
+            BtnTambah5 = new Button();
+            Panelbarang5 = new Panel();
             PanelCariIdTransaksiPenjualan.SuspendLayout();
             gbKatalog.SuspendLayout();
             FlpkatalogProduk.SuspendLayout();
@@ -95,11 +95,11 @@
             ((System.ComponentModel.ISupportInitialize)PcxBarang3).BeginInit();
             PanelBarang4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PcxBarang4).BeginInit();
-            Panelbarang5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             GbKeranjangBelanja.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvKeranjang).BeginInit();
             PanelTotalBayar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            Panelbarang5.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -161,11 +161,11 @@
             gbKatalog.Controls.Add(FlpkatalogProduk);
             gbKatalog.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gbKatalog.ForeColor = Color.ForestGreen;
-            gbKatalog.Location = new Point(28, 152);
+            gbKatalog.Location = new Point(12, 157);
             gbKatalog.Margin = new Padding(3, 4, 3, 4);
             gbKatalog.Name = "gbKatalog";
             gbKatalog.Padding = new Padding(3, 4, 3, 4);
-            gbKatalog.Size = new Size(1198, 285);
+            gbKatalog.Size = new Size(1387, 285);
             gbKatalog.TabIndex = 2;
             gbKatalog.TabStop = false;
             gbKatalog.Text = "Katalog Produk";
@@ -178,11 +178,10 @@
             FlpkatalogProduk.Controls.Add(PanelBarang3);
             FlpkatalogProduk.Controls.Add(PanelBarang4);
             FlpkatalogProduk.Controls.Add(Panelbarang5);
-            FlpkatalogProduk.Dock = DockStyle.Right;
-            FlpkatalogProduk.Location = new Point(3, 27);
+            FlpkatalogProduk.Location = new Point(13, 27);
             FlpkatalogProduk.Margin = new Padding(3, 4, 3, 4);
             FlpkatalogProduk.Name = "FlpkatalogProduk";
-            FlpkatalogProduk.Size = new Size(1192, 254);
+            FlpkatalogProduk.Size = new Size(1329, 250);
             FlpkatalogProduk.TabIndex = 0;
             FlpkatalogProduk.WrapContents = false;
             // 
@@ -527,91 +526,6 @@
             PcxBarang4.TabIndex = 0;
             PcxBarang4.TabStop = false;
             // 
-            // Panelbarang5
-            // 
-            Panelbarang5.BackColor = Color.WhiteSmoke;
-            Panelbarang5.BorderStyle = BorderStyle.FixedSingle;
-            Panelbarang5.Controls.Add(BtnTambah5);
-            Panelbarang5.Controls.Add(LbHarga5);
-            Panelbarang5.Controls.Add(LbStok5);
-            Panelbarang5.Controls.Add(LbNamaBarang5);
-            Panelbarang5.Controls.Add(LblId5);
-            Panelbarang5.Controls.Add(pictureBox1);
-            Panelbarang5.Location = new Point(835, 4);
-            Panelbarang5.Margin = new Padding(3, 4, 3, 4);
-            Panelbarang5.Name = "Panelbarang5";
-            Panelbarang5.Size = new Size(202, 250);
-            Panelbarang5.TabIndex = 4;
-            // 
-            // BtnTambah5
-            // 
-            BtnTambah5.BackColor = Color.ForestGreen;
-            BtnTambah5.FlatStyle = FlatStyle.Flat;
-            BtnTambah5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnTambah5.ForeColor = Color.White;
-            BtnTambah5.Location = new Point(45, 209);
-            BtnTambah5.Margin = new Padding(3, 4, 3, 4);
-            BtnTambah5.Name = "BtnTambah5";
-            BtnTambah5.Size = new Size(112, 31);
-            BtnTambah5.TabIndex = 4;
-            BtnTambah5.Text = "Tambah";
-            BtnTambah5.UseVisualStyleBackColor = false;
-            BtnTambah5.Click += BtnTambah5_Click;
-            // 
-            // LbHarga5
-            // 
-            LbHarga5.AutoSize = true;
-            LbHarga5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbHarga5.Location = new Point(17, 185);
-            LbHarga5.Name = "LbHarga5";
-            LbHarga5.Size = new Size(83, 17);
-            LbHarga5.TabIndex = 3;
-            LbHarga5.Text = "Rp 150.000";
-            // 
-            // LbStok5
-            // 
-            LbStok5.AutoSize = true;
-            LbStok5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbStok5.ForeColor = SystemColors.ActiveCaptionText;
-            LbStok5.Location = new Point(17, 160);
-            LbStok5.Name = "LbStok5";
-            LbStok5.Size = new Size(67, 17);
-            LbStok5.TabIndex = 2;
-            LbStok5.Text = "Stok : 18";
-            // 
-            // LbNamaBarang5
-            // 
-            LbNamaBarang5.AutoSize = true;
-            LbNamaBarang5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbNamaBarang5.Location = new Point(17, 135);
-            LbNamaBarang5.Name = "LbNamaBarang5";
-            LbNamaBarang5.Size = new Size(108, 17);
-            LbNamaBarang5.TabIndex = 1;
-            LbNamaBarang5.Text = "Pupuk Organik";
-            // 
-            // LblId5
-            // 
-            LblId5.AutoSize = true;
-            LblId5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblId5.ForeColor = SystemColors.ActiveCaptionText;
-            LblId5.Location = new Point(17, 111);
-            LblId5.Name = "LblId5";
-            LblId5.Size = new Size(46, 17);
-            LblId5.TabIndex = 1;
-            LblId5.Text = "ID : 5";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(34, 9);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(135, 89);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
             // GbKeranjangBelanja
             // 
             GbKeranjangBelanja.Controls.Add(DgvKeranjang);
@@ -736,6 +650,91 @@
             LbTotalBayar.TabIndex = 0;
             LbTotalBayar.Text = "Total Bayar  :";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(34, 9);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(135, 89);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // LblId5
+            // 
+            LblId5.AutoSize = true;
+            LblId5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblId5.ForeColor = SystemColors.ActiveCaptionText;
+            LblId5.Location = new Point(17, 111);
+            LblId5.Name = "LblId5";
+            LblId5.Size = new Size(46, 17);
+            LblId5.TabIndex = 1;
+            LblId5.Text = "ID : 5";
+            // 
+            // LbNamaBarang5
+            // 
+            LbNamaBarang5.AutoSize = true;
+            LbNamaBarang5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbNamaBarang5.Location = new Point(17, 135);
+            LbNamaBarang5.Name = "LbNamaBarang5";
+            LbNamaBarang5.Size = new Size(108, 17);
+            LbNamaBarang5.TabIndex = 1;
+            LbNamaBarang5.Text = "Pupuk Organik";
+            // 
+            // LbStok5
+            // 
+            LbStok5.AutoSize = true;
+            LbStok5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbStok5.ForeColor = SystemColors.ActiveCaptionText;
+            LbStok5.Location = new Point(17, 160);
+            LbStok5.Name = "LbStok5";
+            LbStok5.Size = new Size(67, 17);
+            LbStok5.TabIndex = 2;
+            LbStok5.Text = "Stok : 18";
+            // 
+            // LbHarga5
+            // 
+            LbHarga5.AutoSize = true;
+            LbHarga5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbHarga5.Location = new Point(17, 185);
+            LbHarga5.Name = "LbHarga5";
+            LbHarga5.Size = new Size(83, 17);
+            LbHarga5.TabIndex = 3;
+            LbHarga5.Text = "Rp 150.000";
+            // 
+            // BtnTambah5
+            // 
+            BtnTambah5.BackColor = Color.ForestGreen;
+            BtnTambah5.FlatStyle = FlatStyle.Flat;
+            BtnTambah5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnTambah5.ForeColor = Color.White;
+            BtnTambah5.Location = new Point(45, 209);
+            BtnTambah5.Margin = new Padding(3, 4, 3, 4);
+            BtnTambah5.Name = "BtnTambah5";
+            BtnTambah5.Size = new Size(112, 31);
+            BtnTambah5.TabIndex = 4;
+            BtnTambah5.Text = "Tambah";
+            BtnTambah5.UseVisualStyleBackColor = false;
+            BtnTambah5.Click += BtnTambah5_Click;
+            // 
+            // Panelbarang5
+            // 
+            Panelbarang5.BackColor = Color.WhiteSmoke;
+            Panelbarang5.BorderStyle = BorderStyle.FixedSingle;
+            Panelbarang5.Controls.Add(BtnTambah5);
+            Panelbarang5.Controls.Add(LbHarga5);
+            Panelbarang5.Controls.Add(LbStok5);
+            Panelbarang5.Controls.Add(LbNamaBarang5);
+            Panelbarang5.Controls.Add(LblId5);
+            Panelbarang5.Controls.Add(pictureBox1);
+            Panelbarang5.Location = new Point(835, 4);
+            Panelbarang5.Margin = new Padding(3, 4, 3, 4);
+            Panelbarang5.Name = "Panelbarang5";
+            Panelbarang5.Size = new Size(202, 250);
+            Panelbarang5.TabIndex = 4;
+            // 
             // UcTransaksiPenjualan
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -766,13 +765,13 @@
             PanelBarang4.ResumeLayout(false);
             PanelBarang4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PcxBarang4).EndInit();
-            Panelbarang5.ResumeLayout(false);
-            Panelbarang5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             GbKeranjangBelanja.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DgvKeranjang).EndInit();
             PanelTotalBayar.ResumeLayout(false);
             PanelTotalBayar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Panelbarang5.ResumeLayout(false);
+            Panelbarang5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -820,13 +819,6 @@
         private Label LbTotalBayar;
         private Label LblTotalBayar;
         private Button BtnBersihTransaksi;
-        private Panel Panelbarang5;
-        private Button BtnTambah5;
-        private Label LbHarga5;
-        private Label LbStok5;
-        private Label LbNamaBarang5;
-        private Label LblId5;
-        private PictureBox pictureBox1;
         private Button BtnChekOutTransaksiPenjualan;
         private DataGridViewTextBoxColumn ColNo;
         private DataGridViewTextBoxColumn ColIDBarang;
@@ -834,5 +826,12 @@
         private DataGridViewTextBoxColumn ColHarga;
         private DataGridViewTextBoxColumn ColJumlah;
         private DataGridViewTextBoxColumn ColSubTotal;
+        private Panel Panelbarang5;
+        private Button BtnTambah5;
+        private Label LbHarga5;
+        private Label LbStok5;
+        private Label LbNamaBarang5;
+        private Label LblId5;
+        private PictureBox pictureBox1;
     }
 }

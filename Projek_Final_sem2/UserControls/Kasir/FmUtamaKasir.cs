@@ -34,11 +34,11 @@ namespace Projek_Final_sem2.UserControls.Kasir
         {
             LoadUserControl(new UcDashboardKasir());
         }
-        
+
 
         private void ButtonDataBarang_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new UcDataBarang());
+            LoadUserControl(new UcDataBarangKasir());
         }
 
         private void BtnTransaksiPenjualan_Click(object sender, EventArgs e)
@@ -50,6 +50,18 @@ namespace Projek_Final_sem2.UserControls.Kasir
             //this.Hide();
             //FormLogin Login = new FormLogin();
             //Login.Show();
+        }
+
+        private void BtnTransaksiService_Click(object sender, EventArgs e)
+        {
+            PanelContainer.Controls.Clear();
+
+            UcTransaksiService uc =
+                new UcTransaksiService();
+
+            uc.Dock = DockStyle.Fill;
+
+            PanelContainer.Controls.Add(uc);
         }
     }       // update kasir yang terbaru 
 }

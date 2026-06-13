@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmUtamaKasir));
             PanelMenuUtamaKasir = new Panel();
+            BtnTransaksiService = new Button();
             BtnLogout = new Button();
             BtnTransaksiPenjualan = new Button();
             ButtonDataBarang = new Button();
@@ -46,6 +47,7 @@
             // PanelMenuUtamaKasir
             // 
             PanelMenuUtamaKasir.BackColor = Color.DarkGreen;
+            PanelMenuUtamaKasir.Controls.Add(BtnTransaksiService);
             PanelMenuUtamaKasir.Controls.Add(BtnLogout);
             PanelMenuUtamaKasir.Controls.Add(BtnTransaksiPenjualan);
             PanelMenuUtamaKasir.Controls.Add(ButtonDataBarang);
@@ -60,13 +62,25 @@
             PanelMenuUtamaKasir.Size = new Size(254, 753);
             PanelMenuUtamaKasir.TabIndex = 0;
             // 
+            // BtnTransaksiService
+            // 
+            BtnTransaksiService.BackColor = Color.ForestGreen;
+            BtnTransaksiService.ForeColor = Color.White;
+            BtnTransaksiService.Location = new Point(15, 288);
+            BtnTransaksiService.Name = "BtnTransaksiService";
+            BtnTransaksiService.Size = new Size(225, 29);
+            BtnTransaksiService.TabIndex = 9;
+            BtnTransaksiService.Text = "Transaksi Service";
+            BtnTransaksiService.UseVisualStyleBackColor = false;
+            BtnTransaksiService.Click += BtnTransaksiService_Click;
+            // 
             // BtnLogout
             // 
             BtnLogout.BackColor = Color.ForestGreen;
             BtnLogout.FlatStyle = FlatStyle.Flat;
             BtnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLogout.ForeColor = Color.White;
-            BtnLogout.Location = new Point(12, 292);
+            BtnLogout.Location = new Point(12, 327);
             BtnLogout.Name = "BtnLogout";
             BtnLogout.Size = new Size(227, 29);
             BtnLogout.TabIndex = 8;
@@ -84,7 +98,7 @@
             BtnTransaksiPenjualan.Name = "BtnTransaksiPenjualan";
             BtnTransaksiPenjualan.Size = new Size(224, 29);
             BtnTransaksiPenjualan.TabIndex = 6;
-            BtnTransaksiPenjualan.Text = "Transaksi Penjualan";
+            BtnTransaksiPenjualan.Text = "Transaksi Alat";
             BtnTransaksiPenjualan.UseVisualStyleBackColor = false;
             BtnTransaksiPenjualan.Click += BtnTransaksiPenjualan_Click;
             // 
@@ -199,5 +213,6 @@
         private Button BtnTransaksiPenjualan;
         private Button BtnLogout;
         private Panel PanelContainer;
+        private Button BtnTransaksiService;
     }
 }

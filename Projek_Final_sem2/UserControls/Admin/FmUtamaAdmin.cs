@@ -13,7 +13,7 @@ namespace Projek_Final_sem2
 {
     public partial class FmUtamaAdmin : Form
     {
-     
+
         public FmUtamaAdmin()
         {
             InitializeComponent();
@@ -28,12 +28,21 @@ namespace Projek_Final_sem2
 
         public void TampilDashboard()
         {
-          PanelMenu.Visible=true;
-          PanelContent.Controls.Clear();
-          UcDashboard uc = new UcDashboard();
-          uc.Dock = DockStyle.Fill;
+            PanelMenu.Visible = true;
+            PanelContent.Controls.Clear();
+            UcDashboard uc = new UcDashboard();
+            uc.Dock = DockStyle.Fill;
             PanelContent.Controls.Add(uc);
 
+        }
+
+        public void TampilLogin()
+        {
+            PanelMenu.Visible = false;
+            PanelContent.Controls.Clear();
+            UcLogin uc = new UcLogin();
+            uc.Dock = DockStyle.Fill;
+            PanelContent.Controls.Add(uc);
         }
 
 
@@ -79,6 +88,17 @@ namespace Projek_Final_sem2
             UcLaporanPenjualan uc = new UcLaporanPenjualan();
             uc.Dock = DockStyle.Fill;
             PanelContent.Controls.Add(uc);
+        }
+
+        private void BtnLogOut_Click(object sender, EventArgs e)
+        {
+            DialogResult hasil = MessageBox.Show("Apakah Anda yakin ingin logout?", "Konfirmasi Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (hasil == DialogResult.Yes)
+            {
+                FmLogin login = new FmLogin();
+                login.Show();
+                this.Close();
+            }
         }
     }
 }

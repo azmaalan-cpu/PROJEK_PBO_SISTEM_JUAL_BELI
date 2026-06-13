@@ -70,14 +70,15 @@
             BtnLogOut.FlatAppearance.MouseDownBackColor = Color.Green;
             BtnLogOut.FlatAppearance.MouseOverBackColor = Color.OliveDrab;
             BtnLogOut.FlatStyle = FlatStyle.Flat;
-            BtnLogOut.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnLogOut.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLogOut.ForeColor = Color.White;
-            BtnLogOut.Location = new Point(-57, 321);
+            BtnLogOut.Location = new Point(3, 584);
             BtnLogOut.Name = "BtnLogOut";
             BtnLogOut.Size = new Size(223, 35);
             BtnLogOut.TabIndex = 12;
             BtnLogOut.Text = "Log Out";
             BtnLogOut.UseVisualStyleBackColor = true;
+            BtnLogOut.Click += BtnLogOut_Click;
             // 
             // BtnLaporanServis
             // 
@@ -85,8 +86,9 @@
             BtnLaporanServis.FlatAppearance.MouseDownBackColor = Color.Green;
             BtnLaporanServis.FlatAppearance.MouseOverBackColor = Color.OliveDrab;
             BtnLaporanServis.FlatStyle = FlatStyle.Flat;
+            BtnLaporanServis.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLaporanServis.ForeColor = Color.White;
-            BtnLaporanServis.Location = new Point(-43, 255);
+            BtnLaporanServis.Location = new Point(6, 450);
             BtnLaporanServis.Name = "BtnLaporanServis";
             BtnLaporanServis.Size = new Size(223, 35);
             BtnLaporanServis.TabIndex = 11;
@@ -100,8 +102,9 @@
             BtnLaporanPenjualan.FlatAppearance.MouseDownBackColor = Color.Green;
             BtnLaporanPenjualan.FlatAppearance.MouseOverBackColor = Color.OliveDrab;
             BtnLaporanPenjualan.FlatStyle = FlatStyle.Flat;
+            BtnLaporanPenjualan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnLaporanPenjualan.ForeColor = Color.White;
-            BtnLaporanPenjualan.Location = new Point(-33, 223);
+            BtnLaporanPenjualan.Location = new Point(23, 386);
             BtnLaporanPenjualan.Name = "BtnLaporanPenjualan";
             BtnLaporanPenjualan.Size = new Size(223, 35);
             BtnLaporanPenjualan.TabIndex = 10;
@@ -115,8 +118,9 @@
             BtnDataBarang.FlatAppearance.MouseDownBackColor = Color.Green;
             BtnDataBarang.FlatAppearance.MouseOverBackColor = Color.OliveDrab;
             BtnDataBarang.FlatStyle = FlatStyle.Flat;
+            BtnDataBarang.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnDataBarang.ForeColor = Color.White;
-            BtnDataBarang.Location = new Point(-15, 188);
+            BtnDataBarang.Location = new Point(35, 324);
             BtnDataBarang.Name = "BtnDataBarang";
             BtnDataBarang.Size = new Size(146, 35);
             BtnDataBarang.TabIndex = 6;
@@ -130,8 +134,9 @@
             BtnDataUser.FlatAppearance.MouseDownBackColor = Color.Green;
             BtnDataUser.FlatAppearance.MouseOverBackColor = Color.OliveDrab;
             BtnDataUser.FlatStyle = FlatStyle.Flat;
+            BtnDataUser.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnDataUser.ForeColor = Color.White;
-            BtnDataUser.Location = new Point(-23, 156);
+            BtnDataUser.Location = new Point(26, 260);
             BtnDataUser.Name = "BtnDataUser";
             BtnDataUser.Size = new Size(146, 35);
             BtnDataUser.TabIndex = 5;
@@ -145,8 +150,9 @@
             BtnDashboard.FlatAppearance.MouseDownBackColor = Color.Green;
             BtnDashboard.FlatAppearance.MouseOverBackColor = Color.OliveDrab;
             BtnDashboard.FlatStyle = FlatStyle.Flat;
+            BtnDashboard.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnDashboard.ForeColor = Color.White;
-            BtnDashboard.Location = new Point(-17, 123);
+            BtnDashboard.Location = new Point(29, 196);
             BtnDashboard.Name = "BtnDashboard";
             BtnDashboard.Size = new Size(146, 35);
             BtnDashboard.TabIndex = 4;
@@ -158,7 +164,7 @@
             // 
             LbAdministator.AutoSize = true;
             LbAdministator.ForeColor = Color.White;
-            LbAdministator.Location = new Point(81, 88);
+            LbAdministator.Location = new Point(126, 88);
             LbAdministator.Name = "LbAdministator";
             LbAdministator.Size = new Size(100, 20);
             LbAdministator.TabIndex = 3;
@@ -169,7 +175,7 @@
             LbAdmin.AutoSize = true;
             LbAdmin.Font = new Font("Times New Roman", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbAdmin.ForeColor = Color.White;
-            LbAdmin.Location = new Point(101, 63);
+            LbAdmin.Location = new Point(141, 66);
             LbAdmin.Name = "LbAdmin";
             LbAdmin.Size = new Size(68, 22);
             LbAdmin.TabIndex = 2;
@@ -181,9 +187,9 @@
             PcxBoxDashBoardAdmin.BackgroundImageLayout = ImageLayout.Stretch;
             PcxBoxDashBoardAdmin.ErrorImage = null;
             PcxBoxDashBoardAdmin.InitialImage = null;
-            PcxBoxDashBoardAdmin.Location = new Point(11, 63);
+            PcxBoxDashBoardAdmin.Location = new Point(12, 54);
             PcxBoxDashBoardAdmin.Name = "PcxBoxDashBoardAdmin";
-            PcxBoxDashBoardAdmin.Size = new Size(63, 55);
+            PcxBoxDashBoardAdmin.Size = new Size(93, 77);
             PcxBoxDashBoardAdmin.SizeMode = PictureBoxSizeMode.CenterImage;
             PcxBoxDashBoardAdmin.TabIndex = 1;
             PcxBoxDashBoardAdmin.TabStop = false;
@@ -191,11 +197,11 @@
             // LbMenuAdmin
             // 
             LbMenuAdmin.AutoSize = true;
-            LbMenuAdmin.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbMenuAdmin.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbMenuAdmin.ForeColor = Color.White;
-            LbMenuAdmin.Location = new Point(24, 19);
+            LbMenuAdmin.Location = new Point(54, 14);
             LbMenuAdmin.Name = "LbMenuAdmin";
-            LbMenuAdmin.Size = new Size(116, 23);
+            LbMenuAdmin.Size = new Size(126, 24);
             LbMenuAdmin.TabIndex = 0;
             LbMenuAdmin.Text = "Menu Admin";
             // 
