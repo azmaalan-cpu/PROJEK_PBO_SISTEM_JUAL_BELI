@@ -24,12 +24,22 @@ namespace Projek_Final_sem2.UserControls.Kasir
         private void UcDataBarangKasir_Load(object sender, EventArgs e)
         {
             LoadDataBarang();
+            LoadTotalBarang();
         }
 
         private void LoadDataBarang()
         {
             DataTable dt = barangDAO.GetAllBarang();
             DgvBarang.DataSource = dt;
+        }
+
+        private void LoadTotalBarang()
+        {
+            TransaksiDAO transaksiDAO = new TransaksiDAO();
+
+            LbTotalBarang.Text = 
+                "Total Barang Terjual : " + 
+                transaksiDAO.GetTotalBarangTerjual().ToString();
         }
 
         private void TbCariID_TextChanged(object sender, EventArgs e)

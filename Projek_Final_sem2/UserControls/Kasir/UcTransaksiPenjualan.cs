@@ -55,11 +55,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void LoadStokBarang()
         {
-            LbStok1.Text = "Stok: " + transaksiDAO.CekStok(1);
-            LbStok2.Text = "Stok: " + transaksiDAO.CekStok(2);
-            LbStok3.Text = "Stok: " + transaksiDAO.CekStok(3);
-            LbStok4.Text = "Stok: " + transaksiDAO.CekStok(4);
-            LbStok5.Text = "Stok: " + transaksiDAO.CekStok(5);
+            LbStok1.Text = "Stok: " + transaksiDAO.CekStok(7);
+            LbStok2.Text = "Stok: " + transaksiDAO.CekStok(8);
+            LbStok3.Text = "Stok: " + transaksiDAO.CekStok(9);
+            LbStok4.Text = "Stok: " + transaksiDAO.CekStok(10);
+            LbStok5.Text = "Stok: " + transaksiDAO.CekStok(11);
+            LbStok6.Text = "Stok: " + transaksiDAO.CekStok(12);
 
         }
 
@@ -169,7 +170,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 1)
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 7)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
@@ -187,7 +188,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    1,
+                    7,
                     "Cangkul",
                     75000,
                     1,
@@ -205,7 +206,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 2)
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 8)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
@@ -222,7 +223,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    2,
+                    8,
                     "Pompa Air",
                     800000,
                     1,
@@ -240,7 +241,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 3)
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 9)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
@@ -258,7 +259,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    3,
+                    9,
                     "Mesin Semprot",
                     350000,
                     1,
@@ -276,7 +277,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 4)
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 10)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
@@ -294,7 +295,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    4,
+                    10,
                     "Selang Pompa Air",
                     250000,
                     1,
@@ -312,7 +313,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 5)
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 11)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
@@ -329,7 +330,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    5,
+                    11,
                     "Pupuk Organik",
                     150000,
                     1,
@@ -354,6 +355,39 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 LbTotalBayar.Text = "Rp 0";
 
                 MessageBox.Show("Keranjang berhasil dibersihkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void BtnTambah6_Click(object sender, EventArgs e)
+        {
+            bool ditemukan = false;
+            foreach (DataGridViewRow row in DgvKeranjang.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 12)
+                {
+                    int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
+                    jumlah++;
+                    row.Cells["ColJumlah"].Value = jumlah;
+                    row.Cells["ColSubTotal"].Value = jumlah * 9000000;
+                    ditemukan = true;
+                    break;
+                }
+            }
+            if (!ditemukan)
+            {
+                int no = DgvKeranjang.Rows.Count;
+                DgvKeranjang.Rows.Add
+                (
+                    no + 1,
+                    12,
+                    "Traktor Mini",
+                    9000000,
+                    1,
+                    9000000
+                );
+                HitungTotal();
             }
         }
     }

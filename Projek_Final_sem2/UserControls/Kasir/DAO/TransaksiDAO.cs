@@ -44,7 +44,7 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                     {
                         return -1;
 
-                       
+
                     }
                     return Convert.ToInt32(result);
                 }
@@ -90,9 +90,9 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
             }
 
         }
-        public void KurangiStok(int idAlat,int jumlah)
+        public void KurangiStok(int idAlat, int jumlah)
         {
-            using (var conn = db.GetConnection()) 
+            using (var conn = db.GetConnection())
             {
                 conn.Open();
 
@@ -101,7 +101,7 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 SET stok = stok - @jumlah
                 WHERE id_alat = @id_alat";
 
-                using(var cmd = new NpgsqlCommand(sql, conn))
+                using (var cmd = new NpgsqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@jumlah",
                          jumlah);
@@ -129,7 +129,7 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 {
                     cmd.Parameters.AddWithValue("@id_alat", idAlat);
 
-                   object result = cmd.ExecuteScalar();
+                    object result = cmd.ExecuteScalar();
 
                     if (result == null)
                         return 0;
@@ -139,5 +139,26 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
             }
         }
 
+        public int GetTotalBarangTerjual()
+        {
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string sql = @"
+            SELECT COALESCE(SUM(jumlah),0)
+            FROM detail_transaksi";
+
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    if (result == null)
+                        return 0;
+
+                    return Convert.ToInt32(result);
+                }
+            }
+        }
     }
 }
