@@ -18,7 +18,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
     {
         private TransaksiDAO transaksiDAO;
         private DatabaseHelper db = new DatabaseHelper();
+     
 
+        int[] idBarang = new int[10];
+        string[] nama = new string[10];
+        decimal[] harga = new decimal[10];
+        int[] stok = new int[10];
 
         public UcTransaksiPenjualan()
         {
@@ -27,15 +32,72 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
 
         }
+
         private void LoadBarang()
         {
-            using (var conn = new NpgsqlConnection(db.GetConnection().ConnectionString))
+            DataTable dt = transaksiDAO.GetDataBarang();
+
+            if (dt == null || dt.Rows.Count == 0)
             {
+                MessageBox.Show("Data barang kosong!");
+                return;
+            }
 
+            for (int i = 0; i < dt.Rows.Count && i < 6; i++)
+            {
+                idBarang[i + 1] = Convert.ToInt32(dt.Rows[i]["id_alat"]);
+                nama[i + 1] = dt.Rows[i]["nama_alat"].ToString();
+                harga[i + 1] = Convert.ToDecimal(dt.Rows[i]["harga"]);
+                stok[i + 1] = Convert.ToInt32(dt.Rows[i]["stok"]);
 
+                // tampil ke label (INI YANG KAMU HILANGKAN TADI)
+                switch (i + 1)
+                {
+                    case 1:
+                        LbID1.Text = idBarang[1].ToString();
+                        LbNamaBarang1.Text = nama[1];
+                        LbHarga1.Text = "Rp " + harga[1].ToString("N0");
+                        LbStok1.Text = "Stok: " + stok[1];
+                        break;
+
+                    case 2:
+                        LbID2.Text = idBarang[2].ToString();
+                        LbNamaBarang2.Text = nama[2];
+                        LbHarga2.Text = "Rp " + harga[2].ToString("N0");
+                        LbStok2.Text = "Stok: " + stok[2];
+                        break;
+
+                    case 3:
+                        LbID3.Text = idBarang[3].ToString();
+                        LbNamaBarang3.Text = nama[3];
+                        LbHarga3.Text = "Rp " + harga[3].ToString("N0");
+                        LbStok3.Text = "Stok: " + stok[3];
+                        break;
+
+                    case 4:
+                        LbID4.Text = idBarang[4].ToString();
+                        LbNamaBarang4.Text = nama[4];
+                        LbHarga4.Text = "Rp " + harga[4].ToString("N0");
+                        LbStok4.Text = "Stok: " + stok[4];
+                        break;
+
+                    case 5:
+                        LbID5.Text = idBarang[5].ToString();
+                        LbNamaBarang5.Text = nama[5];
+                        LbHarga5.Text = "Rp " + harga[5].ToString("N0");
+                        LbStok5.Text = "Stok: " + stok[5];
+                        break;
+
+                    case 6:
+                        LbID6.Text = idBarang[6].ToString();
+                        LbNamaBarang6.Text = nama[6];
+                        LbHarga6.Text = "Rp " + harga[6].ToString("N0");
+                        LbStok6.Text = "Stok: " + stok[6];
+                        break;
+                }
             }
         }
-
+        
         private void HitungTotal()
         {
             decimal total = 0;
@@ -55,12 +117,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void LoadStokBarang()
         {
-            LbStok1.Text = "Stok: " + transaksiDAO.CekStok(7);
-            LbStok2.Text = "Stok: " + transaksiDAO.CekStok(8);
-            LbStok3.Text = "Stok: " + transaksiDAO.CekStok(9);
-            LbStok4.Text = "Stok: " + transaksiDAO.CekStok(10);
-            LbStok5.Text = "Stok: " + transaksiDAO.CekStok(11);
-            LbStok6.Text = "Stok: " + transaksiDAO.CekStok(12);
+            LbStok1.Text = "Stok: " + transaksiDAO.CekStok(1);
+            LbStok2.Text = "Stok: " + transaksiDAO.CekStok(2);
+            LbStok3.Text = "Stok: " + transaksiDAO.CekStok(3);
+            LbStok4.Text = "Stok: " + transaksiDAO.CekStok(4);
+            LbStok5.Text = "Stok: " + transaksiDAO.CekStok(5);
+            LbStok6.Text = "Stok: " + transaksiDAO.CekStok(6);
 
         }
 
@@ -71,6 +133,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void UcTransaksiPenjualan_Load(object sender, EventArgs e)
         {
+            LoadBarang();
             LoadStokBarang();
         }
 
@@ -82,80 +145,58 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 return;
             }
 
-            decimal totalharga =
-                Convert.ToDecimal
-                (
-                   LblTotalBayar.Text
-                   .Replace("Rp", "")
-                   .Replace(".", "")
-                   .Trim()
-                );
-
             int idUser = 1;
-
-            int idTransaksi =
-                transaksiDAO.InsertTransaksi
-                (
-                    idUser,
-                    totalharga
-                );
-            if (idTransaksi <= 0)
-            {
-                MessageBox.Show("Transaksi gagal dibuat!");
-                return;
-            }
 
             try
             {
-
                 foreach (DataGridViewRow row in DgvKeranjang.Rows)
                 {
                     if (row.IsNewRow)
                         continue;
 
+                    int idAlat = Convert.ToInt32(row.Cells["ColIDBarang"].Value);
+                    int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
 
-                    int idAlat =
-                    Convert.ToInt32(
-                         row.Cells["ColIdBarang"].Value);
-
-                    int jumlah =
-                        Convert.ToInt32(
-                            row.Cells["ColJumlah"].Value);
-
-                    decimal subtotal =
-                        Convert.ToDecimal(
-                            row.Cells["ColSubTotal"].Value);
-
-                    int stokSekarang =
-                        transaksiDAO.CekStok(idAlat);
+                    int stokSekarang = transaksiDAO.CekStok(idAlat);
 
                     if (stokSekarang < jumlah)
                     {
                         MessageBox.Show
                         (
-                            "Stok tidak cukup untuk Id Barang: " + idAlat +
-                            "\nStok tersedia: " + stokSekarang +
+                            "Stok tidak cukup untuk ID: " + idAlat +
+                            "\nStok: " + stokSekarang +
                             "\nDiminta: " + jumlah
-
-
                         );
                         return;
                     }
-                    transaksiDAO.InsertDetail(idTransaksi, idAlat, jumlah, subtotal);
+
+                    bool sukses = transaksiDAO.InsertTransaksi(
+                        idUser,
+                        idAlat,
+                        jumlah);
+
+                    if (!sukses)
+                    {
+                        MessageBox.Show("Gagal simpan transaksi!");
+                        return;
+                    }
+
                     transaksiDAO.KurangiStok(idAlat, jumlah);
-                    LoadStokBarang();
                 }
-                MessageBox.Show("Transaksi berhasil!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadStokBarang();
                 DgvKeranjang.Rows.Clear();
                 LblTotalBayar.Text = "Rp 0";
-                LoadStokBarang();
-            }
 
+
+                MessageBox.Show("Transaksi berhasil!");
+
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Eror: " + ex.Message);
-                return;
+                MessageBox.Show("Error: " + ex.Message);
             }
+           
         }
 
         private void DgvKeranjang_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -170,12 +211,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 7)
+                if (Convert.ToInt32(row.Cells["ColIDBarang"].Value) == 1)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
-                    row.Cells["ColSubTotal"].Value = jumlah * 75000;
+                    row.Cells["ColSubTotal"].Value = jumlah * harga[1];
                     ditemukan = true;
                     break;
                 }
@@ -188,11 +229,11 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    7,
-                    "Cangkul",
-                    75000,
                     1,
-                    75000
+                    "Cangkul",
+                    harga[1],
+                    1,
+                    harga[1]
                 );
 
                 HitungTotal();
@@ -206,16 +247,17 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 8)
+                if (Convert.ToInt32(row.Cells["ColIDBarang"].Value) == 2)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
-                    row.Cells["ColSubTotal"].Value = jumlah * 800000;
+                    row.Cells["ColSubTotal"].Value = jumlah * harga[2];
                     ditemukan = true;
                     break;
                 }
             }
+
             if (!ditemukan)
             {
                 int no = DgvKeranjang.Rows.Count;
@@ -223,11 +265,11 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    8,
+                    2,
                     "Pompa Air",
-                    800000,
+                    harga[2],
                     1,
-                    800000
+                    harga[2]
                 );
 
                 HitungTotal();
@@ -241,12 +283,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 9)
+                if (Convert.ToInt32(row.Cells["ColIDBarang"].Value) == 3)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
-                    row.Cells["ColSubTotal"].Value = jumlah * 350000;
+                    row.Cells["ColSubTotal"].Value = jumlah * harga[3];
                     ditemukan = true;
                     break;
                 }
@@ -259,11 +301,11 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    9,
+                    3,
                     "Mesin Semprot",
-                    350000,
+                    harga[3],
                     1,
-                    350000
+                    harga[3]
                 );
 
                 HitungTotal();
@@ -277,12 +319,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 10)
+                if (Convert.ToInt32(row.Cells["ColIDBarang"].Value) == 4)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
-                    row.Cells["ColSubTotal"].Value = jumlah * 250000;
+                    row.Cells["ColSubTotal"].Value = jumlah * harga[4];
                     ditemukan = true;
                     break;
                 }
@@ -295,11 +337,11 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    10,
+                    4,
                     "Selang Pompa Air",
-                    250000,
+                    harga[4],
                     1,
-                    250000
+                    harga[4]
                 );
 
                 HitungTotal();
@@ -313,12 +355,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 11)
+                if (Convert.ToInt32(row.Cells["ColIDBarang"].Value) == 5)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
-                    row.Cells["ColSubTotal"].Value = jumlah * 150000;
+                    row.Cells["ColSubTotal"].Value = jumlah * harga[5];
                     ditemukan = true;
                     break;
                 }
@@ -330,11 +372,11 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    11,
+                    5,
                     "Pupuk Organik",
-                    150000,
+                    harga[5],
                     1,
-                    150000
+                    harga[5]
                 );
 
                 HitungTotal();
@@ -354,7 +396,13 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Clear();
                 LbTotalBayar.Text = "Rp 0";
 
-                MessageBox.Show("Keranjang berhasil dibersihkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show
+                 (
+                    "Keranjang berhasil dibersihkan!",
+                     "Informasi",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Information
+                );
             }
         }
 
@@ -365,12 +413,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 if (row.IsNewRow)
                     continue;
-                if (Convert.ToInt32(row.Cells["ColIdBarang"].Value) == 12)
+                if (Convert.ToInt32(row.Cells["ColIDBarang"].Value) == 6)
                 {
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
-                    row.Cells["ColSubTotal"].Value = jumlah * 9000000;
+                    row.Cells["ColSubTotal"].Value = jumlah * harga[6];
                     ditemukan = true;
                     break;
                 }
@@ -381,14 +429,15 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvKeranjang.Rows.Add
                 (
                     no + 1,
-                    12,
+                    6,
                     "Traktor Mini",
-                    9000000,
+                    harga[6],
                     1,
-                    9000000
+                    harga[6]
                 );
                 HitungTotal();
             }
         }
+        // diperbarui 
     }
 }

@@ -14,6 +14,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
     public partial class UcDataBarangKasir : UserControl
     {
         private BarangDAO barangDAO = new BarangDAO();
+        private TransaksiDAO transaksiDAO = new TransaksiDAO();
 
         public UcDataBarangKasir()
         {
@@ -29,17 +30,16 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void LoadDataBarang()
         {
-            DataTable dt = barangDAO.GetAllBarang();
-            DgvBarang.DataSource = dt;
+            DgvBarang.DataSource =
+         transaksiDAO.GetDataBarang();
         }
-
+        
         private void LoadTotalBarang()
         {
-            TransaksiDAO transaksiDAO = new TransaksiDAO();
 
             LbTotalBarang.Text = 
                 "Total Barang Terjual : " + 
-                transaksiDAO.GetTotalBarangTerjual().ToString();
+                transaksiDAO.GetTotalSemuaBarangTerjual().ToString();
         }
 
         private void TbCariID_TextChanged(object sender, EventArgs e)
@@ -55,9 +55,21 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 return;
             }
 
-            int idBarang = Convert.ToInt32(TbCariID.Text);
+            int idBarang;
 
-            DgvBarang.DataSource = barangDAO.CariBarangById(idBarang);
+            if (!int.TryParse(TbCariID.Text, out idBarang))
+            {
+                MessageBox.Show
+                (
+                    "ID Barang harus berupa angka!",
+                    "Peringatan",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return;
+
+            }  DgvBarang.DataSource = barangDAO.CariBarangById(idBarang);
         }
     }
 }

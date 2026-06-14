@@ -4,7 +4,6 @@ using System.Text;
 using Npgsql;
 using System.Data;
 using Projek_Final_sem2.Koneksi;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Projek_Final_sem2.UserControls.Kasir.DAO
 {
@@ -12,83 +11,39 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
     {
         private DatabaseHelper db = new DatabaseHelper();
 
-        public int InsertTransaksi(int idUser, decimal totalHarga)
+        public bool InsertTransaksi(int idUser, int idAlat, int jumlah)
         {
             using (var conn = db.GetConnection())
             {
                 conn.Open();
 
                 string sql = @"
-            INSERT INTO transaksi
-            (
-                id_user,
-                tanggal,
-                total_harga
-                
-            )
-            VALUES
-            (
-                @id_user,
-                @tanggal,
-                @total_harga
-            )
-            RETURNING id_transaksi";
+                     INSERT INTO transaksi
+                    (
+                        id_alat,
+                        tanggal,
+                        id_user,
+                        jumlah
+                    )
+                        VALUES
+                    (
+                        @id_alat,
+                        @tanggal,
+                        @id_user,
+                        @jumlah
+                    )";
+
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("@id_user", idUser);
+                    cmd.Parameters.AddWithValue("@id_alat", idAlat);
                     cmd.Parameters.AddWithValue("@tanggal", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@total_harga", totalHarga);
+                    cmd.Parameters.AddWithValue("@id_user", idUser);
+                    cmd.Parameters.AddWithValue("@jumlah", jumlah);
 
-                    object result = cmd.ExecuteScalar();
-                    if (result == null)
-                    {
-                        return -1;
-
-
-                    }
-                    return Convert.ToInt32(result);
+                    return cmd.ExecuteNonQuery() > 0;
                 }
+
             }
-        }
-        public void InsertDetail(int idTransaksi, int idAlat, int jumlah, decimal subtotal)
-        {
-            using (var conn = db.GetConnection())
-            {
-                conn.Open();
-
-                string sql = @"
-                INSERT INTO detail_transaksi
-                (
-                    id_transaksi,
-                    id_alat,
-                    jumlah,
-                    subtotal
-                )
-                VALUES
-                (
-                    @id_transaksi,
-                    @id_alat,
-                    @jumlah,
-                    @subtotal
-                )";
-                using (var cmd = new NpgsqlCommand(sql, conn))
-                {
-                    cmd.Parameters.AddWithValue("@id_transaksi",
-                        idTransaksi);
-
-                    cmd.Parameters.AddWithValue("@id_alat",
-                        idAlat);
-
-                    cmd.Parameters.AddWithValue("@jumlah",
-                        jumlah);
-
-                    cmd.Parameters.AddWithValue("@subtotal",
-                        subtotal);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-
         }
         public void KurangiStok(int idAlat, int jumlah)
         {
@@ -139,24 +94,71 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
             }
         }
 
-        public int GetTotalBarangTerjual()
+        public DataTable GetDataTransaksi()
         {
+
             using (var conn = db.GetConnection())
             {
                 conn.Open();
 
                 string sql = @"
-            SELECT COALESCE(SUM(jumlah),0)
-            FROM detail_transaksi";
+                SELECT
+                t.id_transaksi,
+                t.tanggal,
+                u.username,
+                a.id_alat,
+                a.nama_alat,
+                a.harga,
+                t.jumlah,
+                    (a.harga * t.jumlah) AS subtotal
+                FROM transaksi t
+                INNER JOIN alat_pertanian a
+                    ON t.id_alat = a.id_alat
+                INNER JOIN users u
+                    ON t.id_user = u.id_user
+                ORDER BY t.id_transaksi DESC";
+
+                using (var da = new NpgsqlDataAdapter(sql, conn))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+
+        }
+
+        public DataTable GetDataBarang()
+        {
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+                string sql = @"
+                SELECT id_alat, nama_alat, harga, stok
+                FROM alat_pertanian
+                ORDER BY id_alat";
+                using (var da = new NpgsqlDataAdapter(sql, conn))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        public int GetTotalSemuaBarangTerjual()
+        {
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+                string sql = @"
+                    SELECT COALESCE(SUM(jumlah), 0) 
+                    FROM transaksi";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
-                {
-                    object result = cmd.ExecuteScalar();
-
-                    if (result == null)
-                        return 0;
-
-                    return Convert.ToInt32(result);
+                {   
+                   
+                    return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
         }

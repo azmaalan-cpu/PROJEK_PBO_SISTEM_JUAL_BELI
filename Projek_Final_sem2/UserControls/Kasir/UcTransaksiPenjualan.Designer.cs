@@ -41,42 +41,42 @@
             LbHarga1 = new Label();
             LbStok1 = new Label();
             LbNamaBarang1 = new Label();
-            LbID7 = new Label();
+            LbID1 = new Label();
             PcxBarang1 = new PictureBox();
             PanelBarang2 = new Panel();
             BtnTambah2 = new Button();
             LbHarga2 = new Label();
             LbStok2 = new Label();
             LbNamaBarang2 = new Label();
-            LbId8 = new Label();
+            LbID2 = new Label();
             PcxBarang2 = new PictureBox();
             PanelBarang3 = new Panel();
             BtnTambah3 = new Button();
             LbHarga3 = new Label();
             LbStok3 = new Label();
             LbNamaBarang3 = new Label();
-            LbId9 = new Label();
+            LbID3 = new Label();
             PcxBarang3 = new PictureBox();
             PanelBarang4 = new Panel();
             BtnTambah4 = new Button();
             LbHarga4 = new Label();
             LbStok4 = new Label();
             LbNamaBarang4 = new Label();
-            LbId10 = new Label();
+            LbID4 = new Label();
             PcxBarang4 = new PictureBox();
             Panelbarang5 = new Panel();
             BtnTambah5 = new Button();
             LbHarga5 = new Label();
             LbStok5 = new Label();
             LbNamaBarang5 = new Label();
-            LblId11 = new Label();
+            LbID5 = new Label();
             PcxBarang5 = new PictureBox();
             panel1 = new Panel();
             BtnTambah6 = new Button();
             LbHarga6 = new Label();
             LbStok6 = new Label();
             LbNamaBarang6 = new Label();
-            Lbid6 = new Label();
+            LbID6 = new Label();
             PcxBarang6 = new PictureBox();
             GbKeranjangBelanja = new GroupBox();
             DgvKeranjang = new DataGridView();
@@ -203,7 +203,7 @@
             PanelBarang1.Controls.Add(LbHarga1);
             PanelBarang1.Controls.Add(LbStok1);
             PanelBarang1.Controls.Add(LbNamaBarang1);
-            PanelBarang1.Controls.Add(LbID7);
+            PanelBarang1.Controls.Add(LbID1);
             PanelBarang1.Controls.Add(PcxBarang1);
             PanelBarang1.Location = new Point(3, 4);
             PanelBarang1.Margin = new Padding(3, 4, 3, 4);
@@ -257,17 +257,17 @@
             LbNamaBarang1.TabIndex = 1;
             LbNamaBarang1.Text = "Cangkul";
             // 
-            // LbID7
+            // LbID1
             // 
-            LbID7.AutoSize = true;
-            LbID7.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbID7.ForeColor = SystemColors.ActiveCaptionText;
-            LbID7.Location = new Point(17, 111);
-            LbID7.Name = "LbID7";
-            LbID7.Size = new Size(46, 17);
-            LbID7.TabIndex = 1;
-            LbID7.Text = "ID : 7";
-            LbID7.Click += LbLID1_Click;
+            LbID1.AutoSize = true;
+            LbID1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbID1.ForeColor = SystemColors.ActiveCaptionText;
+            LbID1.Location = new Point(17, 111);
+            LbID1.Name = "LbID1";
+            LbID1.Size = new Size(46, 17);
+            LbID1.TabIndex = 1;
+            LbID1.Text = "ID : 1";
+            LbID1.Click += LbLID1_Click;
             // 
             // PcxBarang1
             // 
@@ -289,7 +289,7 @@
             PanelBarang2.Controls.Add(LbHarga2);
             PanelBarang2.Controls.Add(LbStok2);
             PanelBarang2.Controls.Add(LbNamaBarang2);
-            PanelBarang2.Controls.Add(LbId8);
+            PanelBarang2.Controls.Add(LbID2);
             PanelBarang2.Controls.Add(PcxBarang2);
             PanelBarang2.Location = new Point(211, 4);
             PanelBarang2.Margin = new Padding(3, 4, 3, 4);
@@ -343,16 +343,16 @@
             LbNamaBarang2.TabIndex = 1;
             LbNamaBarang2.Text = "Pompa Air";
             // 
-            // LbId8
+            // LbID2
             // 
-            LbId8.AutoSize = true;
-            LbId8.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbId8.ForeColor = SystemColors.ActiveCaptionText;
-            LbId8.Location = new Point(17, 111);
-            LbId8.Name = "LbId8";
-            LbId8.Size = new Size(46, 17);
-            LbId8.TabIndex = 1;
-            LbId8.Text = "ID : 8";
+            LbID2.AutoSize = true;
+            LbID2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbID2.ForeColor = SystemColors.ActiveCaptionText;
+            LbID2.Location = new Point(17, 111);
+            LbID2.Name = "LbID2";
+            LbID2.Size = new Size(46, 17);
+            LbID2.TabIndex = 1;
+            LbID2.Text = "ID : 2";
             // 
             // PcxBarang2
             // 
@@ -374,7 +374,7 @@
             PanelBarang3.Controls.Add(LbHarga3);
             PanelBarang3.Controls.Add(LbStok3);
             PanelBarang3.Controls.Add(LbNamaBarang3);
-            PanelBarang3.Controls.Add(LbId9);
+            PanelBarang3.Controls.Add(LbID3);
             PanelBarang3.Controls.Add(PcxBarang3);
             PanelBarang3.Location = new Point(419, 4);
             PanelBarang3.Margin = new Padding(3, 4, 3, 4);
@@ -428,16 +428,16 @@
             LbNamaBarang3.TabIndex = 1;
             LbNamaBarang3.Text = "Mesin Semprot";
             // 
-            // LbId9
+            // LbID3
             // 
-            LbId9.AutoSize = true;
-            LbId9.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbId9.ForeColor = SystemColors.ActiveCaptionText;
-            LbId9.Location = new Point(17, 111);
-            LbId9.Name = "LbId9";
-            LbId9.Size = new Size(46, 17);
-            LbId9.TabIndex = 1;
-            LbId9.Text = "ID : 9";
+            LbID3.AutoSize = true;
+            LbID3.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbID3.ForeColor = SystemColors.ActiveCaptionText;
+            LbID3.Location = new Point(17, 111);
+            LbID3.Name = "LbID3";
+            LbID3.Size = new Size(46, 17);
+            LbID3.TabIndex = 1;
+            LbID3.Text = "ID : 3";
             // 
             // PcxBarang3
             // 
@@ -459,7 +459,7 @@
             PanelBarang4.Controls.Add(LbHarga4);
             PanelBarang4.Controls.Add(LbStok4);
             PanelBarang4.Controls.Add(LbNamaBarang4);
-            PanelBarang4.Controls.Add(LbId10);
+            PanelBarang4.Controls.Add(LbID4);
             PanelBarang4.Controls.Add(PcxBarang4);
             PanelBarang4.Location = new Point(627, 4);
             PanelBarang4.Margin = new Padding(3, 4, 3, 4);
@@ -513,16 +513,16 @@
             LbNamaBarang4.TabIndex = 1;
             LbNamaBarang4.Text = "Selang Pompa Air";
             // 
-            // LbId10
+            // LbID4
             // 
-            LbId10.AutoSize = true;
-            LbId10.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbId10.ForeColor = SystemColors.ActiveCaptionText;
-            LbId10.Location = new Point(17, 111);
-            LbId10.Name = "LbId10";
-            LbId10.Size = new Size(54, 17);
-            LbId10.TabIndex = 1;
-            LbId10.Text = "ID : 10";
+            LbID4.AutoSize = true;
+            LbID4.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbID4.ForeColor = SystemColors.ActiveCaptionText;
+            LbID4.Location = new Point(17, 111);
+            LbID4.Name = "LbID4";
+            LbID4.Size = new Size(46, 17);
+            LbID4.TabIndex = 1;
+            LbID4.Text = "ID : 4";
             // 
             // PcxBarang4
             // 
@@ -544,7 +544,7 @@
             Panelbarang5.Controls.Add(LbHarga5);
             Panelbarang5.Controls.Add(LbStok5);
             Panelbarang5.Controls.Add(LbNamaBarang5);
-            Panelbarang5.Controls.Add(LblId11);
+            Panelbarang5.Controls.Add(LbID5);
             Panelbarang5.Controls.Add(PcxBarang5);
             Panelbarang5.Location = new Point(835, 4);
             Panelbarang5.Margin = new Padding(3, 4, 3, 4);
@@ -598,16 +598,16 @@
             LbNamaBarang5.TabIndex = 1;
             LbNamaBarang5.Text = "Pupuk Organik";
             // 
-            // LblId11
+            // LbID5
             // 
-            LblId11.AutoSize = true;
-            LblId11.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblId11.ForeColor = SystemColors.ActiveCaptionText;
-            LblId11.Location = new Point(17, 111);
-            LblId11.Name = "LblId11";
-            LblId11.Size = new Size(53, 17);
-            LblId11.TabIndex = 1;
-            LblId11.Text = "ID : 11";
+            LbID5.AutoSize = true;
+            LbID5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbID5.ForeColor = SystemColors.ActiveCaptionText;
+            LbID5.Location = new Point(17, 111);
+            LbID5.Name = "LbID5";
+            LbID5.Size = new Size(46, 17);
+            LbID5.TabIndex = 1;
+            LbID5.Text = "ID : 5";
             // 
             // PcxBarang5
             // 
@@ -629,7 +629,7 @@
             panel1.Controls.Add(LbHarga6);
             panel1.Controls.Add(LbStok6);
             panel1.Controls.Add(LbNamaBarang6);
-            panel1.Controls.Add(Lbid6);
+            panel1.Controls.Add(LbID6);
             panel1.Controls.Add(PcxBarang6);
             panel1.Location = new Point(1043, 4);
             panel1.Margin = new Padding(3, 4, 3, 4);
@@ -683,16 +683,16 @@
             LbNamaBarang6.TabIndex = 1;
             LbNamaBarang6.Text = "Traktor Mini";
             // 
-            // Lbid6
+            // LblID6
             // 
-            Lbid6.AutoSize = true;
-            Lbid6.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Lbid6.ForeColor = SystemColors.ActiveCaptionText;
-            Lbid6.Location = new Point(17, 111);
-            Lbid6.Name = "Lbid6";
-            Lbid6.Size = new Size(46, 17);
-            Lbid6.TabIndex = 1;
-            Lbid6.Text = "ID : 6";
+            LbID6.AutoSize = true;
+            LbID6.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LbID6.ForeColor = SystemColors.ActiveCaptionText;
+            LbID6.Location = new Point(17, 111);
+            LbID6.Name = "LbID6";
+            LbID6.Size = new Size(46, 17);
+            LbID6.TabIndex = 1;
+            LbID6.Text = "ID : 6";
             // 
             // PcxBarang6
             // 
@@ -885,7 +885,7 @@
         private FlowLayoutPanel FlpkatalogProduk;
         private Panel PanelBarang1;
         private PictureBox PcxBarang1;
-        private Label LbID7;
+        private Label LbID1;
         private Label LbNamaBarang1;
         private Label LbHarga1;
         private Label LbStok1;
@@ -895,21 +895,21 @@
         private Label LbHarga2;
         private Label LbStok2;
         private Label LbNamaBarang2;
-        private Label LbId8;
+        private Label LbID2;
         private PictureBox PcxBarang2;
         private Panel PanelBarang3;
         private Button BtnTambah3;
         private Label LbHarga3;
         private Label LbStok3;
         private Label LbNamaBarang3;
-        private Label LbId9;
+        private Label LbID3;
         private PictureBox PcxBarang3;
         private Panel PanelBarang4;
         private Button BtnTambah4;
         private Label LbHarga4;
         private Label LbStok4;
         private Label LbNamaBarang4;
-        private Label LbId10;
+        private Label LbID4;
         private PictureBox PcxBarang4;
         private GroupBox GbKeranjangBelanja;
         private DataGridView DgvKeranjang;
@@ -929,13 +929,13 @@
         private Label LbHarga5;
         private Label LbStok5;
         private Label LbNamaBarang5;
-        private Label LblId11;
+        private Label LbID5;
         private PictureBox PcxBarang5;
         private Panel panel1;
         private Label LbHarga6;
         private Label LbStok6;
         private Label LbNamaBarang6;
-        private Label Lbid6;
+        private Label LbID6;
         private PictureBox PcxBarang6;
         private Button BtnTambah6;
     }

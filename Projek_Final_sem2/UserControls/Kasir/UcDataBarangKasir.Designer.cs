@@ -34,14 +34,11 @@
             LbCariId = new Label();
             LbJudulDataBarang = new Label();
             DgvBarang = new DataGridView();
-            ColIdBarang = new DataGridViewTextBoxColumn();
-            ColNamaBarang = new DataGridViewTextBoxColumn();
-            ColHarga = new DataGridViewTextBoxColumn();
-            ColStok = new DataGridViewTextBoxColumn();
             PanelTotal = new Panel();
             LbTotalBarang = new Label();
             PanelKeranjangBarang = new Panel();
             PcxKeranjang = new PictureBox();
+            
             PanelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvBarang).BeginInit();
             PanelTotal.SuspendLayout();
@@ -108,40 +105,11 @@
             DgvBarang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvBarang.BackgroundColor = SystemColors.Control;
             DgvBarang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvBarang.Columns.AddRange(new DataGridViewColumn[] { ColIdBarang, ColNamaBarang, ColHarga, ColStok });
             DgvBarang.Location = new Point(3, 154);
             DgvBarang.Name = "DgvBarang";
             DgvBarang.RowHeadersWidth = 51;
             DgvBarang.Size = new Size(679, 215);
             DgvBarang.TabIndex = 0;
-            // 
-            // ColIdBarang
-            // 
-            ColIdBarang.DataPropertyName = "id_alat";
-            ColIdBarang.HeaderText = "ID Barang";
-            ColIdBarang.MinimumWidth = 6;
-            ColIdBarang.Name = "ColIdBarang";
-            // 
-            // ColNamaBarang
-            // 
-            ColNamaBarang.DataPropertyName = "nama_alat";
-            ColNamaBarang.HeaderText = "Nama Barang";
-            ColNamaBarang.MinimumWidth = 6;
-            ColNamaBarang.Name = "ColNamaBarang";
-            // 
-            // ColHarga
-            // 
-            ColHarga.DataPropertyName = "harga";
-            ColHarga.HeaderText = "Harga";
-            ColHarga.MinimumWidth = 6;
-            ColHarga.Name = "ColHarga";
-            // 
-            // ColStok
-            // 
-            ColStok.DataPropertyName = "Stok";
-            ColStok.HeaderText = "Stok";
-            ColStok.MinimumWidth = 6;
-            ColStok.Name = "ColStok";
             // 
             // PanelTotal
             // 
@@ -179,6 +147,22 @@
             PcxKeranjang.TabIndex = 0;
             PcxKeranjang.TabStop = false;
             // 
+            // ColIdBarang
+            // 
+      
+            // 
+            // ColNamaBarang
+            // 
+
+            // 
+            // ColHarga
+            // 
+
+            // 
+            // ColStok
+            // 
+          
+            // 
             // UcDataBarangKasir
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -215,9 +199,6 @@
         private Panel PanelKeranjangBarang;
         private PictureBox pictureBox1;
         private PictureBox PcxKeranjang;
-        private DataGridViewTextBoxColumn ColIdBarang;
-        private DataGridViewTextBoxColumn ColNamaBarang;
-        private DataGridViewTextBoxColumn ColHarga;
-        private DataGridViewTextBoxColumn ColStok;
+    
     }
 }
