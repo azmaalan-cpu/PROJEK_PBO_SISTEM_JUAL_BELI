@@ -145,22 +145,5 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 }
             }
         }
-
-        public int GetTotalSemuaBarangTerjual()
-        {
-            using (var conn = db.GetConnection())
-            {
-                conn.Open();
-                string sql = @"
-                    SELECT COALESCE(SUM(jumlah), 0) 
-                    FROM transaksi";
-
-                using (var cmd = new NpgsqlCommand(sql, conn))
-                {   
-                   
-                    return Convert.ToInt32(cmd.ExecuteScalar());
-                }
-            }
-        }
     }
 }

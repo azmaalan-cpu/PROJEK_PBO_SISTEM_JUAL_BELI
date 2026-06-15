@@ -16,7 +16,7 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
             using (var conn = db.GetConnection())
             {
                 conn.Open();
-                string sql = "SELECT id_alat, nama_alat, harga, stok FROM alat_pertanian ORDER BY id_alat";
+                string sql = "SELECT a.id_alat,a.nama_alat,a.harga, a.stok, k.nama_kategori FROM alat_pertanian a JOIN kategori_alat k ON a.id_kategori = k.id_kategori;";
                 using (var da = new NpgsqlDataAdapter(sql, conn))
                 {
                     DataTable dt = new DataTable();
@@ -34,9 +34,7 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 conn.Open();
 
                 string sql = @"
-                SELECT id_alat, nama_alat, harga, stok
-                FROM alat_pertanian
-                WHERE id_alat = @id_alat";
+                SELECT a.id_alat,a.nama_alat,a.harga, a.stok, k.nama_kategori FROM alat_pertanian a JOIN kategori_alat k ON a.id_kategori = k.id_kategori;";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {

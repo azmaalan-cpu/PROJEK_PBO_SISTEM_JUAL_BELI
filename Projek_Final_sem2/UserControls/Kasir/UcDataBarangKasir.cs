@@ -37,9 +37,8 @@ namespace Projek_Final_sem2.UserControls.Kasir
         private void LoadTotalBarang()
         {
 
-            LbTotalBarang.Text = 
-                "Total Barang Terjual : " + 
-                transaksiDAO.GetTotalSemuaBarangTerjual().ToString();
+            
+                
         }
 
         private void TbCariID_TextChanged(object sender, EventArgs e)

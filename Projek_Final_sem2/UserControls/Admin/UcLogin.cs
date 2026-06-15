@@ -16,10 +16,30 @@ namespace Projek_Final_sem2.UserControls
         public UcLogin()
         {
             InitializeComponent();
+            TbPassword.UseSystemPasswordChar = true;
+
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(TbUsername.Text) && string.IsNullOrWhiteSpace(TbPassword.Text))
+            {
+                MessageBox.Show("Username dan Password tidak boleh kosong!","Peringatan",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+
+            else if(string.IsNullOrWhiteSpace(TbUsername.Text))
+            {
+                MessageBox.Show("Username tidak boleh kosong!","Peringatan",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+
+            else if(string.IsNullOrWhiteSpace(TbPassword.Text))
+            {
+                MessageBox.Show("Password tidak boleh kosong!","Peringatan",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+
             var db = new DatabaseHelper();
             using (var conn = db.GetConnection())
             {
@@ -47,25 +67,34 @@ namespace Projek_Final_sem2.UserControls
 
                                 this.FindForm().Hide();
                             }
-                            else if(role == "Kasir")
+                            else if (role == "Kasir")
                             {
                                 FmUtamaKasir kasir = new FmUtamaKasir();
                                 kasir.Show();
 
                                 this.FindForm().Hide();
                             }
-                            else if( role == "Teknisi")
+                            else if (role == "Teknisi")
                             {
 
                             }
-                            
+
                         }
-                      
+                        else
+                        {
+                            MessageBox.Show("Login gagal, pastikan username dan password benar!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                     }
                 }
             }
 
 
+        }
+
+        private void ChxBoxPasswordAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            TbPassword.UseSystemPasswordChar = !ChxBoxPasswordAdmin.Checked;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
     {
         private TransaksiDAO transaksiDAO;
         private DatabaseHelper db = new DatabaseHelper();
-     
+
 
         int[] idBarang = new int[10];
         string[] nama = new string[10];
@@ -97,18 +97,21 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 }
             }
         }
-        
+
         private void HitungTotal()
         {
             decimal total = 0;
 
             foreach (DataGridViewRow row in DgvKeranjang.Rows)
             {
-                if (row.IsNewRow)
-                    continue;
+                if (row.Cells["ColSubTotal"].Value != null) 
+                {
+                    total += Convert.ToDecimal(
+                   row.Cells["ColSubTotal"].Value);
+                }
+                    
 
-                total += Convert.ToDecimal(
-                    row.Cells["ColSubTotal"].Value);
+      
             }
 
             LblTotalBayar.Text =
@@ -196,7 +199,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-           
+
         }
 
         private void DgvKeranjang_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -217,6 +220,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
                     row.Cells["ColSubTotal"].Value = jumlah * harga[1];
+                    HitungTotal();
                     ditemukan = true;
                     break;
                 }
@@ -235,7 +239,6 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     1,
                     harga[1]
                 );
-
                 HitungTotal();
             }
         }
@@ -253,6 +256,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
                     row.Cells["ColSubTotal"].Value = jumlah * harga[2];
+                    HitungTotal();
                     ditemukan = true;
                     break;
                 }
@@ -289,6 +293,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
                     row.Cells["ColSubTotal"].Value = jumlah * harga[3];
+                    HitungTotal();
                     ditemukan = true;
                     break;
                 }
@@ -325,6 +330,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
                     row.Cells["ColSubTotal"].Value = jumlah * harga[4];
+                    HitungTotal();
                     ditemukan = true;
                     break;
                 }
@@ -361,6 +367,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
                     row.Cells["ColSubTotal"].Value = jumlah * harga[5];
+                    HitungTotal();
                     ditemukan = true;
                     break;
                 }
@@ -394,7 +401,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
             if (hasil == DialogResult.Yes)
             {
                 DgvKeranjang.Rows.Clear();
-                LbTotalBayar.Text = "Rp 0";
+                LblTotalBayar.Text = "Rp 0";
 
                 MessageBox.Show
                  (
@@ -419,6 +426,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     jumlah++;
                     row.Cells["ColJumlah"].Value = jumlah;
                     row.Cells["ColSubTotal"].Value = jumlah * harga[6];
+                    HitungTotal();
                     ditemukan = true;
                     break;
                 }
@@ -438,6 +446,26 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 HitungTotal();
             }
         }
-        // diperbarui 
+
+ 
+
+        private void LblTotalBayar_Click(object sender, EventArgs e)
+        {
+           
+            decimal totalBayar = 0;
+
+            foreach (DataGridViewRow row in DgvKeranjang.Rows)
+            {
+                if (row.Cells["subtotal"].Value != null)
+                {
+                    totalBayar += Convert.ToDecimal(
+                        row.Cells["subtotal"].Value
+                    );
+                }
+            }
+
+        }
     }
+        // diperbarui 
+    
 }

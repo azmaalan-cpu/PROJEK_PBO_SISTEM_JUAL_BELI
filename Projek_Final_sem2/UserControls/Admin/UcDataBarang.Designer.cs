@@ -33,18 +33,17 @@
             CbxKategori = new ComboBox();
             PanelDaftarBarang = new Panel();
             DgvDaftarBarang = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
+            id_alat = new DataGridViewTextBoxColumn();
+            nama_alat = new DataGridViewTextBoxColumn();
+            nama_kategori = new DataGridViewTextBoxColumn();
+            harga = new DataGridViewTextBoxColumn();
+            stok = new DataGridViewTextBoxColumn();
+            nama_supplier = new DataGridViewTextBoxColumn();
             LbDaftarBarang = new Label();
             BtnReset = new Button();
             BtnHapus = new Button();
             BtnEdit = new Button();
             BtnTambah = new Button();
-
             LbSupplier = new Label();
             TbStok = new TextBox();
             LbStok = new Label();
@@ -55,12 +54,12 @@
             TbNamaAlat = new TextBox();
             LbNamaAlat = new Label();
             LbDataBarang = new Label();
-            id_alat = new DataGridViewTextBoxColumn();
-            nama_alat = new DataGridViewTextBoxColumn();
-            nama_kategori = new DataGridViewTextBoxColumn();
-            harga = new DataGridViewTextBoxColumn();
-            stok = new DataGridViewTextBoxColumn();
-            nama_supplier = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             PaneDataBarang.SuspendLayout();
             PanelDaftarBarang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvDaftarBarang).BeginInit();
@@ -129,39 +128,48 @@
             DgvDaftarBarang.TabIndex = 1;
             DgvDaftarBarang.CellClick += DgvDaftarBarang_CellClick;
             // 
-            Column1.HeaderText = "No";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "Column1";
+            // id_alat
             // 
-            // Column2
+            id_alat.DataPropertyName = "id_alat";
+            id_alat.HeaderText = "ID";
+            id_alat.MinimumWidth = 8;
+            id_alat.Name = "id_alat";
+            id_alat.Visible = false;
             // 
-            Column2.HeaderText = "Nama Barang";
-            Column2.MinimumWidth = 8;
-            Column2.Name = "Column2";
+            // nama_alat
             // 
-            // Column3
+            nama_alat.DataPropertyName = "nama_alat";
+            nama_alat.HeaderText = "Nama Alat";
+            nama_alat.MinimumWidth = 8;
+            nama_alat.Name = "nama_alat";
             // 
-            Column3.HeaderText = "Kategori";
-            Column3.MinimumWidth = 8;
-            Column3.Name = "Column3";
+            // nama_kategori
             // 
-            // Column4
+            nama_kategori.DataPropertyName = "nama_kategori";
+            nama_kategori.HeaderText = "Kategori";
+            nama_kategori.MinimumWidth = 8;
+            nama_kategori.Name = "nama_kategori";
             // 
-            Column4.HeaderText = "Harga";
-            Column4.MinimumWidth = 8;
-            Column4.Name = "Column4";
+            // harga
             // 
-            // Column5
+            harga.DataPropertyName = "harga";
+            harga.HeaderText = "Harga";
+            harga.MinimumWidth = 8;
+            harga.Name = "harga";
             // 
-            Column5.HeaderText = "Stok";
-            Column5.MinimumWidth = 8;
-            Column5.Name = "Column5";
+            // stok
             // 
-            // Column6
+            stok.DataPropertyName = "stok";
+            stok.HeaderText = "Stok";
+            stok.MinimumWidth = 8;
+            stok.Name = "stok";
             // 
-            Column6.HeaderText = "Satuan";
-            Column6.MinimumWidth = 8;
-            Column6.Name = "Column6";
+            // nama_supplier
+            // 
+            nama_supplier.DataPropertyName = "nama_supplier";
+            nama_supplier.HeaderText = "Supplier";
+            nama_supplier.MinimumWidth = 8;
+            nama_supplier.Name = "nama_supplier";
             // 
             // LbDaftarBarang
             // 
@@ -213,7 +221,7 @@
             // 
             BtnTambah.BackColor = Color.Green;
             BtnTambah.ForeColor = Color.White;
-            BtnTambah.Location = new Point(29, 268);
+            BtnTambah.Location = new Point(36, 268);
             BtnTambah.Name = "BtnTambah";
             BtnTambah.Size = new Size(112, 34);
             BtnTambah.TabIndex = 11;
@@ -313,48 +321,47 @@
             LbDataBarang.TabIndex = 0;
             LbDataBarang.Text = "Data Barang";
             // 
-            // id_alat
+            // Column1
             // 
-            id_alat.DataPropertyName = "id_alat";
-            id_alat.HeaderText = "ID";
-            id_alat.MinimumWidth = 8;
-            id_alat.Name = "id_alat";
-            id_alat.Visible = false;
+            Column1.HeaderText = "No";
+            Column1.MinimumWidth = 8;
+            Column1.Name = "Column1";
+            Column1.Width = 150;
             // 
-            // nama_alat
+            // Column2
             // 
-            nama_alat.DataPropertyName = "nama_alat";
-            nama_alat.HeaderText = "Nama Alat";
-            nama_alat.MinimumWidth = 8;
-            nama_alat.Name = "nama_alat";
+            Column2.HeaderText = "Nama Barang";
+            Column2.MinimumWidth = 8;
+            Column2.Name = "Column2";
+            Column2.Width = 150;
             // 
-            // nama_kategori
+            // Column3
             // 
-            nama_kategori.DataPropertyName = "nama_kategori";
-            nama_kategori.HeaderText = "Kategori";
-            nama_kategori.MinimumWidth = 8;
-            nama_kategori.Name = "nama_kategori";
+            Column3.HeaderText = "Kategori";
+            Column3.MinimumWidth = 8;
+            Column3.Name = "Column3";
+            Column3.Width = 150;
             // 
-            // harga
+            // Column4
             // 
-            harga.DataPropertyName = "harga";
-            harga.HeaderText = "Harga";
-            harga.MinimumWidth = 8;
-            harga.Name = "harga";
+            Column4.HeaderText = "Harga";
+            Column4.MinimumWidth = 8;
+            Column4.Name = "Column4";
+            Column4.Width = 150;
             // 
-            // stok
+            // Column5
             // 
-            stok.DataPropertyName = "stok";
-            stok.HeaderText = "Stok";
-            stok.MinimumWidth = 8;
-            stok.Name = "stok";
+            Column5.HeaderText = "Stok";
+            Column5.MinimumWidth = 8;
+            Column5.Name = "Column5";
+            Column5.Width = 150;
             // 
-            // nama_supplier
+            // Column6
             // 
-            nama_supplier.DataPropertyName = "nama_supplier";
-            nama_supplier.HeaderText = "Supplier";
-            nama_supplier.MinimumWidth = 8;
-            nama_supplier.Name = "nama_supplier";
+            Column6.HeaderText = "Satuan";
+            Column6.MinimumWidth = 8;
+            Column6.Name = "Column6";
+            Column6.Width = 150;
             // 
             // UcDataBarang
             // 
