@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Projek_Final_sem2.Koneksi;
+using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.UserControls.Teknisi
 {
@@ -15,26 +16,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         public UcDataServis()
         {
             InitializeComponent();
-        }
-
-        private void LoadServis()
-        {
-            using (var conn = new DatabaseHelper().GetConnection())
-            {
-                conn.Open();
-
-                string sql =
-                @"SELECT *
-                FROM servis
-                ORDER BY id_servis DESC";
-
-                DataTable dt = new DataTable();
-
-                new NpgsqlDataAdapter(sql, conn)
-                    .Fill(dt);
-
-                DgvDataServis.DataSource = dt;
-            }
+            this.Load += UcDataServis_Load;
         }
         private void txtCari_TextChanged(object sender, EventArgs e)
         {
@@ -45,13 +27,6 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             dv.RowFilter =
             $"nama_alat LIKE '%{TextCariDataServis.Text}%'";
         }
-
-        private void BtnTambahDataServis_Click(object sender, EventArgs e)
-        {
-            FmUtamaTeknisi frm = (FmUtamaTeknisi)this.FindForm();
-
-            frm.LoadUserControl(new UcTambahDataServis());
-        }
         private Panel panelUtama;
 
         public UcDataServis(Panel panel)
@@ -59,6 +34,43 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             InitializeComponent();
 
             panelUtama = panel;
+        }
+
+        private void DgvDataServis_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void LoadDataServis()
+        {
+            var dt = new ServiceDAO().DataUcDataServis();
+            DgvDataServis.DataSource = null;
+            DgvDataServis.AutoGenerateColumns = false;
+            try
+            {
+                if (dt.Columns.Count >= 6)
+                {
+                    ColumnIdServis.DataPropertyName = dt.Columns[0].ColumnName;
+                    ColumnTanggalServis.DataPropertyName = dt.Columns[1].ColumnName;
+                    ColumnNamaAlat.DataPropertyName = dt.Columns[2].ColumnName;
+                    ColumnKerusakan.DataPropertyName = dt.Columns[3].ColumnName;
+                    ColumnBiayaServis.DataPropertyName = dt.Columns[4].ColumnName;
+                    ColumnStatus.DataPropertyName = dt.Columns[5].ColumnName;
+                }
+                else
+                {
+                    DgvDataServis.AutoGenerateColumns = true;
+                }
+            }
+            catch
+            {
+                DgvDataServis.AutoGenerateColumns = true;
+            }
+
+            DgvDataServis.DataSource = dt;
+        }
+        private void UcDataServis_Load(object sender, EventArgs e)
+        {
+            LoadDataServis();
         }
     }
 }

@@ -37,21 +37,16 @@
             LbCariService = new Label();
             GbDataService = new GroupBox();
             groupBox1 = new GroupBox();
-            LbNamaAlamat = new Label();
             LbNamaAlat = new Label();
             LbIdService = new Label();
             PanelMainService = new Panel();
-            GbPembayaran = new GroupBox();
-            LbBiayaStatus = new Label();
-            LbTotalBayar = new Label();
-            LbBiayaSparePart = new Label();
-            LbBiayaJasa = new Label();
-            GbDetailKerusakan = new GroupBox();
-            LbSparePart = new Label();
-            LbDiagnosa = new Label();
-            LbKerusakan = new Label();
             BtnBayarService = new Button();
             BtnSelesai = new Button();
+            GbPembayaran = new GroupBox();
+            LbTotalBayarServis = new Label();
+            GbDetailKerusakan = new GroupBox();
+            LbSparePart = new Label();
+            LbKerusakan = new Label();
             GbCariService.SuspendLayout();
             GbDataService.SuspendLayout();
             PanelMainService.SuspendLayout();
@@ -66,9 +61,11 @@
             GbCariService.Controls.Add(LbCariService);
             GbCariService.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             GbCariService.ForeColor = Color.ForestGreen;
-            GbCariService.Location = new Point(20, 10);
+            GbCariService.Location = new Point(18, 8);
+            GbCariService.Margin = new Padding(3, 2, 3, 2);
             GbCariService.Name = "GbCariService";
-            GbCariService.Size = new Size(643, 101);
+            GbCariService.Padding = new Padding(3, 2, 3, 2);
+            GbCariService.Size = new Size(563, 76);
             GbCariService.TabIndex = 1;
             GbCariService.TabStop = false;
             GbCariService.Text = "Transaksi Service";
@@ -79,70 +76,65 @@
             BtnCariIdServis.FlatStyle = FlatStyle.Flat;
             BtnCariIdServis.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnCariIdServis.ForeColor = Color.White;
-            BtnCariIdServis.Location = new Point(403, 44);
+            BtnCariIdServis.Location = new Point(353, 33);
+            BtnCariIdServis.Margin = new Padding(3, 2, 3, 2);
             BtnCariIdServis.Name = "BtnCariIdServis";
-            BtnCariIdServis.Size = new Size(90, 34);
+            BtnCariIdServis.Size = new Size(79, 26);
             BtnCariIdServis.TabIndex = 2;
             BtnCariIdServis.Text = "Cari";
             BtnCariIdServis.UseVisualStyleBackColor = false;
             // 
             // TbCariIdService
             // 
-            TbCariIdService.Location = new Point(174, 44);
+            TbCariIdService.Location = new Point(152, 33);
+            TbCariIdService.Margin = new Padding(3, 2, 3, 2);
             TbCariIdService.Name = "TbCariIdService";
-            TbCariIdService.Size = new Size(222, 34);
+            TbCariIdService.Size = new Size(195, 29);
             TbCariIdService.TabIndex = 1;
             // 
             // LbCariService
             // 
             LbCariService.AutoSize = true;
-            LbCariService.Location = new Point(11, 43);
+            LbCariService.Location = new Point(10, 32);
             LbCariService.Name = "LbCariService";
-            LbCariService.Size = new Size(159, 28);
+            LbCariService.Size = new Size(127, 21);
             LbCariService.TabIndex = 0;
             LbCariService.Text = "Cari Id Service :";
             // 
             // GbDataService
             // 
             GbDataService.Controls.Add(groupBox1);
-            GbDataService.Controls.Add(LbNamaAlamat);
             GbDataService.Controls.Add(LbNamaAlat);
             GbDataService.Controls.Add(LbIdService);
             GbDataService.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             GbDataService.ForeColor = SystemColors.ActiveCaptionText;
-            GbDataService.Location = new Point(18, 117);
+            GbDataService.Location = new Point(16, 88);
+            GbDataService.Margin = new Padding(3, 2, 3, 2);
             GbDataService.Name = "GbDataService";
-            GbDataService.Size = new Size(645, 185);
+            GbDataService.Padding = new Padding(3, 2, 3, 2);
+            GbDataService.Size = new Size(564, 94);
             GbDataService.TabIndex = 2;
             GbDataService.TabStop = false;
             GbDataService.Text = "Data Service ";
             // 
             // groupBox1
             // 
-            groupBox1.Location = new Point(0, 191);
+            groupBox1.Location = new Point(0, 143);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(250, 125);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(219, 94);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
-            // 
-            // LbNamaAlamat
-            // 
-            LbNamaAlamat.AutoSize = true;
-            LbNamaAlamat.ForeColor = Color.ForestGreen;
-            LbNamaAlamat.Location = new Point(15, 125);
-            LbNamaAlamat.Name = "LbNamaAlamat";
-            LbNamaAlamat.Size = new Size(153, 28);
-            LbNamaAlamat.TabIndex = 2;
-            LbNamaAlamat.Text = "Nama Alamat :";
             // 
             // LbNamaAlat
             // 
             LbNamaAlat.AutoSize = true;
             LbNamaAlat.ForeColor = Color.ForestGreen;
-            LbNamaAlat.Location = new Point(15, 84);
+            LbNamaAlat.Location = new Point(13, 63);
             LbNamaAlat.Name = "LbNamaAlat";
-            LbNamaAlat.Size = new Size(124, 28);
+            LbNamaAlat.Size = new Size(99, 21);
             LbNamaAlat.TabIndex = 1;
             LbNamaAlat.Text = "Nama Alat :";
             // 
@@ -150,9 +142,9 @@
             // 
             LbIdService.AutoSize = true;
             LbIdService.ForeColor = Color.ForestGreen;
-            LbIdService.Location = new Point(15, 44);
+            LbIdService.Location = new Point(13, 33);
             LbIdService.Name = "LbIdService";
-            LbIdService.Size = new Size(122, 28);
+            LbIdService.Size = new Size(97, 21);
             LbIdService.TabIndex = 0;
             LbIdService.Text = "Id Service : ";
             // 
@@ -165,108 +157,12 @@
             PanelMainService.Controls.Add(GbDetailKerusakan);
             PanelMainService.Controls.Add(GbDataService);
             PanelMainService.Controls.Add(GbCariService);
-            PanelMainService.Location = new Point(3, 3);
+            PanelMainService.Location = new Point(3, 2);
+            PanelMainService.Margin = new Padding(3, 2, 3, 2);
             PanelMainService.Name = "PanelMainService";
-            PanelMainService.Size = new Size(1000, 658);
+            PanelMainService.Size = new Size(875, 494);
             PanelMainService.TabIndex = 0;
             PanelMainService.Paint += PanelMainService_Paint;
-            // 
-            // GbPembayaran
-            // 
-            GbPembayaran.Controls.Add(LbBiayaStatus);
-            GbPembayaran.Controls.Add(LbTotalBayar);
-            GbPembayaran.Controls.Add(LbBiayaSparePart);
-            GbPembayaran.Controls.Add(LbBiayaJasa);
-            GbPembayaran.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GbPembayaran.Location = new Point(18, 481);
-            GbPembayaran.Name = "GbPembayaran";
-            GbPembayaran.Size = new Size(645, 171);
-            GbPembayaran.TabIndex = 4;
-            GbPembayaran.TabStop = false;
-            GbPembayaran.Text = "Pembayaran";
-            // 
-            // LbBiayaStatus
-            // 
-            LbBiayaStatus.AutoSize = true;
-            LbBiayaStatus.ForeColor = Color.ForestGreen;
-            LbBiayaStatus.Location = new Point(15, 123);
-            LbBiayaStatus.Name = "LbBiayaStatus";
-            LbBiayaStatus.Size = new Size(140, 28);
-            LbBiayaStatus.TabIndex = 3;
-            LbBiayaStatus.Text = "Biaya Status :";
-            // 
-            // LbTotalBayar
-            // 
-            LbTotalBayar.AutoSize = true;
-            LbTotalBayar.ForeColor = Color.ForestGreen;
-            LbTotalBayar.Location = new Point(15, 92);
-            LbTotalBayar.Name = "LbTotalBayar";
-            LbTotalBayar.Size = new Size(188, 28);
-            LbTotalBayar.TabIndex = 2;
-            LbTotalBayar.Text = "Biaya Total Bayar :";
-            // 
-            // LbBiayaSparePart
-            // 
-            LbBiayaSparePart.AutoSize = true;
-            LbBiayaSparePart.ForeColor = Color.ForestGreen;
-            LbBiayaSparePart.Location = new Point(14, 62);
-            LbBiayaSparePart.Name = "LbBiayaSparePart";
-            LbBiayaSparePart.Size = new Size(174, 28);
-            LbBiayaSparePart.TabIndex = 1;
-            LbBiayaSparePart.Text = "Biaya Sparepart :";
-            // 
-            // LbBiayaJasa
-            // 
-            LbBiayaJasa.AutoSize = true;
-            LbBiayaJasa.ForeColor = Color.ForestGreen;
-            LbBiayaJasa.Location = new Point(14, 30);
-            LbBiayaJasa.Name = "LbBiayaJasa";
-            LbBiayaJasa.Size = new Size(121, 28);
-            LbBiayaJasa.TabIndex = 0;
-            LbBiayaJasa.Text = "Biaya Jasa :";
-            // 
-            // GbDetailKerusakan
-            // 
-            GbDetailKerusakan.Controls.Add(LbSparePart);
-            GbDetailKerusakan.Controls.Add(LbDiagnosa);
-            GbDetailKerusakan.Controls.Add(LbKerusakan);
-            GbDetailKerusakan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GbDetailKerusakan.Location = new Point(20, 308);
-            GbDetailKerusakan.Name = "GbDetailKerusakan";
-            GbDetailKerusakan.Size = new Size(643, 167);
-            GbDetailKerusakan.TabIndex = 3;
-            GbDetailKerusakan.TabStop = false;
-            GbDetailKerusakan.Text = "Detail Kerusakan";
-            // 
-            // LbSparePart
-            // 
-            LbSparePart.AutoSize = true;
-            LbSparePart.ForeColor = Color.ForestGreen;
-            LbSparePart.Location = new Point(13, 124);
-            LbSparePart.Name = "LbSparePart";
-            LbSparePart.Size = new Size(116, 28);
-            LbSparePart.TabIndex = 2;
-            LbSparePart.Text = "Sparepart :";
-            // 
-            // LbDiagnosa
-            // 
-            LbDiagnosa.AutoSize = true;
-            LbDiagnosa.ForeColor = Color.ForestGreen;
-            LbDiagnosa.Location = new Point(11, 79);
-            LbDiagnosa.Name = "LbDiagnosa";
-            LbDiagnosa.Size = new Size(111, 28);
-            LbDiagnosa.TabIndex = 1;
-            LbDiagnosa.Text = "Diagnosa :";
-            // 
-            // LbKerusakan
-            // 
-            LbKerusakan.AutoSize = true;
-            LbKerusakan.ForeColor = Color.ForestGreen;
-            LbKerusakan.Location = new Point(9, 39);
-            LbKerusakan.Name = "LbKerusakan";
-            LbKerusakan.Size = new Size(127, 28);
-            LbKerusakan.TabIndex = 0;
-            LbKerusakan.Text = "Kerusakan : ";
             // 
             // BtnBayarService
             // 
@@ -274,9 +170,10 @@
             BtnBayarService.FlatStyle = FlatStyle.Flat;
             BtnBayarService.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnBayarService.ForeColor = Color.White;
-            BtnBayarService.Location = new Point(682, 529);
+            BtnBayarService.Location = new Point(18, 372);
+            BtnBayarService.Margin = new Padding(3, 2, 3, 2);
             BtnBayarService.Name = "BtnBayarService";
-            BtnBayarService.Size = new Size(148, 42);
+            BtnBayarService.Size = new Size(130, 32);
             BtnBayarService.TabIndex = 4;
             BtnBayarService.Text = "Bayar Service";
             BtnBayarService.UseVisualStyleBackColor = false;
@@ -286,20 +183,79 @@
             BtnSelesai.BackColor = Color.Red;
             BtnSelesai.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnSelesai.ForeColor = Color.White;
-            BtnSelesai.Location = new Point(682, 577);
+            BtnSelesai.Location = new Point(170, 372);
+            BtnSelesai.Margin = new Padding(3, 2, 3, 2);
             BtnSelesai.Name = "BtnSelesai";
-            BtnSelesai.Size = new Size(148, 29);
+            BtnSelesai.Size = new Size(130, 22);
             BtnSelesai.TabIndex = 5;
             BtnSelesai.Text = "Selesai";
             BtnSelesai.UseVisualStyleBackColor = false;
             // 
-            // TransaksiService
+            // GbPembayaran
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            GbPembayaran.Controls.Add(LbTotalBayarServis);
+            GbPembayaran.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GbPembayaran.Location = new Point(16, 284);
+            GbPembayaran.Margin = new Padding(3, 2, 3, 2);
+            GbPembayaran.Name = "GbPembayaran";
+            GbPembayaran.Padding = new Padding(3, 2, 3, 2);
+            GbPembayaran.Size = new Size(564, 68);
+            GbPembayaran.TabIndex = 4;
+            GbPembayaran.TabStop = false;
+            GbPembayaran.Text = "Pembayaran";
+            // 
+            // LbTotalBayarServis
+            // 
+            LbTotalBayarServis.AutoSize = true;
+            LbTotalBayarServis.ForeColor = Color.ForestGreen;
+            LbTotalBayarServis.Location = new Point(6, 36);
+            LbTotalBayarServis.Name = "LbTotalBayarServis";
+            LbTotalBayarServis.Size = new Size(153, 21);
+            LbTotalBayarServis.TabIndex = 2;
+            LbTotalBayarServis.Text = "Total Bayar Servis :";
+            // 
+            // GbDetailKerusakan
+            // 
+            GbDetailKerusakan.Controls.Add(LbSparePart);
+            GbDetailKerusakan.Controls.Add(LbKerusakan);
+            GbDetailKerusakan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GbDetailKerusakan.Location = new Point(18, 186);
+            GbDetailKerusakan.Margin = new Padding(3, 2, 3, 2);
+            GbDetailKerusakan.Name = "GbDetailKerusakan";
+            GbDetailKerusakan.Padding = new Padding(3, 2, 3, 2);
+            GbDetailKerusakan.Size = new Size(563, 94);
+            GbDetailKerusakan.TabIndex = 3;
+            GbDetailKerusakan.TabStop = false;
+            GbDetailKerusakan.Text = "Detail Kerusakan";
+            // 
+            // LbSparePart
+            // 
+            LbSparePart.AutoSize = true;
+            LbSparePart.ForeColor = Color.ForestGreen;
+            LbSparePart.Location = new Point(8, 61);
+            LbSparePart.Name = "LbSparePart";
+            LbSparePart.Size = new Size(92, 21);
+            LbSparePart.TabIndex = 2;
+            LbSparePart.Text = "Sparepart :";
+            // 
+            // LbKerusakan
+            // 
+            LbKerusakan.AutoSize = true;
+            LbKerusakan.ForeColor = Color.ForestGreen;
+            LbKerusakan.Location = new Point(8, 29);
+            LbKerusakan.Name = "LbKerusakan";
+            LbKerusakan.Size = new Size(101, 21);
+            LbKerusakan.TabIndex = 0;
+            LbKerusakan.Text = "Kerusakan : ";
+            // 
+            // UcTransaksiService
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(PanelMainService);
-            Name = "TransaksiService";
-            Size = new Size(1003, 661);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "UcTransaksiService";
+            Size = new Size(878, 496);
             GbCariService.ResumeLayout(false);
             GbCariService.PerformLayout();
             GbDataService.ResumeLayout(false);
@@ -334,7 +290,7 @@
         private Label LbBiayaJasa;
         private Label LbBiayaSparePart;
         private Label LbBiayaStatus;
-        private Label LbTotalBayar;
+        private Label LbTotalBayarServis;
         private Button BtnBayarService;
         private Button BtnSelesai;
     }

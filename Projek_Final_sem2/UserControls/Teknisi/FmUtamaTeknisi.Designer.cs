@@ -48,7 +48,6 @@
             // panel1
             // 
             panel1.BackColor = Color.ForestGreen;
-            panel1.Controls.Add(panelcontent);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(BtnLogoutTeknisi);
             panel1.Controls.Add(BtnRiwayat);
@@ -61,7 +60,7 @@
             panel1.Controls.Add(BtnDashboardTeknisi);
             panel1.Location = new Point(0, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 449);
+            panel1.Size = new Size(200, 636);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -76,7 +75,7 @@
             // BtnLogoutTeknisi
             // 
             BtnLogoutTeknisi.BackColor = Color.LimeGreen;
-            BtnLogoutTeknisi.Location = new Point(12, 405);
+            BtnLogoutTeknisi.Location = new Point(12, 601);
             BtnLogoutTeknisi.Name = "BtnLogoutTeknisi";
             BtnLogoutTeknisi.Size = new Size(171, 23);
             BtnLogoutTeknisi.TabIndex = 10;
@@ -182,7 +181,7 @@
             // 
             panelcontent.Location = new Point(200, 1);
             panelcontent.Name = "panelcontent";
-            panelcontent.Size = new Size(600, 449);
+            panelcontent.Size = new Size(863, 636);
             panelcontent.TabIndex = 1;
             panelcontent.Paint += panelcontent_Paint;
             // 
@@ -190,7 +189,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1061, 637);
+            Controls.Add(panelcontent);
             Controls.Add(panel1);
             Name = "FmUtamaTeknisi";
             Text = "Form1";
@@ -207,17 +207,20 @@
             uc.Dock = DockStyle.Fill;
 
             panelcontent.Controls.Add(uc);
+            panelcontent.BringToFront();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            throw new NotImplementedException();
+            if (panelcontent.Controls.Count == 0)
+            {
+                loadControl(new UcDasboardTeknisi());
+            }
         }
 
         private void BtnDashboardTeknisi_Click(object sender, EventArgs e)
         {
             loadControl(new UcDasboardTeknisi());
-            throw new NotImplementedException();
         }
 
         private void PcxMenuKasir_Click(object sender, EventArgs e)

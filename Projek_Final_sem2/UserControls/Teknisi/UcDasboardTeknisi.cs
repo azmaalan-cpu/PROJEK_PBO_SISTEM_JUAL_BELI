@@ -1,4 +1,6 @@
 ﻿using Npgsql;
+using Projek_Final_sem2.DAO;
+using Projek_Final_sem2.Koneksi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +8,6 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Projek_Final_sem2.Koneksi;
 
 namespace Projek_Final_sem2.UserControls.Teknisi
 {
@@ -15,6 +16,13 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         public UcDasboardTeknisi()
         {
             InitializeComponent();
+            this.Load += UcDasboardTeknisi_Load;
+        }
+
+        private void UcDasboardTeknisi_Load(object? sender, EventArgs e)
+        {
+            LoadStatistik();
+            LoadDataServisDGV();
         }
 
         private void LbSelamatDatangAdmin_Click(object sender, EventArgs e)
@@ -23,11 +31,6 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
 
         private void PanelPenjualan_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -54,9 +57,9 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                 string sql = @"
                    SELECT 
                    count(*) total,
-                   count(*) FILTER(WHERE status_servis = 'proses') proses,
-                   count(*) FILTER(WHERE status_servis = 'selesai') selesai,
-                   count(*) FILTER(WHERE status_servis = 'menunggu') menunggu
+                   count(*) FILTER(WHERE status_servis = 'Proses') Proses,
+                   count(*) FILTER(WHERE status_servis = 'Selesai') Selesai,
+                   count(*) FILTER(WHERE status_servis = 'Menunggu') Menunggu
                    from servis";
                 NpgsqlCommand command = new NpgsqlCommand(sql, connection);
                 NpgsqlDataReader reader = command.ExecuteReader();
@@ -70,27 +73,42 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                 }
             }
         }
-        private void LoadDataTerbaru()
+        private void DgvServisTerbaru_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (var connection = new DatabaseHelper().GetConnection())
+            LoadDataServisDGV();
+        }
+
+        private void LoadDataServisDGV()
+        {
+            var dt = new ServiceDAO().DataServisTerbaruLengkap();
+            DgvServisTerbaru.DataSource = null;
+            DgvServisTerbaru.AutoGenerateColumns = false;
+            try
             {
-                connection.Open();
-                string sql = @"SELECT *
-                    FROM servis
-                    ORDER BY tanggal_servis DESC
-                    LIMIT 5";
-
-                 NpgsqlDataAdapter da =
-                    new NpgsqlDataAdapter(sql, connection);
-
-                DataTable dt =
-                    new DataTable();
-
-                da.Fill(dt);
-
-                DgvServisTerbaru.DataSource = dt;
+                if (dt.Columns.Count >= 5)
+                {
+                    Column_Id_servis.DataPropertyName = dt.Columns[0].ColumnName;
+                    Column_tanggal_servis.DataPropertyName = dt.Columns[1].ColumnName;
+                    Column_nama_alat.DataPropertyName = dt.Columns[2].ColumnName;
+                    Column_kerusakan_servis.DataPropertyName = dt.Columns[3].ColumnName;
+                    Status.DataPropertyName = dt.Columns[4].ColumnName;
+                }
+                else
+                {
+                    DgvServisTerbaru.AutoGenerateColumns = true;
+                }
             }
-                
+            catch
+            {
+                DgvServisTerbaru.AutoGenerateColumns = true;
+            }
+
+            DgvServisTerbaru.DataSource = dt;
+        }
+
+        private void LbAngkaTotalServis_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

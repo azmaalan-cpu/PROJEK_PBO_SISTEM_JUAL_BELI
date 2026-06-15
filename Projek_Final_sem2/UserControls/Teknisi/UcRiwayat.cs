@@ -26,13 +26,12 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         {
             DtpRiwayatAwal.Value = DateTime.Today.AddMonths(-1);
             DtpRiwayatAkhir.Value = DateTime.Today;
-
             LoadRiwayatServis();
             LoadSummary();
         }
         private void HitungRingkasan(DataTable dt)
         {
-            LblTotalSevis.Text =
+            TotalServis.Text =
                 dt.Rows.Count.ToString();
 
             decimal totalPendapatan = 0;
@@ -44,7 +43,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                         row["biaya_servis"]);
             }
 
-            LblTotalPendapatan.Text =
+            TotalPendapatan.Text =
                 totalPendapatan.ToString("N0");
         }
 
@@ -57,8 +56,47 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
                 return;
             }
+            // Show records within the selected date range
+            FilterRiwayatByRange(DtpRiwayatAwal.Value.Date, DtpRiwayatAkhir.Value.Date);
+        }
+        private void FilterRiwayatByRange(DateTime awal, DateTime akhir)
+        {
+            DatabaseHelper db = new DatabaseHelper();
+            try
+            {
+                using (NpgsqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
 
-            LoadRiwayatServis();
+                    string sql = @"
+                SELECT * from servis
+                WHERE tanggal_servis BETWEEN @awal AND @akhir
+                ORDER BY tanggal_servis DESC";
+
+                    NpgsqlDataAdapter da =
+                        new NpgsqlDataAdapter(sql, conn);
+
+                    da.SelectCommand.Parameters.AddWithValue(
+                        "@awal",
+                        awal);
+
+                    da.SelectCommand.Parameters.AddWithValue(
+                        "@akhir",
+                        akhir);
+
+                    DataTable dt = new DataTable();
+
+                    da.Fill(dt);
+
+                    DgvRiwayat.DataSource = dt;
+
+                    HitungRingkasan(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void LoadRiwayatServis()
         {
@@ -70,17 +108,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                     conn.Open();
 
                     string sql = @"
-                SELECT
-                    id_servis,
-                    tanggal_servis,
-                    nama_alat,
-                    kerusakan,
-                    biaya_servis,
-                    status_servis
-                FROM servis
-                WHERE tanggal_servis
-                BETWEEN @awal AND @akhir
-                ORDER BY tanggal_servis DESC";
+                SELECT * from v_data_servis";
 
                     NpgsqlDataAdapter da =
                         new NpgsqlDataAdapter(sql, conn);
@@ -146,14 +174,14 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
                         if (rd.Read())
                         {
-                            LblAngkaTotalServis.Text =
+                            TotalPendapatan.Text =
                                 rd["total_servis"].ToString();
 
                             decimal totalPendapatan =
                                 Convert.ToDecimal(
                                     rd["total_pendapatan"]);
 
-                            LblAngkaPendapatan.Text =
+                            TotalPendapatan.Text =
                                 "Rp " +
                                 totalPendapatan.ToString("N0");
                         }
@@ -164,6 +192,11 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void TotalPendapatan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

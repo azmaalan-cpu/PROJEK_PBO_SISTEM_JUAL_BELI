@@ -194,5 +194,10 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         {
 
         }
+
+        private void TbxIDServisStatus_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

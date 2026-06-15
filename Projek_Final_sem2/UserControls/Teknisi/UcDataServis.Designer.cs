@@ -30,35 +30,66 @@
         {
             components = new System.ComponentModel.Container();
             DgvDataServis = new DataGridView();
-            label1 = new Label();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            TextCariDataServis = new TextBox();
-            label2 = new Label();
-            BtnTambahDataServis = new Button();
             ColumnIdServis = new DataGridViewTextBoxColumn();
             ColumnTanggalServis = new DataGridViewTextBoxColumn();
             ColumnNamaAlat = new DataGridViewTextBoxColumn();
             ColumnKerusakan = new DataGridViewTextBoxColumn();
             ColumnBiayaServis = new DataGridViewTextBoxColumn();
             ColumnStatus = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            TextCariDataServis = new TextBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)DgvDataServis).BeginInit();
             SuspendLayout();
             // 
             // DgvDataServis
             // 
             DgvDataServis.AllowUserToOrderColumns = true;
+            DgvDataServis.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvDataServis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvDataServis.Columns.AddRange(new DataGridViewColumn[] { ColumnIdServis, ColumnTanggalServis, ColumnNamaAlat, ColumnKerusakan, ColumnBiayaServis, ColumnStatus });
             DgvDataServis.Location = new Point(7, 93);
             DgvDataServis.Name = "DgvDataServis";
             DgvDataServis.Size = new Size(610, 305);
             DgvDataServis.TabIndex = 0;
+            DgvDataServis.CellContentClick += DgvDataServis_CellContentClick;
+            // 
+            // ColumnIdServis
+            // 
+            ColumnIdServis.HeaderText = "ID Servis";
+            ColumnIdServis.Name = "ColumnIdServis";
+            // 
+            // ColumnTanggalServis
+            // 
+            ColumnTanggalServis.HeaderText = "Tanggal";
+            ColumnTanggalServis.Name = "ColumnTanggalServis";
+            // 
+            // ColumnNamaAlat
+            // 
+            ColumnNamaAlat.HeaderText = "Nama Alat";
+            ColumnNamaAlat.Name = "ColumnNamaAlat";
+            // 
+            // ColumnKerusakan
+            // 
+            ColumnKerusakan.HeaderText = "Kerusakan";
+            ColumnKerusakan.Name = "ColumnKerusakan";
+            // 
+            // ColumnBiayaServis
+            // 
+            ColumnBiayaServis.HeaderText = "Biaya Servis";
+            ColumnBiayaServis.Name = "ColumnBiayaServis";
+            // 
+            // ColumnStatus
+            // 
+            ColumnStatus.HeaderText = "Status";
+            ColumnStatus.Name = "ColumnStatus";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Yu Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 8);
+            label1.Location = new Point(7, 59);
             label1.Name = "label1";
             label1.Size = new Size(117, 25);
             label1.TabIndex = 1;
@@ -89,58 +120,10 @@
             label2.TabIndex = 4;
             label2.Text = "Cari Alat";
             // 
-            // BtnTambahDataServis
-            // 
-            BtnTambahDataServis.BackColor = Color.Green;
-            BtnTambahDataServis.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnTambahDataServis.ForeColor = SystemColors.ControlLightLight;
-            BtnTambahDataServis.Location = new Point(7, 63);
-            BtnTambahDataServis.Name = "BtnTambahDataServis";
-            BtnTambahDataServis.Size = new Size(88, 27);
-            BtnTambahDataServis.TabIndex = 5;
-            BtnTambahDataServis.Text = "Tambah";
-            BtnTambahDataServis.UseVisualStyleBackColor = false;
-            BtnTambahDataServis.Click += BtnTambahDataServis_Click;
-            // 
-            // ColumnIdServis
-            // 
-            ColumnIdServis.HeaderText = "ID Servis";
-            ColumnIdServis.Name = "ColumnIdServis";
-            ColumnIdServis.Width = 70;
-            // 
-            // ColumnTanggalServis
-            // 
-            ColumnTanggalServis.HeaderText = "Tanggal";
-            ColumnTanggalServis.Name = "ColumnTanggalServis";
-            // 
-            // ColumnNamaAlat
-            // 
-            ColumnNamaAlat.HeaderText = "Nama Alat";
-            ColumnNamaAlat.Name = "ColumnNamaAlat";
-            ColumnNamaAlat.Width = 120;
-            // 
-            // ColumnKerusakan
-            // 
-            ColumnKerusakan.HeaderText = "Kerusakan";
-            ColumnKerusakan.Name = "ColumnKerusakan";
-            ColumnKerusakan.Width = 120;
-            // 
-            // ColumnBiayaServis
-            // 
-            ColumnBiayaServis.HeaderText = "Biaya Servis";
-            ColumnBiayaServis.Name = "ColumnBiayaServis";
-            // 
-            // ColumnStatus
-            // 
-            ColumnStatus.HeaderText = "Status";
-            ColumnStatus.Name = "ColumnStatus";
-            ColumnStatus.Width = 80;
-            // 
             // UcDataServis
             // 
             AutoScaleDimensions = new SizeF(6F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(BtnTambahDataServis);
             Controls.Add(label2);
             Controls.Add(TextCariDataServis);
             Controls.Add(label1);
@@ -160,7 +143,6 @@
         private ContextMenuStrip contextMenuStrip1;
         private TextBox TextCariDataServis;
         private Label label2;
-        private Button BtnTambahDataServis;
         private DataGridViewTextBoxColumn ColumnIdServis;
         private DataGridViewTextBoxColumn ColumnTanggalServis;
         private DataGridViewTextBoxColumn ColumnNamaAlat;

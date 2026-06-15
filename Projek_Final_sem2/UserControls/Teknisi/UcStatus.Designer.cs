@@ -104,6 +104,7 @@
             TbxIDServisStatus.Name = "TbxIDServisStatus";
             TbxIDServisStatus.Size = new Size(180, 23);
             TbxIDServisStatus.TabIndex = 8;
+            TbxIDServisStatus.TextChanged += TbxIDServisStatus_TextChanged;
             // 
             // LblIDServisStatus
             // 

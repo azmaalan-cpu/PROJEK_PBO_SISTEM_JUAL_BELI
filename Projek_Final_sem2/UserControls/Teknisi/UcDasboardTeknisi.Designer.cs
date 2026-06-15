@@ -44,7 +44,6 @@
             LbTotalServis = new Label();
             panel1 = new Panel();
             DgvServisTerbaru = new DataGridView();
-            Column_no_servis = new DataGridViewTextBoxColumn();
             Column_Id_servis = new DataGridViewTextBoxColumn();
             Column_tanggal_servis = new DataGridViewTextBoxColumn();
             Column_nama_alat = new DataGridViewTextBoxColumn();
@@ -213,6 +212,7 @@
             LbAngkaTotalServis.Size = new Size(19, 21);
             LbAngkaTotalServis.TabIndex = 1;
             LbAngkaTotalServis.Text = "0";
+            LbAngkaTotalServis.Click += LbAngkaTotalServis_Click;
             // 
             // LbTotalServis
             // 
@@ -238,43 +238,34 @@
             // DgvServisTerbaru
             // 
             DgvServisTerbaru.AllowUserToOrderColumns = true;
+            DgvServisTerbaru.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvServisTerbaru.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvServisTerbaru.Columns.AddRange(new DataGridViewColumn[] { Column_no_servis, Column_Id_servis, Column_tanggal_servis, Column_nama_alat, Column_kerusakan_servis, Status });
+            DgvServisTerbaru.Columns.AddRange(new DataGridViewColumn[] { Column_Id_servis, Column_tanggal_servis, Column_nama_alat, Column_kerusakan_servis, Status });
             DgvServisTerbaru.Location = new Point(3, 13);
             DgvServisTerbaru.Name = "DgvServisTerbaru";
             DgvServisTerbaru.Size = new Size(516, 150);
             DgvServisTerbaru.TabIndex = 0;
-            DgvServisTerbaru.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // Column_no_servis
-            // 
-            Column_no_servis.HeaderText = "No.";
-            Column_no_servis.Name = "Column_no_servis";
-            Column_no_servis.Width = 30;
+            DgvServisTerbaru.CellContentClick += DgvServisTerbaru_CellContentClick;
             // 
             // Column_Id_servis
             // 
             Column_Id_servis.HeaderText = "ID Servis";
             Column_Id_servis.Name = "Column_Id_servis";
-            Column_Id_servis.Width = 50;
             // 
             // Column_tanggal_servis
             // 
             Column_tanggal_servis.HeaderText = "Tanggal";
             Column_tanggal_servis.Name = "Column_tanggal_servis";
-            Column_tanggal_servis.Width = 70;
             // 
             // Column_nama_alat
             // 
             Column_nama_alat.HeaderText = "Nama Alat";
             Column_nama_alat.Name = "Column_nama_alat";
-            Column_nama_alat.Width = 120;
             // 
             // Column_kerusakan_servis
             // 
             Column_kerusakan_servis.HeaderText = "Kerusakan";
             Column_kerusakan_servis.Name = "Column_kerusakan_servis";
-            Column_kerusakan_servis.Width = 110;
             // 
             // Status
             // 
@@ -337,12 +328,11 @@
         private Label LbTotalServis;
         private Panel panel1;
         private DataGridView DgvServisTerbaru;
-        private DataGridViewTextBoxColumn Column_no_servis;
+        private Label Label_servis_serbaru;
         private DataGridViewTextBoxColumn Column_Id_servis;
         private DataGridViewTextBoxColumn Column_tanggal_servis;
         private DataGridViewTextBoxColumn Column_nama_alat;
         private DataGridViewTextBoxColumn Column_kerusakan_servis;
         private DataGridViewTextBoxColumn Status;
-        private Label Label_servis_serbaru;
     }
 }

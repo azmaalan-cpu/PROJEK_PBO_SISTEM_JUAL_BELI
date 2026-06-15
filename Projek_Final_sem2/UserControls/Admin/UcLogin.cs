@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Npgsql;
 using Projek_Final_sem2.UserControls.Kasir;
+using Projek_Final_sem2.UserControls.Teknisi;
 
 namespace Projek_Final_sem2.UserControls
 {
@@ -76,7 +77,10 @@ namespace Projek_Final_sem2.UserControls
                             }
                             else if (role == "Teknisi")
                             {
+                                FmUtamaTeknisi teknisi = new FmUtamaTeknisi();
+                                teknisi.Show();
 
+                                this.FindForm().Hide();
                             }
 
                         }
