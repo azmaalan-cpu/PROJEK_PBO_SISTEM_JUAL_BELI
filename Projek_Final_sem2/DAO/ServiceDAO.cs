@@ -57,17 +57,35 @@ namespace Projek_Final_sem2.DAO
             return dt;
         }
 
-        public void BayarServis(int id_servis)
+        public bool BayarServis(int id_servis)
         {
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = @"UPDATE servis SET status_servis = 'Selesai' WHERE id_servis = @id_servis";
-                using (var cmd = new NpgsqlCommand(sql, connection))
+
+                // Check current status
+                string checkSql = "SELECT status_servis FROM servis WHERE id_servis = @id_servis";
+                using (var checkCmd = new NpgsqlCommand(checkSql, connection))
+                {
+                    checkCmd.Parameters.AddWithValue("@id_servis", id_servis);
+                    var statusObj = checkCmd.ExecuteScalar();
+                    if (statusObj == null || statusObj == DBNull.Value)
+                        throw new InvalidOperationException("ID servis tidak ditemukan.");
+
+                    var status = statusObj.ToString();
+                    if (status.Equals("Selesai", StringComparison.OrdinalIgnoreCase))
+                        return false; // already finished
+                }
+
+                // Update to Selesai
+                string updateSql = "UPDATE servis SET status_servis = 'Selesai' WHERE id_servis = @id_servis";
+                using (var cmd = new NpgsqlCommand(updateSql, connection))
                 {
                     cmd.Parameters.AddWithValue("@id_servis", id_servis);
                     cmd.ExecuteNonQuery();
                 }
+
+                return true; // updated
             }
         }
 
@@ -132,6 +150,20 @@ namespace Projek_Final_sem2.DAO
             }
             return dt;
         }
-        
+        public DataTable DgvDashboardServisAdmin()
+        {
+            DataTable dt = new DataTable();
+            using (var connection = db.GetConnection())
+            {
+                connection.Open();
+                string sql = @"select * from v_servis_terbaru";
+                using (var adapter = new Npgsql.NpgsqlDataAdapter(sql, connection))
+                {
+                    adapter.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
     }
 }

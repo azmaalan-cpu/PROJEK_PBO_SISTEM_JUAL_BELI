@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Npgsql;
+using Projek_Final_sem2.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +8,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using static Projek_Final_sem2.UserControls.Kasir.DAO.TransaksiDAO;
-using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.UserControls.Kasir
 {
@@ -64,6 +65,58 @@ namespace Projek_Final_sem2.UserControls.Kasir
             TbCariIdService.Focus();
 
         }
+
+
+        //private void btnBayar_Click(object sender, EventArgs e)
+        //{
+        //    if (activeIdServis == null) return;
+
+        //    var konfirmasi = MessageBox.Show(
+        //        $"Konfirmasi pembayaran untuk Servis ID {activeIdServis}?\n" +
+        //        $"Total: {lblTotalVal.Text}\n\n" +
+        //        "Status akan diubah menjadi 'selesai'.",
+        //        "Konfirmasi Pembayaran",
+        //        MessageBoxButtons.YesNo,
+        //        MessageBoxIcon.Question);
+
+        //    if (konfirmasi != DialogResult.Yes) return;
+
+        //    string sql = "UPDATE servis SET status_servis = 'selesai' WHERE id_servis = @idServis";
+
+        //    try
+        //    {
+        //        using (var conn = new NpgsqlConnection(connString))
+        //        {
+        //            conn.Open();
+        //            using (var cmd = new NpgsqlCommand(sql, conn))
+        //            {
+        //                cmd.Parameters.AddWithValue("idServis", activeIdServis.Value);
+        //                int rowsAffected = cmd.ExecuteNonQuery();
+
+        //                if (rowsAffected > 0)
+        //                {
+        //                    MessageBox.Show(
+        //                        $"Pembayaran berhasil!\nServis ID {activeIdServis} telah selesai.",
+        //                        "Sukses",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Information);
+
+        //                    ResetForm();
+        //                }
+        //                else
+        //                {
+        //                    TampilkanStatus("Gagal mengupdate status. Data tidak ditemukan.",
+        //                        System.Drawing.Color.Red);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TampilkanStatus("Error: " + ex.Message, System.Drawing.Color.Red);
+        //    }
+        //}
+
         private void BtnCariIdServis_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(TbCariIdService.Text.Trim(), out int idServis))

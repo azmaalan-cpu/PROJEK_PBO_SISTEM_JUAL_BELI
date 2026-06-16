@@ -72,7 +72,12 @@ namespace Projek_Final_sem2.UserControls
 
         private void BtnTampilkan_Click(object sender, EventArgs e)
         {
-          LoadGrafikServis();
+            LoadGrafikServis();
+        }
+
+        private void PanelTotalTransaksi_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

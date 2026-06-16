@@ -90,6 +90,7 @@
             CmbUbahStatus.Name = "CmbUbahStatus";
             CmbUbahStatus.Size = new Size(180, 23);
             CmbUbahStatus.TabIndex = 5;
+            CmbUbahStatus.SelectedIndexChanged += CmbUbahStatus_SelectedIndexChanged;
             // 
             // LblIDServisStatus
             // 

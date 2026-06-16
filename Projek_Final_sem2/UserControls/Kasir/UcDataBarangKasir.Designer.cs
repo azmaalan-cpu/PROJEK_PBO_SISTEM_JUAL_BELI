@@ -49,20 +49,20 @@
             PanelHeader.Controls.Add(BtnCariID);
             PanelHeader.Controls.Add(TbCariID);
             PanelHeader.Controls.Add(LbCariId);
-            PanelHeader.Location = new Point(1, 59);
-            PanelHeader.Margin = new Padding(4, 4, 4, 4);
+            PanelHeader.Location = new Point(1, 35);
+            PanelHeader.Margin = new Padding(3, 2, 3, 2);
             PanelHeader.Name = "PanelHeader";
-            PanelHeader.Size = new Size(851, 126);
+            PanelHeader.Size = new Size(596, 76);
             PanelHeader.TabIndex = 0;
             // 
             // BtnCariID
             // 
             BtnCariID.BackColor = Color.ForestGreen;
             BtnCariID.ForeColor = SystemColors.Control;
-            BtnCariID.Location = new Point(499, 44);
-            BtnCariID.Margin = new Padding(4, 4, 4, 4);
+            BtnCariID.Location = new Point(349, 26);
+            BtnCariID.Margin = new Padding(3, 2, 3, 2);
             BtnCariID.Name = "BtnCariID";
-            BtnCariID.Size = new Size(118, 36);
+            BtnCariID.Size = new Size(83, 22);
             BtnCariID.TabIndex = 2;
             BtnCariID.Text = "Cari";
             BtnCariID.UseVisualStyleBackColor = false;
@@ -71,10 +71,10 @@
             // TbCariID
             // 
             TbCariID.BorderStyle = BorderStyle.FixedSingle;
-            TbCariID.Location = new Point(248, 44);
-            TbCariID.Margin = new Padding(4, 4, 4, 4);
+            TbCariID.Location = new Point(174, 26);
+            TbCariID.Margin = new Padding(3, 2, 3, 2);
             TbCariID.Name = "TbCariID";
-            TbCariID.Size = new Size(218, 31);
+            TbCariID.Size = new Size(153, 23);
             TbCariID.TabIndex = 1;
             TbCariID.TextChanged += TbCariID_TextChanged;
             // 
@@ -83,10 +83,9 @@
             LbCariId.AutoSize = true;
             LbCariId.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbCariId.ForeColor = SystemColors.ActiveCaptionText;
-            LbCariId.Location = new Point(40, 38);
-            LbCariId.Margin = new Padding(4, 0, 4, 0);
+            LbCariId.Location = new Point(28, 23);
             LbCariId.Name = "LbCariId";
-            LbCariId.Size = new Size(194, 32);
+            LbCariId.Size = new Size(127, 21);
             LbCariId.TabIndex = 0;
             LbCariId.Text = "Cari ID Barang :";
             // 
@@ -95,10 +94,9 @@
             LbJudulDataBarang.AutoSize = true;
             LbJudulDataBarang.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbJudulDataBarang.ForeColor = Color.ForestGreen;
-            LbJudulDataBarang.Location = new Point(8, 11);
-            LbJudulDataBarang.Margin = new Padding(4, 0, 4, 0);
+            LbJudulDataBarang.Location = new Point(6, 7);
             LbJudulDataBarang.Name = "LbJudulDataBarang";
-            LbJudulDataBarang.Size = new Size(184, 32);
+            LbJudulDataBarang.Size = new Size(121, 21);
             LbJudulDataBarang.TabIndex = 1;
             LbJudulDataBarang.Text = "DATA BARANG";
             // 
@@ -108,12 +106,13 @@
             DgvBarang.BackgroundColor = SystemColors.Control;
             DgvBarang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvBarang.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
-            DgvBarang.Location = new Point(4, 192);
-            DgvBarang.Margin = new Padding(4, 4, 4, 4);
+            DgvBarang.Location = new Point(3, 115);
+            DgvBarang.Margin = new Padding(3, 2, 3, 2);
             DgvBarang.Name = "DgvBarang";
             DgvBarang.RowHeadersWidth = 51;
-            DgvBarang.Size = new Size(849, 269);
+            DgvBarang.Size = new Size(594, 161);
             DgvBarang.TabIndex = 0;
+            DgvBarang.CellContentClick += DgvBarang_CellContentClick;
             // 
             // Column1
             // 
@@ -152,14 +151,14 @@
             // 
             // UcDataBarangKasir
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(DgvBarang);
             Controls.Add(LbJudulDataBarang);
             Controls.Add(PanelHeader);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "UcDataBarangKasir";
-            Size = new Size(1470, 786);
+            Size = new Size(1029, 472);
             Load += UcDataBarangKasir_Load;
             PanelHeader.ResumeLayout(false);
             PanelHeader.PerformLayout();

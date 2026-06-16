@@ -11,7 +11,7 @@ using Projek_Final_sem2.Models;
 
 namespace Projek_Final_sem2.UserControls
 {
-    
+
     public partial class UcDataBarang : UserControl
     {
 
@@ -65,7 +65,7 @@ namespace Projek_Final_sem2.UserControls
 
         private void UcDataBarang_Load(object sender, EventArgs e)
         {
-            if(role == "kasir")
+            if (role == "kasir")
             {
                 BtnTambah.Visible = false;
                 BtnEdit.Visible = false;
@@ -91,7 +91,7 @@ namespace Projek_Final_sem2.UserControls
         private void LoadData()
         {
             DgvDaftarBarang.DataSource = new AlatDAO().GetAll();
-            
+
         }
 
         private void ClearForm()
@@ -133,7 +133,7 @@ namespace Projek_Final_sem2.UserControls
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if(selectedAlatId == 0)
+            if (selectedAlatId == 0)
             {
                 MessageBox.Show("Pilih data yang ingin diupdate!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -154,12 +154,12 @@ namespace Projek_Final_sem2.UserControls
 
         private void BtnHapus_Click(object sender, EventArgs e)
         {
-            if(selectedAlatId == 0)
+            if (selectedAlatId == 0)
             {
                 MessageBox.Show("Pilih data yang ingin dihapus!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if(MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 alatDAO.Delete(selectedAlatId);
                 MessageBox.Show("Data berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -171,10 +171,15 @@ namespace Projek_Final_sem2.UserControls
                 TbHarga.Clear();
                 TbStok.Clear();
             }
-    }
+        }
         private void BtnReset_Click(object sender, EventArgs e)
         {
             ClearForm();
+        }
+
+        private void DgvDaftarBarang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

@@ -23,7 +23,6 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
             CmbUbahStatus.Items.Add("Menunggu");
             CmbUbahStatus.Items.Add("Proses");
-            CmbUbahStatus.Items.Add("Selesai");
 
             CmbUbahStatus.SelectedIndex = 0;
 
@@ -194,6 +193,11 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
 
         private void TbxIDServisStatus_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbUbahStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

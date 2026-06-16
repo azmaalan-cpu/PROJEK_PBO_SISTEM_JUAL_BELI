@@ -87,33 +87,37 @@
             PaneDataBarang.Controls.Add(LbDataBarang);
             PaneDataBarang.Dock = DockStyle.Fill;
             PaneDataBarang.Location = new Point(0, 0);
+            PaneDataBarang.Margin = new Padding(2, 2, 2, 2);
             PaneDataBarang.Name = "PaneDataBarang";
-            PaneDataBarang.Size = new Size(814, 548);
+            PaneDataBarang.Size = new Size(570, 329);
             PaneDataBarang.TabIndex = 0;
             // 
             // CbxSupplier
             // 
             CbxSupplier.FormattingEnabled = true;
-            CbxSupplier.Location = new Point(253, 221);
+            CbxSupplier.Location = new Point(177, 133);
+            CbxSupplier.Margin = new Padding(2, 2, 2, 2);
             CbxSupplier.Name = "CbxSupplier";
-            CbxSupplier.Size = new Size(261, 33);
+            CbxSupplier.Size = new Size(184, 23);
             CbxSupplier.TabIndex = 17;
             // 
             // CbxKategori
             // 
             CbxKategori.FormattingEnabled = true;
-            CbxKategori.Location = new Point(253, 88);
+            CbxKategori.Location = new Point(177, 53);
+            CbxKategori.Margin = new Padding(2, 2, 2, 2);
             CbxKategori.Name = "CbxKategori";
-            CbxKategori.Size = new Size(261, 33);
+            CbxKategori.Size = new Size(184, 23);
             CbxKategori.TabIndex = 16;
             // 
             // PanelDaftarBarang
             // 
             PanelDaftarBarang.Controls.Add(DgvDaftarBarang);
             PanelDaftarBarang.Controls.Add(LbDaftarBarang);
-            PanelDaftarBarang.Location = new Point(29, 310);
+            PanelDaftarBarang.Location = new Point(20, 186);
+            PanelDaftarBarang.Margin = new Padding(2, 2, 2, 2);
             PanelDaftarBarang.Name = "PanelDaftarBarang";
-            PanelDaftarBarang.Size = new Size(581, 178);
+            PanelDaftarBarang.Size = new Size(407, 107);
             PanelDaftarBarang.TabIndex = 15;
             // 
             // DgvDaftarBarang
@@ -121,12 +125,14 @@
             DgvDaftarBarang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvDaftarBarang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvDaftarBarang.Columns.AddRange(new DataGridViewColumn[] { id_alat, nama_alat, nama_kategori, harga, stok, nama_supplier });
-            DgvDaftarBarang.Location = new Point(3, 26);
+            DgvDaftarBarang.Location = new Point(2, 16);
+            DgvDaftarBarang.Margin = new Padding(2, 2, 2, 2);
             DgvDaftarBarang.Name = "DgvDaftarBarang";
             DgvDaftarBarang.RowHeadersWidth = 62;
-            DgvDaftarBarang.Size = new Size(575, 152);
+            DgvDaftarBarang.Size = new Size(402, 91);
             DgvDaftarBarang.TabIndex = 1;
             DgvDaftarBarang.CellClick += DgvDaftarBarang_CellClick;
+            DgvDaftarBarang.CellContentClick += DgvDaftarBarang_CellContentClick;
             // 
             // id_alat
             // 
@@ -175,9 +181,10 @@
             // 
             LbDaftarBarang.AutoSize = true;
             LbDaftarBarang.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbDaftarBarang.Location = new Point(3, 0);
+            LbDaftarBarang.Location = new Point(2, 0);
+            LbDaftarBarang.Margin = new Padding(2, 0, 2, 0);
             LbDaftarBarang.Name = "LbDaftarBarang";
-            LbDaftarBarang.Size = new Size(132, 23);
+            LbDaftarBarang.Size = new Size(96, 17);
             LbDaftarBarang.TabIndex = 0;
             LbDaftarBarang.Text = "Daftar Barang";
             // 
@@ -185,9 +192,10 @@
             // 
             BtnReset.BackColor = Color.DimGray;
             BtnReset.ForeColor = Color.White;
-            BtnReset.Location = new Point(451, 268);
+            BtnReset.Location = new Point(316, 161);
+            BtnReset.Margin = new Padding(2, 2, 2, 2);
             BtnReset.Name = "BtnReset";
-            BtnReset.Size = new Size(112, 34);
+            BtnReset.Size = new Size(78, 20);
             BtnReset.TabIndex = 14;
             BtnReset.Text = "Reset";
             BtnReset.UseVisualStyleBackColor = false;
@@ -197,9 +205,10 @@
             // 
             BtnHapus.BackColor = Color.Red;
             BtnHapus.ForeColor = Color.White;
-            BtnHapus.Location = new Point(310, 269);
+            BtnHapus.Location = new Point(217, 161);
+            BtnHapus.Margin = new Padding(2, 2, 2, 2);
             BtnHapus.Name = "BtnHapus";
-            BtnHapus.Size = new Size(112, 34);
+            BtnHapus.Size = new Size(78, 20);
             BtnHapus.TabIndex = 13;
             BtnHapus.Text = "Hapus";
             BtnHapus.UseVisualStyleBackColor = false;
@@ -209,9 +218,10 @@
             // 
             BtnEdit.BackColor = Color.DeepSkyBlue;
             BtnEdit.ForeColor = Color.White;
-            BtnEdit.Location = new Point(173, 269);
+            BtnEdit.Location = new Point(121, 161);
+            BtnEdit.Margin = new Padding(2, 2, 2, 2);
             BtnEdit.Name = "BtnEdit";
-            BtnEdit.Size = new Size(112, 34);
+            BtnEdit.Size = new Size(78, 20);
             BtnEdit.TabIndex = 12;
             BtnEdit.Text = "Edit";
             BtnEdit.UseVisualStyleBackColor = false;
@@ -221,9 +231,10 @@
             // 
             BtnTambah.BackColor = Color.Green;
             BtnTambah.ForeColor = Color.White;
-            BtnTambah.Location = new Point(36, 268);
+            BtnTambah.Location = new Point(25, 161);
+            BtnTambah.Margin = new Padding(2, 2, 2, 2);
             BtnTambah.Name = "BtnTambah";
-            BtnTambah.Size = new Size(112, 34);
+            BtnTambah.Size = new Size(78, 20);
             BtnTambah.TabIndex = 11;
             BtnTambah.Text = "Tambah";
             BtnTambah.UseVisualStyleBackColor = false;
@@ -233,81 +244,90 @@
             // 
             LbSupplier.AutoSize = true;
             LbSupplier.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LbSupplier.Location = new Point(29, 227);
+            LbSupplier.Location = new Point(20, 136);
+            LbSupplier.Margin = new Padding(2, 0, 2, 0);
             LbSupplier.Name = "LbSupplier";
-            LbSupplier.Size = new Size(78, 22);
+            LbSupplier.Size = new Size(53, 16);
             LbSupplier.TabIndex = 9;
             LbSupplier.Text = "Supplier";
             // 
             // TbStok
             // 
             TbStok.BorderStyle = BorderStyle.FixedSingle;
-            TbStok.Location = new Point(253, 182);
+            TbStok.Location = new Point(177, 109);
+            TbStok.Margin = new Padding(2, 2, 2, 2);
             TbStok.Name = "TbStok";
-            TbStok.Size = new Size(261, 31);
+            TbStok.Size = new Size(183, 23);
             TbStok.TabIndex = 8;
             // 
             // LbStok
             // 
             LbStok.AutoSize = true;
             LbStok.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LbStok.Location = new Point(29, 185);
+            LbStok.Location = new Point(20, 111);
+            LbStok.Margin = new Padding(2, 0, 2, 0);
             LbStok.Name = "LbStok";
-            LbStok.Size = new Size(45, 22);
+            LbStok.Size = new Size(33, 16);
             LbStok.TabIndex = 7;
             LbStok.Text = "Stok";
             // 
             // TbHarga
             // 
             TbHarga.BorderStyle = BorderStyle.FixedSingle;
-            TbHarga.Location = new Point(253, 137);
+            TbHarga.Location = new Point(177, 82);
+            TbHarga.Margin = new Padding(2, 2, 2, 2);
             TbHarga.Name = "TbHarga";
-            TbHarga.Size = new Size(261, 31);
+            TbHarga.Size = new Size(183, 23);
             TbHarga.TabIndex = 6;
             // 
             // LbHarga
             // 
             LbHarga.AutoSize = true;
             LbHarga.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LbHarga.Location = new Point(29, 137);
+            LbHarga.Location = new Point(20, 82);
+            LbHarga.Margin = new Padding(2, 0, 2, 0);
             LbHarga.Name = "LbHarga";
-            LbHarga.Size = new Size(58, 22);
+            LbHarga.Size = new Size(40, 16);
             LbHarga.TabIndex = 5;
             LbHarga.Text = "Harga";
             // 
             // TbKategori
             // 
             TbKategori.BorderStyle = BorderStyle.FixedSingle;
-            TbKategori.Location = new Point(253, 90);
+            TbKategori.Location = new Point(177, 54);
+            TbKategori.Margin = new Padding(2, 2, 2, 2);
             TbKategori.Name = "TbKategori";
-            TbKategori.Size = new Size(261, 31);
+            TbKategori.Size = new Size(183, 23);
             TbKategori.TabIndex = 4;
             // 
             // LbKategori
             // 
             LbKategori.AutoSize = true;
             LbKategori.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LbKategori.Location = new Point(29, 90);
+            LbKategori.Location = new Point(20, 54);
+            LbKategori.Margin = new Padding(2, 0, 2, 0);
             LbKategori.Name = "LbKategori";
-            LbKategori.Size = new Size(79, 22);
+            LbKategori.Size = new Size(54, 16);
             LbKategori.TabIndex = 3;
             LbKategori.Text = "Kategori";
             // 
             // TbNamaAlat
             // 
             TbNamaAlat.BorderStyle = BorderStyle.FixedSingle;
-            TbNamaAlat.Location = new Point(253, 46);
+            TbNamaAlat.Location = new Point(177, 28);
+            TbNamaAlat.Margin = new Padding(2, 2, 2, 2);
             TbNamaAlat.Name = "TbNamaAlat";
-            TbNamaAlat.Size = new Size(261, 31);
+            TbNamaAlat.Size = new Size(183, 23);
             TbNamaAlat.TabIndex = 2;
             // 
             // LbNamaAlat
             // 
             LbNamaAlat.AutoSize = true;
             LbNamaAlat.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LbNamaAlat.Location = new Point(29, 48);
+            LbNamaAlat.Location = new Point(20, 29);
+            LbNamaAlat.Margin = new Padding(2, 0, 2, 0);
             LbNamaAlat.Name = "LbNamaAlat";
-            LbNamaAlat.Size = new Size(94, 22);
+            LbNamaAlat.Size = new Size(65, 16);
             LbNamaAlat.TabIndex = 1;
             LbNamaAlat.Text = "Nama Alat";
             // 
@@ -315,9 +335,10 @@
             // 
             LbDataBarang.AutoSize = true;
             LbDataBarang.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbDataBarang.Location = new Point(20, 6);
+            LbDataBarang.Location = new Point(14, 4);
+            LbDataBarang.Margin = new Padding(2, 0, 2, 0);
             LbDataBarang.Name = "LbDataBarang";
-            LbDataBarang.Size = new Size(143, 26);
+            LbDataBarang.Size = new Size(95, 19);
             LbDataBarang.TabIndex = 0;
             LbDataBarang.Text = "Data Barang";
             // 
@@ -365,11 +386,12 @@
             // 
             // UcDataBarang
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(PaneDataBarang);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "UcDataBarang";
-            Size = new Size(814, 548);
+            Size = new Size(570, 329);
             PaneDataBarang.ResumeLayout(false);
             PaneDataBarang.PerformLayout();
             PanelDaftarBarang.ResumeLayout(false);

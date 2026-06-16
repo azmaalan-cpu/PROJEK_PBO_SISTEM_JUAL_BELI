@@ -33,12 +33,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
             DgvBarang.DataSource =
          transaksiDAO.GetDataBarang();
         }
-        
+
         private void LoadTotalBarang()
         {
 
-            
-                
+
+
         }
 
         private void TbCariID_TextChanged(object sender, EventArgs e)
@@ -68,7 +68,13 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
                 return;
 
-            }  DgvBarang.DataSource = barangDAO.CariBarangById(idBarang);
+            }
+            DgvBarang.DataSource = barangDAO.CariBarangById(idBarang);
+        }
+
+        private void DgvBarang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
