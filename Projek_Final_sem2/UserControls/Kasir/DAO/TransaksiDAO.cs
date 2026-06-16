@@ -93,30 +93,96 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 }
             }
         }
+        public DataTable GetDataBarang()
+        {
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+                string sql = @"
+                SELECT id_alat, nama_alat, harga, stok
+                FROM alat_pertanian
+                ORDER BY id_alat";
+                using (var da = new NpgsqlDataAdapter(sql, conn))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
 
-        public DataTable GetDataTransaksi()
+        public decimal GetTotalPendapatan()
+        {
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string sql =
+                    "SELECT total_pendapatan FROM v_total_pendapatan_dashboard";
+
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    if (result == null || result == DBNull.Value)
+                        return 0;
+
+                    return Convert.ToDecimal(result);
+                }
+            }
+        }
+
+        public int GetTotalBarangTerjual()
         {
 
             using (var conn = db.GetConnection())
             {
                 conn.Open();
 
-                string sql = @"
-                SELECT
-                t.id_transaksi,
-                t.tanggal,
-                u.username,
-                a.id_alat,
-                a.nama_alat,
-                a.harga,
-                t.jumlah,
-                    (a.harga * t.jumlah) AS subtotal
-                FROM transaksi t
-                INNER JOIN alat_pertanian a
-                    ON t.id_alat = a.id_alat
-                INNER JOIN users u
-                    ON t.id_user = u.id_user
-                ORDER BY t.id_transaksi DESC";
+                string sql =
+                    "SELECT total_barang_terjual FROM v_total_barang_terjual_dashboard";
+
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    if (result == null || result == DBNull.Value)
+                        return 0;
+
+                    return Convert.ToInt32(result);
+                }
+            }
+        }
+
+        public int GetTotalTransaksi()
+        {
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string sql =
+                    "SELECT total_transaksi FROM v_total_transaksi_dashboard";
+
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    if (result == null || result == DBNull.Value)
+                        return 0;
+
+                    return Convert.ToInt32(result);
+                }
+            }
+        }
+
+        public DataTable GetInformasiTransaksi()
+        {
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+
+                string sql =
+                    "SELECT * FROM v_informasi_transaksi";
 
                 using (var da = new NpgsqlDataAdapter(sql, conn))
                 {
@@ -128,15 +194,15 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
 
         }
 
-        public DataTable GetDataBarang()
+        public DataTable GetTransaksiPenjualan()
         {
             using (var conn = db.GetConnection())
             {
                 conn.Open();
-                string sql = @"
-                SELECT id_alat, nama_alat, harga, stok
-                FROM alat_pertanian
-                ORDER BY id_alat";
+
+                string sql =
+                    "SELECT * FROM v_transaksi_penjualan";
+
                 using (var da = new NpgsqlDataAdapter(sql, conn))
                 {
                     DataTable dt = new DataTable();

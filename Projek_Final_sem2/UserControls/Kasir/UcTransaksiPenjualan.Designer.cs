@@ -118,7 +118,7 @@
             label1.ForeColor = Color.DarkGreen;
             label1.Location = new Point(28, 13);
             label1.Name = "label1";
-            label1.Size = new Size(160, 26);
+            label1.Size = new Size(132, 23);
             label1.TabIndex = 0;
             label1.Text = "Transaksi Alat";
             // 
@@ -152,7 +152,7 @@
             TxtCariBarang.Location = new Point(207, 29);
             TxtCariBarang.Margin = new Padding(3, 4, 3, 4);
             TxtCariBarang.Name = "TxtCariBarang";
-            TxtCariBarang.Size = new Size(281, 31);
+            TxtCariBarang.Size = new Size(281, 27);
             TxtCariBarang.TabIndex = 1;
             // 
             // LbCariIdBarangTransaksiPenjualan
@@ -161,7 +161,7 @@
             LbCariIdBarangTransaksiPenjualan.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbCariIdBarangTransaksiPenjualan.Location = new Point(28, 26);
             LbCariIdBarangTransaksiPenjualan.Name = "LbCariIdBarangTransaksiPenjualan";
-            LbCariIdBarangTransaksiPenjualan.Size = new Size(201, 26);
+            LbCariIdBarangTransaksiPenjualan.Size = new Size(162, 23);
             LbCariIdBarangTransaksiPenjualan.TabIndex = 0;
             LbCariIdBarangTransaksiPenjualan.Text = "Cari Id Barang    :";
             // 
@@ -232,7 +232,7 @@
             LbHarga1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbHarga1.Location = new Point(17, 185);
             LbHarga1.Name = "LbHarga1";
-            LbHarga1.Size = new Size(87, 20);
+            LbHarga1.Size = new Size(75, 17);
             LbHarga1.TabIndex = 3;
             LbHarga1.Text = "Rp 75.000";
             // 
@@ -243,7 +243,7 @@
             LbStok1.ForeColor = SystemColors.ActiveCaptionText;
             LbStok1.Location = new Point(17, 160);
             LbStok1.Name = "LbStok1";
-            LbStok1.Size = new Size(78, 20);
+            LbStok1.Size = new Size(67, 17);
             LbStok1.TabIndex = 2;
             LbStok1.Text = "Stok : 15";
             // 
@@ -253,7 +253,7 @@
             LbNamaBarang1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbNamaBarang1.Location = new Point(17, 135);
             LbNamaBarang1.Name = "LbNamaBarang1";
-            LbNamaBarang1.Size = new Size(75, 20);
+            LbNamaBarang1.Size = new Size(63, 17);
             LbNamaBarang1.TabIndex = 1;
             LbNamaBarang1.Text = "Cangkul";
             // 
@@ -264,7 +264,7 @@
             LbID1.ForeColor = SystemColors.ActiveCaptionText;
             LbID1.Location = new Point(17, 111);
             LbID1.Name = "LbID1";
-            LbID1.Size = new Size(53, 20);
+            LbID1.Size = new Size(46, 17);
             LbID1.TabIndex = 1;
             LbID1.Text = "ID : 1";
             LbID1.Click += LbLID1_Click;
@@ -318,7 +318,7 @@
             LbHarga2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbHarga2.Location = new Point(17, 185);
             LbHarga2.Name = "LbHarga2";
-            LbHarga2.Size = new Size(96, 20);
+            LbHarga2.Size = new Size(83, 17);
             LbHarga2.TabIndex = 3;
             LbHarga2.Text = "Rp 800.000";
             // 
@@ -329,7 +329,7 @@
             LbStok2.ForeColor = SystemColors.ActiveCaptionText;
             LbStok2.Location = new Point(17, 160);
             LbStok2.Name = "LbStok2";
-            LbStok2.Size = new Size(78, 20);
+            LbStok2.Size = new Size(67, 17);
             LbStok2.TabIndex = 2;
             LbStok2.Text = "Stok : 10";
             // 
@@ -339,7 +339,7 @@
             LbNamaBarang2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbNamaBarang2.Location = new Point(17, 135);
             LbNamaBarang2.Name = "LbNamaBarang2";
-            LbNamaBarang2.Size = new Size(93, 20);
+            LbNamaBarang2.Size = new Size(76, 17);
             LbNamaBarang2.TabIndex = 1;
             LbNamaBarang2.Text = "Pompa Air";
             // 
@@ -350,7 +350,7 @@
             LbID2.ForeColor = SystemColors.ActiveCaptionText;
             LbID2.Location = new Point(17, 111);
             LbID2.Name = "LbID2";
-            LbID2.Size = new Size(53, 20);
+            LbID2.Size = new Size(46, 17);
             LbID2.TabIndex = 1;
             LbID2.Text = "ID : 2";
             // 
@@ -403,7 +403,7 @@
             LbHarga3.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbHarga3.Location = new Point(17, 185);
             LbHarga3.Name = "LbHarga3";
-            LbHarga3.Size = new Size(96, 20);
+            LbHarga3.Size = new Size(83, 17);
             LbHarga3.TabIndex = 3;
             LbHarga3.Text = "Rp 350.000";
             // 
@@ -414,7 +414,7 @@
             LbStok3.ForeColor = SystemColors.ActiveCaptionText;
             LbStok3.Location = new Point(17, 160);
             LbStok3.Name = "LbStok3";
-            LbStok3.Size = new Size(78, 20);
+            LbStok3.Size = new Size(67, 17);
             LbStok3.TabIndex = 2;
             LbStok3.Text = "Stok : 12";
             // 
@@ -424,7 +424,7 @@
             LbNamaBarang3.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbNamaBarang3.Location = new Point(17, 135);
             LbNamaBarang3.Name = "LbNamaBarang3";
-            LbNamaBarang3.Size = new Size(127, 20);
+            LbNamaBarang3.Size = new Size(109, 17);
             LbNamaBarang3.TabIndex = 1;
             LbNamaBarang3.Text = "Mesin Semprot";
             // 
@@ -435,7 +435,7 @@
             LbID3.ForeColor = SystemColors.ActiveCaptionText;
             LbID3.Location = new Point(17, 111);
             LbID3.Name = "LbID3";
-            LbID3.Size = new Size(53, 20);
+            LbID3.Size = new Size(46, 17);
             LbID3.TabIndex = 1;
             LbID3.Text = "ID : 3";
             // 
@@ -488,7 +488,7 @@
             LbHarga4.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbHarga4.Location = new Point(17, 185);
             LbHarga4.Name = "LbHarga4";
-            LbHarga4.Size = new Size(96, 20);
+            LbHarga4.Size = new Size(83, 17);
             LbHarga4.TabIndex = 3;
             LbHarga4.Text = "Rp 250.000";
             // 
@@ -499,7 +499,7 @@
             LbStok4.ForeColor = SystemColors.ActiveCaptionText;
             LbStok4.Location = new Point(17, 160);
             LbStok4.Name = "LbStok4";
-            LbStok4.Size = new Size(78, 20);
+            LbStok4.Size = new Size(67, 17);
             LbStok4.TabIndex = 2;
             LbStok4.Text = "Stok : 20";
             // 
@@ -509,7 +509,7 @@
             LbNamaBarang4.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbNamaBarang4.Location = new Point(17, 135);
             LbNamaBarang4.Name = "LbNamaBarang4";
-            LbNamaBarang4.Size = new Size(149, 20);
+            LbNamaBarang4.Size = new Size(123, 17);
             LbNamaBarang4.TabIndex = 1;
             LbNamaBarang4.Text = "Selang Pompa Air";
             // 
@@ -520,7 +520,7 @@
             LbID4.ForeColor = SystemColors.ActiveCaptionText;
             LbID4.Location = new Point(17, 111);
             LbID4.Name = "LbID4";
-            LbID4.Size = new Size(53, 20);
+            LbID4.Size = new Size(46, 17);
             LbID4.TabIndex = 1;
             LbID4.Text = "ID : 4";
             // 
@@ -573,7 +573,7 @@
             LbHarga5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbHarga5.Location = new Point(17, 185);
             LbHarga5.Name = "LbHarga5";
-            LbHarga5.Size = new Size(96, 20);
+            LbHarga5.Size = new Size(83, 17);
             LbHarga5.TabIndex = 3;
             LbHarga5.Text = "Rp 150.000";
             // 
@@ -584,7 +584,7 @@
             LbStok5.ForeColor = SystemColors.ActiveCaptionText;
             LbStok5.Location = new Point(17, 160);
             LbStok5.Name = "LbStok5";
-            LbStok5.Size = new Size(78, 20);
+            LbStok5.Size = new Size(67, 17);
             LbStok5.TabIndex = 2;
             LbStok5.Text = "Stok : 18";
             // 
@@ -594,7 +594,7 @@
             LbNamaBarang5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbNamaBarang5.Location = new Point(17, 135);
             LbNamaBarang5.Name = "LbNamaBarang5";
-            LbNamaBarang5.Size = new Size(129, 20);
+            LbNamaBarang5.Size = new Size(108, 17);
             LbNamaBarang5.TabIndex = 1;
             LbNamaBarang5.Text = "Pupuk Organik";
             // 
@@ -605,7 +605,7 @@
             LbID5.ForeColor = SystemColors.ActiveCaptionText;
             LbID5.Location = new Point(17, 111);
             LbID5.Name = "LbID5";
-            LbID5.Size = new Size(53, 20);
+            LbID5.Size = new Size(46, 17);
             LbID5.TabIndex = 1;
             LbID5.Text = "ID : 5";
             // 
@@ -658,7 +658,7 @@
             LbHarga6.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbHarga6.Location = new Point(17, 185);
             LbHarga6.Name = "LbHarga6";
-            LbHarga6.Size = new Size(110, 20);
+            LbHarga6.Size = new Size(95, 17);
             LbHarga6.TabIndex = 3;
             LbHarga6.Text = "Rp 9.000.000";
             // 
@@ -669,7 +669,7 @@
             LbStok6.ForeColor = SystemColors.ActiveCaptionText;
             LbStok6.Location = new Point(17, 160);
             LbStok6.Name = "LbStok6";
-            LbStok6.Size = new Size(78, 20);
+            LbStok6.Size = new Size(67, 17);
             LbStok6.TabIndex = 2;
             LbStok6.Text = "Stok : 16";
             // 
@@ -679,7 +679,7 @@
             LbNamaBarang6.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbNamaBarang6.Location = new Point(17, 135);
             LbNamaBarang6.Name = "LbNamaBarang6";
-            LbNamaBarang6.Size = new Size(110, 20);
+            LbNamaBarang6.Size = new Size(93, 17);
             LbNamaBarang6.TabIndex = 1;
             LbNamaBarang6.Text = "Traktor Mini";
             // 
@@ -690,7 +690,7 @@
             LbID6.ForeColor = SystemColors.ActiveCaptionText;
             LbID6.Location = new Point(17, 111);
             LbID6.Name = "LbID6";
-            LbID6.Size = new Size(53, 20);
+            LbID6.Size = new Size(46, 17);
             LbID6.TabIndex = 1;
             LbID6.Text = "ID : 6";
             // 
@@ -817,7 +817,7 @@
             LblTotalBayar.ForeColor = Color.ForestGreen;
             LblTotalBayar.Location = new Point(135, 23);
             LblTotalBayar.Name = "LblTotalBayar";
-            LblTotalBayar.Size = new Size(50, 25);
+            LblTotalBayar.Size = new Size(41, 20);
             LblTotalBayar.TabIndex = 1;
             LblTotalBayar.Text = "Rp 0";
             LblTotalBayar.Click += LblTotalBayar_Click;
@@ -827,14 +827,13 @@
             LbTotalBayar.AutoSize = true;
             LbTotalBayar.Location = new Point(29, 22);
             LbTotalBayar.Name = "LbTotalBayar";
-            LbTotalBayar.Size = new Size(123, 25);
+            LbTotalBayar.Size = new Size(100, 20);
             LbTotalBayar.TabIndex = 0;
             LbTotalBayar.Text = "Total Bayar  :";
-          
             // 
             // UcTransaksiPenjualan
             // 
-            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(PanelTotalBayar);
             Controls.Add(GbKeranjangBelanja);

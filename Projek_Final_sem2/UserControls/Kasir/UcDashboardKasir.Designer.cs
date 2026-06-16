@@ -41,7 +41,6 @@
             LabelTotalPendapatan = new Label();
             LbPendapatan = new Label();
             PanelDataGridView = new Panel();
-            BtnLihatSemua = new Button();
             DgvTransaksi = new DataGridView();
             ColNo = new DataGridViewTextBoxColumn();
             ColTanggal = new DataGridViewTextBoxColumn();
@@ -49,9 +48,12 @@
             ColTotal = new DataGridViewTextBoxColumn();
             LbTransaksiPenjualan = new Label();
             PanelInfo = new Panel();
-            LabelStokBarang = new Label();
-            LbPendapatanHariIni = new Label();
-            LabelTransaksiHariIni = new Label();
+            LbJumlahBarang = new Label();
+            LbPendapatanDashboard = new Label();
+            LbIdTransaksi = new Label();
+            LabelJumlahBarang = new Label();
+            LabelPendapatan = new Label();
+            LabelIdTransaksi = new Label();
             PcxKeranjang = new PictureBox();
             LbInformasi = new Label();
             PanelBarang.SuspendLayout();
@@ -105,10 +107,11 @@
             // LbDataBarang
             // 
             LbDataBarang.AutoSize = true;
+            LbDataBarang.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbDataBarang.ForeColor = Color.White;
             LbDataBarang.Location = new Point(18, 13);
             LbDataBarang.Name = "LbDataBarang";
-            LbDataBarang.Size = new Size(96, 20);
+            LbDataBarang.Size = new Size(100, 20);
             LbDataBarang.TabIndex = 0;
             LbDataBarang.Text = "Data Barang ";
             // 
@@ -135,12 +138,13 @@
             // LbPenjualan
             // 
             LbPenjualan.AutoSize = true;
+            LbPenjualan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbPenjualan.ForeColor = Color.White;
             LbPenjualan.Location = new Point(38, 16);
             LbPenjualan.Name = "LbPenjualan";
-            LbPenjualan.Size = new Size(128, 20);
+            LbPenjualan.Size = new Size(77, 20);
             LbPenjualan.TabIndex = 0;
-            LbPenjualan.Text = "Penjualan Hari ini ";
+            LbPenjualan.Text = "Penjualan";
             // 
             // PanelPendapatan
             // 
@@ -165,32 +169,22 @@
             // LbPendapatan
             // 
             LbPendapatan.AutoSize = true;
+            LbPendapatan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbPendapatan.ForeColor = Color.White;
             LbPendapatan.Location = new Point(18, 16);
             LbPendapatan.Name = "LbPendapatan";
-            LbPendapatan.Size = new Size(143, 20);
+            LbPendapatan.Size = new Size(135, 20);
             LbPendapatan.TabIndex = 0;
-            LbPendapatan.Text = "Pendapatan Hari Ini ";
+            LbPendapatan.Text = "Total Pendapatan ";
             // 
             // PanelDataGridView
             // 
-            PanelDataGridView.Controls.Add(BtnLihatSemua);
             PanelDataGridView.Controls.Add(DgvTransaksi);
             PanelDataGridView.Controls.Add(LbTransaksiPenjualan);
             PanelDataGridView.Location = new Point(20, 259);
             PanelDataGridView.Name = "PanelDataGridView";
             PanelDataGridView.Size = new Size(507, 269);
             PanelDataGridView.TabIndex = 6;
-            // 
-            // BtnLihatSemua
-            // 
-            BtnLihatSemua.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnLihatSemua.Location = new Point(374, 230);
-            BtnLihatSemua.Name = "BtnLihatSemua";
-            BtnLihatSemua.Size = new Size(120, 30);
-            BtnLihatSemua.TabIndex = 2;
-            BtnLihatSemua.Text = "Lihat Semua";
-            BtnLihatSemua.UseVisualStyleBackColor = true;
             // 
             // DgvTransaksi
             // 
@@ -199,8 +193,9 @@
             DgvTransaksi.Location = new Point(3, 36);
             DgvTransaksi.Name = "DgvTransaksi";
             DgvTransaksi.RowHeadersWidth = 51;
-            DgvTransaksi.Size = new Size(501, 188);
+            DgvTransaksi.Size = new Size(504, 230);
             DgvTransaksi.TabIndex = 1;
+            DgvTransaksi.CellClick += DgvTransaksi_CellClick;
             // 
             // ColNo
             // 
@@ -211,6 +206,7 @@
             // 
             // ColTanggal
             // 
+            ColTanggal.DataPropertyName = "tanggal";
             ColTanggal.HeaderText = "Tanggal";
             ColTanggal.MinimumWidth = 6;
             ColTanggal.Name = "ColTanggal";
@@ -218,6 +214,7 @@
             // 
             // ColNoTransaksi
             // 
+            ColNoTransaksi.DataPropertyName = "id_transaksi";
             ColNoTransaksi.HeaderText = "No Transaksi";
             ColNoTransaksi.MinimumWidth = 6;
             ColNoTransaksi.Name = "ColNoTransaksi";
@@ -225,6 +222,7 @@
             // 
             // ColTotal
             // 
+            ColTotal.DataPropertyName = "total";
             ColTotal.HeaderText = "Total";
             ColTotal.MinimumWidth = 6;
             ColTotal.Name = "ColTotal";
@@ -236,51 +234,81 @@
             LbTransaksiPenjualan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbTransaksiPenjualan.Location = new Point(7, 8);
             LbTransaksiPenjualan.Name = "LbTransaksiPenjualan";
-            LbTransaksiPenjualan.Size = new Size(208, 20);
+            LbTransaksiPenjualan.Size = new Size(146, 20);
             LbTransaksiPenjualan.TabIndex = 0;
-            LbTransaksiPenjualan.Text = "Transaksi Penjualan Terbaru ";
+            LbTransaksiPenjualan.Text = "Transaksi Penjualan";
             // 
             // PanelInfo
             // 
-            PanelInfo.Controls.Add(LabelStokBarang);
-            PanelInfo.Controls.Add(LbPendapatanHariIni);
-            PanelInfo.Controls.Add(LabelTransaksiHariIni);
+            PanelInfo.Controls.Add(LbJumlahBarang);
+            PanelInfo.Controls.Add(LbPendapatanDashboard);
+            PanelInfo.Controls.Add(LbIdTransaksi);
+            PanelInfo.Controls.Add(LabelJumlahBarang);
+            PanelInfo.Controls.Add(LabelPendapatan);
+            PanelInfo.Controls.Add(LabelIdTransaksi);
             PanelInfo.Controls.Add(PcxKeranjang);
             PanelInfo.Controls.Add(LbInformasi);
-            PanelInfo.Location = new Point(548, 259);
+            PanelInfo.Location = new Point(533, 259);
             PanelInfo.Name = "PanelInfo";
             PanelInfo.Size = new Size(455, 269);
             PanelInfo.TabIndex = 7;
             // 
-            // LabelStokBarang
+            // LbJumlahBarang
             // 
-            LabelStokBarang.AutoSize = true;
-            LabelStokBarang.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LabelStokBarang.Location = new Point(22, 163);
-            LabelStokBarang.Name = "LabelStokBarang";
-            LabelStokBarang.Size = new Size(114, 20);
-            LabelStokBarang.TabIndex = 4;
-            LabelStokBarang.Text = "Stok Barang    :";
+            LbJumlahBarang.AutoSize = true;
+            LbJumlahBarang.Location = new Point(162, 155);
+            LbJumlahBarang.Name = "LbJumlahBarang";
+            LbJumlahBarang.Size = new Size(110, 20);
+            LbJumlahBarang.TabIndex = 10;
+            LbJumlahBarang.Text = "Jumlah Barang ";
             // 
-            // LbPendapatanHariIni
+            // LbPendapatanDashboard
             // 
-            LbPendapatanHariIni.AutoSize = true;
-            LbPendapatanHariIni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbPendapatanHariIni.Location = new Point(22, 106);
-            LbPendapatanHariIni.Name = "LbPendapatanHariIni";
-            LbPendapatanHariIni.Size = new Size(163, 20);
-            LbPendapatanHariIni.TabIndex = 3;
-            LbPendapatanHariIni.Text = "Pendapatan Hari Ini   :";
+            LbPendapatanDashboard.AutoSize = true;
+            LbPendapatanDashboard.Location = new Point(141, 106);
+            LbPendapatanDashboard.Name = "LbPendapatanDashboard";
+            LbPendapatanDashboard.Size = new Size(89, 20);
+            LbPendapatanDashboard.TabIndex = 9;
+            LbPendapatanDashboard.Text = "pendapatan";
             // 
-            // LabelTransaksiHariIni
+            // LbIdTransaksi
             // 
-            LabelTransaksiHariIni.AutoSize = true;
-            LabelTransaksiHariIni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LabelTransaksiHariIni.Location = new Point(22, 59);
-            LabelTransaksiHariIni.Name = "LabelTransaksiHariIni";
-            LabelTransaksiHariIni.Size = new Size(145, 20);
-            LabelTransaksiHariIni.TabIndex = 2;
-            LabelTransaksiHariIni.Text = "Transaksi Hari Ini   :";
+            LbIdTransaksi.AutoSize = true;
+            LbIdTransaksi.Location = new Point(140, 59);
+            LbIdTransaksi.Name = "LbIdTransaksi";
+            LbIdTransaksi.Size = new Size(85, 20);
+            LbIdTransaksi.TabIndex = 8;
+            LbIdTransaksi.Text = "Id Transaksi";
+            // 
+            // LabelJumlahBarang
+            // 
+            LabelJumlahBarang.AutoSize = true;
+            LabelJumlahBarang.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LabelJumlahBarang.Location = new Point(22, 155);
+            LabelJumlahBarang.Name = "LabelJumlahBarang";
+            LabelJumlahBarang.Size = new Size(134, 20);
+            LabelJumlahBarang.TabIndex = 4;
+            LabelJumlahBarang.Text = "Jumlah Barang    :";
+            // 
+            // LabelPendapatan
+            // 
+            LabelPendapatan.AutoSize = true;
+            LabelPendapatan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LabelPendapatan.Location = new Point(22, 106);
+            LabelPendapatan.Name = "LabelPendapatan";
+            LabelPendapatan.Size = new Size(104, 20);
+            LabelPendapatan.TabIndex = 3;
+            LabelPendapatan.Text = "Pendapatan  :";
+            // 
+            // LabelIdTransaksi
+            // 
+            LabelIdTransaksi.AutoSize = true;
+            LabelIdTransaksi.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LabelIdTransaksi.Location = new Point(22, 59);
+            LabelIdTransaksi.Name = "LabelIdTransaksi";
+            LabelIdTransaksi.Size = new Size(108, 20);
+            LabelIdTransaksi.TabIndex = 2;
+            LabelIdTransaksi.Text = "Id Transaksi   :";
             // 
             // PcxKeranjang
             // 
@@ -346,19 +374,21 @@
         private Panel PanelDataGridView;
         private Label LbTransaksiPenjualan;
         private DataGridView DgvTransaksi;
-        private DataGridViewTextBoxColumn ColNo;
-        private DataGridViewTextBoxColumn ColTanggal;
-        private DataGridViewTextBoxColumn ColNoTransaksi;
-        private DataGridViewTextBoxColumn ColTotal;
-        private Button BtnLihatSemua;
         private Panel PanelInfo;
         private Label LbInformasi;
         private PictureBox PcxKeranjang;
         private Label LabelTotalBarang;
         private Label LabelTotalTransaksi;
         private Label LabelTotalPendapatan;
-        private Label LabelTransaksiHariIni;
-        private Label LabelStokBarang;
-        private Label LbPendapatanHariIni;
+        private Label LabelIdTransaksi;
+        private Label LabelJumlahBarang;
+        private Label LabelPendapatan;
+        private Label LbJumlahBarang;
+        private Label LbPendapatanDashboard;
+        private Label LbIdTransaksi;
+        private DataGridViewTextBoxColumn ColNo;
+        private DataGridViewTextBoxColumn ColTanggal;
+        private DataGridViewTextBoxColumn ColNoTransaksi;
+        private DataGridViewTextBoxColumn ColTotal;
     }
 }
