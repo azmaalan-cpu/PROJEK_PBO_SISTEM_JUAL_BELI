@@ -36,15 +36,20 @@
             TbCariIdService = new TextBox();
             LbCariService = new Label();
             GbDataService = new GroupBox();
+            label2 = new Label();
+            label1 = new Label();
             groupBox1 = new GroupBox();
             LbNamaAlat = new Label();
             LbIdService = new Label();
             PanelMainService = new Panel();
             BtnBayarService = new Button();
-            BtnSelesai = new Button();
+            Btnbatal = new Button();
             GbPembayaran = new GroupBox();
+            label5 = new Label();
             LbTotalBayarServis = new Label();
             GbDetailKerusakan = new GroupBox();
+            label4 = new Label();
+            label3 = new Label();
             LbSparePart = new Label();
             LbKerusakan = new Label();
             GbCariService.SuspendLayout();
@@ -83,6 +88,7 @@
             BtnCariIdServis.TabIndex = 2;
             BtnCariIdServis.Text = "Cari";
             BtnCariIdServis.UseVisualStyleBackColor = false;
+            BtnCariIdServis.Click += BtnCariIdServis_Click;
             // 
             // TbCariIdService
             // 
@@ -103,6 +109,8 @@
             // 
             // GbDataService
             // 
+            GbDataService.Controls.Add(label2);
+            GbDataService.Controls.Add(label1);
             GbDataService.Controls.Add(groupBox1);
             GbDataService.Controls.Add(LbNamaAlat);
             GbDataService.Controls.Add(LbIdService);
@@ -116,6 +124,24 @@
             GbDataService.TabIndex = 2;
             GbDataService.TabStop = false;
             GbDataService.Text = "Data Service ";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(162, 63);
+            label2.Name = "label2";
+            label2.Size = new Size(16, 21);
+            label2.TabIndex = 5;
+            label2.Text = "-";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(162, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(16, 21);
+            label1.TabIndex = 4;
+            label1.Text = "-";
             // 
             // groupBox1
             // 
@@ -152,7 +178,7 @@
             // 
             PanelMainService.BackColor = Color.WhiteSmoke;
             PanelMainService.Controls.Add(BtnBayarService);
-            PanelMainService.Controls.Add(BtnSelesai);
+            PanelMainService.Controls.Add(Btnbatal);
             PanelMainService.Controls.Add(GbPembayaran);
             PanelMainService.Controls.Add(GbDetailKerusakan);
             PanelMainService.Controls.Add(GbDataService);
@@ -177,22 +203,25 @@
             BtnBayarService.TabIndex = 4;
             BtnBayarService.Text = "Bayar Service";
             BtnBayarService.UseVisualStyleBackColor = false;
+            BtnBayarService.Click += BtnBayarService_Click;
             // 
-            // BtnSelesai
+            // Btnbatal
             // 
-            BtnSelesai.BackColor = Color.Red;
-            BtnSelesai.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnSelesai.ForeColor = Color.White;
-            BtnSelesai.Location = new Point(170, 372);
-            BtnSelesai.Margin = new Padding(3, 2, 3, 2);
-            BtnSelesai.Name = "BtnSelesai";
-            BtnSelesai.Size = new Size(130, 22);
-            BtnSelesai.TabIndex = 5;
-            BtnSelesai.Text = "Selesai";
-            BtnSelesai.UseVisualStyleBackColor = false;
+            Btnbatal.BackColor = Color.Red;
+            Btnbatal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Btnbatal.ForeColor = Color.White;
+            Btnbatal.Location = new Point(170, 372);
+            Btnbatal.Margin = new Padding(3, 2, 3, 2);
+            Btnbatal.Name = "Btnbatal";
+            Btnbatal.Size = new Size(149, 32);
+            Btnbatal.TabIndex = 5;
+            Btnbatal.Text = "batal";
+            Btnbatal.UseVisualStyleBackColor = false;
+            Btnbatal.Click += Btnbatal_Click;
             // 
             // GbPembayaran
             // 
+            GbPembayaran.Controls.Add(label5);
             GbPembayaran.Controls.Add(LbTotalBayarServis);
             GbPembayaran.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             GbPembayaran.Location = new Point(16, 284);
@@ -203,6 +232,15 @@
             GbPembayaran.TabIndex = 4;
             GbPembayaran.TabStop = false;
             GbPembayaran.Text = "Pembayaran";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(165, 36);
+            label5.Name = "label5";
+            label5.Size = new Size(16, 21);
+            label5.TabIndex = 8;
+            label5.Text = "-";
             // 
             // LbTotalBayarServis
             // 
@@ -216,6 +254,8 @@
             // 
             // GbDetailKerusakan
             // 
+            GbDetailKerusakan.Controls.Add(label4);
+            GbDetailKerusakan.Controls.Add(label3);
             GbDetailKerusakan.Controls.Add(LbSparePart);
             GbDetailKerusakan.Controls.Add(LbKerusakan);
             GbDetailKerusakan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -227,6 +267,24 @@
             GbDetailKerusakan.TabIndex = 3;
             GbDetailKerusakan.TabStop = false;
             GbDetailKerusakan.Text = "Detail Kerusakan";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(163, 61);
+            label4.Name = "label4";
+            label4.Size = new Size(16, 21);
+            label4.TabIndex = 7;
+            label4.Text = "-";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(163, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(16, 21);
+            label3.TabIndex = 6;
+            label3.Text = "-";
             // 
             // LbSparePart
             // 
@@ -292,6 +350,11 @@
         private Label LbBiayaStatus;
         private Label LbTotalBayarServis;
         private Button BtnBayarService;
-        private Button BtnSelesai;
+        private Button Btnbatal;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private Label label5;
     }
 }

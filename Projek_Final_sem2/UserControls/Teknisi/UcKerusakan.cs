@@ -68,6 +68,17 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(TbxSparepart.Text))
+            {
+                MessageBox.Show("Sparepart harus diisi!",
+                    "Peringatan",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                TbxSparepart.Focus();
+                return;
+            }
+
             if (!decimal.TryParse(
                 TbxBiayaServisKerusakan.Text,
                 out decimal biayaServis))
@@ -88,7 +99,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                 {
                     conn.Open();
 
-                    string sql = @"call sp_tambah_servis(3, @nama_alat, @kerusakan, @biaya_servis)";
+                    string sql = @"call sp_tambah_servis(3, @nama_alat, @kerusakan, @biaya_servis, @sparepart)";
 
                     using (NpgsqlCommand cmd =
                         new NpgsqlCommand(sql, conn))
@@ -105,6 +116,10 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                             "@biaya_servis",
                             biayaServis);
 
+                        cmd.Parameters.AddWithValue(
+                           "@sparepart",
+                           TbxSparepart.Text);
+
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -118,6 +133,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                 TbxNamaALatKerusakan.Clear();
                 RtbxKerusakan.Clear();
                 TbxBiayaServisKerusakan.Clear();
+                TbxSparepart.Clear();
                 DtpKerusakan.Value = DateTime.Today;
 
                 TbxNamaALatKerusakan.Focus();

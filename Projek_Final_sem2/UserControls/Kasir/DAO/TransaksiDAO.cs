@@ -211,5 +211,59 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 }
             }
         }
+
+
+
+
+
+
+        public class BayarServisRepo
+        {
+            private readonly DatabaseHelper db = new DatabaseHelper();
+
+            public DataRow GetServisById(int idServis)
+            {
+                DataTable dt = new DataTable();
+                using (var conn = db.GetConnection())
+                {
+                    conn.Open();
+                    string sql = @"
+                SELECT 
+                    s.id_servis,
+                    s.nama_alat,
+                    s.kerusakan,
+                    COALESCE(STRING_AGG(sp.nama_sparepart, ', '), '-') AS sparepart,
+                    s.biaya_servis
+                FROM servis s
+                LEFT JOIN detail_servis ds ON s.id_servis = ds.id_servis
+                LEFT JOIN sparepart sp     ON ds.id_sparepart = sp.id_sparepart
+                WHERE s.id_servis = @id
+                GROUP BY s.id_servis, s.nama_alat, s.kerusakan, s.biaya_servis";
+
+                    using (var cmd = new NpgsqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idServis);
+                        using (var adapter = new NpgsqlDataAdapter(cmd))
+                            adapter.Fill(dt);
+                    }
+                }
+                return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+            }
+
+            public void UpdateStatusSelesai(int idServis)
+            {
+                using (var conn = db.GetConnection())
+                {
+                    conn.Open();
+                    string sql = "CALL sp_update_status_servis(@id, @status)";
+                    using (var cmd = new NpgsqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idServis);
+                        cmd.Parameters.AddWithValue("@status", "Selesai");
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
     }
 }

@@ -39,6 +39,8 @@
             BtnBatalKerusakan = new Button();
             DtpKerusakan = new DateTimePicker();
             BtnSimpanKerusakan = new Button();
+            LblSparepart = new Label();
+            TbxSparepart = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -81,7 +83,7 @@
             // 
             // TbxBiayaServisKerusakan
             // 
-            TbxBiayaServisKerusakan.Location = new Point(117, 212);
+            TbxBiayaServisKerusakan.Location = new Point(117, 232);
             TbxBiayaServisKerusakan.Name = "TbxBiayaServisKerusakan";
             TbxBiayaServisKerusakan.Size = new Size(223, 23);
             TbxBiayaServisKerusakan.TabIndex = 8;
@@ -91,7 +93,7 @@
             // 
             RtbxKerusakan.Location = new Point(117, 110);
             RtbxKerusakan.Name = "RtbxKerusakan";
-            RtbxKerusakan.Size = new Size(331, 96);
+            RtbxKerusakan.Size = new Size(331, 81);
             RtbxKerusakan.TabIndex = 9;
             RtbxKerusakan.Text = "";
             // 
@@ -105,7 +107,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(18, 212);
+            label2.Location = new Point(18, 232);
             label2.Name = "label2";
             label2.Size = new Size(93, 15);
             label2.TabIndex = 11;
@@ -143,10 +145,28 @@
             BtnSimpanKerusakan.UseVisualStyleBackColor = false;
             BtnSimpanKerusakan.Click += BtnSimpanKerusakan_Click_1;
             // 
+            // LblSparepart
+            // 
+            LblSparepart.AutoSize = true;
+            LblSparepart.Location = new Point(20, 200);
+            LblSparepart.Name = "LblSparepart";
+            LblSparepart.Size = new Size(57, 15);
+            LblSparepart.TabIndex = 16;
+            LblSparepart.Text = "Sparepart";
+            // 
+            // TbxSparepart
+            // 
+            TbxSparepart.Location = new Point(117, 197);
+            TbxSparepart.Name = "TbxSparepart";
+            TbxSparepart.Size = new Size(223, 23);
+            TbxSparepart.TabIndex = 17;
+            // 
             // UcKerusakan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(TbxSparepart);
+            Controls.Add(LblSparepart);
             Controls.Add(BtnSimpanKerusakan);
             Controls.Add(DtpKerusakan);
             Controls.Add(BtnBatalKerusakan);
@@ -180,5 +200,7 @@
         private Button BtnBatalKerusakan;
         private DateTimePicker DtpKerusakan;
         private Button BtnSimpanKerusakan;
+        private Label LblSparepart;
+        private TextBox TbxSparepart;
     }
 }
