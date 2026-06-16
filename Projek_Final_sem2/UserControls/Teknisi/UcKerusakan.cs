@@ -88,33 +88,11 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                 {
                     conn.Open();
 
-                    string sql = @"
-                INSERT INTO servis
-                (
-                    tanggal_servis,
-                    id_user,
-                    nama_alat,
-                    kerusakan,
-                    biaya_servis,
-                    status_servis
-                )
-                VALUES
-                (
-                    @tanggal,
-                    @id_user,
-                    @nama_alat,
-                    @kerusakan,
-                    @biaya_servis,
-                    'Proses'
-                )";
+                    string sql = @"call sp_tambah_servis(3, @nama_alat, @kerusakan, @biaya_servis)";
 
                     using (NpgsqlCommand cmd =
                         new NpgsqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue(
-                            "@tanggal",
-                            DtpKerusakan.Value.Date);
-
                         cmd.Parameters.AddWithValue(
                             "@nama_alat",
                             TbxNamaALatKerusakan.Text);

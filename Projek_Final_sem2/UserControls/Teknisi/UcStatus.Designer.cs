@@ -33,13 +33,13 @@
             LblStatusSaatIni = new Label();
             label1 = new Label();
             CmbUbahStatus = new ComboBox();
-            TbxNamaAlatStatus = new TextBox();
-            TbxIDServisStatus = new TextBox();
             LblIDServisStatus = new Label();
             BtnUpdateStatus = new Button();
             BtnBatalStatus = new Button();
             BtnCariStatus = new Button();
             label2 = new Label();
+            TbxIDServisStatus = new TextBox();
+            TbxNamaAlatStatus = new TextBox();
             SuspendLayout();
             // 
             // LblStatusServis
@@ -90,21 +90,6 @@
             CmbUbahStatus.Name = "CmbUbahStatus";
             CmbUbahStatus.Size = new Size(180, 23);
             CmbUbahStatus.TabIndex = 5;
-            // 
-            // TbxNamaAlatStatus
-            // 
-            TbxNamaAlatStatus.Location = new Point(140, 94);
-            TbxNamaAlatStatus.Name = "TbxNamaAlatStatus";
-            TbxNamaAlatStatus.Size = new Size(180, 23);
-            TbxNamaAlatStatus.TabIndex = 6;
-            // 
-            // TbxIDServisStatus
-            // 
-            TbxIDServisStatus.Location = new Point(140, 57);
-            TbxIDServisStatus.Name = "TbxIDServisStatus";
-            TbxIDServisStatus.Size = new Size(180, 23);
-            TbxIDServisStatus.TabIndex = 8;
-            TbxIDServisStatus.TextChanged += TbxIDServisStatus_TextChanged;
             // 
             // LblIDServisStatus
             // 
@@ -158,17 +143,31 @@
             label2.TabIndex = 12;
             label2.Text = "Status";
             // 
+            // TbxIDServisStatus
+            // 
+            TbxIDServisStatus.Location = new Point(140, 53);
+            TbxIDServisStatus.Name = "TbxIDServisStatus";
+            TbxIDServisStatus.Size = new Size(180, 23);
+            TbxIDServisStatus.TabIndex = 13;
+            // 
+            // TbxNamaAlatStatus
+            // 
+            TbxNamaAlatStatus.Location = new Point(140, 93);
+            TbxNamaAlatStatus.Name = "TbxNamaAlatStatus";
+            TbxNamaAlatStatus.Size = new Size(180, 23);
+            TbxNamaAlatStatus.TabIndex = 14;
+            // 
             // UcStatus
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(TbxNamaAlatStatus);
+            Controls.Add(TbxIDServisStatus);
             Controls.Add(label2);
             Controls.Add(BtnCariStatus);
             Controls.Add(BtnBatalStatus);
             Controls.Add(BtnUpdateStatus);
-            Controls.Add(TbxIDServisStatus);
             Controls.Add(LblIDServisStatus);
-            Controls.Add(TbxNamaAlatStatus);
             Controls.Add(CmbUbahStatus);
             Controls.Add(label1);
             Controls.Add(LblStatusSaatIni);
@@ -188,12 +187,12 @@
         private Label LblStatusSaatIni;
         private Label label1;
         private ComboBox CmbUbahStatus;
-        private TextBox TbxNamaAlatStatus;
-        private TextBox TbxIDServisStatus;
         private Label LblIDServisStatus;
         private Button BtnUpdateStatus;
         private Button BtnBatalStatus;
         private Button BtnCariStatus;
         private Label label2;
+        private TextBox TbxIDServisStatus;
+        private TextBox TbxNamaAlatStatus;
     }
 }

@@ -42,9 +42,13 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
         private void BtnLogoutTeknisi_Click(object sender, EventArgs e)
         {
-            FmLogin Formlogin = new FmLogin();
-            Formlogin.Show();
-            this.Close();
+            DialogResult hasil = MessageBox.Show("Apakah Anda yakin ingin logout?", "Konfirmasi Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (hasil == DialogResult.Yes)
+            {
+                FmLogin login = new FmLogin();
+                login.Show();
+                this.Close();
+            }
         }
 
         private void panelcontent_Paint(object sender, PaintEventArgs e)

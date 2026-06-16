@@ -27,8 +27,6 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
             CmbUbahStatus.SelectedIndex = 0;
 
-            TbxIDServisStatus.ReadOnly = true;
-            TbxNamaAlatStatus.ReadOnly = true;
             LoadDataServis(0, "", "Menunggu");
         }
         public void LoadDataServis(int idServis, string namaAlat, string statusSaatIni)

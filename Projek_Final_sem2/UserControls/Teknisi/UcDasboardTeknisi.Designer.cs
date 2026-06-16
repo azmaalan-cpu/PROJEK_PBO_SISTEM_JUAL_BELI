@@ -237,12 +237,19 @@
             // 
             // DgvServisTerbaru
             // 
+            DgvServisTerbaru.AllowUserToAddRows = false;
+            DgvServisTerbaru.AllowUserToDeleteRows = false;
             DgvServisTerbaru.AllowUserToOrderColumns = true;
+            DgvServisTerbaru.AllowUserToResizeColumns = false;
+            DgvServisTerbaru.AllowUserToResizeRows = false;
             DgvServisTerbaru.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvServisTerbaru.BorderStyle = BorderStyle.Fixed3D;
             DgvServisTerbaru.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvServisTerbaru.Columns.AddRange(new DataGridViewColumn[] { Column_Id_servis, Column_tanggal_servis, Column_nama_alat, Column_kerusakan_servis, Status });
             DgvServisTerbaru.Location = new Point(3, 13);
             DgvServisTerbaru.Name = "DgvServisTerbaru";
+            DgvServisTerbaru.RowHeadersVisible = false;
+            DgvServisTerbaru.ScrollBars = ScrollBars.None;
             DgvServisTerbaru.Size = new Size(516, 150);
             DgvServisTerbaru.TabIndex = 0;
             DgvServisTerbaru.CellContentClick += DgvServisTerbaru_CellContentClick;
