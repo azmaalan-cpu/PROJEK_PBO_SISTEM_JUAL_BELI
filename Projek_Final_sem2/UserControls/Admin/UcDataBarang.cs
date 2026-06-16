@@ -34,6 +34,35 @@ namespace Projek_Final_sem2.UserControls
             LoadData();
         }
 
+        public void LoadBarangById(int idBarang)
+        {
+            selectedAlatId = idBarang;
+
+            foreach (DataGridViewRow row in DgvDaftarBarang.Rows)
+            {
+                if (row.Cells["id_alat"].Value != null &&
+                    Convert.ToInt32(row.Cells["id_alat"].Value) == idBarang)
+                {
+                    TbNamaAlat.Text =
+                        row.Cells["nama_alat"].Value.ToString();
+
+                    TbHarga.Text =
+                        row.Cells["harga"].Value.ToString();
+
+                    TbStok.Text =
+                        row.Cells["stok"].Value.ToString();
+
+                    CbxKategori.Text =
+                        row.Cells["nama_kategori"].Value.ToString();
+
+                    CbxSupplier.Text =
+                        row.Cells["nama_supplier"].Value.ToString();
+
+                    break;
+                }
+            }
+        }
+
         private void UcDataBarang_Load(object sender, EventArgs e)
         {
             if(role == "kasir")
@@ -65,6 +94,16 @@ namespace Projek_Final_sem2.UserControls
             
         }
 
+        private void ClearForm()
+        {
+            TbNamaAlat.Clear();
+            TbHarga.Clear();
+            TbStok.Clear();
+            CbxKategori.SelectedIndex = -1;
+            CbxSupplier.SelectedIndex = -1;
+            selectedAlatId = 0;
+        }
+
         private void BtnTambah_Click(object sender, EventArgs e)
         {
             Alat alat = new Alat();
@@ -77,6 +116,8 @@ namespace Projek_Final_sem2.UserControls
             alatDAO.Insert(alat);
             MessageBox.Show("Data berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadData();
+            ClearForm();
+
         }
 
         private void DgvDaftarBarang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -108,6 +149,7 @@ namespace Projek_Final_sem2.UserControls
             alatDAO.Update(alat);
             MessageBox.Show("Data berhasil diupdate!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadData();
+            ClearForm();
         }
 
         private void BtnHapus_Click(object sender, EventArgs e)
@@ -122,16 +164,17 @@ namespace Projek_Final_sem2.UserControls
                 alatDAO.Delete(selectedAlatId);
                 MessageBox.Show("Data berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
+                ClearForm();
+
                 selectedAlatId = 0;
-        }
+                TbNamaAlat.Clear();
+                TbHarga.Clear();
+                TbStok.Clear();
+            }
     }
         private void BtnReset_Click(object sender, EventArgs e)
         {
-            TbNamaAlat.Clear();
-            TbHarga.Clear();
-            TbStok.Clear();
-            CbxKategori.SelectedIndex = 0;
-            CbxSupplier.SelectedIndex = 0;
+            ClearForm();
         }
     }
 

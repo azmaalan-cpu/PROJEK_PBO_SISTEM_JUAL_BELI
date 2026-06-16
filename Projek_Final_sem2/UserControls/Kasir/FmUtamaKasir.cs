@@ -47,9 +47,13 @@ namespace Projek_Final_sem2.UserControls.Kasir
         }
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //FormLogin Login = new FormLogin();
-            //Login.Show();
+            DialogResult hasil = MessageBox.Show("Apakah Anda yakin ingin logout?", "Konfirmasi Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (hasil == DialogResult.Yes)
+            {
+                FmLogin login = new FmLogin();
+                login.Show();
+                this.Close();
+            }
         }
 
         private void BtnTransaksiService_Click(object sender, EventArgs e)

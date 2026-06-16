@@ -54,6 +54,14 @@ namespace Projek_Final_sem2.UserControls
         {
 
         }
+        private void ClearForm()
+        {
+            TbIdUser.Clear();
+            TbUsername.Clear();
+            TbPassword.Clear();
+            CbxRole.SelectedIndex = -1;
+            selectedUserId = 0;
+        }
 
         private void BtnTambah_Click(object sender, EventArgs e)
         {
@@ -63,7 +71,9 @@ namespace Projek_Final_sem2.UserControls
             user.Password = TbPassword.Text;
             user.IdRole = Convert.ToInt32(CbxRole.SelectedValue);
             userDAO.Insert(user);
+            MessageBox.Show("Data berhasil ditambahkan!");
             LoadData();
+            ClearForm();
         }
 
         private void DgvDaftarUser_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -94,6 +104,7 @@ namespace Projek_Final_sem2.UserControls
             userDAO.Update(user);
             MessageBox.Show("Data berhasil diubah!");
             LoadData();
+            ClearForm();
         }
 
         private void BtnHapus_Click(object sender, EventArgs e)
@@ -110,6 +121,7 @@ namespace Projek_Final_sem2.UserControls
                 userDAO.Delete(selectedUserId);
                 MessageBox.Show("Data berhasil dihapus!");
                 LoadData();
+                ClearForm();
 
                 selectedUserId = 0;
                 TbUsername.Clear();
@@ -119,10 +131,7 @@ namespace Projek_Final_sem2.UserControls
 
         private void BtnReset_Click(object sender, EventArgs e)
         {
-            TbUsername.Clear();
-            TbPassword.Clear();
-            CbxRole.SelectedIndex = 0;
-            selectedUserId = 0;
+         ClearForm();
         }
 
         private void DgvDaftarUser_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -6,14 +6,17 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using static Projek_Final_sem2.UserControls.Kasir.DAO.TransaksiDAO;
+using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.UserControls.Kasir
 {
     public partial class UcTransaksiService : UserControl
     {
+        private ServiceDAO serviceDAO;
         public UcTransaksiService()
         {
             InitializeComponent();
+            serviceDAO = new ServiceDAO();
         }
 
         private void PanelMainService_Paint(object sender, PaintEventArgs e)
@@ -43,6 +46,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            serviceDAO.BayarServis(currentIdServis);
 
             string pesan = $"Pembayaran Berhasil!\n\n" +
                            $"ID Servis  : {label1.Text}\n" +
@@ -94,6 +98,14 @@ namespace Projek_Final_sem2.UserControls.Kasir
             {
                 MessageBox.Show("ID Servis tidak ditemukan.", "Info",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ClearLabels();
+                return;
+            }
+
+            if(row["status_servis"].ToString() == "Selesai")
+            {
+                MessageBox.Show("Servis ini sudah dibayar.", "Infomasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearLabels();
                 return;
             }

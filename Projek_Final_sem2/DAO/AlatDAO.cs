@@ -26,6 +26,33 @@ namespace Projek_Final_sem2.DAO
                 }
             }
         }
+
+        public DataRow GetBarangById(int idAlat)
+        {
+            using (var connection = db.GetConnection())
+            {
+                connection.Open();
+                string sql = @"SELECT * FROM v_data_barang WHERE id_alat = @id_alat";
+                using (var command = new Npgsql.NpgsqlCommand(sql, connection))
+                {
+                    
+                    using (var adapter = new Npgsql.NpgsqlDataAdapter(command))
+                    {
+                        command.Parameters.AddWithValue("@id_alat", idAlat);
+                        DataTable dt = new DataTable();
+                        new Npgsql.NpgsqlDataAdapter(command).Fill(dt);
+                        if(dt.Rows.Count > 0)
+                        {
+                            return dt.Rows[0];
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
         //READ ALAT
         public DataTable GetAll()
         {

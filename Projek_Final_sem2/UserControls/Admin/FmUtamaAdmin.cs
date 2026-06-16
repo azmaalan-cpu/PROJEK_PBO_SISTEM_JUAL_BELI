@@ -31,9 +31,19 @@ namespace Projek_Final_sem2
             PanelMenu.Visible = true;
             PanelContent.Controls.Clear();
             UcDashboard uc = new UcDashboard();
+            uc.BarangStokMenipisDipilih += BukanBarangDariDashboard;
             uc.Dock = DockStyle.Fill;
             PanelContent.Controls.Add(uc);
 
+        }
+
+        private void BukanBarangDariDashboard(int idBarang)
+        {
+            PanelContent.Controls.Clear();
+            UcDataBarang uc = new UcDataBarang();
+            uc.Dock = DockStyle.Fill;
+            PanelContent.Controls.Add(uc);
+            uc.LoadBarangById(idBarang);
         }
 
         public void TampilLogin()

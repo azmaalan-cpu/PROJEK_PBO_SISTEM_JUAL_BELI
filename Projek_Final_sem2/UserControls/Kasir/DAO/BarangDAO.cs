@@ -34,7 +34,7 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 conn.Open();
 
                 string sql = @"
-                SELECT a.id_alat,a.nama_alat,a.harga, a.stok, k.nama_kategori FROM alat_pertanian a JOIN kategori_alat k ON a.id_kategori = k.id_kategori;";
+                select * from v_Cari_Barang_By_Id;";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {

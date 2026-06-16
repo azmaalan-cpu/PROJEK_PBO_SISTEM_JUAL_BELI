@@ -99,9 +99,7 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
             {
                 conn.Open();
                 string sql = @"
-                SELECT id_alat, nama_alat, harga, stok
-                FROM alat_pertanian
-                ORDER BY id_alat";
+                select * from v_Get_Data_Barang;";
                 using (var da = new NpgsqlDataAdapter(sql, conn))
                 {
                     DataTable dt = new DataTable();
@@ -232,13 +230,14 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                     s.id_servis,
                     s.nama_alat,
                     s.kerusakan,
+                    s.status_servis,
                     COALESCE(STRING_AGG(sp.nama_sparepart, ', '), '-') AS sparepart,
                     s.biaya_servis
                 FROM servis s
                 LEFT JOIN detail_servis ds ON s.id_servis = ds.id_servis
                 LEFT JOIN sparepart sp     ON ds.id_sparepart = sp.id_sparepart
                 WHERE s.id_servis = @id
-                GROUP BY s.id_servis, s.nama_alat, s.kerusakan, s.biaya_servis";
+                GROUP BY s.id_servis, s.nama_alat, s.kerusakan, s.status_servis, s.biaya_servis";
 
                     using (var cmd = new NpgsqlCommand(sql, conn))
                     {

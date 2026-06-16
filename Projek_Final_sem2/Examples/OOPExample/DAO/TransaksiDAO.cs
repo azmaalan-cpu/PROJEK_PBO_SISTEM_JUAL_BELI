@@ -54,8 +54,9 @@ namespace Projek_Final_sem2.Examples.OOPExample.DAO
             using (var conn = db.GetConnection())
             {
                 conn.Open();
-                string sql = @"SELECT t.tanggal, SUM(t.total_harga) AS total_penjualan
+                string sql = @"SELECT t.tanggal, SUM(dt.subtotal) AS total_penjualan
                          FROM transaksi t
+                         JOIN detail_transaksi dt ON t.id_transaksi = dt.id_transaksi
                          WHERE t.tanggal BETWEEN @tanggalawal AND @tanggalakhir
                          GROUP BY t.tanggal
                          ORDER BY t.tanggal";
