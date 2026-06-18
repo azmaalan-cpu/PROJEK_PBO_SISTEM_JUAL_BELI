@@ -1,6 +1,6 @@
 ﻿using Npgsql;
 using Projek_Final_sem2.DAO;
-using Projek_Final_sem2.UserControls.Kasir.DAO;
+// using Projek_Final_sem2.UserControls.Kasir.DAO; (moved to Projek_Final_sem2.DAO)
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,4 +1,4 @@
-﻿using Projek_Final_sem2.UserControls.Kasir.DAO;
+﻿using Projek_Final_sem2.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
 {
     public partial class UcTransaksiPenjualan : UserControl
     {
-        private TransaksiDAO transaksiDAO;
+        private TransaksiService transaksiService;
         private DatabaseHelper db = new DatabaseHelper();
 
 
@@ -28,14 +28,14 @@ namespace Projek_Final_sem2.UserControls.Kasir
         public UcTransaksiPenjualan()
         {
             InitializeComponent();
-            transaksiDAO = new TransaksiDAO();
+            transaksiService = new TransaksiService();
 
 
         }
 
         private void LoadBarang()
         {
-            DataTable dt = transaksiDAO.GetDataBarang();
+            DataTable dt = transaksiService.GetDataBarang();
 
             if (dt == null || dt.Rows.Count == 0)
             {
@@ -120,12 +120,12 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void LoadStokBarang()
         {
-            LbStok1.Text = "Stok: " + transaksiDAO.CekStok(1);
-            LbStok2.Text = "Stok: " + transaksiDAO.CekStok(2);
-            LbStok3.Text = "Stok: " + transaksiDAO.CekStok(3);
-            LbStok4.Text = "Stok: " + transaksiDAO.CekStok(4);
-            LbStok5.Text = "Stok: " + transaksiDAO.CekStok(5);
-            LbStok6.Text = "Stok: " + transaksiDAO.CekStok(6);
+            LbStok1.Text = "Stok: " + transaksiService.CekStok(1);
+            LbStok2.Text = "Stok: " + transaksiService.CekStok(2);
+            LbStok3.Text = "Stok: " + transaksiService.CekStok(3);
+            LbStok4.Text = "Stok: " + transaksiService.CekStok(4);
+            LbStok5.Text = "Stok: " + transaksiService.CekStok(5);
+            LbStok6.Text = "Stok: " + transaksiService.CekStok(6);
 
         }
 
@@ -160,7 +160,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                     int idAlat = Convert.ToInt32(row.Cells["ColIDBarang"].Value);
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
 
-                    int stokSekarang = transaksiDAO.CekStok(idAlat);
+                    int stokSekarang = transaksiService.CekStok(idAlat);
 
                     if (stokSekarang < jumlah)
                     {
@@ -173,7 +173,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                         return;
                     }
 
-                    bool sukses = transaksiDAO.InsertTransaksi(
+                    bool sukses = transaksiService.InsertTransaksi(
                         idUser,
                         idAlat,
                         jumlah);
@@ -184,7 +184,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                         return;
                     }
 
-                    transaksiDAO.KurangiStok(idAlat, jumlah);
+                    transaksiService.KurangiStok(idAlat, jumlah);
                 }
 
                 LoadStokBarang();

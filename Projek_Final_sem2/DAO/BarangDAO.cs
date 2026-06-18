@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Npgsql;
 using System.Data;
 using Projek_Final_sem2.Koneksi;
 
-namespace Projek_Final_sem2.UserControls.Kasir.DAO
+namespace Projek_Final_sem2.DAO
 {   
     public class BarangDAO
     {
         private DatabaseHelper db = new DatabaseHelper();
-        
+
         public DataTable GetAllBarang()
         {
             using (var conn = db.GetConnection())
@@ -49,6 +49,6 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 }
             }
         }
-        
+
     }
 }

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Npgsql;
 using System.Data;
 using Projek_Final_sem2.Koneksi;
 
-namespace Projek_Final_sem2.UserControls.Kasir.DAO
+namespace Projek_Final_sem2.DAO
 {
     public class TransaksiDAO
     {
@@ -151,7 +151,6 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 }
             }
         }
-
         public int GetTotalTransaksi()
         {
             using (var conn = db.GetConnection())
@@ -209,11 +208,6 @@ namespace Projek_Final_sem2.UserControls.Kasir.DAO
                 }
             }
         }
-
-
-
-
-
 
         public class BayarServisRepo
         {

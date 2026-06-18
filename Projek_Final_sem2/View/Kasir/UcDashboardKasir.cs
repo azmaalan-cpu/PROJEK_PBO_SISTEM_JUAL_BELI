@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Npgsql;
 using System.Data;
 using Projek_Final_sem2.Koneksi;
-using Projek_Final_sem2.UserControls.Kasir.DAO;
+using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.UserControls.Kasir
 {

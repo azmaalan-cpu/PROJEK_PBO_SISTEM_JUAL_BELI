@@ -7,14 +7,15 @@ using System.Text;
 using System.Windows.Forms;
 using Npgsql;
 using Projek_Final_sem2.Koneksi;
-using Projek_Final_sem2.UserControls.Kasir.DAO;
+using Projek_Final_sem2.DAO;
+using Projek_Final_sem2.Services;
 
 namespace Projek_Final_sem2.UserControls.Kasir
 {
     public partial class UcDataBarangKasir : UserControl
     {
-        private BarangDAO barangDAO = new BarangDAO();
-        private TransaksiDAO transaksiDAO = new TransaksiDAO();
+        private BarangService barangService = new BarangService();
+        private TransaksiService transaksiService = new TransaksiService();
 
         public UcDataBarangKasir()
         {
@@ -31,7 +32,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
         private void LoadDataBarang()
         {
             DgvBarang.DataSource =
-         transaksiDAO.GetDataBarang();
+         transaksiService.GetDataBarang();
         }
 
         private void LoadTotalBarang()
@@ -69,7 +70,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 return;
 
             }
-            DgvBarang.DataSource = barangDAO.CariBarangById(idBarang);
+            DgvBarang.DataSource = barangService.CariBarangById(idBarang);
         }
 
         private void DgvBarang_CellContentClick(object sender, DataGridViewCellEventArgs e)
