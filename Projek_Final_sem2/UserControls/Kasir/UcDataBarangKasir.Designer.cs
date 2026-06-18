@@ -36,7 +36,6 @@
             DgvBarang = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             PanelHeader.SuspendLayout();
@@ -105,7 +104,7 @@
             DgvBarang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvBarang.BackgroundColor = SystemColors.Control;
             DgvBarang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvBarang.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
+            DgvBarang.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column4, Column5 });
             DgvBarang.Location = new Point(3, 115);
             DgvBarang.Margin = new Padding(3, 2, 3, 2);
             DgvBarang.Name = "DgvBarang";
@@ -127,13 +126,6 @@
             Column2.HeaderText = "Nama Barang";
             Column2.MinimumWidth = 8;
             Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.DataPropertyName = "nama_kategori";
-            Column3.HeaderText = "Kategori";
-            Column3.MinimumWidth = 8;
-            Column3.Name = "Column3";
             // 
             // Column4
             // 
@@ -178,7 +170,6 @@
         private PictureBox pictureBox1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
     }
