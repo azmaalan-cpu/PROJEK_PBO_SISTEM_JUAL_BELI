@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Projek_Final_sem2.Koneksi;
+using Projek_Final_sem2.Control;
 
 namespace Projek_Final_sem2.UserControls.Teknisi
 {
@@ -15,6 +16,12 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         public UcKerusakan()
         {
             InitializeComponent();
+        }
+
+        private bool IsInDesignMode()
+        {
+            return System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime
+                   || (this.Site != null && this.Site.DesignMode);
         }
 
         private void LblDetailKerusakan_Click(object sender, EventArgs e)
@@ -34,7 +41,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
         private void BtnSimpanKerusakan_Click_1(object sender, EventArgs e)
         {
-            DatabaseHelper db = new DatabaseHelper();
+            var controller = new TeknisiController();
             if (string.IsNullOrWhiteSpace(TbxNamaALatKerusakan.Text))
             {
                 MessageBox.Show("Nama alat harus diisi!",
@@ -95,48 +102,28 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
             try
             {
-                using (NpgsqlConnection conn = db.GetConnection())
+                bool ok = controller.CreateServis(3, TbxNamaALatKerusakan.Text, RtbxKerusakan.Text, biayaServis, TbxSparepart.Text);
+
+                if (ok)
                 {
-                    conn.Open();
+                    MessageBox.Show(
+                        "Data servis berhasil disimpan!",
+                        "Informasi",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
-                    string sql = @"call sp_tambah_servis(3, @nama_alat, @kerusakan, @biaya_servis, @sparepart)";
+                    TbxNamaALatKerusakan.Clear();
+                    RtbxKerusakan.Clear();
+                    TbxBiayaServisKerusakan.Clear();
+                    TbxSparepart.Clear();
+                    DtpKerusakan.Value = DateTime.Today;
 
-                    using (NpgsqlCommand cmd =
-                        new NpgsqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue(
-                            "@nama_alat",
-                            TbxNamaALatKerusakan.Text);
-
-                        cmd.Parameters.AddWithValue(
-                            "@kerusakan",
-                            RtbxKerusakan.Text);
-
-                        cmd.Parameters.AddWithValue(
-                            "@biaya_servis",
-                            biayaServis);
-
-                        cmd.Parameters.AddWithValue(
-                           "@sparepart",
-                           TbxSparepart.Text);
-
-                        cmd.ExecuteNonQuery();
-                    }
+                    TbxNamaALatKerusakan.Focus();
                 }
-
-                MessageBox.Show(
-                    "Data servis berhasil disimpan!",
-                    "Informasi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
-                TbxNamaALatKerusakan.Clear();
-                RtbxKerusakan.Clear();
-                TbxBiayaServisKerusakan.Clear();
-                TbxSparepart.Clear();
-                DtpKerusakan.Value = DateTime.Today;
-
-                TbxNamaALatKerusakan.Focus();
+                else
+                {
+                    MessageBox.Show("Gagal menyimpan data servis.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -150,6 +137,8 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
         private void UcKerusakan_Load(object sender, EventArgs e)
         {
+            if (IsInDesignMode())
+                return;
             DtpKerusakan.Value = DateTime.Today;
 
             // Jika tanggal tidak boleh diubah
@@ -178,40 +167,6 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             DtpKerusakan.Value = DateTime.Today;
 
             TbxNamaALatKerusakan.Focus();
-        }
-        private bool ValidasiInput()
-        {
-            if (TbxNamaALatKerusakan.Text == "")
-            {
-                MessageBox.Show(
-                    "Nama alat harus diisi");
-
-                TbxNamaALatKerusakan.Focus();
-
-                return false;
-            }
-
-            if (RtbxKerusakan.Text == "")
-            {
-                MessageBox.Show(
-                    "Kerusakan harus diisi");
-
-                RtbxKerusakan.Focus();
-
-                return false;
-            }
-
-            if (TbxBiayaServisKerusakan.Text == "")
-            {
-                MessageBox.Show(
-                    "Biaya servis harus diisi");
-
-                TbxBiayaServisKerusakan.Focus();
-
-                return false;
-            }
-
-            return true;
         }
 
         private void TbxBiayaServisKerusakan_KeyPress(object sender, KeyPressEventArgs e)

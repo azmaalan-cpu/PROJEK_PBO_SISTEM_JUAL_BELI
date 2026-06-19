@@ -17,7 +17,13 @@ namespace Projek_Final_sem2.UserControls.Kasir
     public partial class UcTransaksiPenjualan : UserControl
     {
         private TransaksiService transaksiService;
-        private DatabaseHelper db = new DatabaseHelper();
+        private DatabaseHelper db;
+
+        private bool IsInDesignMode()
+        {
+            return System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime
+                   || (this.Site != null && this.Site.DesignMode);
+        }
 
 
         int[] idBarang = new int[10];
@@ -28,7 +34,11 @@ namespace Projek_Final_sem2.UserControls.Kasir
         public UcTransaksiPenjualan()
         {
             InitializeComponent();
-            transaksiService = new TransaksiService();
+            if (!IsInDesignMode())
+            {
+                transaksiService = new TransaksiService();
+                db = new DatabaseHelper();
+            }
 
 
         }

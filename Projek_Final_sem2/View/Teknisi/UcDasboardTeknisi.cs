@@ -19,8 +19,16 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             this.Load += UcDasboardTeknisi_Load;
         }
 
+        private bool IsInDesignMode()
+        {
+            return System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime
+                   || (this.Site != null && this.Site.DesignMode);
+        }
+
         private void UcDasboardTeknisi_Load(object? sender, EventArgs e)
         {
+            if (IsInDesignMode())
+                return;
             LoadStatistik();
             LoadDataServisDGV();
         }

@@ -17,8 +17,16 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             InitializeComponent();
         }
 
+        private bool IsInDesignMode()
+        {
+            return System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime
+                   || (this.Site != null && this.Site.DesignMode);
+        }
+
         private void UcStatus_Load(object sender, EventArgs e)
         {
+            if (IsInDesignMode())
+                return;
             CmbUbahStatus.Items.Clear();
 
             CmbUbahStatus.Items.Add("Menunggu");

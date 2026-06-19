@@ -17,6 +17,12 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             InitializeComponent();
         }
 
+        private bool IsInDesignMode()
+        {
+            return System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime
+                   || (this.Site != null && this.Site.DesignMode);
+        }
+
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -24,6 +30,8 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
         private void UcRiwayat_Load(object sender, EventArgs e)
         {
+            if (IsInDesignMode())
+                return;
             DtpRiwayatAwal.Value = DateTime.Today.AddMonths(-1);
             DtpRiwayatAkhir.Value = DateTime.Today;
             LoadRiwayatServis();
