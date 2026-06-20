@@ -26,7 +26,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
             if (dt.Rows.Count > 0)
             {
-                 LbPendapatan.Text = "Total Pendapatan";
+                LbPendapatan.Text = "Total Pendapatan";
 
                 LabelTotalBarang.Text =
                 dt.Rows[0]["total_barang"].ToString();
@@ -73,31 +73,35 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void DgvTransaksi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             if (e.RowIndex < 0)
                 return;
 
             int idTransaksi =
                 Convert.ToInt32(
                 DgvTransaksi.Rows[e.RowIndex]
-                .Cells["No Transaksi"].Value);
+                .Cells[0].Value);
+            
 
             DataTable dt =
-                transaksiDAO.GetInformasiTransaksi();
+                transaksiService.GetInformasiTransaksi();
+           
+           
 
             DataRow[] row =
                 dt.Select(
                 "id_transaksi = " + idTransaksi);
+           
 
             if (row.Length > 0)
             {
                 LbIdTransaksi.Text =
                     row[0]["id_transaksi"].ToString();
 
-                LbPendapatan.Text =
+                LbPendapatanDashboard.Text =
                     "Rp " +
                     Convert.ToDecimal(
-                    row[0]["pendapatan"])
+                    row[0]["total_harga"])
                     .ToString("N0");
 
                 LbJumlahBarang.Text =
@@ -105,6 +109,10 @@ namespace Projek_Final_sem2.UserControls.Kasir
             }
         }
 
+        private void DgvTransaksi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

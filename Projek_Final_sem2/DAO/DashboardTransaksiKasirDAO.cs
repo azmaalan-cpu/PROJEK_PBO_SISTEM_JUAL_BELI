@@ -156,19 +156,7 @@ namespace Projek_Final_sem2.DAO
                 using (var conn = db.GetConnection())
                 {
                     conn.Open();
-                    string sql = @"
-                SELECT 
-                    s.id_servis,
-                    s.nama_alat,
-                    s.kerusakan,
-                    s.status_servis,
-                    COALESCE(STRING_AGG(sp.nama_sparepart, ', '), '-') AS sparepart,
-                    s.biaya_servis
-                FROM servis s
-                LEFT JOIN detail_servis ds ON s.id_servis = ds.id_servis
-                LEFT JOIN sparepart sp     ON ds.id_sparepart = sp.id_sparepart
-                WHERE s.id_servis = @id
-                GROUP BY s.id_servis, s.nama_alat, s.kerusakan, s.status_servis, s.biaya_servis";
+                    string sql = @"SELECT id_servis,nama_alat, kerusakan, COALESCE(sparepart, '-') AS sparepart, biaya_servis, status_servis FROM servis WHERE id_servis = @id;";
 
                     using (var cmd = new NpgsqlCommand(sql, conn))
                     {

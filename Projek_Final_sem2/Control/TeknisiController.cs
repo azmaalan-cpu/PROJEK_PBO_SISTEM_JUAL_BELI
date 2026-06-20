@@ -34,7 +34,7 @@ namespace Projek_Final_sem2.Control
                     cmd.Parameters.AddWithValue("@nama_alat", namaAlat);
                     cmd.Parameters.AddWithValue("@kerusakan", kerusakan);
                     cmd.Parameters.AddWithValue("@biaya_servis", biayaServis);
-                    cmd.Parameters.AddWithValue("@sparepart", sparepart ?? string.Empty);
+                    cmd.Parameters.AddWithValue("@sparepart", sparepart);
                     cmd.ExecuteNonQuery();
                     return true;
                 }
