@@ -7,7 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using static Projek_Final_sem2.DAO.TransaksiDAO;
+using static Projek_Final_sem2.DAO.DashboardTransaksiKasirDAO;
 
 namespace Projek_Final_sem2.UserControls.Kasir
 {

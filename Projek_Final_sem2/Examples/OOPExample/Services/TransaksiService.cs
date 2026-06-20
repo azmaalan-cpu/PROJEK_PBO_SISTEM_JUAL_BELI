@@ -27,8 +27,13 @@ namespace Projek_Final_sem2.Examples.OOPExample.Services
 
             foreach (var it in items)
             {
-                _dao.InsertDetail(idTransaksi, it.IdAlat, it.Quantity, it.Subtotal);
-                _dao.KurangiStok(it.IdAlat, it.Quantity);
+                _dao.InsertDetail
+                 (
+                    idTransaksi,
+                    it.IdAlat,
+                    it.Quantity,
+                    it.Subtotal
+                 );
             }
 
             return idTransaksi;

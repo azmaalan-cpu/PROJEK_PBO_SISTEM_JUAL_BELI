@@ -160,12 +160,25 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
             int idUser = 1;
 
+            decimal totalHarga = 0;
+            foreach (DataGridViewRow row in DgvKeranjang.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+
+                totalHarga += Convert.ToDecimal
+                (
+                    row.Cells["ColSubTotal"].Value
+                );
+            }
+
             try
             {
                 foreach (DataGridViewRow row in DgvKeranjang.Rows)
                 {
                     if (row.IsNewRow)
                         continue;
+
 
                     int idAlat = Convert.ToInt32(row.Cells["ColIDBarang"].Value);
                     int jumlah = Convert.ToInt32(row.Cells["ColJumlah"].Value);
@@ -182,22 +195,25 @@ namespace Projek_Final_sem2.UserControls.Kasir
                         );
                         return;
                     }
+                }
+                bool sukses = transaksiService.SimpanTransaksi
+                   (
+                       idUser,
+                       DgvKeranjang,
+                       totalHarga
+                   );
 
-                    bool sukses = transaksiService.InsertTransaksi(
-                        idUser,
-                        idAlat,
-                        jumlah);
-
-                    if (!sukses)
-                    {
-                        MessageBox.Show("Gagal simpan transaksi!");
-                        return;
-                    }
-
-                    transaksiService.KurangiStok(idAlat, jumlah);
+                if (!sukses)
+                {
+                    MessageBox.Show("Gagal simpan transaksi!");
+                    return;
                 }
 
+                LoadBarang();
                 LoadStokBarang();
+                HitungTotal();
+
+
                 DgvKeranjang.Rows.Clear();
                 LblTotalBayar.Text = "Rp 0";
 

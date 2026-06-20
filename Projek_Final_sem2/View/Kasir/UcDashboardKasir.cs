@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Npgsql;
-using System.Data;
-using Projek_Final_sem2.Koneksi;
+using Projek_Final_sem2.Services;
 using Projek_Final_sem2.DAO;
+using Projek_Final_sem2.Koneksi;
 
 namespace Projek_Final_sem2.UserControls.Kasir
 {
     public partial class UcDashboardKasir : UserControl
     {
-        private TransaksiDAO transaksiDAO = new TransaksiDAO();
+        private DashboardTransaksiKasirDAO transaksiDAO = new DashboardTransaksiKasirDAO();
+        private TransaksiService transaksiService = new TransaksiService();
+
         public UcDashboardKasir()
         {
             InitializeComponent();
@@ -22,29 +22,21 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void LoadDashboardKasir()
         {
+            DataTable dt = transaksiService.GetDashboardKasir();
 
-            LbPendapatanDashboard.Text =
-                transaksiDAO.GetTotalPendapatan()
-                .ToString("N0");
+            if (dt.Rows.Count > 0)
+            {
+                 LbPendapatan.Text = "Total Pendapatan";
 
-            LbJumlahBarang.Text =
-                transaksiDAO.GetTotalBarangTerjual()
-                .ToString();
+                LabelTotalBarang.Text =
+                dt.Rows[0]["total_barang"].ToString();
 
-            LbIdTransaksi.Text =
-                transaksiDAO.GetTotalTransaksi()
-                .ToString();
+                LabelTotalTransaksi.Text =
+                dt.Rows[0]["total_transaksi"].ToString();
 
-
-            LabelTotalBarang.Text =
-                transaksiDAO.GetTotalBarangTerjual().ToString();
-
-            LabelTotalTransaksi.Text =
-                transaksiDAO.GetTotalTransaksi().ToString();
-
-            LabelTotalPendapatan.Text =
-                "Rp " +
-                transaksiDAO.GetTotalPendapatan().ToString("N0");
+                LabelTotalPendapatan.Text = Convert.ToDecimal(dt.Rows[0]["total_pendapatan"])
+                 .ToString("N0");
+            }
         }
 
         private void UcDashboardKasir_Load(object sender, EventArgs e)
@@ -55,9 +47,28 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void LoadTransaksi()
         {
+            DgvTransaksi.RowHeadersVisible = false;
             DgvTransaksi.AutoGenerateColumns = false;
             DgvTransaksi.DataSource =
-                transaksiDAO.GetTransaksiPenjualan();
+                transaksiService.GetTransaksiPenjualan();
+
+            DataTable dt =
+            transaksiService.GetInformasiTransaksi();
+
+            if (dt.Rows.Count > 0)
+            {
+                LbIdTransaksi.Text =
+                    dt.Rows[0]["id_transaksi"].ToString();
+
+                LbPendapatanDashboard.Text =
+                    Convert.ToDecimal(dt.Rows[0]["total_harga"])
+                    .ToString("N0");
+
+                LbJumlahBarang.Text =
+                    dt.Rows[0]["jumlah_barang"].ToString();
+            }
+
+
         }
 
         private void DgvTransaksi_CellClick(object sender, DataGridViewCellEventArgs e)

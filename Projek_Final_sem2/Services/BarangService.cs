@@ -6,7 +6,7 @@ namespace Projek_Final_sem2.Services
     public class BarangService
     {
         private readonly BarangDAO _barangDao = new BarangDAO();
-        private readonly TransaksiDAO _transaksiDao = new TransaksiDAO();
+        private readonly DashboardTransaksiKasirDAO _transaksiDao = new DashboardTransaksiKasirDAO();
 
         public DataTable GetAllBarang() => _barangDao.GetAllBarang();
 
