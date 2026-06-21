@@ -70,7 +70,7 @@
             PanelFilterTanggal.Controls.Add(LbTanggalAwal);
             PanelFilterTanggal.Controls.Add(LbFilterTanggal);
             PanelFilterTanggal.Location = new Point(31, 26);
-            PanelFilterTanggal.Margin = new Padding(2, 2, 2, 2);
+            PanelFilterTanggal.Margin = new Padding(2);
             PanelFilterTanggal.Name = "PanelFilterTanggal";
             PanelFilterTanggal.Size = new Size(479, 137);
             PanelFilterTanggal.TabIndex = 2;
@@ -78,7 +78,7 @@
             // DtmPickerTanggalAwal
             // 
             DtmPickerTanggalAwal.Location = new Point(134, 31);
-            DtmPickerTanggalAwal.Margin = new Padding(2, 2, 2, 2);
+            DtmPickerTanggalAwal.Margin = new Padding(2);
             DtmPickerTanggalAwal.Name = "DtmPickerTanggalAwal";
             DtmPickerTanggalAwal.Size = new Size(211, 23);
             DtmPickerTanggalAwal.TabIndex = 9;
@@ -86,7 +86,7 @@
             // DtmPickerTanggalAkhir
             // 
             DtmPickerTanggalAkhir.Location = new Point(134, 63);
-            DtmPickerTanggalAkhir.Margin = new Padding(2, 2, 2, 2);
+            DtmPickerTanggalAkhir.Margin = new Padding(2);
             DtmPickerTanggalAkhir.Name = "DtmPickerTanggalAkhir";
             DtmPickerTanggalAkhir.Size = new Size(211, 23);
             DtmPickerTanggalAkhir.TabIndex = 8;
@@ -96,7 +96,7 @@
             BtnExport.BackColor = Color.Red;
             BtnExport.ForeColor = Color.White;
             BtnExport.Location = new Point(228, 99);
-            BtnExport.Margin = new Padding(2, 2, 2, 2);
+            BtnExport.Margin = new Padding(2);
             BtnExport.Name = "BtnExport";
             BtnExport.Size = new Size(78, 20);
             BtnExport.TabIndex = 7;
@@ -108,7 +108,7 @@
             BtnCetak.BackColor = Color.DeepSkyBlue;
             BtnCetak.ForeColor = Color.White;
             BtnCetak.Location = new Point(134, 99);
-            BtnCetak.Margin = new Padding(2, 2, 2, 2);
+            BtnCetak.Margin = new Padding(2);
             BtnCetak.Name = "BtnCetak";
             BtnCetak.Size = new Size(78, 20);
             BtnCetak.TabIndex = 6;
@@ -120,7 +120,7 @@
             BtnTampilkan.BackColor = Color.Green;
             BtnTampilkan.ForeColor = Color.White;
             BtnTampilkan.Location = new Point(25, 99);
-            BtnTampilkan.Margin = new Padding(2, 2, 2, 2);
+            BtnTampilkan.Margin = new Padding(2);
             BtnTampilkan.Name = "BtnTampilkan";
             BtnTampilkan.Size = new Size(92, 20);
             BtnTampilkan.TabIndex = 5;
@@ -163,8 +163,8 @@
             // 
             PanelTotalTransaksi.Controls.Add(LbTotalPendapatanServis);
             PanelTotalTransaksi.Controls.Add(LbTotalService);
-            PanelTotalTransaksi.Location = new Point(31, 336);
-            PanelTotalTransaksi.Margin = new Padding(2, 2, 2, 2);
+            PanelTotalTransaksi.Location = new Point(31, 426);
+            PanelTotalTransaksi.Margin = new Padding(2);
             PanelTotalTransaksi.Name = "PanelTotalTransaksi";
             PanelTotalTransaksi.Size = new Size(479, 56);
             PanelTotalTransaksi.TabIndex = 5;
@@ -205,10 +205,10 @@
             // 
             // FmPlotServis
             // 
-            FmPlotServis.Location = new Point(31, 184);
-            FmPlotServis.Margin = new Padding(2, 2, 2, 2);
+            FmPlotServis.Location = new Point(33, 188);
+            FmPlotServis.Margin = new Padding(2);
             FmPlotServis.Name = "FmPlotServis";
-            FmPlotServis.Size = new Size(592, 148);
+            FmPlotServis.Size = new Size(778, 234);
             FmPlotServis.TabIndex = 7;
             FmPlotServis.Load += FmPlotServis_Load;
             // 
@@ -222,9 +222,9 @@
             Controls.Add(PanelTotalTransaksi);
             Controls.Add(PanelFilterTanggal);
             Controls.Add(LbJudulLaporanServis);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "UcLaporanServis";
-            Size = new Size(717, 408);
+            Size = new Size(1025, 613);
             Load += UcLaporanServis_Load;
             PanelFilterTanggal.ResumeLayout(false);
             PanelFilterTanggal.PerformLayout();

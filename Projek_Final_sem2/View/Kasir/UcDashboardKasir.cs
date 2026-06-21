@@ -60,9 +60,27 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 LbIdTransaksi.Text =
                     dt.Rows[0]["id_transaksi"].ToString();
 
-                LbPendapatanDashboard.Text =
-                    Convert.ToDecimal(dt.Rows[0]["total_harga"])
-                    .ToString("N0");
+                if (dt.Rows.Count > 0)
+{
+    var row = dt.Rows[0];
+
+    LbIdTransaksi.Text = row.Table.Columns.Contains("id_transaksi") && row["id_transaksi"] != DBNull.Value
+        ? row["id_transaksi"].ToString()
+        : string.Empty;
+
+    if (row.Table.Columns.Contains("total_harga") && row["total_harga"] != DBNull.Value)
+    {
+        LbPendapatanDashboard.Text = Convert.ToDecimal(row["total_harga"]).ToString("N0");
+    }
+    else
+    {
+        LbPendapatanDashboard.Text = "0";
+    }
+
+    LbJumlahBarang.Text = row.Table.Columns.Contains("jumlah_barang") && row["jumlah_barang"] != DBNull.Value
+        ? row["jumlah_barang"].ToString()
+        : "0";
+}
 
                 LbJumlahBarang.Text =
                     dt.Rows[0]["jumlah_barang"].ToString();
