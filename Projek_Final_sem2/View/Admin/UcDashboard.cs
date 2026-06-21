@@ -74,5 +74,10 @@ namespace Projek_Final_sem2.UserControls
             DgvServisTerbaru.AutoGenerateColumns = true;
             DgvServisTerbaru.DataSource = dt;
         }
+
+        private void PanelDataBarang_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

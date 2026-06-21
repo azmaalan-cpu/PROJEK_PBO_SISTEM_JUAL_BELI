@@ -49,28 +49,22 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
         private void BtnCariID_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TbCariID.Text))
+            try
             {
-                MessageBox.Show("Masukkan ID Barang terlebih dahulu!");
-                return;
+                int idBarang = Convert.ToInt32(TbCariID.Text);
+
+                DataTable dt = barangService.CariBarangById(idBarang);
+
+                DgvBarang.DataSource = dt;
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Data barang tidak ditemukan!");
+                }
             }
-
-            int idBarang;
-
-            if (!int.TryParse(TbCariID.Text, out idBarang))
+            catch (Exception ex)
             {
-                MessageBox.Show
-                (
-                    "ID Barang harus berupa angka!",
-                    "Peringatan",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
-                return;
-
+                MessageBox.Show("Error: " + ex.Message);
             }
-            DgvBarang.DataSource = barangService.CariBarangById(idBarang);
         }
 
         private void DgvBarang_CellContentClick(object sender, DataGridViewCellEventArgs e)

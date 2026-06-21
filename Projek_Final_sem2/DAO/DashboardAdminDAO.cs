@@ -16,7 +16,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = @"SELECT COUNT(*) FROM alat_pertanian";
+                string sql = @"SELECT total_barang FROM v_jumlah_data_barang";
                 using (var cmd = new NpgsqlCommand(sql, connection))
                 {
                     return Convert.ToInt32(cmd.ExecuteScalar());
@@ -30,7 +30,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = @"SELECT COUNT(*) FROM transaksi";
+                string sql = @"select * from view_total_penjualan";
                 using (var cmd = new NpgsqlCommand(sql, connection))
                 {
                     return Convert.ToInt32(cmd.ExecuteScalar());
@@ -43,7 +43,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = @"SELECT COUNT(*) FROM servis";
+                string sql = @"select * from v_jumlah_servis_selesai";
                 using (var cmd = new NpgsqlCommand(sql, connection))
                 {
                     return Convert.ToInt32(cmd.ExecuteScalar());
@@ -56,7 +56,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = @"SELECT COALESCE(SUM(subtotal), 0) FROM detail_transaksi";
+                string sql = @"select * from v_total_pendapatan";
                 using (var cmd = new NpgsqlCommand(sql, connection))
                 {
                     return Convert.ToDecimal(cmd.ExecuteScalar());
@@ -68,7 +68,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = @"SELECT COALESCE(SUM(biaya_servis), 0) FROM servis WHERE status_servis = 'Selesai'";
+                string sql = @"SELECT * from v_ringkasan_servis'";
                 using (var cmd = new NpgsqlCommand(sql, connection))
                 {
                     return Convert.ToDecimal(cmd.ExecuteScalar());
@@ -82,7 +82,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = @"SELECT id_alat, nama_alat, stok FROM alat_pertanian WHERE stok <= 5 ORDER BY stok ASC";
+                string sql = @"select * from v_stok_menipis";
                 using (var adapter = new NpgsqlDataAdapter(sql, connection))
                 {
                     adapter.Fill(dt);
@@ -91,12 +91,5 @@ namespace Projek_Final_sem2.DAO
             return dt;
         }
 
-        public decimal GetTotalPendapatan(DateTime awal, DateTime akhir)
-        {
-            using (var connection = db.GetConnection())
-            {
-              return GetPendapatanPenjualan() + GetPendapatanServis();
-            }
-        }
     }
 }

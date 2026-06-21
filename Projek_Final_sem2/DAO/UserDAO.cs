@@ -19,7 +19,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = "INSERT INTO users (username, password, id_role) VALUES (@username, @password, @id_role)";
+                string sql = "call sp_tambah_user (@username, @password, @id_role)";
                 using (var command = new Npgsql.NpgsqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@username", user.Username);
@@ -51,7 +51,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = "UPDATE users SET username = @username, password = @password, id_role = @id_role WHERE id_user = @id_user";
+                string sql = "call sp_update_user(@id_user, @username, @password, @id_role)";
                 using (var command = new Npgsql.NpgsqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@username", user.Username);
@@ -68,7 +68,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = "DELETE FROM users WHERE id_user = @id_user";
+                string sql = "call sp_hapus_user(@id_user)";
                 using (var command = new Npgsql.NpgsqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id_user", idUser);

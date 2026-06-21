@@ -16,7 +16,7 @@ namespace Projek_Final_sem2.DAO
             using (var conn = db.GetConnection())
             {
                 conn.Open();
-                string sql = "SELECT a.id_alat,a.nama_alat,a.harga, a.stok, k.nama_kategori FROM alat_pertanian a JOIN kategori_alat k ON a.id_kategori = k.id_kategori;";
+                string sql = "SELECT * from v_data_barang;";
                 using (var da = new NpgsqlDataAdapter(sql, conn))
                 {
                     DataTable dt = new DataTable();
@@ -34,7 +34,7 @@ namespace Projek_Final_sem2.DAO
                 conn.Open();
 
                 string sql = @"
-                select * from v_Cari_Barang_By_Id;";
+                select * from fn_get_data_barang_by_id(@id_alat);";
 
                 using (var cmd = new NpgsqlCommand(sql, conn))
                 {
