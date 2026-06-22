@@ -12,9 +12,14 @@ using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.UserControls
 {
+using Projek_Final_sem2.Control.Admin;
+using Projek_Final_sem2.DAO;
+
     public partial class UcLaporanServis : UserControl
     {
-        private ServiceDAO serviceDAO = new ServiceDAO();
+        private LaporanServisControl laporanServisControl = new LaporanServisControl();
+        // Keep a ServiceDAO instance to preserve any remaining direct calls (temporary compatibility)
+        private readonly ServiceDAO serviceDAO = new ServiceDAO();
         public UcLaporanServis()
         {
             InitializeComponent();
