@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using Projek_Final_sem2.DAO;
 using Projek_Final_sem2.Koneksi;
 using System;
 using System.Collections.Generic;
@@ -51,47 +52,25 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         {
             if (!ValidasiInput())
                 return;
-            DatabaseHelper db = new DatabaseHelper();
+
+            if (!int.TryParse(TbxIDServisStatus.Text, out int id))
+            {
+                MessageBox.Show("ID servis tidak valid!");
+                return;
+            }
+
+            var dao = new ServiceDAO();
             try
             {
-                using (NpgsqlConnection conn =
-                    db.GetConnection())
+                bool ok = dao.UpdateStatus(id, CmbUbahStatus.Text);
+                if (ok)
                 {
-                    conn.Open();
-
-                    string sql = @"
-                UPDATE servis
-                SET status_servis = @status
-                WHERE id_servis = @id";
-
-                    using (NpgsqlCommand cmd =
-                        new NpgsqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue(
-                            "@status",
-                            CmbUbahStatus.Text);
-
-                        cmd.Parameters.AddWithValue(
-                            "@id",
-                            Convert.ToInt32(TbxIDServisStatus.Text));
-
-                        int result =
-                            cmd.ExecuteNonQuery();
-
-                        if (result > 0)
-                        {
-                            MessageBox.Show(
-                                "Status servis berhasil diperbarui!");
-
-                            LblStatusSaatIni.Text =
-                                CmbUbahStatus.Text;
-                        }
-                        else
-                        {
-                            MessageBox.Show(
-                                "Data tidak ditemukan!");
-                        }
-                    }
+                    MessageBox.Show("Status servis berhasil diperbarui!");
+                    LblStatusSaatIni.Text = CmbUbahStatus.Text;
+                }
+                else
+                {
+                    MessageBox.Show("");
                 }
             }
             catch (Exception ex)
@@ -99,6 +78,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                 MessageBox.Show(ex.Message);
             }
         }
+        
         private bool ValidasiInput()
         {
             if (string.IsNullOrWhiteSpace(TbxIDServisStatus.Text))
@@ -143,50 +123,20 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             DatabaseHelper db = new DatabaseHelper();
             try
             {
-                using (NpgsqlConnection conn =
-                    db.GetConnection())
+                var dao = new ServiceDAO();
+                int id = Convert.ToInt32(TbxIDServisStatus.Text);
+                var service = dao.GetServiceById(id);
+                if (service != null)
                 {
-                    conn.Open();
-
-                    string sql = @"
-                SELECT
-                    nama_alat,
-                    status_servis
-                FROM servis
-                WHERE id_servis = @id";
-
-                    using (NpgsqlCommand cmd =
-                        new NpgsqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue(
-                            "@id",
-                            Convert.ToInt32(
-                                TbxIDServisStatus.Text));
-
-                        NpgsqlDataReader rd =
-                            cmd.ExecuteReader();
-
-                        if (rd.Read())
-                        {
-                            TbxNamaAlatStatus.Text =
-                                rd["nama_alat"].ToString();
-
-                            LblStatusSaatIni.Text =
-                                rd["status_servis"].ToString();
-
-                            CmbUbahStatus.Text =
-                                rd["status_servis"].ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show(
-                                "ID Servis tidak ditemukan!");
-
-                            TbxNamaAlatStatus.Clear();
-
-                            LblStatusSaatIni.Text = "-";
-                        }
-                    }
+                    TbxNamaAlatStatus.Text = service.nama_alat;
+                    LblStatusSaatIni.Text = service.status_servis;
+                    CmbUbahStatus.Text = service.status_servis;
+                }
+                else
+                {
+                    MessageBox.Show("ID Servis tidak ditemukan!");
+                    TbxNamaAlatStatus.Clear();
+                    LblStatusSaatIni.Text = "-";
                 }
             }
             catch (Exception ex)

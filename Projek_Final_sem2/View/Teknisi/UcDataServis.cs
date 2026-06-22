@@ -13,6 +13,8 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 {
     public partial class UcDataServis : UserControl
     {
+        private List<Projek_Final_sem2.Models.Service> _allServices = new List<Projek_Final_sem2.Models.Service>();
+        private BindingSource _bs = new BindingSource();
         public UcDataServis()
         {
             InitializeComponent();
@@ -20,12 +22,19 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
         private void txtCari_TextChanged(object sender, EventArgs e)
         {
-            DataView dv =
-            ((DataTable)DgvDataServis.DataSource)
-            .DefaultView;
+            // Filter in-memory list and rebind
+            string q = TextCariDataServis.Text?.Trim() ?? string.Empty;
+            if (string.IsNullOrEmpty(q))
+            {
+                _bs.DataSource = new BindingList<Projek_Final_sem2.Models.Service>(_allServices);
+                DgvDataServis.DataSource = _bs;
+                return;
+            }
 
-            dv.RowFilter =
-            $"nama_alat LIKE '%{TextCariDataServis.Text}%'";
+            var filtered = _allServices.FindAll(s => !string.IsNullOrEmpty(s.nama_alat) && s.nama_alat.IndexOf(q, StringComparison.OrdinalIgnoreCase) >= 0);
+
+            _bs.DataSource = new BindingList<Projek_Final_sem2.Models.Service>(filtered);
+            DgvDataServis.DataSource = _bs;
         }
         private Panel panelUtama;
 
@@ -42,31 +51,22 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
         private void LoadDataServis()
         {
-            var dt = new ServiceDAO().DataUcDataServis();
+            var dao = new ServiceDAO();
+            _allServices = dao.GetAllServices();
+
             DgvDataServis.DataSource = null;
             DgvDataServis.AutoGenerateColumns = false;
-            try
-            {
-                if (dt.Columns.Count >= 6)
-                {
-                    ColumnIdServis.DataPropertyName = dt.Columns[0].ColumnName;
-                    ColumnTanggalServis.DataPropertyName = dt.Columns[1].ColumnName;
-                    ColumnNamaAlat.DataPropertyName = dt.Columns[2].ColumnName;
-                    ColumnKerusakan.DataPropertyName = dt.Columns[3].ColumnName;
-                    ColumnBiayaServis.DataPropertyName = dt.Columns[4].ColumnName;
-                    ColumnStatus.DataPropertyName = dt.Columns[5].ColumnName;
-                }
-                else
-                {
-                    DgvDataServis.AutoGenerateColumns = true;
-                }
-            }
-            catch
-            {
-                DgvDataServis.AutoGenerateColumns = true;
-            }
 
-            DgvDataServis.DataSource = dt;
+            // map columns to model properties
+            ColumnIdServis.DataPropertyName = "id_servis";
+            ColumnTanggalServis.DataPropertyName = "tanggal_servis";
+            ColumnNamaAlat.DataPropertyName = "nama_alat";
+            ColumnKerusakan.DataPropertyName = "kerusakan";
+            ColumnBiayaServis.DataPropertyName = "biaya_servis";
+            ColumnStatus.DataPropertyName = "status_servis";
+
+            _bs.DataSource = new BindingList<Projek_Final_sem2.Models.Service>(_allServices);
+            DgvDataServis.DataSource = _bs;
         }
         private void UcDataServis_Load(object sender, EventArgs e)
         {

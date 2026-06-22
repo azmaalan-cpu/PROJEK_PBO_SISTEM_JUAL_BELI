@@ -7,7 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using static Projek_Final_sem2.DAO.DashboardTransaksiKasirDAO;
+using static Projek_Final_sem2.DAO.ServiceDAO;
 
 namespace Projek_Final_sem2.UserControls.Kasir
 {
@@ -117,6 +117,10 @@ namespace Projek_Final_sem2.UserControls.Kasir
         //    }
         //}
 
+
+        private readonly BayarServisRepo repo = new BayarServisRepo();
+        private int currentIdServis = 0;
+
         private void BtnCariIdServis_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(TbCariIdService.Text.Trim(), out int idServis))
@@ -130,8 +134,6 @@ namespace Projek_Final_sem2.UserControls.Kasir
         }
 
 
-        private readonly BayarServisRepo repo = new BayarServisRepo();
-        private int currentIdServis = 0;
 
         private void ClearLabels()
         {
@@ -169,18 +171,6 @@ namespace Projek_Final_sem2.UserControls.Kasir
             label3.Text = row["kerusakan"].ToString();
             label4.Text = row["sparepart"].ToString();
             label5.Text = $"Rp {Convert.ToDecimal(row["biaya_servis"]):N0}";
-        }
-
-        private void btnCari_Click(object sender, EventArgs e)
-        {
-            if (!int.TryParse(TbCariIdService.Text.Trim(), out int idServis))
-            {
-                MessageBox.Show("Masukkan ID Servis yang valid.", "Peringatan",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            LoadDataServis(idServis);
         }
     }
 }

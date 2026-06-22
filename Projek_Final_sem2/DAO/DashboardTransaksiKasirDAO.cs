@@ -144,44 +144,5 @@ namespace Projek_Final_sem2.DAO
                 }
             }
         }
-
-
-        public class BayarServisRepo
-        {
-            private readonly DatabaseHelper db = new DatabaseHelper();
-
-            public DataRow GetServisById(int idServis)
-            {
-                DataTable dt = new DataTable();
-                using (var conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string sql = @"SELECT id_servis,nama_alat, kerusakan, COALESCE(sparepart, '-') AS sparepart, biaya_servis, status_servis FROM servis WHERE id_servis = @id;";
-
-                    using (var cmd = new NpgsqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", idServis);
-                        using (var adapter = new NpgsqlDataAdapter(cmd))
-                            adapter.Fill(dt);
-                    }
-                }
-                return dt.Rows.Count > 0 ? dt.Rows[0] : null;
-            }
-
-            public void UpdateStatusSelesai(int idServis)
-            {
-                using (var conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string sql = "CALL sp_update_status_servis(@id, @status)";
-                    using (var cmd = new NpgsqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", idServis);
-                        cmd.Parameters.AddWithValue("@status", "Selesai");
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-        }
     }
 }

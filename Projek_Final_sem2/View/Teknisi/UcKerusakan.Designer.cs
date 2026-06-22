@@ -41,6 +41,8 @@
             BtnSimpanKerusakan = new Button();
             LblSparepart = new Label();
             TbxSparepart = new TextBox();
+            label_teknisi = new Label();
+            Cbx_teknisi = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -65,7 +67,7 @@
             // LblNamaAlatKerusakan
             // 
             LblNamaAlatKerusakan.AutoSize = true;
-            LblNamaAlatKerusakan.Location = new Point(18, 84);
+            LblNamaAlatKerusakan.Location = new Point(18, 112);
             LblNamaAlatKerusakan.Name = "LblNamaAlatKerusakan";
             LblNamaAlatKerusakan.Size = new Size(63, 15);
             LblNamaAlatKerusakan.TabIndex = 3;
@@ -74,7 +76,7 @@
             // LblDetailKerusakan
             // 
             LblDetailKerusakan.AutoSize = true;
-            LblDetailKerusakan.Location = new Point(18, 110);
+            LblDetailKerusakan.Location = new Point(18, 138);
             LblDetailKerusakan.Name = "LblDetailKerusakan";
             LblDetailKerusakan.Size = new Size(61, 15);
             LblDetailKerusakan.TabIndex = 4;
@@ -83,7 +85,7 @@
             // 
             // TbxBiayaServisKerusakan
             // 
-            TbxBiayaServisKerusakan.Location = new Point(117, 232);
+            TbxBiayaServisKerusakan.Location = new Point(117, 260);
             TbxBiayaServisKerusakan.Name = "TbxBiayaServisKerusakan";
             TbxBiayaServisKerusakan.Size = new Size(223, 23);
             TbxBiayaServisKerusakan.TabIndex = 8;
@@ -91,7 +93,7 @@
             // 
             // RtbxKerusakan
             // 
-            RtbxKerusakan.Location = new Point(117, 110);
+            RtbxKerusakan.Location = new Point(117, 138);
             RtbxKerusakan.Name = "RtbxKerusakan";
             RtbxKerusakan.Size = new Size(331, 81);
             RtbxKerusakan.TabIndex = 9;
@@ -99,7 +101,7 @@
             // 
             // TbxNamaALatKerusakan
             // 
-            TbxNamaALatKerusakan.Location = new Point(117, 81);
+            TbxNamaALatKerusakan.Location = new Point(117, 109);
             TbxNamaALatKerusakan.Name = "TbxNamaALatKerusakan";
             TbxNamaALatKerusakan.Size = new Size(331, 23);
             TbxNamaALatKerusakan.TabIndex = 10;
@@ -107,7 +109,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(18, 232);
+            label2.Location = new Point(18, 260);
             label2.Name = "label2";
             label2.Size = new Size(93, 15);
             label2.TabIndex = 11;
@@ -117,7 +119,7 @@
             // 
             BtnBatalKerusakan.BackColor = Color.Red;
             BtnBatalKerusakan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnBatalKerusakan.Location = new Point(373, 263);
+            BtnBatalKerusakan.Location = new Point(373, 291);
             BtnBatalKerusakan.Name = "BtnBatalKerusakan";
             BtnBatalKerusakan.Size = new Size(75, 23);
             BtnBatalKerusakan.TabIndex = 13;
@@ -137,7 +139,7 @@
             // 
             BtnSimpanKerusakan.BackColor = Color.Green;
             BtnSimpanKerusakan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnSimpanKerusakan.Location = new Point(117, 263);
+            BtnSimpanKerusakan.Location = new Point(117, 291);
             BtnSimpanKerusakan.Name = "BtnSimpanKerusakan";
             BtnSimpanKerusakan.Size = new Size(75, 23);
             BtnSimpanKerusakan.TabIndex = 15;
@@ -148,7 +150,7 @@
             // LblSparepart
             // 
             LblSparepart.AutoSize = true;
-            LblSparepart.Location = new Point(20, 200);
+            LblSparepart.Location = new Point(20, 228);
             LblSparepart.Name = "LblSparepart";
             LblSparepart.Size = new Size(57, 15);
             LblSparepart.TabIndex = 16;
@@ -156,15 +158,34 @@
             // 
             // TbxSparepart
             // 
-            TbxSparepart.Location = new Point(117, 197);
+            TbxSparepart.Location = new Point(117, 225);
             TbxSparepart.Name = "TbxSparepart";
             TbxSparepart.Size = new Size(223, 23);
             TbxSparepart.TabIndex = 17;
+            // 
+            // label_teknisi
+            // 
+            label_teknisi.AutoSize = true;
+            label_teknisi.Location = new Point(18, 83);
+            label_teknisi.Name = "label_teknisi";
+            label_teknisi.Size = new Size(43, 15);
+            label_teknisi.TabIndex = 18;
+            label_teknisi.Text = "Teknisi";
+            // 
+            // Cbx_teknisi
+            // 
+            Cbx_teknisi.FormattingEnabled = true;
+            Cbx_teknisi.Location = new Point(116, 80);
+            Cbx_teknisi.Name = "Cbx_teknisi";
+            Cbx_teknisi.Size = new Size(224, 23);
+            Cbx_teknisi.TabIndex = 19;
             // 
             // UcKerusakan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(Cbx_teknisi);
+            Controls.Add(label_teknisi);
             Controls.Add(TbxSparepart);
             Controls.Add(LblSparepart);
             Controls.Add(BtnSimpanKerusakan);
@@ -179,7 +200,7 @@
             Controls.Add(LblTanggalKerusakan);
             Controls.Add(label1);
             Name = "UcKerusakan";
-            Size = new Size(639, 385);
+            Size = new Size(710, 419);
             Load += UcKerusakan_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -202,5 +223,7 @@
         private Button BtnSimpanKerusakan;
         private Label LblSparepart;
         private TextBox TbxSparepart;
+        private Label label_teknisi;
+        private ComboBox Cbx_teknisi;
     }
 }

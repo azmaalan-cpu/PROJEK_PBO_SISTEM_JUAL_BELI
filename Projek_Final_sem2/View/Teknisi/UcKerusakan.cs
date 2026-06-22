@@ -8,11 +8,14 @@ using System.Text;
 using System.Windows.Forms;
 using Projek_Final_sem2.Koneksi;
 using Projek_Final_sem2.Control;
+using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.UserControls.Teknisi
 {
     public partial class UcKerusakan : UserControl
     {
+        private readonly TeknisiController controller = new TeknisiController();
+
         public UcKerusakan()
         {
             InitializeComponent();
@@ -145,6 +148,20 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             DtpKerusakan.Enabled = false;
 
             TbxNamaALatKerusakan.Focus();
+
+            // Load teknisi list into combobox
+            try
+            {
+                var dtTeknisi = controller.GetUsersByRole("teknisi");
+                Cbx_teknisi.DisplayMember = "username";
+                Cbx_teknisi.ValueMember = "id_user";
+                Cbx_teknisi.DataSource = dtTeknisi;
+                Cbx_teknisi.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal memuat daftar teknisi: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void TbxBiayaServisKerusakan_Leave(object sender, EventArgs e)
