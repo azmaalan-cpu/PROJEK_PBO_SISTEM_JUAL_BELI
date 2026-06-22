@@ -283,37 +283,70 @@ namespace Projek_Final_sem2.DAO
                 }
                 return dt.Rows.Count > 0 ? dt.Rows[0] : null;
             }
-
         }
-            public bool CreateServis(int idUser, string namaAlat, string kerusakan, decimal biayaServis, string sparepart)
+
+        // New low-level insert method: performs only DB operation.
+        public bool InsertServis(int idUser, string namaAlat, string kerusakan, decimal biayaServis, string sparepart)
+        {
+            using (var conn = db.GetConnection())
             {
-                if (string.IsNullOrWhiteSpace(namaAlat))
-                    throw new ArgumentException("Nama alat harus diisi", nameof(namaAlat));
+                conn.Open();
 
-                if (string.IsNullOrWhiteSpace(kerusakan))
-                    throw new ArgumentException("Kerusakan harus diisi", nameof(kerusakan));
+                // Call stored procedure with correct parameter order/names
+                string sql = "call sp_tambah_servis(@id_user, @nama_alat, @kerusakan, @biaya_servis, @sparepart)";
 
-                if (biayaServis < 0)
-                    throw new ArgumentException("Biaya servis tidak valid", nameof(biayaServis));
-
-                using (var conn = db.GetConnection())
+                using (var cmd = new NpgsqlCommand(sql, conn))
                 {
-                    conn.Open();
-
-                    // Call stored procedure with correct parameter order/names
-                    string sql = "call sp_tambah_servis(@id_user, @nama_alat, @kerusakan, @biaya_servis, @sparepart)";
-
-                    using (var cmd = new NpgsqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id_user", idUser);
-                        cmd.Parameters.AddWithValue("@nama_alat", namaAlat);
-                        cmd.Parameters.AddWithValue("@kerusakan", kerusakan);
-                        cmd.Parameters.AddWithValue("@biaya_servis", biayaServis);
-                        cmd.Parameters.AddWithValue("@sparepart", sparepart);
-                        cmd.ExecuteNonQuery();
-                        return true;
-                    }
+                    cmd.Parameters.AddWithValue("@id_user", idUser);
+                    cmd.Parameters.AddWithValue("@nama_alat", namaAlat);
+                    cmd.Parameters.AddWithValue("@kerusakan", kerusakan);
+                    cmd.Parameters.AddWithValue("@biaya_servis", biayaServis);
+                    cmd.Parameters.AddWithValue("@sparepart", sparepart);
+                    cmd.ExecuteNonQuery();
+                    return true;
                 }
-            } 
+            }
+        }
+
+        public bool CreateServis(int idUser, string namaAlat, string kerusakan, decimal biayaServis, string sparepart)
+        {
+            /*
+            Original validation logic and DB call were kept here for reference.
+            During refactor the validation and orchestration should live in a service layer
+            (Projek_Final_sem2.Services.ServiceService). The DAO should focus on low-level
+            DB operations (see InsertServis).
+
+            if (string.IsNullOrWhiteSpace(namaAlat))
+                throw new ArgumentException("Nama alat harus diisi", nameof(namaAlat));
+
+            if (string.IsNullOrWhiteSpace(kerusakan))
+                throw new ArgumentException("Kerusakan harus diisi", nameof(kerusakan));
+
+            if (biayaServis < 0)
+                throw new ArgumentException("Biaya servis tidak valid", nameof(biayaServis));
+
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+
+                // Call stored procedure with correct parameter order/names
+                string sql = "call sp_tambah_servis(@id_user, @nama_alat, @kerusakan, @biaya_servis, @sparepart)";
+
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id_user", idUser);
+                    cmd.Parameters.AddWithValue("@nama_alat", namaAlat);
+                    cmd.Parameters.AddWithValue("@kerusakan", kerusakan);
+                    cmd.Parameters.AddWithValue("@biaya_servis", biayaServis);
+                    cmd.Parameters.AddWithValue("@sparepart", sparepart);
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            */
+
+            // New behaviour: delegate to the explicit InsertServis DB-only method.
+            return InsertServis(idUser, namaAlat, kerusakan, biayaServis, sparepart);
+        }
     }
 }

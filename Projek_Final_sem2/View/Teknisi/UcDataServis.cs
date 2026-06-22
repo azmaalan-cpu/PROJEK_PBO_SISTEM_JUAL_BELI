@@ -51,8 +51,8 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
         private void LoadDataServis()
         {
-            var dao = new ServiceDAO();
-            _allServices = dao.GetAllServices();
+            var control = new Projek_Final_sem2.Control.Teknisi.DataServisControl();
+            _allServices = control.GetAllServices();
 
             DgvDataServis.DataSource = null;
             DgvDataServis.AutoGenerateColumns = false;

@@ -7,14 +7,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Projek_Final_sem2.Koneksi;
-using Projek_Final_sem2.Control;
+using Projek_Final_sem2.Control.Teknisi;
 using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.UserControls.Teknisi
 {
     public partial class UcKerusakan : UserControl
     {
-        private readonly TeknisiController controller = new TeknisiController();
+        private readonly KerusakanControl controller = new KerusakanControl();
 
         public UcKerusakan()
         {
@@ -44,7 +44,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
         private void BtnSimpanKerusakan_Click_1(object sender, EventArgs e)
         {
-            var controller = new TeknisiController();
+            var controller = new KerusakanControl();
             if (string.IsNullOrWhiteSpace(TbxNamaALatKerusakan.Text))
             {
                 MessageBox.Show("Nama alat harus diisi!",

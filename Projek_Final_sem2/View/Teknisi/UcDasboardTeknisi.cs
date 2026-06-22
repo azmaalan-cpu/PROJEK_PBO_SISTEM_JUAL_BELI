@@ -88,7 +88,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
         private void LoadDataServisDGV()
         {
-            var dt = new ServiceDAO().DataServisTerbaruLengkap();
+            var dt = new Projek_Final_sem2.Control.Teknisi.DataServisControl().GetLatestServis();
             DgvServisTerbaru.DataSource = null;
             DgvServisTerbaru.AutoGenerateColumns = false;
             try

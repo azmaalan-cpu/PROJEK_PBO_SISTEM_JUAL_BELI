@@ -69,37 +69,13 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
         private void FilterRiwayatByRange(DateTime awal, DateTime akhir)
         {
-            DatabaseHelper db = new DatabaseHelper();
             try
             {
-                using (NpgsqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
+                var control = new Projek_Final_sem2.Control.Teknisi.RiwayatControl();
+                DataTable dt = control.GetRiwayatByRange(awal, akhir);
+                DgvRiwayat.DataSource = dt;
 
-                    string sql = @"
-                SELECT * from servis
-                WHERE tanggal_servis BETWEEN @awal AND @akhir
-                ORDER BY tanggal_servis DESC";
-
-                    NpgsqlDataAdapter da =
-                        new NpgsqlDataAdapter(sql, conn);
-
-                    da.SelectCommand.Parameters.AddWithValue(
-                        "@awal",
-                        awal);
-
-                    da.SelectCommand.Parameters.AddWithValue(
-                        "@akhir",
-                        akhir);
-
-                    DataTable dt = new DataTable();
-
-                    da.Fill(dt);
-
-                    DgvRiwayat.DataSource = dt;
-
-                    HitungRingkasan(dt);
-                }
+                HitungRingkasan(dt);
             }
             catch (Exception ex)
             {
@@ -108,35 +84,13 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
         private void LoadRiwayatServis()
         {
-            DatabaseHelper db = new DatabaseHelper();
             try
             {
-                using (NpgsqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
+                var control = new Projek_Final_sem2.Control.Teknisi.RiwayatControl();
+                DataTable dt = control.GetAllRiwayat();
+                DgvRiwayat.DataSource = dt;
 
-                    string sql = @"
-                SELECT * from v_data_servis";
-
-                    NpgsqlDataAdapter da =
-                        new NpgsqlDataAdapter(sql, conn);
-
-                    da.SelectCommand.Parameters.AddWithValue(
-                        "@awal",
-                        DtpRiwayatAwal.Value.Date);
-
-                    da.SelectCommand.Parameters.AddWithValue(
-                        "@akhir",
-                        DtpRiwayatAkhir.Value.Date);
-
-                    DataTable dt = new DataTable();
-
-                    da.Fill(dt);
-
-                    DgvRiwayat.DataSource = dt;
-
-                    HitungRingkasan(dt);
-                }
+                HitungRingkasan(dt);
             }
             catch (Exception ex)
             {
@@ -150,51 +104,13 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         }
         private void LoadSummary()
         {
-            DatabaseHelper db = new DatabaseHelper();
             try
             {
-                using (NpgsqlConnection conn =
-                    db.GetConnection())
-                {
-                    conn.Open();
+                var control = new Projek_Final_sem2.Control.Teknisi.RiwayatControl();
+                var (count, sum) = control.GetSummary(DtpRiwayatAwal.Value.Date, DtpRiwayatAkhir.Value.Date);
 
-                    string sql = @"
-                SELECT
-                    COUNT(*) AS total_servis,
-                    COALESCE(SUM(biaya_servis),0) AS total_pendapatan
-                FROM servis
-                WHERE tanggal_servis
-                BETWEEN @awal AND @akhir";
-
-                    using (NpgsqlCommand cmd =
-                        new NpgsqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue(
-                            "@awal",
-                            DtpRiwayatAwal.Value.Date);
-
-                        cmd.Parameters.AddWithValue(
-                            "@akhir",
-                            DtpRiwayatAkhir.Value.Date);
-
-                        NpgsqlDataReader rd =
-                            cmd.ExecuteReader();
-
-                        if (rd.Read())
-                        {
-                            TotalPendapatan.Text =
-                                rd["total_servis"].ToString();
-
-                            decimal totalPendapatan =
-                                Convert.ToDecimal(
-                                    rd["total_pendapatan"]);
-
-                            TotalPendapatan.Text =
-                                "Rp " +
-                                totalPendapatan.ToString("N0");
-                        }
-                    }
-                }
+                TotalServis.Text = count.ToString();
+                TotalPendapatan.Text = "Rp " + sum.ToString("N0");
             }
             catch (Exception ex)
             {

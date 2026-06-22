@@ -13,6 +13,8 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 {
     public partial class UcStatus : UserControl
     {
+        private readonly Projek_Final_sem2.Control.Teknisi.StatusControl _statusControl = new Projek_Final_sem2.Control.Teknisi.StatusControl();
+
         public UcStatus()
         {
             InitializeComponent();
@@ -59,10 +61,9 @@ namespace Projek_Final_sem2.UserControls.Teknisi
                 return;
             }
 
-            var dao = new ServiceDAO();
             try
             {
-                bool ok = dao.UpdateStatus(id, CmbUbahStatus.Text);
+                bool ok = _statusControl.UpdateStatus(id, CmbUbahStatus.Text);
                 if (ok)
                 {
                     MessageBox.Show("Status servis berhasil diperbarui!");
@@ -120,12 +121,10 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
                 return;
             }
-            DatabaseHelper db = new DatabaseHelper();
             try
             {
-                var dao = new ServiceDAO();
                 int id = Convert.ToInt32(TbxIDServisStatus.Text);
-                var service = dao.GetServiceById(id);
+                var service = _statusControl.GetServiceById(id);
                 if (service != null)
                 {
                     TbxNamaAlatStatus.Text = service.nama_alat;

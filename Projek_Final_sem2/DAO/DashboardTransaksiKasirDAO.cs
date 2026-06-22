@@ -1,5 +1,4 @@
 using Npgsql;
-using Projek_Final_sem2.Examples.OOPExample.DAO;
 using Projek_Final_sem2.Koneksi;
 using System;
 using System.Collections.Generic;
