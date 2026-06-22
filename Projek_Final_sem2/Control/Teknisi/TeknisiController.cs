@@ -4,7 +4,7 @@ using Npgsql;
 using Projek_Final_sem2.Koneksi;
 using Projek_Final_sem2.DAO;
 
-namespace Projek_Final_sem2.Control.Teknisi
+namespace Projek_Final_sem2.Control
 {
     public class TeknisiController
     {

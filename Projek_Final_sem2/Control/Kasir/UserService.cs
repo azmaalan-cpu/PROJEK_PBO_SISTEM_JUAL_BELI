@@ -1,7 +1,7 @@
 using System.Data;
 using Projek_Final_sem2.DAO;
 
-namespace Projek_Final_sem2.Services
+namespace Projek_Final_sem2.Control.Kasir
 {
     public class UserService
     {

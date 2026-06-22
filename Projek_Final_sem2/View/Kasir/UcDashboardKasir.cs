@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Npgsql;
-using Projek_Final_sem2.Services;
+using Projek_Final_sem2.Control.Kasir;
 using Projek_Final_sem2.DAO;
 using Projek_Final_sem2.Koneksi;
 

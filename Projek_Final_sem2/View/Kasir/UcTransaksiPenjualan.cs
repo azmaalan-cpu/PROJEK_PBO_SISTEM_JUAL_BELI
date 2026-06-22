@@ -1,4 +1,4 @@
-﻿using Projek_Final_sem2.Services;
+﻿using Projek_Final_sem2.Control.Kasir;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
