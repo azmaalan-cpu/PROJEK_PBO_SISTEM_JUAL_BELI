@@ -35,5 +35,12 @@ namespace Projek_Final_sem2.DAO
         {
             return new DataTable();
         }
+
+        // Wrapper for laporan penjualan used by admin control.
+        public DataTable GetLaporanPenjualan(DateTime awal, DateTime akhir)
+        {
+            // For now delegate to GetDataGrafikPenjualan. Implement real query as needed.
+            return GetDataGrafikPenjualan(awal, akhir);
+        }
     }
 }

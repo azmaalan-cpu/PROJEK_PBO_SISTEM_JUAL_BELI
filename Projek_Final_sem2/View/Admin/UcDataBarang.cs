@@ -1,4 +1,5 @@
 ﻿using Projek_Final_sem2.DAO;
+using Projek_Final_sem2.Control.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace Projek_Final_sem2.UserControls
         private SupplierDAO supplierDAO;
         private KategoriDAO kategoriDAO;
         private AlatDAO alatDAO;
+        private DataBarangControl _dataBarangControl = new DataBarangControl();
         private int selectedAlatId = 0;
         public UcDataBarang()
         {
@@ -90,7 +92,7 @@ namespace Projek_Final_sem2.UserControls
 
         private void LoadData()
         {
-            DgvDaftarBarang.DataSource = new AlatDAO().GetAll();
+            DgvDaftarBarang.DataSource = _dataBarangControl.LoadDataBarang();
 
         }
 
@@ -113,10 +115,17 @@ namespace Projek_Final_sem2.UserControls
             alat.Stok = Convert.ToInt32(TbStok.Text);
             alat.IdKategori = Convert.ToInt32(CbxKategori.SelectedValue);
             alat.IdSupplier = Convert.ToInt32(CbxSupplier.SelectedValue);
-            alatDAO.Insert(alat);
-            MessageBox.Show("Data berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadData();
-            ClearForm();
+            bool ok = _dataBarangControl.BtnTambah_Click(alat);
+            if (ok)
+            {
+                MessageBox.Show("Data berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
+                ClearForm();
+            }
+            else
+            {
+                MessageBox.Show("Gagal menambahkan data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -146,10 +155,17 @@ namespace Projek_Final_sem2.UserControls
             alat.IdKategori = Convert.ToInt32(CbxKategori.SelectedValue);
             alat.IdSupplier = Convert.ToInt32(CbxSupplier.SelectedValue);
 
-            alatDAO.Update(alat);
-            MessageBox.Show("Data berhasil diupdate!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadData();
-            ClearForm();
+            bool ok = _dataBarangControl.BtnEdit_Click(selectedAlatId, alat);
+            if (ok)
+            {
+                MessageBox.Show("Data berhasil diupdate!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
+                ClearForm();
+            }
+            else
+            {
+                MessageBox.Show("Gagal mengupdate data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnHapus_Click(object sender, EventArgs e)
@@ -161,10 +177,17 @@ namespace Projek_Final_sem2.UserControls
             }
             if (MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                alatDAO.Delete(selectedAlatId);
-                MessageBox.Show("Data berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadData();
-                ClearForm();
+                bool ok = _dataBarangControl.BtnHapus_Click(selectedAlatId);
+                if (ok)
+                {
+                    MessageBox.Show("Data berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                    ClearForm();
+                }
+                else
+                {
+                    MessageBox.Show("Gagal menghapus data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 selectedAlatId = 0;
                 TbNamaAlat.Clear();

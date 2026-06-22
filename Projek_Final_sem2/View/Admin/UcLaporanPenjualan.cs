@@ -7,12 +7,13 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Projek_Final_sem2.Control.Admin;
 
 namespace Projek_Final_sem2.UserControls
 {
     public partial class UcLaporanPenjualan : UserControl
     {
-        private TransaksiDAO transaksiDAO = new TransaksiDAO();
+        private readonly LaporanPenjualanControl _control = new LaporanPenjualanControl();
         public UcLaporanPenjualan()
         {
             InitializeComponent();
@@ -20,7 +21,7 @@ namespace Projek_Final_sem2.UserControls
 
         private void LoadGrafik()
         {
-            DataTable dt = transaksiDAO.GetDataGrafikPenjualan(DtmPickerTanggalAwal.Value, DtmPickerTanggalAkhir.Value);
+            DataTable dt = _control.GetLaporanPenjualan(DtmPickerTanggalAwal.Value, DtmPickerTanggalAkhir.Value);
             // clear plot first
             FmPlotPenjualan.Plot.Clear();
 

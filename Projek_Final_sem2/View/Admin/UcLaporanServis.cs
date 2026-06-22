@@ -27,10 +27,8 @@ using Projek_Final_sem2.DAO;
         }
         private void LoadGrafikServis()
         {
-            DataTable dt = serviceDAO.GetGrafikServis(DtmPickerTanggalAwal.Value, DtmPickerTanggalAkhir.Value);
-            double[] values = dt.AsEnumerable().Select(row => Convert.ToDouble(row["total_servis"])).ToArray();
-            string[] labels = dt.AsEnumerable().Select(row => ((DateOnly)row["tanggal_servis"]).ToString("dd/MM/yyyy")).ToArray();
-            double[] positions = Enumerable.Range(0, labels.Length).Select(x => (double)x).ToArray();
+            var (values, labels, positions, total) = laporanServisControl.LoadGrafikServis(DtmPickerTanggalAwal.Value, DtmPickerTanggalAkhir.Value);
+
             FmPlotServis.Plot.Clear();
             FmPlotServis.Plot.Axes.Bottom.SetTicks(positions, labels);
             FmPlotServis.Plot.Title("Grafik Servis");
@@ -39,9 +37,9 @@ using Projek_Final_sem2.DAO;
             FmPlotServis.Plot.Add.Bars(values);
             FmPlotServis.Plot.Axes.AutoScale();
             FmPlotServis.Refresh();
-            decimal totalServis = dt.AsEnumerable().Sum(row => Convert.ToDecimal(row["total_servis"]));
-            LbTotalService.Text = $"Total Servis: Rp {totalServis:N0}";
-            LbTotalPendapatanServis.Text = $"Total Pendapatan Servis: Rp {totalServis:N0}";
+
+            LbTotalService.Text = $"Total Servis: Rp {total:N0}";
+            LbTotalPendapatanServis.Text = $"Total Pendapatan Servis: Rp {total:N0}";
 
         }
 

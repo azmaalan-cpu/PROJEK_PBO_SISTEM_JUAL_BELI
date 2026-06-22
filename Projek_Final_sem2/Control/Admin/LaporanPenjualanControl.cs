@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.Control.Admin
