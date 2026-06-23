@@ -13,7 +13,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
     public partial class UcDashboardKasir : UserControl
     {
         private DashboardTransaksiKasirDAO transaksiDAO = new DashboardTransaksiKasirDAO();
-        private TransaksiService transaksiService = new TransaksiService();
+        private TransaksiServiceControl transaksiService = new TransaksiServiceControl();
 
         public UcDashboardKasir()
         {

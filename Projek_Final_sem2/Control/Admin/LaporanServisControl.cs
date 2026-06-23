@@ -4,7 +4,7 @@ using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.Control.Admin
 {
-    internal class LaporanServisControl
+    public class LaporanServisControl
     {
         private readonly ServiceDAO _serviceDao = new ServiceDAO();
 

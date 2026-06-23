@@ -5,7 +5,7 @@ using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.Control.Admin
 {
-    internal class LaporanPenjualanControl
+    public class LaporanPenjualanControl
     {
         private readonly TransaksiDAO _transaksiDao = new TransaksiDAO();
 

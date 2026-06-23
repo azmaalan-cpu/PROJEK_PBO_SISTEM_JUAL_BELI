@@ -16,7 +16,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
 {
     public partial class UcTransaksiPenjualan : UserControl
     {
-        private TransaksiService transaksiService;
+        private TransaksiServiceControl transaksiService;
         private DatabaseHelper db;
 
         private bool IsInDesignMode()
@@ -36,7 +36,7 @@ namespace Projek_Final_sem2.UserControls.Kasir
             InitializeComponent();
             if (!IsInDesignMode())
             {
-                transaksiService = new TransaksiService();
+                transaksiService = new TransaksiServiceControl();
                 db = new DatabaseHelper();
             }
 

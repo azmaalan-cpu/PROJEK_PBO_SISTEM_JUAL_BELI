@@ -14,8 +14,8 @@ namespace Projek_Final_sem2.UserControls.Kasir
 {
     public partial class UcDataBarangKasir : UserControl
     {
-        private BarangService barangService = new BarangService();
-        private TransaksiService transaksiService = new TransaksiService();
+        private BarangKasirControl barangService = new BarangKasirControl();
+        private TransaksiServiceControl transaksiService = new TransaksiServiceControl();
 
         public UcDataBarangKasir()
         {

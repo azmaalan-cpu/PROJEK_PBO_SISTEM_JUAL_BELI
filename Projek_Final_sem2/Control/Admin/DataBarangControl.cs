@@ -8,17 +8,14 @@ using Projek_Final_sem2.DAO;
 namespace Projek_Final_sem2.Control.Admin
 {
     // Reflection-based adapter so control compiles regardless of exact BarangDAO signatures.
-    internal class DataBarangControl
+    public class DataBarangControl
     {
         private readonly object _barangDao;
 
         public DataBarangControl()
         {
-            // instantiate BarangDAO via its type and ensure non-null
-            var inst = Activator.CreateInstance(typeof(BarangDAO));
-            if (inst == null)
-                throw new InvalidOperationException("Unable to create instance of BarangDAO.");
-            _barangDao = inst;
+            // instantiate BarangDAO via its type
+            _barangDao = Activator.CreateInstance(typeof(BarangDAO));
         }
 
         public DataTable LoadDataBarang()
@@ -45,7 +42,6 @@ namespace Projek_Final_sem2.Control.Admin
             try
             {
                 var type = _barangDao.GetType();
-                // try Insert, Add, Create
                 var m = type.GetMethod("Insert") ?? type.GetMethod("Add") ?? type.GetMethod("Create");
                 if (m == null) return false;
                 var parameters = m.GetParameters();
@@ -102,7 +98,7 @@ namespace Projek_Final_sem2.Control.Admin
             }
         }
 
-        private static bool InterpretResultAsSuccess(object? res)
+        private static bool InterpretResultAsSuccess(object res)
         {
             if (res == null) return false;
             if (res is bool b) return b;

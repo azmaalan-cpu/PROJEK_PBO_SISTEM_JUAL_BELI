@@ -3,7 +3,7 @@ using Projek_Final_sem2.DAO;
 
 namespace Projek_Final_sem2.Control.Kasir
 {
-    public class BarangService
+    public class BarangKasirControl
     {
         private readonly BarangDAO _barangDao = new BarangDAO();
         private readonly DashboardTransaksiKasirDAO _transaksiDao = new DashboardTransaksiKasirDAO();
