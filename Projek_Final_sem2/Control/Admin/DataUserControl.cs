@@ -35,7 +35,16 @@ namespace Projek_Final_sem2.Control.Admin
             try
             {
                 var type = _userDao.GetType();
-                var m = type.GetMethod("GetAllUsers") ?? type.GetMethod("GetAll") ?? type.GetMethod("GetUsers") ?? type.GetMethod("Get");
+                // common names (include existing typo in UserDAO: "GettAll")
+                var m = type.GetMethod("GetAllUsers") ?? type.GetMethod("GettAll") ?? type.GetMethod("GetAll") ?? type.GetMethod("GetUsers") ?? type.GetMethod("Get");
+                // fallback: find any public instance parameterless method that likely returns a table or enumerable and contains 'Get' in its name
+                if (m == null)
+                {
+                    m = type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                            .FirstOrDefault(mi => mi.GetParameters().Length == 0
+                                                  && (mi.ReturnType == typeof(DataTable) || typeof(IEnumerable).IsAssignableFrom(mi.ReturnType))
+                                                  && mi.Name.IndexOf("Get", StringComparison.OrdinalIgnoreCase) >= 0);
+                }
                 if (m == null) return new DataTable();
                 var res = m.Invoke(_userDao, null);
                 if (res is DataTable dt) return dt;
@@ -104,6 +113,8 @@ namespace Projek_Final_sem2.Control.Admin
                     SetPropertyIfExists(model, "password_salt", salt);
                     SetPropertyIfExists(model, "passwordSalt", salt);
                     SetPropertyIfExists(model, "passwordHash", hash);
+                    // also set plaintext password if the model expects it (for compatibility with existing DAOs)
+                    SetPropertyIfExists(model, "password", password);
                     args = new object[] { model };
                 }
                 else if (p.Length >= 3)
@@ -153,6 +164,7 @@ namespace Projek_Final_sem2.Control.Admin
                     if (role != null) SetPropertyIfExists(model, "role", role);
                     if (hash != null) SetPropertyIfExists(model, "password_hash", hash);
                     if (salt != null) SetPropertyIfExists(model, "password_salt", salt);
+                    if (password != null) SetPropertyIfExists(model, "password", password);
                     args = new object[] { id, model };
                 }
                 else if (p.Length == 1)
@@ -165,6 +177,7 @@ namespace Projek_Final_sem2.Control.Admin
                     if (role != null) SetPropertyIfExists(model, "role", role);
                     if (hash != null) SetPropertyIfExists(model, "password_hash", hash);
                     if (salt != null) SetPropertyIfExists(model, "password_salt", salt);
+                    if (password != null) SetPropertyIfExists(model, "password", password);
                     args = new object[] { model };
                 }
                 else

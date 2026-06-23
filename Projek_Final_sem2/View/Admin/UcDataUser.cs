@@ -6,14 +6,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Projek_Final_sem2.DAO;
+using Projek_Final_sem2.Control.Admin;
 using Projek_Final_sem2.Models;
 
 namespace Projek_Final_sem2.UserControls
 {
     public partial class UcDataUser : UserControl
     {
-        private UserDAO userDAO;
         private RoleDAO roleDAO;
+        private readonly DataUserControl _dataUserControl = new DataUserControl();
         private int selectedUserId = 0;
         public UcDataUser()
         {
@@ -22,7 +23,6 @@ namespace Projek_Final_sem2.UserControls
 
             DgvDaftarUser.AutoGenerateColumns = false;
 
-            userDAO = new UserDAO();
             roleDAO = new RoleDAO();
 
             LoadRole();
@@ -41,7 +41,9 @@ namespace Projek_Final_sem2.UserControls
 
         private void LoadData()
         {
-            DgvDaftarUser.DataSource = userDAO.GettAll();
+            // bind via controller directly
+            var dt = _dataUserControl.MuatUsers();
+            DgvDaftarUser.DataSource = dt;
 
         }
 
@@ -65,15 +67,20 @@ namespace Projek_Final_sem2.UserControls
 
         private void BtnTambah_Click(object sender, EventArgs e)
         {
-            User user = new User();
-
-            user.Username = TbUsername.Text;
-            user.Password = TbPassword.Text;
-            user.IdRole = Convert.ToInt32(CbxRole.SelectedValue);
-            userDAO.Insert(user);
-            MessageBox.Show("Data berhasil ditambahkan!");
-            LoadData();
-            ClearForm();
+            var username = TbUsername.Text;
+            var password = TbPassword.Text;
+            var role = CbxRole.Text;
+            var ok = _dataUserControl.AddUser(username, password, role);
+            if (ok)
+            {
+                MessageBox.Show("Data berhasil ditambahkan!");
+                LoadData();
+                ClearForm();
+            }
+            else
+            {
+                MessageBox.Show("Gagal menambahkan data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void DgvDaftarUser_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -95,16 +102,20 @@ namespace Projek_Final_sem2.UserControls
                 MessageBox.Show("Pilih data yang ingin diubah!");
                 return;
             }
-            User user = new User();
-
-            user.IdUser = selectedUserId;
-            user.Username = TbUsername.Text;
-            user.Password = TbPassword.Text;
-            user.IdRole = Convert.ToInt32(CbxRole.SelectedValue);
-            userDAO.Update(user);
-            MessageBox.Show("Data berhasil diubah!");
-            LoadData();
-            ClearForm();
+            var username = TbUsername.Text;
+            var password = TbPassword.Text;
+            var role = CbxRole.Text;
+            var ok = _dataUserControl.EditUser(selectedUserId, username, password, role);
+            if (ok)
+            {
+                MessageBox.Show("Data berhasil diubah!");
+                LoadData();
+                ClearForm();
+            }
+            else
+            {
+                MessageBox.Show("Gagal mengubah data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnHapus_Click(object sender, EventArgs e)
@@ -118,10 +129,17 @@ namespace Projek_Final_sem2.UserControls
             DialogResult hasil = MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (hasil == DialogResult.Yes)
             {
-                userDAO.Delete(selectedUserId);
-                MessageBox.Show("Data berhasil dihapus!");
-                LoadData();
-                ClearForm();
+                var ok = _dataUserControl.DeleteUser(selectedUserId);
+                if (ok)
+                {
+                    MessageBox.Show("Data berhasil dihapus!");
+                    LoadData();
+                    ClearForm();
+                }
+                else
+                {
+                    MessageBox.Show("Gagal menghapus data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 selectedUserId = 0;
                 TbUsername.Clear();

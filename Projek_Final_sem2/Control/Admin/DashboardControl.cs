@@ -14,6 +14,7 @@ namespace Projek_Final_sem2.Control.Admin
     {
         private readonly object _adminDao = new DashboardAdminDAO();
         private readonly object _transaksiDao = new DashboardTransaksiKasirDAO();
+        private readonly object _serviceDao = new Projek_Final_sem2.DAO.ServiceDAO();
 
         // Total user terdaftar (metode asli)
         public int GetTotalUsers()
@@ -96,6 +97,32 @@ namespace Projek_Final_sem2.Control.Admin
                 TotalServis = GetTotalServis(from, to),
                 RecentTransactions = GetRecentTransactions(recentLimit)
             };
+        }
+
+        // Additional wrappers to expose other DashboardAdminDAO helpers
+        public int GetTotalBarang()
+        {
+            try { return InvokeIntDao(_adminDao, new[] { "GetTotalBarang", "GetTotalItems", "GetTotalAlat", "CountBarang" }); }
+            catch { return 0; }
+        }
+
+        public decimal GetPendapatanPenjualan()
+        {
+            try { return InvokeDecimalDao(_adminDao, new[] { "GetPendapatanPenjualan", "GetPendapatan", "GetPendapatanPenjualan", "GetPendapatanPenjualan" }); }
+            catch { return 0m; }
+        }
+
+        public DataTable GetBarangStokMenipis()
+        {
+            try { return InvokeDataTableDao(_adminDao, new[] { "GetBarangStokMenipis", "GetBarangStokMenipis", "GetBarangStokMenipis", "GetBarangStokMenipis" }); }
+            catch { return new DataTable(); }
+        }
+
+        // service related helper
+        public DataTable GetDashboardServis()
+        {
+            try { return InvokeDataTableDao(_serviceDao, new[] { "DgvDashboardServisAdmin", "GetGrafikServis", "GetDashboardServis", "GetServisDashboard" }); }
+            catch { return new DataTable(); }
         }
 
         // Alias Bahasa Indonesia: Muat metrik dashboard
