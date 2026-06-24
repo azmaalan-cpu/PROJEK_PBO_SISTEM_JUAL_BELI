@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Projek_Final_sem2.Control.Teknisi
 {
-    public class DataServisControl
+    public class DataServisControl : ITeknisiDashboardController
     {
         private readonly ServiceDAO _serviceDao = new ServiceDAO();
 

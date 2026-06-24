@@ -1,5 +1,6 @@
 ﻿using Projek_Final_sem2.Models;
 using Projek_Final_sem2.UserControls;
+using Projek_Final_sem2.UserControls.Admin;
 using Projek_Final_sem2.UserControls.Kasir;
 using System;
 using System.Collections.Generic;

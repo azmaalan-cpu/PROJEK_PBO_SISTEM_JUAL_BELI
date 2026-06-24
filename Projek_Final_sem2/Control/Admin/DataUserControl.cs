@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using Projek_Final_sem2.DAO;
+using Projek_Final_sem2.Models;
 
 namespace Projek_Final_sem2.Control.Admin
 {
@@ -14,13 +15,11 @@ namespace Projek_Final_sem2.Control.Admin
     // serta hashing/verifikasi password menggunakan PBKDF2
     public class DataUserControl
     {
-        private readonly object _userDao;
+        private readonly UserDAO _userDao;
 
         public DataUserControl()
         {
-            var inst = Activator.CreateInstance(typeof(UserDAO));
-            if (inst == null) throw new InvalidOperationException("Tidak bisa membuat instance UserDAO");
-            _userDao = inst;
+            _userDao = new UserDAO();
         }
 
         // Muat semua user (alias Bahasa Indonesia)
@@ -34,22 +33,7 @@ namespace Projek_Final_sem2.Control.Admin
         {
             try
             {
-                var type = _userDao.GetType();
-                // common names (include existing typo in UserDAO: "GettAll")
-                var m = type.GetMethod("GetAllUsers") ?? type.GetMethod("GettAll") ?? type.GetMethod("GetAll") ?? type.GetMethod("GetUsers") ?? type.GetMethod("Get");
-                // fallback: find any public instance parameterless method that likely returns a table or enumerable and contains 'Get' in its name
-                if (m == null)
-                {
-                    m = type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                            .FirstOrDefault(mi => mi.GetParameters().Length == 0
-                                                  && (mi.ReturnType == typeof(DataTable) || typeof(IEnumerable).IsAssignableFrom(mi.ReturnType))
-                                                  && mi.Name.IndexOf("Get", StringComparison.OrdinalIgnoreCase) >= 0);
-                }
-                if (m == null) return new DataTable();
-                var res = m.Invoke(_userDao, null);
-                if (res is DataTable dt) return dt;
-                if (res is IEnumerable ie) return EnumerableToDataTable(ie);
-                return new DataTable();
+                return _userDao.GettAll() ?? new DataTable();
             }
             catch
             {
@@ -68,14 +52,12 @@ namespace Projek_Final_sem2.Control.Admin
         {
             try
             {
-                var type = _userDao.GetType();
-                var m = type.GetMethod("GetById") ?? type.GetMethod("GetUserById") ?? type.GetMethod("FindById");
-                if (m == null) return new DataTable();
-                var res = m.Invoke(_userDao, new object[] { id });
-                if (res is DataTable dt) return dt;
-                if (res is IEnumerable ie) return EnumerableToDataTable(ie);
-                if (res != null) return EnumerableToDataTable(new[] { res });
-                return new DataTable();
+                var dt = _userDao.GettAll();
+                if (dt == null) return new DataTable();
+                var found = dt.Select($"id_user = {id}");
+                var outDt = dt.Clone();
+                foreach (var row in found) outDt.ImportRow(row);
+                return outDt;
             }
             catch
             {
@@ -93,41 +75,16 @@ namespace Projek_Final_sem2.Control.Admin
         public bool AddUser(string username, string password, string role)
         {
             ValidateUserInput(username, password, role);
-            var (hash, salt) = HashPassword(password);
-
             try
             {
-                var type = _userDao.GetType();
-                var m = type.GetMethod("Insert") ?? type.GetMethod("Add") ?? type.GetMethod("Create");
-                if (m == null) return false;
-                var p = m.GetParameters();
-                object[] args;
-                if (p.Length == 1)
+                var user = new User
                 {
-                    var modelType = p[0].ParameterType;
-                    var model = Activator.CreateInstance(modelType);
-                    if (model == null) return false;
-                    SetPropertyIfExists(model, "username", username);
-                    SetPropertyIfExists(model, "role", role);
-                    SetPropertyIfExists(model, "password_hash", hash);
-                    SetPropertyIfExists(model, "password_salt", salt);
-                    SetPropertyIfExists(model, "passwordSalt", salt);
-                    SetPropertyIfExists(model, "passwordHash", hash);
-                    // also set plaintext password if the model expects it (for compatibility with existing DAOs)
-                    SetPropertyIfExists(model, "password", password);
-                    args = new object[] { model };
-                }
-                else if (p.Length >= 3)
-                {
-                    args = new object[] { username, hash, salt, role };
-                }
-                else
-                {
-                    args = new object[] { username, hash, salt, role };
-                }
-
-                var res = m.Invoke(_userDao, args);
-                return InterpretResultAsSuccess(res);
+                    Username = username,
+                    Password = password,
+                    IdRole = int.TryParse(role, out var r) ? r : 0
+                };
+                _userDao.Insert(user);
+                return true;
             }
             catch
             {
@@ -145,48 +102,17 @@ namespace Projek_Final_sem2.Control.Admin
         public bool EditUser(int id, string? username = null, string? password = null, string? role = null)
         {
             if (username == null && password == null && role == null) return false;
-            byte[]? hash = null; byte[]? salt = null;
-            if (!string.IsNullOrEmpty(password)) (hash, salt) = HashPassword(password);
-
             try
             {
-                var type = _userDao.GetType();
-                var m = type.GetMethod("Update") ?? type.GetMethod("Edit") ?? type.GetMethod("Modify");
-                if (m == null) return false;
-                var p = m.GetParameters();
-                object[] args;
-                if (p.Length == 2)
+                var user = new User
                 {
-                    var modelType = p[1].ParameterType;
-                    var model = Activator.CreateInstance(modelType);
-                    if (model == null) return false;
-                    if (username != null) SetPropertyIfExists(model, "username", username);
-                    if (role != null) SetPropertyIfExists(model, "role", role);
-                    if (hash != null) SetPropertyIfExists(model, "password_hash", hash);
-                    if (salt != null) SetPropertyIfExists(model, "password_salt", salt);
-                    if (password != null) SetPropertyIfExists(model, "password", password);
-                    args = new object[] { id, model };
-                }
-                else if (p.Length == 1)
-                {
-                    var modelType = p[0].ParameterType;
-                    var model = Activator.CreateInstance(modelType);
-                    if (model == null) return false;
-                    SetPropertyIfExists(model, "id", id);
-                    if (username != null) SetPropertyIfExists(model, "username", username);
-                    if (role != null) SetPropertyIfExists(model, "role", role);
-                    if (hash != null) SetPropertyIfExists(model, "password_hash", hash);
-                    if (salt != null) SetPropertyIfExists(model, "password_salt", salt);
-                    if (password != null) SetPropertyIfExists(model, "password", password);
-                    args = new object[] { model };
-                }
-                else
-                {
-                    args = new object[] { id, username ?? string.Empty, hash ?? new byte[0], salt ?? new byte[0], role ?? string.Empty };
-                }
-
-                var res = m.Invoke(_userDao, args);
-                return InterpretResultAsSuccess(res);
+                    IdUser = id,
+                    Username = username ?? string.Empty,
+                    Password = password ?? string.Empty,
+                    IdRole = role != null && int.TryParse(role, out var r) ? r : 0
+                };
+                _userDao.Update(user);
+                return true;
             }
             catch
             {
@@ -205,13 +131,8 @@ namespace Projek_Final_sem2.Control.Admin
         {
             try
             {
-                var type = _userDao.GetType();
-                var m = type.GetMethod("Delete") ?? type.GetMethod("Remove") ?? type.GetMethod("DeleteById");
-                if (m == null) return false;
-                var p = m.GetParameters();
-                object[] args = p.Length == 1 ? new object[] { id } : new object[] { };
-                var res = m.Invoke(_userDao, args);
-                return InterpretResultAsSuccess(res);
+                _userDao.Delete(id);
+                return true;
             }
             catch
             {

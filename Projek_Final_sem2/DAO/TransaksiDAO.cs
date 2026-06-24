@@ -33,7 +33,25 @@ namespace Projek_Final_sem2.DAO
 
         public DataTable GetDataGrafikPenjualan(DateTime awal, DateTime akhir)
         {
-            return new DataTable();
+            DataTable dt = new DataTable();
+            using (var conn = _db.GetConnection())
+            {
+                conn.Open();
+                // Try to read aggregated penjualan per date from a view or function.
+                // Expecting columns: tanggal, total_penjualan
+                string sql = @"SELECT * FROM v_transaksi_penjualan WHERE tanggal::date BETWEEN @awal::date AND @akhir::date ORDER BY tanggal";
+                using (var cmd = new Npgsql.NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@awal", awal.Date);
+                    cmd.Parameters.AddWithValue("@akhir", akhir.Date);
+                    using (var adapter = new Npgsql.NpgsqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+
+            return dt;
         }
 
         // Wrapper for laporan penjualan used by admin control.

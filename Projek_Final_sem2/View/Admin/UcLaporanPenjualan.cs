@@ -33,27 +33,69 @@ namespace Projek_Final_sem2.UserControls
                 return;
             }
 
-            double[] values = dt.AsEnumerable().Select(row => Convert.ToDouble(row["total_penjualan"])).ToArray();
-            string[] labels = dt.AsEnumerable().Select(row =>
+            // ensure expected value column exists; try to find a sensible fallback
+            string valueColumn = "total_penjualan";
+            if (!dt.Columns.Contains(valueColumn))
             {
-                if (row.IsNull("tanggal"))
-                    return string.Empty;
+                var fallback = dt.Columns.Cast<DataColumn>()
+                                .Select(c => c.ColumnName)
+                                .FirstOrDefault(n => n.IndexOf("total", StringComparison.OrdinalIgnoreCase) >= 0
+                                                     || n.IndexOf("penjualan", StringComparison.OrdinalIgnoreCase) >= 0);
 
-                var val = row["tanggal"];
+                if (!string.IsNullOrEmpty(fallback))
+                    valueColumn = fallback;
+                else
+                {
+                    // no appropriate column found -> show empty plot and zero total
+                    FmPlotPenjualan.Refresh();
+                    LbTotalPenjualan.Text = "Total Penjualan: Rp 0";
+                    return;
+                }
+            }
 
-                // handle DateOnly (new in .NET 6+) and DateTime
-                if (val is DateOnly dateOnly)
-                    return dateOnly.ToString("dd/MM/yyyy");
+            // group rows by transaction date and sum totals per date
+            var groups = dt.AsEnumerable()
+                .Select(row =>
+                {
+                    DateTime? date = null;
+                    if (!row.IsNull("tanggal"))
+                    {
+                        var v = row["tanggal"];
+                        if (v is DateOnly d)
+                            date = d.ToDateTime(TimeOnly.MinValue).Date;
+                        else if (v is DateTime dtv)
+                            date = dtv.Date;
+                        else if (DateTime.TryParse(v?.ToString(), out var parsed))
+                            date = parsed.Date;
+                    }
 
-                if (val is DateTime dateTime)
-                    return dateTime.ToString("dd/MM/yyyy");
+                    return new { Row = row, Date = date };
+                })
+                .Where(x => x.Date.HasValue)
+                .GroupBy(x => x.Date.Value)
+                .OrderBy(g => g.Key)
+                .Select(g => new
+                {
+                    Date = g.Key,
+                    Total = g.Sum(x =>
+                    {
+                        var v = x.Row[valueColumn];
+                        return v == null || v == DBNull.Value ? 0m : Convert.ToDecimal(v);
+                    })
+                })
+                .ToList();
 
-                // fallback: try parse string representation
-                if (DateTime.TryParse(val?.ToString(), out var parsed))
-                    return parsed.ToString("dd/MM/yyyy");
+            if (groups.Count == 0)
+            {
+                // no valid tanggal values to plot
+                FmPlotPenjualan.Refresh();
+                LbTotalPenjualan.Text = "Total Penjualan: Rp 0";
+                return;
+            }
 
-                return val?.ToString() ?? string.Empty;
-            }).ToArray();
+            double[] values = groups.Select(g => (double)g.Total).ToArray();
+            // labels show day and month, e.g. "15 June"
+            string[] labels = groups.Select(g => g.Date.ToString("dd MMMM")).ToArray();
             double[] positions = Enumerable.Range(0, labels.Length).Select(x => (double)x).ToArray();
 
             // add bars then set tick labels so they align
@@ -65,7 +107,7 @@ namespace Projek_Final_sem2.UserControls
             FmPlotPenjualan.Plot.Axes.AutoScale();
             FmPlotPenjualan.Refresh();
 
-            decimal totalPenjualan = dt.AsEnumerable().Sum(row => Convert.ToDecimal(row["total_penjualan"]));
+            decimal totalPenjualan = groups.Sum(g => g.Total);
             LbTotalPenjualan.Text = $"Total Penjualan: Rp {totalPenjualan:N0}";
 
         }

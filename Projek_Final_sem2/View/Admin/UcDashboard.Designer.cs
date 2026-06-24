@@ -1,4 +1,4 @@
-﻿namespace Projek_Final_sem2.UserControls
+﻿namespace Projek_Final_sem2.UserControls.Admin
 {
     partial class UcDashboard
     {

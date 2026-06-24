@@ -69,7 +69,7 @@ namespace Projek_Final_sem2.UserControls
         {
             var username = TbUsername.Text;
             var password = TbPassword.Text;
-            var role = CbxRole.Text;
+            var role = CbxRole.SelectedValue?.ToString() ?? "0";
             var ok = _dataUserControl.AddUser(username, password, role);
             if (ok)
             {
@@ -104,7 +104,7 @@ namespace Projek_Final_sem2.UserControls
             }
             var username = TbUsername.Text;
             var password = TbPassword.Text;
-            var role = CbxRole.Text;
+            var role = CbxRole.SelectedValue?.ToString() ?? "0";
             var ok = _dataUserControl.EditUser(selectedUserId, username, password, role);
             if (ok)
             {

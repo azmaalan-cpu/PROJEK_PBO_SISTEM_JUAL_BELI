@@ -10,26 +10,18 @@ namespace Projek_Final_sem2.Control.Admin
     // Reflection-based adapter so control compiles regardless of exact BarangDAO signatures.
     public class DataBarangControl
     {
-        private readonly object _barangDao;
+        private readonly AlatDAO _alatDao;
 
         public DataBarangControl()
         {
-            // instantiate BarangDAO via its type
-            _barangDao = Activator.CreateInstance(typeof(BarangDAO));
+            _alatDao = new AlatDAO();
         }
 
         public DataTable LoadDataBarang()
         {
             try
             {
-                var type = _barangDao.GetType();
-                var m = type.GetMethod("GetAll") ?? type.GetMethod("GetAllBarang") ?? type.GetMethod("Get") ;
-                if (m == null) return new DataTable();
-
-                var result = m.Invoke(_barangDao, null);
-                if (result is DataTable dt) return dt;
-                if (result is IEnumerable ie) return EnumerableToDataTable(ie);
-                return new DataTable();
+                return _alatDao.GetAll() ?? new DataTable();
             }
             catch
             {
@@ -41,13 +33,12 @@ namespace Projek_Final_sem2.Control.Admin
         {
             try
             {
-                var type = _barangDao.GetType();
-                var m = type.GetMethod("Insert") ?? type.GetMethod("Add") ?? type.GetMethod("Create");
-                if (m == null) return false;
-                var parameters = m.GetParameters();
-                object[] args = parameters.Length == 1 ? new object[] { model } : parameters.Length == 0 ? new object[0] : new object[] { model };
-                var res = m.Invoke(_barangDao, args);
-                return InterpretResultAsSuccess(res);
+                if (model is Models.Alat alat)
+                {
+                    _alatDao.Insert(alat);
+                    return true;
+                }
+                return false;
             }
             catch
             {
@@ -59,20 +50,13 @@ namespace Projek_Final_sem2.Control.Admin
         {
             try
             {
-                var type = _barangDao.GetType();
-                var m = type.GetMethod("Update") ?? type.GetMethod("Edit") ?? type.GetMethod("Modify");
-                if (m == null) return false;
-                var parameters = m.GetParameters();
-                object[] args;
-                if (parameters.Length == 2)
-                    args = new object[] { id, model };
-                else if (parameters.Length == 1)
-                    args = new object[] { model };
-                else
-                    args = new object[0];
-
-                var res = m.Invoke(_barangDao, args);
-                return InterpretResultAsSuccess(res);
+                if (model is Models.Alat alat)
+                {
+                    alat.IdAlat = id;
+                    _alatDao.Update(alat);
+                    return true;
+                }
+                return false;
             }
             catch
             {
@@ -84,13 +68,8 @@ namespace Projek_Final_sem2.Control.Admin
         {
             try
             {
-                var type = _barangDao.GetType();
-                var m = type.GetMethod("Delete") ?? type.GetMethod("Remove") ?? type.GetMethod("DeleteById");
-                if (m == null) return false;
-                var parameters = m.GetParameters();
-                object[] args = parameters.Length == 1 ? new object[] { id } : new object[] { };
-                var res = m.Invoke(_barangDao, args);
-                return InterpretResultAsSuccess(res);
+                _alatDao.Delete(id);
+                return true;
             }
             catch
             {

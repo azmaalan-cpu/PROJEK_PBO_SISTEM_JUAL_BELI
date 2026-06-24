@@ -13,8 +13,13 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 {
     public partial class UcDasboardTeknisi : UserControl
     {
-        public UcDasboardTeknisi()
+        private readonly Projek_Final_sem2.Control.Teknisi.ITeknisiDashboardController _controller;
+
+        public UcDasboardTeknisi() : this(new Projek_Final_sem2.Control.Teknisi.DataServisControl()) { }
+
+        public UcDasboardTeknisi(Projek_Final_sem2.Control.Teknisi.ITeknisiDashboardController controller)
         {
+            _controller = controller ?? throw new ArgumentNullException(nameof(controller));
             InitializeComponent();
             this.Load += UcDasboardTeknisi_Load;
         }
@@ -88,7 +93,7 @@ namespace Projek_Final_sem2.UserControls.Teknisi
 
         private void LoadDataServisDGV()
         {
-            var dt = new Projek_Final_sem2.Control.Teknisi.DataServisControl().GetLatestServis();
+            var dt = _controller.GetLatestServis();
             DgvServisTerbaru.DataSource = null;
             DgvServisTerbaru.AutoGenerateColumns = false;
             try
