@@ -6,5 +6,6 @@ namespace Projek_Final_sem2.Control.Teknisi
 {
     internal class DashboardControl
     {
+
     }
 }
