@@ -151,5 +151,32 @@ namespace Projek_Final_sem2.DAO
                 }
             }
         }
+
+
+        public DataRow GetInfromasiTransaksiById(int idTransaksi) 
+        {
+            using(var conn = db.GetConnection())
+            {
+                conn.Open();
+                string sql = "SELECT * FROM v_informasi_transaksi WHERE id_transaksi = @id_transaksi";
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id_Transaksi", idTransaksi);
+                    using (var da = new NpgsqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+                            return dt.Rows[0];
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

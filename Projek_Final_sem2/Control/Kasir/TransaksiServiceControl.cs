@@ -70,9 +70,9 @@ namespace Projek_Final_sem2.Control.Kasir
 
         // Ambil informasi transaksi
         // OOP pillars: Abstraction, Encapsulation
-        public DataTable GetInformasiTransaksi()
+        public DataRow GetInformasiTransaksById(int idTransaksi)
         {
-            return _dashboardTransaksiKasirDAO.GetInformasiTransaksi();
+            return _dashboardTransaksiKasirDAO.GetInfromasiTransaksiById(idTransaksi);
         }
 
         // Ambil daftar transaksi penjualan

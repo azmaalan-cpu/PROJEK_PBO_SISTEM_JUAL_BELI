@@ -52,41 +52,19 @@ namespace Projek_Final_sem2.UserControls.Kasir
             DgvTransaksi.DataSource =
                 transaksiService.GetTransaksiPenjualan();
 
-            DataTable dt =
-            transaksiService.GetInformasiTransaksi();
+            DataRow row =
+            transaksiService.GetInformasiTransaksById(1);
 
-            if (dt.Rows.Count > 0)
+            if (row != null)
             {
                 LbIdTransaksi.Text =
-                    dt.Rows[0]["id_transaksi"].ToString();
+                    row["id_transaksi"].ToString();
 
-                if (dt.Rows.Count > 0)
-{
-    var row = dt.Rows[0];
+                LbPendapatanDashboard.Text = Convert.ToDecimal(row["total_harga"]).ToString("NO");
 
-    LbIdTransaksi.Text = row.Table.Columns.Contains("id_transaksi") && row["id_transaksi"] != DBNull.Value
-        ? row["id_transaksi"].ToString()
-        : string.Empty;
+                LbJumlahBarang.Text = row["jumlah_barang"].ToString();
 
-    if (row.Table.Columns.Contains("total_harga") && row["total_harga"] != DBNull.Value)
-    {
-        LbPendapatanDashboard.Text = Convert.ToDecimal(row["total_harga"]).ToString("N0");
-    }
-    else
-    {
-        LbPendapatanDashboard.Text = "0";
-    }
-
-    LbJumlahBarang.Text = row.Table.Columns.Contains("jumlah_barang") && row["jumlah_barang"] != DBNull.Value
-        ? row["jumlah_barang"].ToString()
-        : "0";
-}
-
-                LbJumlahBarang.Text =
-                    dt.Rows[0]["jumlah_barang"].ToString();
             }
-
-
         }
 
         private void DgvTransaksi_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -99,90 +77,31 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 Convert.ToInt32(
                 DgvTransaksi.Rows[e.RowIndex]
                 .Cells[0].Value);
-            
-            // Prefer mengambil nilai langsung dari DataGridView yang diklik
-            try
+       
+
+            DataRow row = transaksiService.GetInformasiTransaksById(idTransaksi);
+          
+
+            if(row != null)
             {
-                // Set ID transaksi dari cell yang diklik
-                LbIdTransaksi.Text = idTransaksi.ToString();
-
-                // Jika DataGridView.DataSource adalah DataTable, gunakan baris dari sana
-                if (DgvTransaksi.DataSource is DataTable srcDt)
-                {
-                    DataRow[] found = null;
-                    if (srcDt.Columns.Contains("id_transaksi"))
-                        found = srcDt.Select($"id_transaksi = {idTransaksi}");
-                    else if (srcDt.Columns.Contains("no_transaksi"))
-                        found = srcDt.Select($"no_transaksi = {idTransaksi}");
-
-                    if (found != null && found.Length > 0)
-                    {
-                        var r = found[0];
-                        // Cari nilai total dari beberapa kemungkinan nama kolom
-                        string[] totalCols = new[] { "total_harga", "total", "total_pendapatan", "total_price" };
-                        decimal totalVal = 0m;
-                        foreach (var c in totalCols)
-                        {
-                            if (r.Table.Columns.Contains(c) && r[c] != DBNull.Value)
-                            {
-                                totalVal = Convert.ToDecimal(r[c]);
-                                break;
-                            }
-                        }
-                        LbPendapatanDashboard.Text = totalVal.ToString("N0");
-
-                        // Cari jumlah barang dari beberapa kemungkinan nama kolom
-                        string[] qtyCols = new[] { "jumlah_barang", "quantity", "qty", "jumlah" };
-                        string qtyText = "0";
-                        foreach (var c in qtyCols)
-                        {
-                            if (r.Table.Columns.Contains(c) && r[c] != DBNull.Value)
-                            {
-                                qtyText = r[c].ToString();
-                                break;
-                            }
-                        }
-                        LbJumlahBarang.Text = qtyText;
-                        return;
-                    }
-                }
-
-                // Fallback: baca langsung dari baris DataGridView
-                var rowView = DgvTransaksi.Rows[e.RowIndex];
-                object totalCell = null;
-                if (rowView.Cells.Count > 2) totalCell = rowView.Cells[2].Value;
-                else if (rowView.Cells.Count > 1) totalCell = rowView.Cells[1].Value;
-
-                if (totalCell != null && totalCell != DBNull.Value && decimal.TryParse(totalCell.ToString(), out var parsed))
-                {
-                    LbPendapatanDashboard.Text = parsed.ToString("N0");
-                }
-
-                // Cari jumlah barang berdasarkan nama kolom pada DataGridView
-                string qtyVal = "0";
-                try
-                {
-                    foreach (DataGridViewCell cell in rowView.Cells)
-                    {
-                        var colName = rowView.DataGridView.Columns[cell.ColumnIndex].Name?.ToLowerInvariant() ?? string.Empty;
-                        if (colName.Contains("jumlah") || colName.Contains("qty") || colName.Contains("quantity"))
-                        {
-                            if (cell.Value != null) qtyVal = cell.Value.ToString();
-                            break;
-                        }
-                    }
-                }
-                catch { }
-
-                LbJumlahBarang.Text = qtyVal;
+                LbIdTransaksi.Text =
+                    row["id_transaksi"].ToString();
+                LbPendapatanDashboard.Text =
+                    Convert.ToDecimal(row["total_harga"])
+                    .ToString("N0");
+                LbJumlahBarang.Text =
+                    row["jumlah_barang"].ToString();
             }
-            catch
-            {
-                // jangan biarkan error crash UI
-            }
+
+
         }
 
         private void DgvTransaksi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void PanelInfo_Paint(object sender, PaintEventArgs e)
         {
 
         }

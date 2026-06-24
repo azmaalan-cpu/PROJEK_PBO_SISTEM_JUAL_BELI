@@ -47,14 +47,14 @@
             ColTotal = new DataGridViewTextBoxColumn();
             LbTransaksiPenjualan = new Label();
             PanelInfo = new Panel();
-            LbJumlahBarang = new Label();
             LbPendapatanDashboard = new Label();
             LbIdTransaksi = new Label();
-            LabelJumlahBarang = new Label();
             LabelPendapatan = new Label();
             LabelIdTransaksi = new Label();
             PcxKeranjang = new PictureBox();
             LbInformasi = new Label();
+            LbJumlahBarang = new Label();
+            LabelJumlahBarang = new Label();
             PanelBarang.SuspendLayout();
             PanelPenjualan.SuspendLayout();
             PanelPendapatan.SuspendLayout();
@@ -68,18 +68,20 @@
             // 
             LbDashboard.AutoSize = true;
             LbDashboard.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbDashboard.Location = new Point(18, 15);
+            LbDashboard.Location = new Point(26, 25);
+            LbDashboard.Margin = new Padding(4, 0, 4, 0);
             LbDashboard.Name = "LbDashboard";
-            LbDashboard.Size = new Size(93, 21);
+            LbDashboard.Size = new Size(138, 32);
             LbDashboard.TabIndex = 0;
             LbDashboard.Text = "Dashboard";
             // 
             // LbSelamatDatang
             // 
             LbSelamatDatang.AutoSize = true;
-            LbSelamatDatang.Location = new Point(18, 43);
+            LbSelamatDatang.Location = new Point(26, 72);
+            LbSelamatDatang.Margin = new Padding(4, 0, 4, 0);
             LbSelamatDatang.Name = "LbSelamatDatang";
-            LbSelamatDatang.Size = new Size(121, 15);
+            LbSelamatDatang.Size = new Size(184, 25);
             LbSelamatDatang.TabIndex = 1;
             LbSelamatDatang.Text = "Selamat Datang, Kasir";
             // 
@@ -88,19 +90,20 @@
             PanelBarang.BackColor = Color.DodgerBlue;
             PanelBarang.Controls.Add(LabelTotalBarang);
             PanelBarang.Controls.Add(LbDataBarang);
-            PanelBarang.Location = new Point(18, 71);
-            PanelBarang.Margin = new Padding(3, 2, 3, 2);
+            PanelBarang.Location = new Point(26, 118);
+            PanelBarang.Margin = new Padding(4, 3, 4, 3);
             PanelBarang.Name = "PanelBarang";
-            PanelBarang.Size = new Size(230, 94);
+            PanelBarang.Size = new Size(329, 157);
             PanelBarang.TabIndex = 2;
             // 
             // LabelTotalBarang
             // 
             LabelTotalBarang.AutoSize = true;
             LabelTotalBarang.ForeColor = Color.White;
-            LabelTotalBarang.Location = new Point(18, 65);
+            LabelTotalBarang.Location = new Point(26, 108);
+            LabelTotalBarang.Margin = new Padding(4, 0, 4, 0);
             LabelTotalBarang.Name = "LabelTotalBarang";
-            LabelTotalBarang.Size = new Size(73, 15);
+            LabelTotalBarang.Size = new Size(109, 25);
             LabelTotalBarang.TabIndex = 1;
             LabelTotalBarang.Text = "Total Barang";
             // 
@@ -109,9 +112,10 @@
             LbDataBarang.AutoSize = true;
             LbDataBarang.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbDataBarang.ForeColor = Color.White;
-            LbDataBarang.Location = new Point(15, 10);
+            LbDataBarang.Location = new Point(21, 17);
+            LbDataBarang.Margin = new Padding(4, 0, 4, 0);
             LbDataBarang.Name = "LbDataBarang";
-            LbDataBarang.Size = new Size(78, 15);
+            LbDataBarang.Size = new Size(123, 25);
             LbDataBarang.TabIndex = 0;
             LbDataBarang.Text = "Data Barang ";
             // 
@@ -120,19 +124,20 @@
             PanelPenjualan.BackColor = Color.ForestGreen;
             PanelPenjualan.Controls.Add(LabelTotalTransaksi);
             PanelPenjualan.Controls.Add(LbPenjualan);
-            PanelPenjualan.Location = new Point(253, 71);
-            PanelPenjualan.Margin = new Padding(3, 2, 3, 2);
+            PanelPenjualan.Location = new Point(361, 118);
+            PanelPenjualan.Margin = new Padding(4, 3, 4, 3);
             PanelPenjualan.Name = "PanelPenjualan";
-            PanelPenjualan.Size = new Size(241, 94);
+            PanelPenjualan.Size = new Size(344, 157);
             PanelPenjualan.TabIndex = 4;
             // 
             // LabelTotalTransaksi
             // 
             LabelTotalTransaksi.AutoSize = true;
             LabelTotalTransaksi.ForeColor = Color.White;
-            LabelTotalTransaksi.Location = new Point(36, 65);
+            LabelTotalTransaksi.Location = new Point(51, 108);
+            LabelTotalTransaksi.Margin = new Padding(4, 0, 4, 0);
             LabelTotalTransaksi.Name = "LabelTotalTransaksi";
-            LabelTotalTransaksi.Size = new Size(84, 15);
+            LabelTotalTransaksi.Size = new Size(124, 25);
             LabelTotalTransaksi.TabIndex = 2;
             LabelTotalTransaksi.Text = "Total Transaksi";
             // 
@@ -141,9 +146,10 @@
             LbPenjualan.AutoSize = true;
             LbPenjualan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbPenjualan.ForeColor = Color.White;
-            LbPenjualan.Location = new Point(34, 12);
+            LbPenjualan.Location = new Point(49, 20);
+            LbPenjualan.Margin = new Padding(4, 0, 4, 0);
             LbPenjualan.Name = "LbPenjualan";
-            LbPenjualan.Size = new Size(60, 15);
+            LbPenjualan.Size = new Size(95, 25);
             LbPenjualan.TabIndex = 0;
             LbPenjualan.Text = "Penjualan";
             // 
@@ -152,19 +158,20 @@
             PanelPendapatan.BackColor = Color.DarkOrange;
             PanelPendapatan.Controls.Add(LabelTotalPendapatan);
             PanelPendapatan.Controls.Add(LbPendapatan);
-            PanelPendapatan.Location = new Point(498, 71);
-            PanelPendapatan.Margin = new Padding(3, 2, 3, 2);
+            PanelPendapatan.Location = new Point(711, 118);
+            PanelPendapatan.Margin = new Padding(4, 3, 4, 3);
             PanelPendapatan.Name = "PanelPendapatan";
-            PanelPendapatan.Size = new Size(249, 94);
+            PanelPendapatan.Size = new Size(356, 157);
             PanelPendapatan.TabIndex = 5;
             // 
             // LabelTotalPendapatan
             // 
             LabelTotalPendapatan.AutoSize = true;
             LabelTotalPendapatan.ForeColor = Color.White;
-            LabelTotalPendapatan.Location = new Point(15, 65);
+            LabelTotalPendapatan.Location = new Point(21, 108);
+            LabelTotalPendapatan.Margin = new Padding(4, 0, 4, 0);
             LabelTotalPendapatan.Name = "LabelTotalPendapatan";
-            LabelTotalPendapatan.Size = new Size(99, 15);
+            LabelTotalPendapatan.Size = new Size(147, 25);
             LabelTotalPendapatan.TabIndex = 3;
             LabelTotalPendapatan.Text = "Total Pendapatan";
             // 
@@ -173,9 +180,10 @@
             LbPendapatan.AutoSize = true;
             LbPendapatan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbPendapatan.ForeColor = Color.White;
-            LbPendapatan.Location = new Point(15, 12);
+            LbPendapatan.Location = new Point(21, 20);
+            LbPendapatan.Margin = new Padding(4, 0, 4, 0);
             LbPendapatan.Name = "LbPendapatan";
-            LbPendapatan.Size = new Size(105, 15);
+            LbPendapatan.Size = new Size(165, 25);
             LbPendapatan.TabIndex = 0;
             LbPendapatan.Text = "Total Pendapatan ";
             // 
@@ -183,21 +191,21 @@
             // 
             PanelDataGridView.Controls.Add(DgvTransaksi);
             PanelDataGridView.Controls.Add(LbTransaksiPenjualan);
-            PanelDataGridView.Location = new Point(18, 194);
-            PanelDataGridView.Margin = new Padding(3, 2, 3, 2);
+            PanelDataGridView.Location = new Point(26, 323);
+            PanelDataGridView.Margin = new Padding(4, 3, 4, 3);
             PanelDataGridView.Name = "PanelDataGridView";
-            PanelDataGridView.Size = new Size(444, 202);
+            PanelDataGridView.Size = new Size(634, 337);
             PanelDataGridView.TabIndex = 6;
             // 
             // DgvTransaksi
             // 
             DgvTransaksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvTransaksi.Columns.AddRange(new DataGridViewColumn[] { ColNoTransaksi, ColTanggal, ColTotal });
-            DgvTransaksi.Location = new Point(3, 27);
-            DgvTransaksi.Margin = new Padding(3, 2, 3, 2);
+            DgvTransaksi.Location = new Point(4, 45);
+            DgvTransaksi.Margin = new Padding(4, 3, 4, 3);
             DgvTransaksi.Name = "DgvTransaksi";
             DgvTransaksi.RowHeadersWidth = 51;
-            DgvTransaksi.Size = new Size(441, 173);
+            DgvTransaksi.Size = new Size(630, 288);
             DgvTransaksi.TabIndex = 1;
             DgvTransaksi.CellClick += DgvTransaksi_CellClick;
             DgvTransaksi.CellContentClick += DgvTransaksi_CellContentClick;
@@ -230,9 +238,10 @@
             // 
             LbTransaksiPenjualan.AutoSize = true;
             LbTransaksiPenjualan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbTransaksiPenjualan.Location = new Point(6, 6);
+            LbTransaksiPenjualan.Location = new Point(9, 10);
+            LbTransaksiPenjualan.Margin = new Padding(4, 0, 4, 0);
             LbTransaksiPenjualan.Name = "LbTransaksiPenjualan";
-            LbTransaksiPenjualan.Size = new Size(113, 15);
+            LbTransaksiPenjualan.Size = new Size(179, 25);
             LbTransaksiPenjualan.TabIndex = 0;
             LbTransaksiPenjualan.Text = "Transaksi Penjualan";
             // 
@@ -246,56 +255,41 @@
             PanelInfo.Controls.Add(LbInformasi);
             PanelInfo.Controls.Add(LbJumlahBarang);
             PanelInfo.Controls.Add(LabelJumlahBarang);
-            PanelInfo.Location = new Point(466, 194);
-            PanelInfo.Margin = new Padding(3, 2, 3, 2);
+            PanelInfo.Location = new Point(666, 323);
+            PanelInfo.Margin = new Padding(4, 3, 4, 3);
             PanelInfo.Name = "PanelInfo";
-            PanelInfo.Size = new Size(398, 202);
+            PanelInfo.Size = new Size(569, 337);
             PanelInfo.TabIndex = 0;
-            // 
-            // LbJumlahBarang
-            // 
-            LbJumlahBarang.AutoSize = true;
-            LbJumlahBarang.Location = new Point(141, 116);
-            LbJumlahBarang.Name = "LbJumlahBarang";
-            LbJumlahBarang.Size = new Size(88, 15);
-            LbJumlahBarang.TabIndex = 1;
-            LbJumlahBarang.Text = "Jumlah Barang ";
+            PanelInfo.Paint += PanelInfo_Paint;
             // 
             // LbPendapatanDashboard
             // 
             LbPendapatanDashboard.AutoSize = true;
-            LbPendapatanDashboard.Location = new Point(123, 79);
+            LbPendapatanDashboard.Location = new Point(176, 132);
+            LbPendapatanDashboard.Margin = new Padding(4, 0, 4, 0);
             LbPendapatanDashboard.Name = "LbPendapatanDashboard";
-            LbPendapatanDashboard.Size = new Size(70, 15);
+            LbPendapatanDashboard.Size = new Size(107, 25);
             LbPendapatanDashboard.TabIndex = 9;
             LbPendapatanDashboard.Text = "pendapatan";
             // 
             // LbIdTransaksi
             // 
             LbIdTransaksi.AutoSize = true;
-            LbIdTransaksi.Location = new Point(122, 44);
+            LbIdTransaksi.Location = new Point(174, 73);
+            LbIdTransaksi.Margin = new Padding(4, 0, 4, 0);
             LbIdTransaksi.Name = "LbIdTransaksi";
-            LbIdTransaksi.Size = new Size(68, 15);
+            LbIdTransaksi.Size = new Size(103, 25);
             LbIdTransaksi.TabIndex = 8;
             LbIdTransaksi.Text = "Id Transaksi";
-            // 
-            // LabelJumlahBarang
-            // 
-            LabelJumlahBarang.AutoSize = true;
-            LabelJumlahBarang.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LabelJumlahBarang.Location = new Point(20, 116);
-            LabelJumlahBarang.Name = "LabelJumlahBarang";
-            LabelJumlahBarang.Size = new Size(103, 15);
-            LabelJumlahBarang.TabIndex = 4;
-            LabelJumlahBarang.Text = "Jumlah Barang    :";
             // 
             // LabelPendapatan
             // 
             LabelPendapatan.AutoSize = true;
             LabelPendapatan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LabelPendapatan.Location = new Point(20, 79);
+            LabelPendapatan.Location = new Point(29, 132);
+            LabelPendapatan.Margin = new Padding(4, 0, 4, 0);
             LabelPendapatan.Name = "LabelPendapatan";
-            LabelPendapatan.Size = new Size(81, 15);
+            LabelPendapatan.Size = new Size(128, 25);
             LabelPendapatan.TabIndex = 3;
             LabelPendapatan.Text = "Pendapatan  :";
             // 
@@ -303,9 +297,10 @@
             // 
             LabelIdTransaksi.AutoSize = true;
             LabelIdTransaksi.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LabelIdTransaksi.Location = new Point(20, 44);
+            LabelIdTransaksi.Location = new Point(29, 73);
+            LabelIdTransaksi.Margin = new Padding(4, 0, 4, 0);
             LabelIdTransaksi.Name = "LabelIdTransaksi";
-            LabelIdTransaksi.Size = new Size(83, 15);
+            LabelIdTransaksi.Size = new Size(133, 25);
             LabelIdTransaksi.TabIndex = 2;
             LabelIdTransaksi.Text = "Id Transaksi   :";
             // 
@@ -313,10 +308,10 @@
             // 
             PcxKeranjang.BackgroundImage = (Image)resources.GetObject("PcxKeranjang.BackgroundImage");
             PcxKeranjang.BackgroundImageLayout = ImageLayout.Zoom;
-            PcxKeranjang.Location = new Point(276, 97);
-            PcxKeranjang.Margin = new Padding(3, 2, 3, 2);
+            PcxKeranjang.Location = new Point(394, 162);
+            PcxKeranjang.Margin = new Padding(4, 3, 4, 3);
             PcxKeranjang.Name = "PcxKeranjang";
-            PcxKeranjang.Size = new Size(109, 90);
+            PcxKeranjang.Size = new Size(156, 150);
             PcxKeranjang.SizeMode = PictureBoxSizeMode.Zoom;
             PcxKeranjang.TabIndex = 1;
             PcxKeranjang.TabStop = false;
@@ -325,15 +320,37 @@
             // 
             LbInformasi.AutoSize = true;
             LbInformasi.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LbInformasi.Location = new Point(14, 11);
+            LbInformasi.Location = new Point(20, 18);
+            LbInformasi.Margin = new Padding(4, 0, 4, 0);
             LbInformasi.Name = "LbInformasi";
-            LbInformasi.Size = new Size(63, 15);
+            LbInformasi.Size = new Size(98, 25);
             LbInformasi.TabIndex = 0;
             LbInformasi.Text = "Informasi ";
             // 
+            // LbJumlahBarang
+            // 
+            LbJumlahBarang.AutoSize = true;
+            LbJumlahBarang.Location = new Point(201, 193);
+            LbJumlahBarang.Margin = new Padding(4, 0, 4, 0);
+            LbJumlahBarang.Name = "LbJumlahBarang";
+            LbJumlahBarang.Size = new Size(132, 25);
+            LbJumlahBarang.TabIndex = 1;
+            LbJumlahBarang.Text = "Jumlah Barang ";
+            // 
+            // LabelJumlahBarang
+            // 
+            LabelJumlahBarang.AutoSize = true;
+            LabelJumlahBarang.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LabelJumlahBarang.Location = new Point(29, 193);
+            LabelJumlahBarang.Margin = new Padding(4, 0, 4, 0);
+            LabelJumlahBarang.Name = "LabelJumlahBarang";
+            LabelJumlahBarang.Size = new Size(164, 25);
+            LabelJumlahBarang.TabIndex = 4;
+            LabelJumlahBarang.Text = "Jumlah Barang    :";
+            // 
             // UcDashboardKasir
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(PanelInfo);
             Controls.Add(PanelDataGridView);
@@ -342,9 +359,9 @@
             Controls.Add(PanelBarang);
             Controls.Add(LbSelamatDatang);
             Controls.Add(LbDashboard);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "UcDashboardKasir";
-            Size = new Size(892, 434);
+            Size = new Size(1274, 723);
             Load += UcDashboardKasir_Load;
             PanelBarang.ResumeLayout(false);
             PanelBarang.PerformLayout();
@@ -382,13 +399,13 @@
         private Label LabelTotalTransaksi;
         private Label LabelTotalPendapatan;
         private Label LabelIdTransaksi;
-        private Label LabelJumlahBarang;
         private Label LabelPendapatan;
-        private Label LbJumlahBarang;
         private Label LbPendapatanDashboard;
         private Label LbIdTransaksi;
         private DataGridViewTextBoxColumn ColNoTransaksi;
         private DataGridViewTextBoxColumn ColTanggal;
         private DataGridViewTextBoxColumn ColTotal;
+        private Label LbJumlahBarang;
+        private Label LabelJumlahBarang;
     }
 }
