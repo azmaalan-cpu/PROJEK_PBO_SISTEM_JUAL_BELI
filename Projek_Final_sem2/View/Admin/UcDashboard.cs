@@ -1,22 +1,14 @@
-﻿using Npgsql;
-using Projek_Final_sem2.DAO;
-// using Projek_Final_sem2.UserControls.Kasir.DAO; (moved to Projek_Final_sem2.DAO)
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Text;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
-
-namespace Projek_Final_sem2.UserControls
+namespace Projek_Final_sem2.UserControls.Admin
 {
     public partial class UcDashboard : UserControl
     {
-        public event Action<int> BarangStokMenipisDipilih;
-        private readonly Projek_Final_sem2.Control.Admin.DashboardControl _dashboardControl = new Projek_Final_sem2.Control.Admin.DashboardControl();
+        private object? _dashboardController;
 
         public UcDashboard()
         {
@@ -25,54 +17,75 @@ namespace Projek_Final_sem2.UserControls
 
         private void UcDashboard_Load(object sender, EventArgs e)
         {
-            loadDashboard();
-        }
-
-
-        private void DgvBarangStokMenipis_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
+            try
             {
-                int idBarang = Convert.ToInt32(DgvBarangStokMenipis.Rows[e.RowIndex].Cells["id_alat"].Value);
-                BarangStokMenipisDipilih?.Invoke(idBarang);
+                InitController();
+                LoadMetrics();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Gagal inisialisasi dashboard admin: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-
-        private void LbAngkaBarang_Click(object sender, EventArgs e)
+        private void InitController()
         {
-            loadDashboard();
-        }
-        private void loadDashboard()
-        {
-            LbAngkaBarang.Text = _dashboardControl.GetTotalBarang().ToString();
-            LbAngkaPenjualan.Text = _dashboardControl.GetTotalPenjualan(DateTime.Today, DateTime.Today).ToString();
-            LbAngkaServis.Text = _dashboardControl.GetTotalServis(DateTime.Today, DateTime.Today).ToString();
-            LbAngkaPendapatan.Text = "Rp." + _dashboardControl.GetPendapatanPenjualan().ToString("N0", new CultureInfo("id-ID"));
-            DgvBarangStokMenipis.DataSource = _dashboardControl.GetBarangStokMenipis();
-
-            // ensure the latest service data is loaded on dashboard load
-            var svc = _dashboardControl.GetDashboardServis();
-            DgvServisTerbaru.AutoGenerateColumns = true;
-            DgvServisTerbaru.DataSource = svc;
-
+            if (_dashboardController != null) return;
+            Type? ctrlType = null;
+            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                try
+                {
+                    ctrlType = asm.GetType("Projek_Final_sem2.Control.Admin.DashboardControl");
+                    if (ctrlType != null) break;
+                    ctrlType = asm.GetTypes().FirstOrDefault(t => string.Equals(t.Name, "DashboardControl", StringComparison.OrdinalIgnoreCase) && t.Namespace != null && t.Namespace.Contains("Admin"));
+                    if (ctrlType != null) break;
+                }
+                catch { }
+            }
+            if (ctrlType == null) return;
+            _dashboardController = Activator.CreateInstance(ctrlType);
         }
 
-        private void DgvServisTerbaru_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void LoadMetrics()
         {
-            load_data_servis_terbaru();
-        }
-        private void load_data_servis_terbaru()
-        {
-            var svc = _dashboardControl.GetDashboardServis();
-            DgvServisTerbaru.AutoGenerateColumns = true;
-            DgvServisTerbaru.DataSource = svc;
-        }
+            if (_dashboardController == null) return;
+            var t = _dashboardController.GetType();
+            try
+            {
+                var mPendapatan = t.GetMethod("DapatkanTotalPendapatan", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+                                    ?? t.GetMethod("GetTotalRevenue", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+                if (mPendapatan != null)
+                {
+                    var r = mPendapatan.Invoke(_dashboardController, null);
+                    if (r != null) LbAngkaPendapatan.Text = r.ToString();
+                }
 
-        private void PanelDataBarang_Paint(object sender, PaintEventArgs e)
-        {
+                var mPenjualan = t.GetMethod("DapatkanTotalPenjualan", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+                                    ?? t.GetMethod("GetTotalPenjualan", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+                if (mPenjualan != null)
+                {
+                    var r = mPenjualan.Invoke(_dashboardController, null);
+                    if (r != null) LbAngkaPenjualan.Text = r.ToString();
+                }
 
+                var mServis = t.GetMethod("DapatkanTotalServis", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+                                    ?? t.GetMethod("GetTotalServis", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+                if (mServis != null)
+                {
+                    var r = mServis.Invoke(_dashboardController, null);
+                    if (r != null) LbAngkaServis.Text = r.ToString();
+                }
+
+                var mBarang = t.GetMethod("DapatkanTotalBarang", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+                                    ?? t.GetMethod("GetTotalBarang", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+                if (mBarang != null)
+                {
+                    var r = mBarang.Invoke(_dashboardController, null);
+                    if (r != null) LbAngkaBarang.Text = r.ToString();
+                }
+            }
+            catch { }
         }
     }
 }
