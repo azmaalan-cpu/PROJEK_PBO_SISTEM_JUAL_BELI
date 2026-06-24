@@ -29,15 +29,15 @@ namespace Projek_Final_sem2.DAO
                         var s = new Projek_Final_sem2.Models.Service()
                         {
                             id_servis = rd["id_servis"] == DBNull.Value ? 0 : Convert.ToInt32(rd["id_servis"]),
-                            tanggal_servis = rd["tanggal_servis"] == DBNull.Value
+                            tanggal_servis = rd["tanggal"] == DBNull.Value
                                 ? DateTime.MinValue
-                                : (rd["tanggal_servis"] is DateOnly d
+                                : (rd["tanggal"] is DateOnly d
                                     ? d.ToDateTime(TimeOnly.MinValue)
-                                    : Convert.ToDateTime(rd["tanggal_servis"])),
-                            nama_alat_servis = rd["nama_alat"]?.ToString(),
+                                    : Convert.ToDateTime(rd["tanggal"])),
+                            nama_alat_servis = rd["jenis_alat"]?.ToString(),
                             kerusakan = rd["kerusakan"]?.ToString(),
                             biaya_servis = rd["biaya_servis"] == DBNull.Value ? 0 : Convert.ToInt32(rd["biaya_servis"]),
-                            status_servis = rd["status_servis"]?.ToString()
+                            status_servis = rd["status"]?.ToString()
                         };
 
                         list.Add(s);
@@ -213,7 +213,7 @@ namespace Projek_Final_sem2.DAO
             {
                 connection.Open();
 
-                string sql = @"select * from grafik_servis(@awal::date, @akhir::date)";
+                string sql = @"select  * from fn_grafik_servis(@awal::date, @akhir::date)";
 
                 using (var cmd = new Npgsql.NpgsqlCommand(sql, connection))
                 {

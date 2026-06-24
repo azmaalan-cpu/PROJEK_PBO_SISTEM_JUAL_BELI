@@ -18,12 +18,13 @@ namespace Projek_Final_sem2.Control.Admin
         public (double[] values, string[] labels, double[] positions, decimal total) LoadGrafikServis(DateTime tanggalAwal, DateTime tanggalAkhir)
         {
             var dt = _serviceDao.GetGrafikServis(tanggalAwal, tanggalAkhir);
+          
 
             double[] values = dt.AsEnumerable().Select(row => Convert.ToDouble(row["total_servis"]) ).ToArray();
 
             string[] labels = dt.AsEnumerable().Select(row =>
             {
-                var obj = row["tanggal_servis"];
+                var obj = row["tanggal"];
                 if (obj == DBNull.Value) return string.Empty;
                 if (obj is DateTime dtime) return dtime.ToString("dd/MM/yyyy");
                 // Npgsql v7+ may return DateOnly for DATE columns
