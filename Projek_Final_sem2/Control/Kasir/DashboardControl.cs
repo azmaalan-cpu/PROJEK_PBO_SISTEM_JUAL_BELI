@@ -19,6 +19,7 @@ namespace Projek_Final_sem2.Control.Kasir
         }
 
         // Dapatkan total penjualan dalam rentang tanggal (mulai - sampai)
+        // OOP pillars: Abstraction, Encapsulation
         public decimal DapatkanTotalPenjualan(DateTime? mulai = null, DateTime? sampai = null)
         {
             var args = new object[] { mulai ?? DateTime.MinValue, sampai ?? DateTime.MaxValue };
@@ -29,6 +30,7 @@ namespace Projek_Final_sem2.Control.Kasir
         }
 
         // Dapatkan jumlah total transaksi
+        // OOP pillars: Abstraction, Encapsulation
         public int DapatkanTotalTransaksi()
         {
             var candidate = InvokeIntDao(_dashboardDao, new[] { "GetTotalTransaksi", "GetTotalTransactions", "CountTransactions" }, null);
@@ -38,6 +40,7 @@ namespace Projek_Final_sem2.Control.Kasir
         }
 
         // Dapatkan daftar transaksi terbaru (limit default 10)
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable DapatkanTransaksiTerbaru(int limit = 10)
         {
             var dt = InvokeDataTableDao(_dashboardDao, new[] { "GetRecentTransactions", "GetRecent", "GetLatestTransactions" }, new object[] { limit });

@@ -7,7 +7,8 @@ namespace Projek_Final_sem2.Control.Kasir
     {
         private readonly UserDAO _userDao = new UserDAO();
 
-        // Add methods as needed; simple wrapper for now
+        // OOP pillars: Abstraction, Encapsulation
+        // Simple wrapper untuk user DAO
         public DataTable GetAllUsers() => _userDao.GettAll();
     }
 }

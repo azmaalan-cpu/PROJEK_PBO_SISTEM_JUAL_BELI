@@ -16,6 +16,7 @@ namespace Projek_Final_sem2.Control.Admin
         private readonly UserDAO _userDao = new UserDAO();
         private readonly AlatDAO _alatDao = new AlatDAO();
         // Total penjualan di rentang tanggal (metode asli)
+        // OOP pillars: Abstraction, Encapsulation
         public decimal GetTotalPenjualan(DateTime awal, DateTime akhir)
         {
             try
@@ -32,9 +33,11 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Alias Bahasa Indonesia: Hitung total penjualan
+        // OOP pillars: Abstraction, Encapsulation
         public decimal HitungTotalPenjualan(DateTime awal, DateTime akhir) => GetTotalPenjualan(awal, akhir);
 
         // Total pendapatan servis di rentang tanggal (metode asli)
+        // OOP pillars: Abstraction, Encapsulation
         public decimal GetTotalServis(DateTime awal, DateTime akhir)
         {
             try
@@ -50,9 +53,11 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Alias Bahasa Indonesia: Hitung total servis
+        // OOP pillars: Abstraction, Encapsulation
         public decimal HitungTotalServis(DateTime awal, DateTime akhir) => GetTotalServis(awal, akhir);
 
         // Ambil transaksi terbaru untuk ditampilkan di dashboard (metode asli)
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetRecentTransactions(int limit = 10)
         {
             try
@@ -71,6 +76,7 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Alias Bahasa Indonesia: Ambil transaksi terbaru
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable AmbilTransaksiTerbaru(int limit = 10) => GetRecentTransactions(limit);
 
         // Load semua metrik sekaligus (metode asli)

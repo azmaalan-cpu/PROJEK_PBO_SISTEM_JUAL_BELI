@@ -12,8 +12,13 @@ namespace Projek_Final_sem2.DAO
         private DatabaseHelper db = new DatabaseHelper();
 
 
-        //CRUD USER
-        //TAMBAH USER
+        // CRUD USER
+        // Tambah User
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyederhanakan pembuatan user menjadi satu method
+        // - Encapsulation: (digunakan) mapping model ke parameter disembunyikan
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public void Insert(User user)
         {
             using (var connection = db.GetConnection())
@@ -29,7 +34,12 @@ namespace Projek_Final_sem2.DAO
                 }
             }
         }
-        //TAMPIL DATA USER
+        // Tampil data user
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public DataTable GettAll()
         {
             DataTable dt = new DataTable();
@@ -45,7 +55,12 @@ namespace Projek_Final_sem2.DAO
             return dt;
         }
 
-        //EDIT USER
+        // Edit user
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public void Update(User user)
         {
             using (var connection = db.GetConnection())
@@ -62,7 +77,12 @@ namespace Projek_Final_sem2.DAO
                 }
             }
         }
-        //HAPUS USER
+        // Hapus user
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public void Delete(int idUser)
         {
             using (var connection = db.GetConnection())

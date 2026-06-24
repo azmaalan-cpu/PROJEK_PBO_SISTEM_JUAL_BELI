@@ -6,15 +6,19 @@ namespace Projek_Final_sem2.Control.Admin
 {
     public class LaporanServisControl
     {
+        // Field encapsulation: menyimpan ServiceDAO sebagai dependency privat
+        // OOP pillars: Encapsulation (digunakan)
         private readonly ServiceDAO _serviceDao = new ServiceDAO();
 
         // Returns raw DataTable from DAO for further use (e.g. grid)
+        // OOP pillars (digunakan/tidak digunakan): Abstraction (digunakan), Encapsulation (digunakan), Inheritance (tidak langsung digunakan), Polymorphism (tidak digunakan)
         public DataTable LoadDataServis(DateTime tanggalAwal, DateTime tanggalAkhir)
         {
             return _serviceDao.GetGrafikServis(tanggalAwal, tanggalAkhir);
         }
 
         // Prepares plot data (values, labels, positions) and total
+        // OOP pillars (digunakan/tidak digunakan): Abstraction (digunakan), Encapsulation (digunakan), Inheritance (tidak digunakan), Polymorphism (tidak digunakan)
         public (double[] values, string[] labels, double[] positions, decimal total) LoadGrafikServis(DateTime tanggalAwal, DateTime tanggalAkhir)
         {
             var dt = _serviceDao.GetGrafikServis(tanggalAwal, tanggalAkhir);
@@ -55,6 +59,7 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Replicates the behaviour of a view button handler: returns prepared data for UI
+        // OOP pillars (digunakan/tidak digunakan): Abstraction (digunakan), Encapsulation (digunakan), Inheritance (tidak digunakan), Polymorphism (tidak digunakan)
         public (double[] values, string[] labels, double[] positions, decimal total) BtnTampilkan_Click(DateTime tanggalAwal, DateTime tanggalAkhir)
         {
             return LoadGrafikServis(tanggalAwal, tanggalAkhir);

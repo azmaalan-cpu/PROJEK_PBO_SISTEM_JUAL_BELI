@@ -21,6 +21,12 @@ namespace Projek_Final_sem2.Control.Kasir
             _transaksiDao = CreateIfExists("TransaksiDAO");
         }
 
+        // Ambil semua produk untuk ditampilkan (DataTable)
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyediakan DataTable siap pakai
+        // - Encapsulation: (digunakan) pencarian method DAO dan pemanggilan dibungkus
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (digunakan) method mencoba beberapa nama method DAO yang berbeda
         public DataTable LoadProducts()
         {
             if (_barangDao == null) return new DataTable();
@@ -37,6 +43,12 @@ namespace Projek_Final_sem2.Control.Kasir
             return new DataTable();
         }
 
+        // Tambah item ke keranjang
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public bool AddToCart(int productId, int quantity)
         {
             if (quantity <= 0) return false;
@@ -53,6 +65,8 @@ namespace Projek_Final_sem2.Control.Kasir
             return true;
         }
 
+        // Hapus item dari keranjang
+        // OOP pillars: Abstraction, Encapsulation
         public bool RemoveFromCart(int productId)
         {
             var existing = _cart.FirstOrDefault(c => c.ProductId == productId);
@@ -61,6 +75,8 @@ namespace Projek_Final_sem2.Control.Kasir
             return true;
         }
 
+        // Kembalikan representasi DataTable dari keranjang
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetCartTable()
         {
             var dt = new DataTable();
@@ -76,8 +92,16 @@ namespace Projek_Final_sem2.Control.Kasir
             return dt;
         }
 
+        // Hitung total keranjang
+        // OOP pillars: Abstraction, Encapsulation
         public decimal GetTotal() => _cart.Sum(c => c.Price * c.Quantity);
 
+        // Finalize transaksi: bangun model/argumen dan panggil DAO
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyederhanakan proses finalize menjadi satu method
+        // - Encapsulation: (digunakan) pembuatan model dan mapping dibungkus
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (digunakan) mencoba banyak signature method pada DAO
         public bool FinalizeTransaction(string cashier, string? note = null)
         {
             if (_cart.Count == 0) return false;
@@ -150,6 +174,8 @@ namespace Projek_Final_sem2.Control.Kasir
         }
 
         // --- helpers ---
+        // Map parameter secara heuristik untuk memanggil method DAO yang berbeda-beda
+        // OOP pillars: Polymorphism (digunakan), Abstraction
         private static object MapParameterForFinalize(Type paramType, string cashier, decimal total, DataTable itemsTable)
         {
             if (paramType == typeof(string)) return cashier;
@@ -160,6 +186,8 @@ namespace Projek_Final_sem2.Control.Kasir
             return null;
         }
 
+        // Interpret hasil pemanggilan DAO menjadi boolean sukses/gagal
+        // OOP pillars: Abstraction, Encapsulation
         private static bool InterpretResult(object? res)
         {
             if (res == null) return false;
@@ -169,6 +197,8 @@ namespace Projek_Final_sem2.Control.Kasir
             return true;
         }
 
+        // Dapatkan nama dan harga produk melalui DAO (berbagai fallback)
+        // OOP pillars: Abstraction, Encapsulation, Polymorphism (mencoba tipe hasil berbeda)
         private (string, decimal)? GetProductById(int id)
         {
             if (_barangDao == null) return null;
@@ -198,6 +228,8 @@ namespace Projek_Final_sem2.Control.Kasir
             catch { return null; }
         }
 
+        // Buat instance tipe jika ada di assembly (fallback dynamic)
+        // OOP pillars: Polymorphism, Abstraction
         private static object? CreateIfExists(string typeName)
         {
             try
@@ -210,6 +242,8 @@ namespace Projek_Final_sem2.Control.Kasir
             catch { return null; }
         }
 
+        // Set property pada model jika ada, aman terhadap tipe
+        // OOP pillars: Encapsulation, Polymorphism
         private static void SetIfExists(object model, string propName, object? value)
         {
             if (model == null) return;
@@ -220,6 +254,8 @@ namespace Projek_Final_sem2.Control.Kasir
             catch { try { prop.SetValue(model, value); } catch { } }
         }
 
+        // Konversi enumerable ke DataTable (digunakan saat DAO mengembalikan IEnumerable)
+        // OOP pillars: Abstraction, Encapsulation
         private static DataTable EnumerableToDataTable(System.Collections.IEnumerable items)
         {
             var dt = new DataTable();

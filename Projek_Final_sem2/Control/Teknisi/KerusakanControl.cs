@@ -10,6 +10,12 @@ namespace Projek_Final_sem2.Control.Teknisi
     {
         private readonly ServiceDAO _serviceDao = new ServiceDAO();
 
+        // Buat servis baru dengan validasi input, delegasi ke DAO untuk insert
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyederhanakan pembuatan servis
+        // - Encapsulation: (digunakan) validation dan panggilan DAO dibungkus
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public bool CreateServis(int idUser, string namaAlat, string kerusakan, decimal biayaServis, string sparepart)
         {
             // Business validations moved back into controller per user request.
@@ -26,6 +32,8 @@ namespace Projek_Final_sem2.Control.Teknisi
             return _serviceDao.InsertServis(idUser, namaAlat, kerusakan, biayaServis, sparepart);
         }
 
+        // Ambil user berdasarkan role via ServiceDAO
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetUsersByRole(string role)
         {
             return _serviceDao.GetUsersByRole(role);

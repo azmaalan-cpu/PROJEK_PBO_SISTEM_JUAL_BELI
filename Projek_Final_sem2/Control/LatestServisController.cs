@@ -7,6 +7,8 @@ namespace Projek_Final_sem2.Control
     {
         private readonly ServiceDAO _serviceDao = new ServiceDAO();
 
+        // Ambil servis terbaru (DataTable)
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetLatestServis()
         {
             return _serviceDao.DataServisTerbaruLengkap();

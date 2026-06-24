@@ -10,6 +10,13 @@ namespace Projek_Final_sem2.DAO
     public class DashboardAdminDAO
     {
         private DatabaseHelper db = new DatabaseHelper();
+
+        // Ambil total barang
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public int GetTotalBarang()
         {
 
@@ -25,6 +32,8 @@ namespace Projek_Final_sem2.DAO
 
         }
 
+        // Ambil total penjualan
+        // OOP pillars: Abstraction, Encapsulation
         public int GetTotalPenjualan()
         {
             using (var connection = db.GetConnection())
@@ -38,6 +47,8 @@ namespace Projek_Final_sem2.DAO
             }
         }
 
+        // Ambil total servis
+        // OOP pillars: Abstraction, Encapsulation
         public int GetTotalServis()
         {
             using (var connection = db.GetConnection())
@@ -51,6 +62,8 @@ namespace Projek_Final_sem2.DAO
             }
         }
 
+        // Ambil pendapatan penjualan
+        // OOP pillars: Abstraction, Encapsulation
         public decimal GetPendapatanPenjualan()
         {
             using (var connection = db.GetConnection())
@@ -76,6 +89,8 @@ namespace Projek_Final_sem2.DAO
         //    }
         //}
 
+        // Ambil daftar barang dengan stok menipis
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetBarangStokMenipis()
         {
             DataTable dt = new DataTable();

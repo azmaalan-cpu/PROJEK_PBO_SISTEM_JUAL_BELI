@@ -11,6 +11,8 @@ namespace Projek_Final_sem2.DAO
     {
         private DatabaseHelper db = new DatabaseHelper();
 
+        // Ambil data barang untuk kasir
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetDataBarang()
         {
             using (var conn = db.GetConnection())
@@ -27,6 +29,8 @@ namespace Projek_Final_sem2.DAO
             }
         }
 
+        // Ambil data ringkasan dashboard kasir
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetDashboardKasir()
         {
             using (var conn = db.GetConnection())
@@ -107,6 +111,8 @@ namespace Projek_Final_sem2.DAO
         //    }
         //}
 
+        // Ambil informasi transaksi (detail kecil) untuk dashboard
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetInformasiTransaksi()
         {
             using (var conn = db.GetConnection())
@@ -126,6 +132,8 @@ namespace Projek_Final_sem2.DAO
 
         }
 
+        // Ambil daftar transaksi penjualan
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetTransaksiPenjualan()
         {
             using (var conn = db.GetConnection())

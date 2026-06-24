@@ -10,6 +10,12 @@ namespace Projek_Final_sem2.Control.Kasir
     {
         private readonly TransaksiDAO _transaksiDao = new TransaksiDAO();
         private readonly DashboardTransaksiKasirDAO _dashboardTransaksiKasirDAO = new DashboardTransaksiKasirDAO();
+        // Simpan transaksi penjualan: buat transaksi, insert detail, kurangi stok
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyederhanakan alur penyimpanan transaksi
+        // - Encapsulation: (digunakan) detail DB dibungkus di DAO
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public bool SimpanTransaksi(int idUser, DataGridView dgv, decimal totalHarga)
         {
             int idTransaksi = _transaksiDao.InsertTransaksi(idUser, totalHarga);
@@ -47,18 +53,30 @@ namespace Projek_Final_sem2.Control.Kasir
             return true;
         }
 
+        // Cek stok (delegasi ke DAO)
+        // OOP pillars: Abstraction, Encapsulation
         public int CekStok(int idAlat) => _transaksiDao.CekStok(idAlat);
+
+        // Ambil data barang untuk kasir
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetDataBarang() => _dashboardTransaksiKasirDAO.GetDataBarang();
+
+        // Ambil ringkasan dashboard kasir
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetDashboardKasir()
         {
             return _dashboardTransaksiKasirDAO.GetDashboardKasir();
         }
 
+        // Ambil informasi transaksi
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetInformasiTransaksi()
         {
             return _dashboardTransaksiKasirDAO.GetInformasiTransaksi();
         }
 
+        // Ambil daftar transaksi penjualan
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetTransaksiPenjualan()
         {
             return _dashboardTransaksiKasirDAO.GetTransaksiPenjualan();

@@ -53,7 +53,12 @@ namespace Projek_Final_sem2.DAO
         //        }
         //    }
         //}
-        //READ ALAT
+        // READ ALAT: ambil semua alat sebagai DataTable
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyediakan DataTable siap pakai untuk UI
+        // - Encapsulation: (digunakan) detail query dan adapter disembunyikan
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public DataTable GetAll()
         {
             DataTable dt = new DataTable();
@@ -69,7 +74,12 @@ namespace Projek_Final_sem2.DAO
             return dt;
         }
 
-        //Tambah Alat
+        // Tambah Alat
+        // OOP pillars:
+        // - Abstraction: (digunakan) method ini menyederhanakan proses insert
+        // - Encapsulation: (digunakan) parameter mapping dibungkus di sini
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public void Insert(Models.Alat alat)
         {
             using (var connection = db.GetConnection())
@@ -89,6 +99,11 @@ namespace Projek_Final_sem2.DAO
         }
 
         // Update Alat
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public void Update(Alat alat)
         {
             using (var connection = db.GetConnection())
@@ -108,7 +123,12 @@ namespace Projek_Final_sem2.DAO
             }
         }
 
-        //Delete Alat
+        // Delete Alat
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyembunyikan detail penghapusan
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public void Delete(int idAlat)
         {
             using (var connection = db.GetConnection())

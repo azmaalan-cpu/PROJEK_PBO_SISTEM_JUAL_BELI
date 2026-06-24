@@ -7,15 +7,20 @@ namespace Projek_Final_sem2.Control.Admin
 {
     public class LaporanPenjualanControl
     {
+        // Field encapsulation: menyimpan TransaksiDAO sebagai field privat — menunjukkan prinsip Encapsulation
+        // OOP pillars: Encapsulation (digunakan, dikonfirmasi)
         private readonly TransaksiDAO _transaksiDao = new TransaksiDAO();
 
-        // Example: method that view's BtnTampilkan_Click can call to get report data
+        // Ambil laporan penjualan sebagai DataTable
+        // OOP pillars: Abstraction, Encapsulation (digunakan, dikonfirmasi)
         public DataTable GetLaporanPenjualan(DateTime awal, DateTime akhir)
         {
             // assuming TransaksiDAO has a method to get laporan penjualan; adapt as needed
             return _transaksiDao.GetLaporanPenjualan(awal, akhir);
         }
 
+        // Prepare data untuk plotting (dipanggil oleh UI)
+        // OOP pillars: Abstraction, Encapsulation (digunakan, dikonfirmasi)
         public (double[] values, string[] labels, double[] positions, decimal total) BtnTampilkan_Click(DateTime awal, DateTime akhir)
         {
             var dt = GetLaporanPenjualan(awal, akhir);

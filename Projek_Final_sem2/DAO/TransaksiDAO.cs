@@ -9,6 +9,12 @@ namespace Projek_Final_sem2.DAO
     {
         private readonly DatabaseHelper _db = new DatabaseHelper();
 
+        // Insert transaksi dan kembalikan id_transaksi
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyederhanakan pembuatan transaksi menjadi satu method
+        // - Encapsulation: (digunakan) detail SQL dan eksekusi disembunyikan
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public int InsertTransaksi(int idUser, decimal totalHarga)
         {
             using (var conn = _db.GetConnection())
@@ -27,6 +33,12 @@ namespace Projek_Final_sem2.DAO
             }
         }
 
+        // Cek stok alat berdasarkan id
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public int CekStok(int idAlat)
         {
             
@@ -45,6 +57,12 @@ namespace Projek_Final_sem2.DAO
             }
         }
 
+        // Insert detail transaksi
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public void InsertDetail(int idTransaksi, int idAlat, int jumlah, decimal subtotal)
 
         {
@@ -63,6 +81,12 @@ namespace Projek_Final_sem2.DAO
             }
         }
 
+        // Kurangi stok alat
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public void KurangiStok(int idAlat, int jumlah)
         {
             using(var conn = _db.GetConnection())
@@ -78,6 +102,12 @@ namespace Projek_Final_sem2.DAO
             }
         }
 
+        // Ambil data grafik penjualan antara dua tanggal
+        // OOP pillars:
+        // - Abstraction: (digunakan) mengubah fungsi DB menjadi DataTable siap plot
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public DataTable GetDataGrafikPenjualan(DateTime awal, DateTime akhir)
         {
             DataTable dt = new DataTable();
@@ -102,6 +132,11 @@ namespace Projek_Final_sem2.DAO
         }
 
         // Wrapper for laporan penjualan used by admin control.
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public DataTable GetLaporanPenjualan(DateTime awal, DateTime akhir)
         {
             // For now delegate to GetDataGrafikPenjualan. Implement real query as needed.

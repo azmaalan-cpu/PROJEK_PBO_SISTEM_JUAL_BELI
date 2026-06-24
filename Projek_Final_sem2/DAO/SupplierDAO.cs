@@ -9,6 +9,9 @@ namespace Projek_Final_sem2.DAO
     public class SupplierDAO
     {
        private DatabaseHelper db = new DatabaseHelper();
+
+        // Ambil semua supplier sebagai list model
+        // OOP pillars: Abstraction, Encapsulation
         public List<Supplier> GetAllSupplier()
         {
             List<Supplier> suppliers = new List<Supplier>();

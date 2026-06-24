@@ -9,6 +9,13 @@ namespace Projek_Final_sem2.DAO
     public class KategoriDAO
     {
         private DatabaseHelper db = new DatabaseHelper();
+
+        // Ambil semua kategori sebagai list model
+        // OOP pillars:
+        // - Abstraction: (digunakan)
+        // - Encapsulation: (digunakan)
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public List<Kategori> GetAllKategori()
         {
             List<Kategori> kategori = new List<Kategori>();

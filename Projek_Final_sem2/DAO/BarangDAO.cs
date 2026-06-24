@@ -9,8 +9,16 @@ namespace Projek_Final_sem2.DAO
 {   
     public class BarangDAO
     {
+        // Field encapsulation: helper koneksi privat
+        // OOP pillars: Encapsulation (digunakan)
         private DatabaseHelper db = new DatabaseHelper();
 
+        // Ambil semua barang (DataTable)
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyajikan DataTable siap pakai untuk UI
+        // - Encapsulation: (digunakan) detail query dan adapter tersembunyi
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public DataTable GetAllBarang()
         {
             using (var conn = db.GetConnection())
@@ -27,6 +35,12 @@ namespace Projek_Final_sem2.DAO
         }
 
 
+        // Cari barang berdasarkan ID
+        // OOP pillars:
+        // - Abstraction: (digunakan) menyediakan cara mudah untuk mencari barang tanpa mengekspos SQL
+        // - Encapsulation: (digunakan) parameter dan eksekusi query dibungkus di sini
+        // - Inheritance: (tidak digunakan)
+        // - Polymorphism: (tidak digunakan)
         public DataTable CariBarangById(int idBarang)
         {
             using (var conn = db.GetConnection())

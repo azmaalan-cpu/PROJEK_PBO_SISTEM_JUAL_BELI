@@ -100,30 +100,85 @@ namespace Projek_Final_sem2.UserControls.Kasir
                 DgvTransaksi.Rows[e.RowIndex]
                 .Cells[0].Value);
             
-
-            DataTable dt =
-                transaksiService.GetInformasiTransaksi();
-           
-           
-
-            DataRow[] row =
-                dt.Select(
-                "id_transaksi = " + idTransaksi);
-           
-
-            if (row.Length > 0)
+            // Prefer mengambil nilai langsung dari DataGridView yang diklik
+            try
             {
-                LbIdTransaksi.Text =
-                    row[0]["id_transaksi"].ToString();
+                // Set ID transaksi dari cell yang diklik
+                LbIdTransaksi.Text = idTransaksi.ToString();
 
-                LbPendapatanDashboard.Text =
-                    "Rp " +
-                    Convert.ToDecimal(
-                    row[0]["total_harga"])
-                    .ToString("N0");
+                // Jika DataGridView.DataSource adalah DataTable, gunakan baris dari sana
+                if (DgvTransaksi.DataSource is DataTable srcDt)
+                {
+                    DataRow[] found = null;
+                    if (srcDt.Columns.Contains("id_transaksi"))
+                        found = srcDt.Select($"id_transaksi = {idTransaksi}");
+                    else if (srcDt.Columns.Contains("no_transaksi"))
+                        found = srcDt.Select($"no_transaksi = {idTransaksi}");
 
-                LbJumlahBarang.Text =
-                    row[0]["jumlah_barang"].ToString();
+                    if (found != null && found.Length > 0)
+                    {
+                        var r = found[0];
+                        // Cari nilai total dari beberapa kemungkinan nama kolom
+                        string[] totalCols = new[] { "total_harga", "total", "total_pendapatan", "total_price" };
+                        decimal totalVal = 0m;
+                        foreach (var c in totalCols)
+                        {
+                            if (r.Table.Columns.Contains(c) && r[c] != DBNull.Value)
+                            {
+                                totalVal = Convert.ToDecimal(r[c]);
+                                break;
+                            }
+                        }
+                        LbPendapatanDashboard.Text = totalVal.ToString("N0");
+
+                        // Cari jumlah barang dari beberapa kemungkinan nama kolom
+                        string[] qtyCols = new[] { "jumlah_barang", "quantity", "qty", "jumlah" };
+                        string qtyText = "0";
+                        foreach (var c in qtyCols)
+                        {
+                            if (r.Table.Columns.Contains(c) && r[c] != DBNull.Value)
+                            {
+                                qtyText = r[c].ToString();
+                                break;
+                            }
+                        }
+                        LbJumlahBarang.Text = qtyText;
+                        return;
+                    }
+                }
+
+                // Fallback: baca langsung dari baris DataGridView
+                var rowView = DgvTransaksi.Rows[e.RowIndex];
+                object totalCell = null;
+                if (rowView.Cells.Count > 2) totalCell = rowView.Cells[2].Value;
+                else if (rowView.Cells.Count > 1) totalCell = rowView.Cells[1].Value;
+
+                if (totalCell != null && totalCell != DBNull.Value && decimal.TryParse(totalCell.ToString(), out var parsed))
+                {
+                    LbPendapatanDashboard.Text = parsed.ToString("N0");
+                }
+
+                // Cari jumlah barang berdasarkan nama kolom pada DataGridView
+                string qtyVal = "0";
+                try
+                {
+                    foreach (DataGridViewCell cell in rowView.Cells)
+                    {
+                        var colName = rowView.DataGridView.Columns[cell.ColumnIndex].Name?.ToLowerInvariant() ?? string.Empty;
+                        if (colName.Contains("jumlah") || colName.Contains("qty") || colName.Contains("quantity"))
+                        {
+                            if (cell.Value != null) qtyVal = cell.Value.ToString();
+                            break;
+                        }
+                    }
+                }
+                catch { }
+
+                LbJumlahBarang.Text = qtyVal;
+            }
+            catch
+            {
+                // jangan biarkan error crash UI
             }
         }
 

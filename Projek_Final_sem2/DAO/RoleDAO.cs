@@ -10,6 +10,8 @@ namespace Projek_Final_sem2.DAO
     {
         private DatabaseHelper db = new DatabaseHelper();
 
+        // Ambil semua role sebagai list model
+        // OOP pillars: Abstraction, Encapsulation
         public List<Role> GetAllRole()
         {
             List<Role> roles = new List<Role>();

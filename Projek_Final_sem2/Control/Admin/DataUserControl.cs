@@ -15,20 +15,27 @@ namespace Projek_Final_sem2.Control.Admin
     // serta hashing/verifikasi password menggunakan PBKDF2
     public class DataUserControl
     {
+
+        // Field encapsulation: menyimpan UserDAO privat
+        // OOP pillars: Encapsulation (digunakan)
         private readonly UserDAO _userDao;
 
+        // Konstruktor
+        // OOP pillars: Encapsulation, Abstraction
         public DataUserControl()
         {
             _userDao = new UserDAO();
         }
 
         // Muat semua user (alias Bahasa Indonesia)
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable MuatUsers()
         {
             return LoadUsers();
         }
 
         // Metode asli: LoadUsers
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable LoadUsers()
         {
             try
@@ -42,12 +49,14 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Dapatkan user berdasarkan id (alias Bahasa Indonesia)
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable DapatkanUserById(int id)
         {
             return GetUserById(id);
         }
 
         // Metode asli: GetUserById
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetUserById(int id)
         {
             try
@@ -66,12 +75,14 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Tambah user (alias Bahasa Indonesia)
+        // OOP pillars: Abstraction, Encapsulation
         public bool TambahUser(string username, string password, string role)
         {
             return AddUser(username, password, role);
         }
 
         // Metode asli: AddUser
+        // OOP pillars: Abstraction, Encapsulation
         public bool AddUser(string username, string password, string role)
         {
             ValidateUserInput(username, password, role);
@@ -93,12 +104,14 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Ubah user (alias Bahasa Indonesia)
+        // OOP pillars: Abstraction, Encapsulation
         public bool UbahUser(int id, string? username = null, string? password = null, string? role = null)
         {
             return EditUser(id, username, password, role);
         }
 
         // Metode asli: EditUser
+        // OOP pillars: Abstraction, Encapsulation
         public bool EditUser(int id, string? username = null, string? password = null, string? role = null)
         {
             if (username == null && password == null && role == null) return false;
@@ -121,12 +134,14 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Hapus user (alias Bahasa Indonesia)
+        // OOP pillars: Abstraction, Encapsulation
         public bool HapusUser(int id)
         {
             return DeleteUser(id);
         }
 
         // Metode asli: DeleteUser
+        // OOP pillars: Abstraction, Encapsulation
         public bool DeleteUser(int id)
         {
             try
@@ -179,6 +194,7 @@ namespace Projek_Final_sem2.Control.Admin
         public static bool VerifikasiSandi(string password, byte[] storedHash, byte[] storedSalt) => VerifyPassword(password, storedHash, storedSalt);
 
         // Interpretasi hasil dari DAO: true jika sukses
+        // OOP pillars: Abstraction, Encapsulation
         private static bool InterpretResultAsSuccess(object? res)
         {
             if (res == null) return false;
@@ -189,6 +205,7 @@ namespace Projek_Final_sem2.Control.Admin
         }
 
         // Set property pada model jika properti tersedia (dengan perbandingan nama case-insensitive)
+        // OOP pillars: Encapsulation, Polymorphism
         private static void SetPropertyIfExists(object? model, string propName, object? value)
         {
             if (model == null) return;

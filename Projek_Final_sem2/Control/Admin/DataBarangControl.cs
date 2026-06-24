@@ -10,13 +10,20 @@ namespace Projek_Final_sem2.Control.Admin
     // Reflection-based adapter so control compiles regardless of exact BarangDAO signatures.
     public class DataBarangControl
     {
+        // Field encapsulation: menyimpan AlatDAO privat
+        // OOP pillars: Encapsulation (digunakan)
         private readonly AlatDAO _alatDao;
 
+        // Konstruktor
+        // OOP pillars: Encapsulation, Abstraction
         public DataBarangControl()
         {
             _alatDao = new AlatDAO();
         }
 
+        // Muat data barang untuk UI
+        // OOP pillars: Abstraction, Encapsulation
+        // Reinforcement: Memisahkan logika UI dari akses data (Abstraction, Encapsulation)
         public DataTable LoadDataBarang()
         {
             try
@@ -29,6 +36,9 @@ namespace Projek_Final_sem2.Control.Admin
             }
         }
 
+        // Handler tambah barang (dipanggil UI)
+        // OOP pillars: Abstraction, Encapsulation, Polymorphism (runtime type check)
+        // Reinforcement: Validasi tipe dan delegasi ke DAO untuk operasi data
         public bool BtnTambah_Click(object model)
         {
             try
@@ -46,6 +56,9 @@ namespace Projek_Final_sem2.Control.Admin
             }
         }
 
+        // Handler edit barang
+        // OOP pillars: Abstraction, Encapsulation, Polymorphism (runtime type check)
+        // Reinforcement: Memastikan perubahan objek dilakukan melalui DAO (Encapsulation)
         public bool BtnEdit_Click(int id, object model)
         {
             try
@@ -64,6 +77,9 @@ namespace Projek_Final_sem2.Control.Admin
             }
         }
 
+        // Handler hapus barang
+        // OOP pillars: Abstraction, Encapsulation
+        // Reinforcement: Operasi penghapusan terpusat di DAO untuk enkapsulasi akses data
         public bool BtnHapus_Click(int id)
         {
             try

@@ -59,23 +59,31 @@ namespace Projek_Final_sem2.UserControls.Teknisi
         private void LoadStatusOptions()
         {
             CmbUbahStatus.Items.Clear();
+            // Kita ingin hanya dua opsi pada combobox: "Menunggu Proses" dan "Selesai"
+            // Jika controller menyediakan daftar status, coba cocokkan nama tersebut dan gunakan jika tersedia;
+            // jika tidak, gunakan default yang diinginkan.
+            var desired = new[] { "Menunggu","Proses"};
 
-            // Coba panggil beberapa nama method yang mungkin ada di controller
             var candidates = new[] { "GetStatuses", "GetStatusOptions", "GetAllStatuses", "GetAllStatus", "GetStatusList" };
-            var list = InvokeControllerReturningEnumerable(candidates);
+            var list = InvokeControllerReturningEnumerable(candidates)?.Select(x => x?.ToString()?.Trim()).Where(s => !string.IsNullOrEmpty(s)).ToList();
 
-            if (list != null && list.Any())
+            if (list != null && list.Count > 0)
             {
-                foreach (var item in list)
+                // buat map normalisasi dari nilai controller untuk mengambil value as-is bila ada kecocokan
+                var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                foreach (var s in list) map[s!.Replace("_", "").Trim().ToLowerInvariant()] = s!;
+
+                foreach (var want in desired)
                 {
-                    CmbUbahStatus.Items.Add(item?.ToString());
+                    var key = want.Replace("_", "").ToLowerInvariant();
+                    if (map.TryGetValue(key, out var actual)) CmbUbahStatus.Items.Add(actual);
+                    else CmbUbahStatus.Items.Add(want);
                 }
             }
-
-            // fallback jika controller tidak menyediakan daftar status
-            if (CmbUbahStatus.Items.Count == 0)
+            else
             {
-                CmbUbahStatus.Items.AddRange(new object[] { "Dalam Perbaikan", "Selesai", "Menunggu Sparepart", "Dibatalkan", "Diperiksa" });
+                // controller tidak menyediakan; gunakan default yang diinginkan
+                CmbUbahStatus.Items.AddRange(desired.Cast<object>().ToArray());
             }
         }
 
@@ -143,21 +151,50 @@ namespace Projek_Final_sem2.UserControls.Teknisi
             if (obj == null) return null;
             var t = obj.GetType();
 
+            // First try direct property match (case-insensitive)
             foreach (var pname in propNames)
             {
                 var p = t.GetProperty(pname, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
-                if (p == null) continue;
-                var val = p.GetValue(obj);
-                if (val != null) return val.ToString();
+                if (p != null)
+                {
+                    var val = p.GetValue(obj);
+                    if (val != null) return val.ToString();
+                }
             }
 
-            // cek fields sebagai fallback
+            // If direct match failed, try a normalized name comparison (remove underscores, case-insensitive)
+            string[] normTargets = propNames.Select(n => n.Replace("_", "").ToLowerInvariant()).ToArray();
+            var props = t.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (var p in props)
+            {
+                var norm = p.Name.Replace("_", "").ToLowerInvariant();
+                if (normTargets.Contains(norm))
+                {
+                    var val = p.GetValue(obj);
+                    if (val != null) return val.ToString();
+                }
+            }
+
+            // cek fields sebagai fallback with same normalization
             foreach (var fname in propNames)
             {
                 var f = t.GetField(fname, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
-                if (f == null) continue;
-                var val = f.GetValue(obj);
-                if (val != null) return val.ToString();
+                if (f != null)
+                {
+                    var val = f.GetValue(obj);
+                    if (val != null) return val.ToString();
+                }
+            }
+
+            var fields = t.GetFields(BindingFlags.Public | BindingFlags.Instance);
+            foreach (var f in fields)
+            {
+                var norm = f.Name.Replace("_", "").ToLowerInvariant();
+                if (propNames.Select(n => n.Replace("_", "").ToLowerInvariant()).Contains(norm))
+                {
+                    var val = f.GetValue(obj);
+                    if (val != null) return val.ToString();
+                }
             }
 
             return null;

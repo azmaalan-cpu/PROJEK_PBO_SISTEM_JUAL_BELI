@@ -10,12 +10,14 @@ namespace Projek_Final_sem2.Control.Teknisi
         private readonly ServiceDAO _serviceDao = new ServiceDAO();
 
         // Get full history (unfiltered)
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetAllRiwayat()
         {
             return _serviceDao.DataServisRiwayat();
         }
 
         // Filter riwayat by date range (inclusive)
+        // OOP pillars: Abstraction, Encapsulation
         public DataTable GetRiwayatByRange(DateTime awal, DateTime akhir)
         {
             var dt = _serviceDao.DataServisRiwayat();
@@ -49,6 +51,7 @@ namespace Projek_Final_sem2.Control.Teknisi
         }
 
         // Summary (count and sum of biaya_servis) for a given range
+        // OOP pillars: Abstraction, Encapsulation
         public (int totalCount, decimal totalPendapatan) GetSummary(DateTime awal, DateTime akhir)
         {
             var dt = GetRiwayatByRange(awal, akhir);
