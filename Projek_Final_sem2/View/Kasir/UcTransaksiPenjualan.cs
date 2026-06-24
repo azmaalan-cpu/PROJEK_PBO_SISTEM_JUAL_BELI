@@ -114,14 +114,14 @@ namespace Projek_Final_sem2.UserControls.Kasir
 
             foreach (DataGridViewRow row in DgvKeranjang.Rows)
             {
-                if (row.Cells["ColSubTotal"].Value != null) 
+                if (row.Cells["ColSubTotal"].Value != null)
                 {
                     total += Convert.ToDecimal(
                    row.Cells["ColSubTotal"].Value);
                 }
-                    
 
-      
+
+
             }
 
             LblTotalBayar.Text =
@@ -473,11 +473,11 @@ namespace Projek_Final_sem2.UserControls.Kasir
             }
         }
 
- 
+
 
         private void LblTotalBayar_Click(object sender, EventArgs e)
         {
-           
+
             decimal totalBayar = 0;
 
             foreach (DataGridViewRow row in DgvKeranjang.Rows)
@@ -491,7 +491,17 @@ namespace Projek_Final_sem2.UserControls.Kasir
             }
 
         }
+
+        private void LbStok1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PanelBarang1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
-        // diperbarui 
-    
+    // diperbarui 
+
 }

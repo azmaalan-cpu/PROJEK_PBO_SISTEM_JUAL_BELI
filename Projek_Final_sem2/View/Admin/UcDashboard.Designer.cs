@@ -35,16 +35,13 @@
             PanelServisTerbaru = new Panel();
             BtnLihatSemua = new Button();
             DgvServisTerbaru = new DataGridView();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
+            id_servis = new DataGridViewTextBoxColumn();
+            nama_alat = new DataGridViewTextBoxColumn();
+            status_servis = new DataGridViewTextBoxColumn();
             LbServisTerbaru = new Label();
             PanelBarangMenipis = new Panel();
             BtnLihatSem = new Button();
             DgvBarangStokMenipis = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
             LbBarangMenipis = new Label();
             PanelPenjualan = new Panel();
             LbAngkaPenjualan = new Label();
@@ -59,6 +56,9 @@
             LbAngkaBarang = new Label();
             LbDataBarang = new Label();
             LbJudulDashboardAdmin = new Label();
+            id_alat = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            stok = new DataGridViewTextBoxColumn();
             PanelDashboardAdmin.SuspendLayout();
             PanelJudulAdmin.SuspendLayout();
             PanelServisTerbaru.SuspendLayout();
@@ -149,7 +149,7 @@
             // 
             DgvServisTerbaru.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvServisTerbaru.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvServisTerbaru.Columns.AddRange(new DataGridViewColumn[] { Column5, Column6, Column7 });
+            DgvServisTerbaru.Columns.AddRange(new DataGridViewColumn[] { id_servis, nama_alat, status_servis });
             DgvServisTerbaru.Location = new Point(0, 45);
             DgvServisTerbaru.Margin = new Padding(1, 2, 1, 2);
             DgvServisTerbaru.Name = "DgvServisTerbaru";
@@ -159,26 +159,26 @@
             DgvServisTerbaru.TabIndex = 2;
             DgvServisTerbaru.CellContentClick += DgvServisTerbaru_CellContentClick;
             // 
-            // Column5
+            // id_servis
             // 
-            Column5.DataPropertyName = "id_servis";
-            Column5.HeaderText = "No";
-            Column5.MinimumWidth = 8;
-            Column5.Name = "Column5";
+            id_servis.DataPropertyName = "id_servis";
+            id_servis.HeaderText = "No";
+            id_servis.MinimumWidth = 8;
+            id_servis.Name = "id_servis";
             // 
-            // Column6
+            // nama_alat
             // 
-            Column6.DataPropertyName = "nama_alat";
-            Column6.HeaderText = "Nama Barang";
-            Column6.MinimumWidth = 8;
-            Column6.Name = "Column6";
+            nama_alat.DataPropertyName = "nama_alat";
+            nama_alat.HeaderText = "Nama Barang";
+            nama_alat.MinimumWidth = 8;
+            nama_alat.Name = "nama_alat";
             // 
-            // Column7
+            // status_servis
             // 
-            Column7.DataPropertyName = "status_servis";
-            Column7.HeaderText = "Status";
-            Column7.MinimumWidth = 8;
-            Column7.Name = "Column7";
+            status_servis.DataPropertyName = "status_servis";
+            status_servis.HeaderText = "Status";
+            status_servis.MinimumWidth = 8;
+            status_servis.Name = "status_servis";
             // 
             // LbServisTerbaru
             // 
@@ -217,7 +217,7 @@
             // 
             DgvBarangStokMenipis.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvBarangStokMenipis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvBarangStokMenipis.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column4 });
+            DgvBarangStokMenipis.Columns.AddRange(new DataGridViewColumn[] { id_alat, Column2, stok });
             DgvBarangStokMenipis.Location = new Point(4, 42);
             DgvBarangStokMenipis.Margin = new Padding(1, 2, 1, 2);
             DgvBarangStokMenipis.Name = "DgvBarangStokMenipis";
@@ -225,27 +225,6 @@
             DgvBarangStokMenipis.Size = new Size(736, 405);
             DgvBarangStokMenipis.TabIndex = 1;
             DgvBarangStokMenipis.CellDoubleClick += DgvBarangStokMenipis_CellDoubleClick;
-            // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "id_barang";
-            Column1.HeaderText = "No";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.DataPropertyName = "nama_alat";
-            Column2.HeaderText = "Nama Barang";
-            Column2.MinimumWidth = 8;
-            Column2.Name = "Column2";
-            // 
-            // Column4
-            // 
-            Column4.DataPropertyName = "stok";
-            Column4.HeaderText = "Stok";
-            Column4.MinimumWidth = 8;
-            Column4.Name = "Column4";
             // 
             // LbBarangMenipis
             // 
@@ -301,6 +280,7 @@
             PanelPendapatan.Name = "PanelPendapatan";
             PanelPendapatan.Size = new Size(324, 147);
             PanelPendapatan.TabIndex = 5;
+            PanelPendapatan.Paint += PanelPendapatan_Paint;
             // 
             // LbAngkaPendapatan
             // 
@@ -403,6 +383,27 @@
             LbJudulDashboardAdmin.TabIndex = 0;
             LbJudulDashboardAdmin.Text = "Dashboard";
             // 
+            // id_alat
+            // 
+            id_alat.DataPropertyName = "id_alat";
+            id_alat.HeaderText = "No";
+            id_alat.MinimumWidth = 8;
+            id_alat.Name = "id_alat";
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "nama_alat";
+            Column2.HeaderText = "Nama Barang";
+            Column2.MinimumWidth = 8;
+            Column2.Name = "Column2";
+            // 
+            // stok
+            // 
+            stok.DataPropertyName = "stok";
+            stok.HeaderText = "Stok";
+            stok.MinimumWidth = 8;
+            stok.Name = "stok";
+            // 
             // UcDashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -461,11 +462,11 @@
         private Panel PanelJudulAdmin;
         private Label LabelJudul;
         private Label LabelJudulRingkasanSistem;
-        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn id_servis;
+        private DataGridViewTextBoxColumn nama_alat;
+        private DataGridViewTextBoxColumn status_servis;
+        private DataGridViewTextBoxColumn id_alat;
         private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn stok;
     }
 }

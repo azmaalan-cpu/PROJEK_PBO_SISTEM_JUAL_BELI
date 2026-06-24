@@ -58,7 +58,7 @@ namespace Projek_Final_sem2.Control.Admin
             try
             {
                 // Use available transaksi DAO to fetch transactions and return up to 'limit' rows.
-                var dt = _transaksiDao.GetTransaksiPenjualan() ?? new DataTable();
+                var dt = _serviceDao.DgvDashboardServisAdmin() ?? new DataTable();
                 if (limit <= 0 || dt.Rows.Count <= limit) return dt;
                 var top = dt.Clone();
                 for (int i = 0; i < Math.Min(limit, dt.Rows.Count); i++) top.ImportRow(dt.Rows[i]);

@@ -11,24 +11,71 @@ namespace Projek_Final_sem2.DAO
 
         public int InsertTransaksi(int idUser, decimal totalHarga)
         {
-            // TODO: implement DB insert and return generated id
-            return -1;
+            using (var conn = _db.GetConnection())
+            {
+                conn.Open();
+                string sql = @"INSERT INTO transaksi (id_user, total_harga, tanggal) VALUES (@idUser, @totalHarga, CURRENT_TIMESTAMP)RETURNING id_transaksi";
+                using (var cmd = new Npgsql.NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idUser", idUser);
+                    cmd.Parameters.AddWithValue("@totalHarga", totalHarga);
+                    object result = cmd.ExecuteScalar();
+                    if (result == null || result == DBNull.Value)
+                        return -1;
+                    return Convert.ToInt32(result);
+                }
+            }
         }
 
         public int CekStok(int idAlat)
         {
-            // TODO: query DB for stock
-            return 0;
+            
+            using (var conn = _db.GetConnection())
+            {
+                conn.Open();
+                string sql = @"SELECT stok FROM alat_pertanian WHERE id_alat = @id";
+                using (var cmd = new Npgsql.NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", idAlat);
+                    object result = cmd.ExecuteScalar();
+                    if (result == null || result == DBNull.Value)
+                        return 0;
+                    return Convert.ToInt32(result);
+                }
+            }
         }
 
         public void InsertDetail(int idTransaksi, int idAlat, int jumlah, decimal subtotal)
+
         {
-            // TODO: implement DB insert detail
+           using(var conn = _db.GetConnection())
+            {
+                conn.Open();
+                string sql = @"INSERT INTO detail_transaksi (id_transaksi, id_alat, jumlah, subtotal) VALUES (@idTransaksi, @idAlat, @jumlah, @subtotal)";
+                using (var cmd = new Npgsql.NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idTransaksi", idTransaksi);
+                    cmd.Parameters.AddWithValue("@idAlat", idAlat);
+                    cmd.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmd.Parameters.AddWithValue("@subtotal", subtotal);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void KurangiStok(int idAlat, int jumlah)
         {
-            // TODO: implement DB stock decrement
+            using(var conn = _db.GetConnection())
+            {
+                conn.Open();
+                string sql = @"UPDATE alat_pertanian SET stok = stok - @jumlah WHERE id_alat = @id_Alat";
+                using (var cmd = new Npgsql.NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmd.Parameters.AddWithValue("@id_Alat", idAlat);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public DataTable GetDataGrafikPenjualan(DateTime awal, DateTime akhir)
@@ -39,7 +86,7 @@ namespace Projek_Final_sem2.DAO
                 conn.Open();
                 // Try to read aggregated penjualan per date from a view or function.
                 // Expecting columns: tanggal, total_penjualan
-                string sql = @"SELECT * FROM v_transaksi_penjualan WHERE tanggal::date BETWEEN @awal::date AND @akhir::date ORDER BY tanggal";
+                string sql = @"SELECT * FROM fn_grafik_penjualan(@awal::date, @akhir::date)";
                 using (var cmd = new Npgsql.NpgsqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@awal", awal.Date);

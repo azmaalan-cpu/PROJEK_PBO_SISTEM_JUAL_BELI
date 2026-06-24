@@ -56,7 +56,7 @@ namespace Projek_Final_sem2.DAO
             using (var connection = db.GetConnection())
             {
                 connection.Open();
-                string sql = @"select * from view_total_pendapatan";
+                string sql = @"select * from v_total_pendapatan";
                 using (var cmd = new NpgsqlCommand(sql, connection))
                 {
                     return Convert.ToDecimal(cmd.ExecuteScalar());

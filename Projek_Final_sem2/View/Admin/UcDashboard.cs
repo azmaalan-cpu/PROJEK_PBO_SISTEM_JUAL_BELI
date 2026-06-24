@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -44,13 +45,23 @@ namespace Projek_Final_sem2.UserControls.Admin
                 {
                     LbAngkaPenjualan.Text = metrics.TotalPenjualan.ToString();
                     LbAngkaServis.Text = metrics.TotalServis.ToString();
-                    LbAngkaPendapatan.Text = _dashboardController.GetPendapatanPenjualan().ToString();
+                    LbAngkaPendapatan.Text = _dashboardController.GetPendapatanPenjualan().ToString("C0", new CultureInfo("id-ID"));
                     LbAngkaBarang.Text = _dashboardController.GetTotalBarang().ToString();
-
                     // bind recent transactions and low-stock items
+                    try { DgvServisTerbaru.AutoGenerateColumns = true ; } catch { }
                     try { DgvServisTerbaru.DataSource = metrics.RecentTransactions; } catch { }
+                    try {id_servis.DataPropertyName = "id_servis"; } catch { }
+                    try {nama_alat.DataPropertyName = "nama_alat"; } catch { }
+                    try {status_servis.DataPropertyName = "status_servis "; } catch { }
+
                     try { DgvBarangStokMenipis.DataSource = _dashboardController.GetBarangStokMenipis(); } catch { }
+                    //try { DgvBarangStokMenipis.Columns["id_alat"].Visible= false; } catch { }
+                    try { DgvBarangStokMenipis.AutoGenerateColumns = true; } catch { }
+                    try { id_alat.DataPropertyName = "id_alat";  } catch { }
+                    try { Column2.DataPropertyName = "nama_alat";  } catch { }
+                    try { stok.DataPropertyName = "stok"; } catch { }
                 }
+
             }
             catch { }
         }
@@ -86,6 +97,12 @@ namespace Projek_Final_sem2.UserControls.Admin
         private void LbAngkaBarang_Click(object sender, EventArgs e)
         {
             // optional click handler
+        }
+
+        private void PanelPendapatan_Paint(object sender, PaintEventArgs e)
+
+        {
+
         }
     }
 }
